@@ -2,7 +2,7 @@ source 'https://rubygems.org'
 
 gem 'rails', '3.2.6'
 
-gem "mongoid", github:"mongoid/mongoid"
+gem "mongoid", "~> 3.0.0"
 
 group :assets do
   gem 'sass-rails',   '~> 3.2.3'
