@@ -1,0 +1,1230 @@
+Tue. October 30, 2012 Washington Cleveland 7:00 PM 7:00 PM
+Tue. October 30, 2012 Boston Miami 8:00 PM 8:00 PM
+Tue. October 30, 2012 Dallas L.A. Lakers 7:30 PM 10:30 PM
+Wed. October 31, 2012 Indiana Toronto 7:00 PM 7:00 PM
+Wed. October 31, 2012 Denver Philadelphia 7:00 PM 7:00 PM
+Wed. October 31, 2012 Houston Detroit 7:30 PM 7:30 PM
+Wed. October 31, 2012 Sacramento Chicago 7:00 PM 8:00 PM
+Wed. October 31, 2012 San Antonio New Orleans 7:00 PM 8:00 PM
+Wed. October 31, 2012 Dallas Utah 7:00 PM 9:00 PM
+Wed. October 31, 2012 Golden State Phoenix 7:00 PM 10:00 PM
+Wed. October 31, 2012 Memphis L.A. Clippers 7:30 PM 10:30 PM
+Wed. October 31, 2012 L.A. Lakers Portland 7:30 PM 10:30 PM
+Thu. November 1, 2012 New York Brooklyn 7:00 PM 7:00 PM
+Thu. November 1, 2012 Oklahoma City San Antonio 8:30 PM 9:30 PM
+Fri. November 2, 2012 Indiana Charlotte 7:00 PM 7:00 PM
+Fri. November 2, 2012 Denver Orlando 7:00 PM 7:00 PM
+Fri. November 2, 2012 Milwaukee Boston 7:30 PM 7:30 PM
+Fri. November 2, 2012 Houston Atlanta 7:30 PM 7:30 PM
+Fri. November 2, 2012 Chicago Cleveland 7:30 PM 7:30 PM
+Fri. November 2, 2012 Miami New York 8:00 PM 8:00 PM
+Fri. November 2, 2012 Utah New Orleans 7:00 PM 8:00 PM
+Fri. November 2, 2012 Portland Oklahoma City 7:00 PM 8:00 PM
+Fri. November 2, 2012 Sacramento Minnesota 7:00 PM 8:00 PM
+Fri. November 2, 2012 Detroit Phoenix 7:00 PM 10:00 PM
+Fri. November 2, 2012 L.A. Clippers L.A. Lakers 7:30 PM 10:30 PM
+Fri. November 2, 2012 Memphis Golden State 7:30 PM 10:30 PM
+Sat. November 3, 2012 Boston Washington 7:00 PM 7:00 PM
+Sat. November 3, 2012 Sacramento Indiana 7:00 PM 7:00 PM
+Sat. November 3, 2012 Toronto Brooklyn 7:30 PM 7:30 PM
+Sat. November 3, 2012 Denver Miami 7:30 PM 7:30 PM
+Sat. November 3, 2012 New Orleans Chicago 7:00 PM 8:00 PM
+Sat. November 3, 2012 Portland Houston 7:00 PM 8:00 PM
+Sat. November 3, 2012 Cleveland Milwaukee 7:30 PM 8:30 PM
+Sat. November 3, 2012 Charlotte Dallas 7:30 PM 8:30 PM
+Sat. November 3, 2012 Utah San Antonio 7:30 PM 8:30 PM
+Sat. November 3, 2012 Golden State L.A. Clippers 7:30 PM 10:30 PM
+Sun. November 4, 2012 Philadelphia New York 12:00 PM 12:00 PM
+Sun. November 4, 2012 Minnesota Toronto 6:00 PM 6:00 PM
+Sun. November 4, 2012 Phoenix Orlando 6:00 PM 6:00 PM
+Sun. November 4, 2012 Atlanta Oklahoma City 6:00 PM 7:00 PM
+Sun. November 4, 2012 Detroit L.A. Lakers 6:30 PM 9:30 PM
+Mon. November 5, 2012 New York Philadelphia 7:00 PM 7:00 PM
+Mon. November 5, 2012 Minnesota Brooklyn 7:30 PM 7:30 PM
+Mon. November 5, 2012 Phoenix Miami 7:30 PM 7:30 PM
+Mon. November 5, 2012 Utah Memphis 7:00 PM 8:00 PM
+Mon. November 5, 2012 Portland Dallas 7:30 PM 8:30 PM
+Mon. November 5, 2012 Indiana San Antonio 7:30 PM 8:30 PM
+Mon. November 5, 2012 Golden State Sacramento 7:00 PM 10:00 PM
+Mon. November 5, 2012 Cleveland L.A. Clippers 7:30 PM 10:30 PM
+Tue. November 6, 2012 Orlando Chicago 7:00 PM 8:00 PM
+Tue. November 6, 2012 Toronto Oklahoma City 7:00 PM 8:00 PM
+Tue. November 6, 2012 Detroit Denver 7:00 PM 9:00 PM
+Wed. November 7, 2012 Phoenix Charlotte 7:00 PM 7:00 PM
+Wed. November 7, 2012 Washington Boston 7:30 PM 7:30 PM
+Wed. November 7, 2012 Indiana Atlanta 7:30 PM 7:30 PM
+Wed. November 7, 2012 Brooklyn Miami 7:30 PM 7:30 PM
+Wed. November 7, 2012 Memphis Milwaukee 7:00 PM 8:00 PM
+Wed. November 7, 2012 Philadelphia New Orleans 7:00 PM 8:00 PM
+Wed. November 7, 2012 Denver Houston 7:00 PM 8:00 PM
+Wed. November 7, 2012 Orlando Minnesota 7:00 PM 8:00 PM
+Wed. November 7, 2012 Toronto Dallas 7:30 PM 8:30 PM
+Wed. November 7, 2012 L.A. Lakers Utah 7:00 PM 9:00 PM
+Wed. November 7, 2012 Detroit Sacramento 7:00 PM 10:00 PM
+Wed. November 7, 2012 San Antonio L.A. Clippers 7:30 PM 10:30 PM
+Wed. November 7, 2012 Cleveland Golden State 7:30 PM 10:30 PM
+Thu. November 8, 2012 Oklahoma City Chicago 7:00 PM 8:00 PM
+Thu. November 8, 2012 L.A. Clippers Portland 7:30 PM 10:30 PM
+Fri. November 9, 2012 Milwaukee Washington 7:00 PM 7:00 PM
+Fri. November 9, 2012 Brooklyn Orlando 7:00 PM 7:00 PM
+Fri. November 9, 2012 Philadelphia Boston 7:30 PM 7:30 PM
+Fri. November 9, 2012 Dallas New York 7:30 PM 7:30 PM
+Fri. November 9, 2012 Miami Atlanta 7:30 PM 7:30 PM
+Fri. November 9, 2012 Houston Memphis 7:00 PM 8:00 PM
+Fri. November 9, 2012 Charlotte New Orleans 7:00 PM 8:00 PM
+Fri. November 9, 2012 Detroit Oklahoma City 7:00 PM 8:00 PM
+Fri. November 9, 2012 Indiana Minnesota 7:00 PM 8:00 PM
+Fri. November 9, 2012 Cleveland Phoenix 7:00 PM 9:00 PM
+Fri. November 9, 2012 San Antonio Sacramento 7:00 PM 10:00 PM
+Fri. November 9, 2012 Utah Denver 8:30 PM 10:30 PM
+Fri. November 9, 2012 Golden State L.A. Lakers 7:30 PM 10:30 PM
+Sat. November 10, 2012 Philadelphia Toronto 7:00 PM 7:00 PM
+Sat. November 10, 2012 Washington Indiana 7:00 PM 7:00 PM
+Sat. November 10, 2012 Dallas Charlotte 7:30 PM 7:30 PM
+Sat. November 10, 2012 Minnesota Chicago 7:00 PM 8:00 PM
+Sat. November 10, 2012 Detroit Houston 7:00 PM 8:00 PM
+Sat. November 10, 2012 Boston Milwaukee 7:30 PM 8:30 PM
+Sat. November 10, 2012 Phoenix Utah 7:00 PM 9:00 PM
+Sat. November 10, 2012 San Antonio Portland 7:00 PM 10:00 PM
+Sat. November 10, 2012 Denver Golden State 7:30 PM 10:30 PM
+Sun. November 11, 2012 Orlando Brooklyn 3:00 PM 3:00 PM
+Sun. November 11, 2012 Atlanta L.A. Clippers 12:30 PM 3:30 PM
+Sun. November 11, 2012 Miami Memphis 5:00 PM 6:00 PM
+Sun. November 11, 2012 Cleveland Oklahoma City 6:00 PM 7:00 PM
+Sun. November 11, 2012 Sacramento L.A. Lakers 6:30 PM 9:30 PM
+Mon. November 12, 2012 Utah Toronto 7:00 PM 7:00 PM
+Mon. November 12, 2012 Milwaukee Philadelphia 7:00 PM 7:00 PM
+Mon. November 12, 2012 Oklahoma City Detroit 7:30 PM 7:30 PM
+Mon. November 12, 2012 Boston Chicago 7:00 PM 8:00 PM
+Mon. November 12, 2012 Miami Houston 7:00 PM 8:00 PM
+Mon. November 12, 2012 Minnesota Dallas 7:30 PM 8:30 PM
+Mon. November 12, 2012 Denver Phoenix 7:00 PM 9:00 PM
+Mon. November 12, 2012 Atlanta Portland 7:00 PM 10:00 PM
+Tue. November 13, 2012 Washington Charlotte 7:00 PM 7:00 PM
+Tue. November 13, 2012 New York Orlando 7:00 PM 7:00 PM
+Tue. November 13, 2012 Toronto Indiana 7:00 PM 7:00 PM
+Tue. November 13, 2012 Cleveland Brooklyn 7:30 PM 7:30 PM
+Tue. November 13, 2012 Portland Sacramento 7:00 PM 10:00 PM
+Tue. November 13, 2012 San Antonio L.A. Lakers 7:30 PM 10:30 PM
+Wed. November 14, 2012 Detroit Philadelphia 7:00 PM 7:00 PM
+Wed. November 14, 2012 Utah Boston 7:30 PM 7:30 PM
+Wed. November 14, 2012 Indiana Milwaukee 7:00 PM 8:00 PM
+Wed. November 14, 2012 New Orleans Houston 7:00 PM 8:00 PM
+Wed. November 14, 2012 Memphis Oklahoma City 7:00 PM 8:00 PM
+Wed. November 14, 2012 Charlotte Minnesota 7:00 PM 8:00 PM
+Wed. November 14, 2012 Washington Dallas 7:30 PM 8:30 PM
+Wed. November 14, 2012 Chicago Phoenix 7:00 PM 9:00 PM
+Wed. November 14, 2012 Miami L.A. Clippers 7:30 PM 10:30 PM
+Wed. November 14, 2012 Atlanta Golden State 7:30 PM 10:30 PM
+Thu. November 15, 2012 Boston Brooklyn 8:00 PM 8:00 PM
+Thu. November 15, 2012 New York San Antonio 7:30 PM 8:30 PM
+Thu. November 15, 2012 Miami Denver 8:30 PM 10:30 PM
+Fri. November 16, 2012 Utah Philadelphia 7:00 PM 7:00 PM
+Fri. November 16, 2012 Orlando Detroit 7:00 PM 7:00 PM
+Fri. November 16, 2012 Dallas Indiana 7:00 PM 7:00 PM
+Fri. November 16, 2012 Oklahoma City New Orleans 7:00 PM 8:00 PM
+Fri. November 16, 2012 Golden State Minnesota 7:00 PM 8:00 PM
+Fri. November 16, 2012 New York Memphis 8:30 PM 9:30 PM
+Fri. November 16, 2012 Atlanta Sacramento 7:00 PM 10:00 PM
+Fri. November 16, 2012 Houston Portland 7:00 PM 10:00 PM
+Fri. November 16, 2012 Phoenix L.A. Lakers 7:30 PM 10:30 PM
+Sat. November 17, 2012 Toronto Boston 12:30 PM 12:30 PM
+Sat. November 17, 2012 Chicago L.A. Clippers 12:30 PM 3:30 PM
+Sat. November 17, 2012 Utah Washington 7:00 PM 7:00 PM
+Sat. November 17, 2012 Memphis Charlotte 7:30 PM 7:30 PM
+Sat. November 17, 2012 Dallas Cleveland 7:30 PM 7:30 PM
+Sat. November 17, 2012 New Orleans Milwaukee 7:30 PM 8:30 PM
+Sat. November 17, 2012 Denver San Antonio 7:30 PM 8:30 PM
+Sat. November 17, 2012 Miami Phoenix 7:00 PM 9:00 PM
+Sun. November 18, 2012 Indiana New York 12:00 PM 12:00 PM
+Sun. November 18, 2012 Orlando Toronto 1:00 PM 1:00 PM
+Sun. November 18, 2012 Cleveland Philadelphia 6:00 PM 6:00 PM
+Sun. November 18, 2012 Brooklyn Sacramento 3:00 PM 6:00 PM
+Sun. November 18, 2012 Golden State Oklahoma City 6:00 PM 7:00 PM
+Sun. November 18, 2012 Boston Detroit 7:30 PM 7:30 PM
+Sun. November 18, 2012 Chicago Portland 6:00 PM 9:00 PM
+Sun. November 18, 2012 Houston L.A. Lakers 6:30 PM 9:30 PM
+Mon. November 19, 2012 Indiana Washington 7:00 PM 7:00 PM
+Mon. November 19, 2012 Milwaukee Charlotte 7:00 PM 7:00 PM
+Mon. November 19, 2012 Orlando Atlanta 7:30 PM 7:30 PM
+Mon. November 19, 2012 Denver Memphis 7:00 PM 8:00 PM
+Mon. November 19, 2012 Golden State Dallas 7:30 PM 8:30 PM
+Mon. November 19, 2012 L.A. Clippers San Antonio 7:30 PM 8:30 PM
+Mon. November 19, 2012 Houston Utah 7:00 PM 9:00 PM
+Tue. November 20, 2012 Toronto Philadelphia 7:00 PM 7:00 PM
+Tue. November 20, 2012 New York New Orleans 7:00 PM 8:00 PM
+Tue. November 20, 2012 Brooklyn L.A. Lakers 7:30 PM 10:30 PM
+Wed. November 21, 2012 Toronto Charlotte 7:00 PM 7:00 PM
+Wed. November 21, 2012 Detroit Orlando 7:00 PM 7:00 PM
+Wed. November 21, 2012 Philadelphia Cleveland 7:00 PM 7:00 PM
+Wed. November 21, 2012 New Orleans Indiana 7:00 PM 7:00 PM
+Wed. November 21, 2012 San Antonio Boston 7:30 PM 7:30 PM
+Wed. November 21, 2012 Washington Atlanta 7:30 PM 7:30 PM
+Wed. November 21, 2012 Milwaukee Miami 7:30 PM 7:30 PM
+Wed. November 21, 2012 L.A. Clippers Oklahoma City 6:30 PM 7:30 PM
+Wed. November 21, 2012 Chicago Houston 7:00 PM 8:00 PM
+Wed. November 21, 2012 Denver Minnesota 7:00 PM 8:00 PM
+Wed. November 21, 2012 New York Dallas 7:30 PM 8:30 PM
+Wed. November 21, 2012 Portland Phoenix 7:00 PM 9:00 PM
+Wed. November 21, 2012 L.A. Lakers Sacramento 7:00 PM 10:00 PM
+Wed. November 21, 2012 Brooklyn Golden State 7:30 PM 10:30 PM
+Fri. November 23, 2012 Atlanta Charlotte 7:00 PM 7:00 PM
+Fri. November 23, 2012 Cleveland Orlando 7:00 PM 7:00 PM
+Fri. November 23, 2012 Oklahoma City Boston 7:30 PM 7:30 PM
+Fri. November 23, 2012 L.A. Clippers Brooklyn 7:30 PM 7:30 PM
+Fri. November 23, 2012 Toronto Detroit 7:30 PM 7:30 PM
+Fri. November 23, 2012 San Antonio Indiana 8:00 PM 8:00 PM
+Fri. November 23, 2012 L.A. Lakers Memphis 7:00 PM 8:00 PM
+Fri. November 23, 2012 New York Houston 7:00 PM 8:00 PM
+Fri. November 23, 2012 Golden State Denver 7:00 PM 9:00 PM
+Fri. November 23, 2012 Sacramento Utah 7:00 PM 9:00 PM
+Fri. November 23, 2012 New Orleans Phoenix 7:00 PM 9:00 PM
+Fri. November 23, 2012 Minnesota Portland 7:00 PM 10:00 PM
+Sat. November 24, 2012 Oklahoma City Philadelphia 7:00 PM 7:00 PM
+Sat. November 24, 2012 Charlotte Washington 7:00 PM 7:00 PM
+Sat. November 24, 2012 L.A. Clippers Atlanta 7:00 PM 7:00 PM
+Sat. November 24, 2012 Cleveland Miami 7:30 PM 7:30 PM
+Sat. November 24, 2012 L.A. Lakers Dallas 7:30 PM 8:30 PM
+Sat. November 24, 2012 Chicago Milwaukee 8:00 PM 9:00 PM
+Sat. November 24, 2012 Utah Sacramento 7:00 PM 10:00 PM
+Sat. November 24, 2012 Minnesota Golden State 7:30 PM 10:30 PM
+Sun. November 25, 2012 San Antonio Toronto 1:00 PM 1:00 PM
+Sun. November 25, 2012 Detroit New York 1:00 PM 1:00 PM
+Sun. November 25, 2012 Portland Brooklyn 3:00 PM 3:00 PM
+Sun. November 25, 2012 Phoenix Philadelphia 6:00 PM 6:00 PM
+Sun. November 25, 2012 Boston Orlando 6:00 PM 6:00 PM
+Sun. November 25, 2012 New Orleans Denver 6:00 PM 8:00 PM
+Mon. November 26, 2012 San Antonio Washington 7:00 PM 7:00 PM
+Mon. November 26, 2012 Portland Detroit 7:30 PM 7:30 PM
+Mon. November 26, 2012 Milwaukee Chicago 7:00 PM 8:00 PM
+Mon. November 26, 2012 Cleveland Memphis 7:00 PM 8:00 PM
+Mon. November 26, 2012 Charlotte Oklahoma City 7:00 PM 8:00 PM
+Mon. November 26, 2012 Denver Utah 7:00 PM 9:00 PM
+Mon. November 26, 2012 New Orleans L.A. Clippers 7:30 PM 10:30 PM
+Tue. November 27, 2012 Dallas Philadelphia 7:00 PM 7:00 PM
+Tue. November 27, 2012 Phoenix Cleveland 7:00 PM 7:00 PM
+Tue. November 27, 2012 Toronto Houston 7:00 PM 8:00 PM
+Tue. November 27, 2012 Minnesota Sacramento 7:00 PM 10:00 PM
+Tue. November 27, 2012 Indiana L.A. Lakers 7:30 PM 10:30 PM
+Wed. November 28, 2012 Portland Washington 7:00 PM 7:00 PM
+Wed. November 28, 2012 San Antonio Orlando 7:00 PM 7:00 PM
+Wed. November 28, 2012 Brooklyn Boston 7:30 PM 7:30 PM
+Wed. November 28, 2012 Charlotte Atlanta 7:30 PM 7:30 PM
+Wed. November 28, 2012 Phoenix Detroit 7:30 PM 7:30 PM
+Wed. November 28, 2012 Dallas Chicago 7:00 PM 8:00 PM
+Wed. November 28, 2012 New York Milwaukee 7:00 PM 8:00 PM
+Wed. November 28, 2012 Toronto Memphis 7:00 PM 8:00 PM
+Wed. November 28, 2012 Utah New Orleans 7:00 PM 8:00 PM
+Wed. November 28, 2012 Houston Oklahoma City 7:00 PM 8:00 PM
+Wed. November 28, 2012 Minnesota L.A. Clippers 7:30 PM 10:30 PM
+Thu. November 29, 2012 San Antonio Miami 8:00 PM 8:00 PM
+Thu. November 29, 2012 Denver Golden State 7:30 PM 10:30 PM
+Fri. November 30, 2012 Phoenix Toronto 7:00 PM 7:00 PM
+Fri. November 30, 2012 Philadelphia Charlotte 7:00 PM 7:00 PM
+Fri. November 30, 2012 Brooklyn Orlando 7:00 PM 7:00 PM
+Fri. November 30, 2012 Portland Boston 7:30 PM 7:30 PM
+Fri. November 30, 2012 Washington New York 7:30 PM 7:30 PM
+Fri. November 30, 2012 Cleveland Atlanta 7:30 PM 7:30 PM
+Fri. November 30, 2012 Detroit Memphis 7:00 PM 8:00 PM
+Fri. November 30, 2012 Utah Oklahoma City 7:00 PM 8:00 PM
+Fri. November 30, 2012 Milwaukee Minnesota 7:00 PM 8:00 PM
+Fri. November 30, 2012 Indiana Sacramento 7:00 PM 10:00 PM
+Fri. November 30, 2012 Denver L.A. Lakers 7:30 PM 10:30 PM
+Sat. December 1, 2012 Brooklyn Miami 7:30 PM 7:30 PM
+Sat. December 1, 2012 Portland Cleveland 7:30 PM 7:30 PM
+Sat. December 1, 2012 Philadelphia Chicago 7:00 PM 8:00 PM
+Sat. December 1, 2012 Oklahoma City New Orleans 7:00 PM 8:00 PM
+Sat. December 1, 2012 Utah Houston 7:00 PM 8:00 PM
+Sat. December 1, 2012 Boston Milwaukee 7:30 PM 8:30 PM
+Sat. December 1, 2012 Memphis San Antonio 7:30 PM 8:30 PM
+Sat. December 1, 2012 Detroit Dallas 8:00 PM 9:00 PM
+Sat. December 1, 2012 Sacramento L.A. Clippers 7:30 PM 10:30 PM
+Sat. December 1, 2012 Indiana Golden State 7:30 PM 10:30 PM
+Sun. December 2, 2012 Phoenix New York 12:00 PM 12:00 PM
+Sun. December 2, 2012 Orlando L.A. Lakers 6:30 PM 9:30 PM
+Mon. December 3, 2012 Portland Charlotte 7:00 PM 7:00 PM
+Mon. December 3, 2012 Cleveland Detroit 7:30 PM 7:30 PM
+Mon. December 3, 2012 Milwaukee New Orleans 7:00 PM 8:00 PM
+Mon. December 3, 2012 Toronto Denver 7:00 PM 9:00 PM
+Mon. December 3, 2012 L.A. Clippers Utah 7:00 PM 9:00 PM
+Mon. December 3, 2012 Orlando Golden State 7:30 PM 10:30 PM
+Tue. December 4, 2012 Minnesota Philadelphia 7:00 PM 7:00 PM
+Tue. December 4, 2012 Miami Washington 7:00 PM 7:00 PM
+Tue. December 4, 2012 Oklahoma City Brooklyn 7:30 PM 7:30 PM
+Tue. December 4, 2012 Indiana Chicago 7:00 PM 8:00 PM
+Tue. December 4, 2012 Phoenix Memphis 7:00 PM 8:00 PM
+Tue. December 4, 2012 L.A. Lakers Houston 7:00 PM 8:00 PM
+Wed. December 5, 2012 New York Charlotte 7:00 PM 7:00 PM
+Wed. December 5, 2012 Portland Indiana 7:00 PM 7:00 PM
+Wed. December 5, 2012 Minnesota Boston 7:30 PM 7:30 PM
+Wed. December 5, 2012 Denver Atlanta 7:30 PM 7:30 PM
+Wed. December 5, 2012 Golden State Detroit 7:30 PM 7:30 PM
+Wed. December 5, 2012 Chicago Cleveland 8:00 PM 8:00 PM
+Wed. December 5, 2012 L.A. Lakers New Orleans 7:00 PM 8:00 PM
+Wed. December 5, 2012 Milwaukee San Antonio 7:30 PM 8:30 PM
+Wed. December 5, 2012 Orlando Utah 7:00 PM 9:00 PM
+Wed. December 5, 2012 Toronto Sacramento 7:00 PM 10:00 PM
+Wed. December 5, 2012 Dallas L.A. Clippers 7:30 PM 10:30 PM
+Thu. December 6, 2012 New York Miami 8:00 PM 8:00 PM
+Thu. December 6, 2012 Dallas Phoenix 8:30 PM 10:30 PM
+Fri. December 7, 2012 Boston Philadelphia 7:00 PM 7:00 PM
+Fri. December 7, 2012 Denver Indiana 7:00 PM 7:00 PM
+Fri. December 7, 2012 Golden State Brooklyn 7:30 PM 7:30 PM
+Fri. December 7, 2012 Washington Atlanta 7:30 PM 7:30 PM
+Fri. December 7, 2012 Chicago Detroit 7:30 PM 7:30 PM
+Fri. December 7, 2012 Memphis New Orleans 7:00 PM 8:00 PM
+Fri. December 7, 2012 Cleveland Minnesota 7:00 PM 8:00 PM
+Fri. December 7, 2012 Charlotte Milwaukee 7:30 PM 8:30 PM
+Fri. December 7, 2012 Houston San Antonio 7:30 PM 8:30 PM
+Fri. December 7, 2012 Toronto Utah 7:00 PM 9:00 PM
+Fri. December 7, 2012 L.A. Lakers Oklahoma City 8:30 PM 9:30 PM
+Fri. December 7, 2012 Orlando Sacramento 7:00 PM 10:00 PM
+Sat. December 8, 2012 Phoenix L.A. Clippers 12:30 PM 3:30 PM
+Sat. December 8, 2012 Golden State Washington 7:00 PM 7:00 PM
+Sat. December 8, 2012 San Antonio Charlotte 7:00 PM 7:00 PM
+Sat. December 8, 2012 Philadelphia Boston 7:30 PM 7:30 PM
+Sat. December 8, 2012 New Orleans Miami 7:30 PM 7:30 PM
+Sat. December 8, 2012 Detroit Cleveland 7:30 PM 7:30 PM
+Sat. December 8, 2012 New York Chicago 7:00 PM 8:00 PM
+Sat. December 8, 2012 Atlanta Memphis 7:00 PM 8:00 PM
+Sat. December 8, 2012 Dallas Houston 7:00 PM 8:00 PM
+Sat. December 8, 2012 Sacramento Portland 7:00 PM 10:00 PM
+Sun. December 9, 2012 Toronto L.A. Clippers 12:30 PM 3:30 PM
+Sun. December 9, 2012 Milwaukee Brooklyn 6:00 PM 6:00 PM
+Sun. December 9, 2012 Indiana Oklahoma City 6:00 PM 7:00 PM
+Sun. December 9, 2012 Denver New York 7:30 PM 7:30 PM
+Sun. December 9, 2012 Orlando Phoenix 6:00 PM 8:00 PM
+Sun. December 9, 2012 Utah L.A. Lakers 6:30 PM 9:30 PM
+Mon. December 10, 2012 Detroit Philadelphia 7:00 PM 7:00 PM
+Mon. December 10, 2012 Golden State Charlotte 7:00 PM 7:00 PM
+Mon. December 10, 2012 Atlanta Miami 7:30 PM 7:30 PM
+Mon. December 10, 2012 San Antonio Houston 7:00 PM 8:00 PM
+Mon. December 10, 2012 Sacramento Dallas 7:30 PM 8:30 PM
+Mon. December 10, 2012 Toronto Portland 7:00 PM 10:00 PM
+Tue. December 11, 2012 New York Brooklyn 7:00 PM 7:00 PM
+Tue. December 11, 2012 L.A. Lakers Cleveland 7:00 PM 7:00 PM
+Tue. December 11, 2012 Denver Detroit 7:30 PM 7:30 PM
+Tue. December 11, 2012 Washington New Orleans 7:00 PM 8:00 PM
+Tue. December 11, 2012 L.A. Clippers Chicago 8:30 PM 9:30 PM
+Wed. December 12, 2012 Brooklyn Toronto 7:00 PM 7:00 PM
+Wed. December 12, 2012 Atlanta Orlando 7:00 PM 7:00 PM
+Wed. December 12, 2012 Cleveland Indiana 7:00 PM 7:00 PM
+Wed. December 12, 2012 Chicago Philadelphia 7:30 PM 7:30 PM
+Wed. December 12, 2012 L.A. Clippers Charlotte 7:30 PM 7:30 PM
+Wed. December 12, 2012 Golden State Miami 7:30 PM 7:30 PM
+Wed. December 12, 2012 Dallas Boston 8:00 PM 8:00 PM
+Wed. December 12, 2012 Sacramento Milwaukee 7:00 PM 8:00 PM
+Wed. December 12, 2012 Washington Houston 7:00 PM 8:00 PM
+Wed. December 12, 2012 New Orleans Oklahoma City 7:00 PM 8:00 PM
+Wed. December 12, 2012 Denver Minnesota 7:00 PM 8:00 PM
+Wed. December 12, 2012 Memphis Phoenix 7:00 PM 9:00 PM
+Wed. December 12, 2012 San Antonio Utah 8:30 PM 10:30 PM
+Thu. December 13, 2012 Charlotte Atlanta 7:30 PM 7:30 PM
+Thu. December 13, 2012 L.A. Lakers New York 8:00 PM 8:00 PM
+Thu. December 13, 2012 San Antonio Portland 7:30 PM 10:30 PM
+Fri. December 14, 2012 Dallas Toronto 7:00 PM 7:00 PM
+Fri. December 14, 2012 L.A. Lakers Washington 7:00 PM 7:00 PM
+Fri. December 14, 2012 Philadelphia Indiana 7:00 PM 7:00 PM
+Fri. December 14, 2012 Detroit Brooklyn 7:30 PM 7:30 PM
+Fri. December 14, 2012 Milwaukee Cleveland 7:30 PM 7:30 PM
+Fri. December 14, 2012 Golden State Orlando 8:00 PM 8:00 PM
+Fri. December 14, 2012 Minnesota New Orleans 7:00 PM 8:00 PM
+Fri. December 14, 2012 Boston Houston 7:00 PM 8:00 PM
+Fri. December 14, 2012 Sacramento Oklahoma City 7:00 PM 8:00 PM
+Fri. December 14, 2012 Utah Phoenix 7:00 PM 9:00 PM
+Fri. December 14, 2012 Memphis Denver 8:30 PM 10:30 PM
+Sat. December 15, 2012 Orlando Charlotte 7:00 PM 7:00 PM
+Sat. December 15, 2012 Golden State Atlanta 7:00 PM 7:00 PM
+Sat. December 15, 2012 Cleveland New York 7:30 PM 7:30 PM
+Sat. December 15, 2012 Washington Miami 7:30 PM 7:30 PM
+Sat. December 15, 2012 Indiana Detroit 7:30 PM 7:30 PM
+Sat. December 15, 2012 Brooklyn Chicago 7:00 PM 8:00 PM
+Sat. December 15, 2012 Dallas Minnesota 7:00 PM 8:00 PM
+Sat. December 15, 2012 L.A. Clippers Milwaukee 7:30 PM 8:30 PM
+Sat. December 15, 2012 Boston San Antonio 7:30 PM 8:30 PM
+Sat. December 15, 2012 Memphis Utah 7:00 PM 9:00 PM
+Sun. December 16, 2012 Houston Toronto 1:00 PM 1:00 PM
+Sun. December 16, 2012 L.A. Lakers Philadelphia 6:00 PM 6:00 PM
+Sun. December 16, 2012 Denver Sacramento 3:00 PM 6:00 PM
+Sun. December 16, 2012 New Orleans Portland 6:00 PM 9:00 PM
+Mon. December 17, 2012 Minnesota Orlando 7:00 PM 7:00 PM
+Mon. December 17, 2012 Houston New York 7:30 PM 7:30 PM
+Mon. December 17, 2012 L.A. Clippers Detroit 7:30 PM 7:30 PM
+Mon. December 17, 2012 Chicago Memphis 7:00 PM 8:00 PM
+Mon. December 17, 2012 San Antonio Oklahoma City 7:00 PM 8:00 PM
+Mon. December 17, 2012 Sacramento Phoenix 7:00 PM 9:00 PM
+Tue. December 18, 2012 Atlanta Washington 7:00 PM 7:00 PM
+Tue. December 18, 2012 Toronto Cleveland 7:00 PM 7:00 PM
+Tue. December 18, 2012 Utah Brooklyn 7:30 PM 7:30 PM
+Tue. December 18, 2012 Minnesota Miami 7:30 PM 7:30 PM
+Tue. December 18, 2012 Boston Chicago 7:00 PM 8:00 PM
+Tue. December 18, 2012 Indiana Milwaukee 7:00 PM 8:00 PM
+Tue. December 18, 2012 Philadelphia Dallas 7:30 PM 8:30 PM
+Tue. December 18, 2012 San Antonio Denver 7:00 PM 9:00 PM
+Tue. December 18, 2012 Charlotte L.A. Lakers 7:30 PM 10:30 PM
+Tue. December 18, 2012 New Orleans Golden State 7:30 PM 10:30 PM
+Wed. December 19, 2012 Detroit Toronto 7:00 PM 7:00 PM
+Wed. December 19, 2012 Brooklyn New York 7:00 PM 7:00 PM
+Wed. December 19, 2012 Washington Orlando 7:00 PM 7:00 PM
+Wed. December 19, 2012 Utah Indiana 7:00 PM 7:00 PM
+Wed. December 19, 2012 Cleveland Boston 7:30 PM 7:30 PM
+Wed. December 19, 2012 Oklahoma City Atlanta 7:30 PM 7:30 PM
+Wed. December 19, 2012 Philadelphia Houston 7:00 PM 8:00 PM
+Wed. December 19, 2012 Charlotte Phoenix 7:00 PM 9:00 PM
+Wed. December 19, 2012 Milwaukee Memphis 8:30 PM 9:30 PM
+Wed. December 19, 2012 Golden State Sacramento 7:00 PM 10:00 PM
+Wed. December 19, 2012 New Orleans L.A. Clippers 7:30 PM 10:30 PM
+Thu. December 20, 2012 Oklahoma City Minnesota 6:00 PM 7:00 PM
+Thu. December 20, 2012 Miami Dallas 8:30 PM 9:30 PM
+Thu. December 20, 2012 Denver Portland 7:00 PM 10:00 PM
+Fri. December 21, 2012 Orlando Toronto 7:00 PM 7:00 PM
+Fri. December 21, 2012 Atlanta Philadelphia 7:00 PM 7:00 PM
+Fri. December 21, 2012 Milwaukee Boston 7:30 PM 7:30 PM
+Fri. December 21, 2012 Chicago New York 7:30 PM 7:30 PM
+Fri. December 21, 2012 Washington Detroit 7:30 PM 7:30 PM
+Fri. December 21, 2012 Indiana Cleveland 7:30 PM 7:30 PM
+Fri. December 21, 2012 Dallas Memphis 7:00 PM 8:00 PM
+Fri. December 21, 2012 New Orleans San Antonio 7:30 PM 8:30 PM
+Fri. December 21, 2012 Sacramento L.A. Clippers 7:30 PM 10:30 PM
+Fri. December 21, 2012 Charlotte Golden State 7:30 PM 10:30 PM
+Sat. December 22, 2012 Detroit Washington 7:00 PM 7:00 PM
+Sat. December 22, 2012 Chicago Atlanta 7:00 PM 7:00 PM
+Sat. December 22, 2012 Utah Miami 7:30 PM 7:30 PM
+Sat. December 22, 2012 Indiana New Orleans 7:00 PM 8:00 PM
+Sat. December 22, 2012 Memphis Houston 7:00 PM 8:00 PM
+Sat. December 22, 2012 Cleveland Milwaukee 7:30 PM 8:30 PM
+Sat. December 22, 2012 Charlotte Denver 7:00 PM 9:00 PM
+Sat. December 22, 2012 Phoenix Portland 7:00 PM 10:00 PM
+Sat. December 22, 2012 L.A. Lakers Golden State 7:30 PM 10:30 PM
+Sun. December 23, 2012 Philadelphia Brooklyn 3:00 PM 3:00 PM
+Sun. December 23, 2012 Minnesota New York 5:00 PM 5:00 PM
+Sun. December 23, 2012 Utah Orlando 6:00 PM 6:00 PM
+Sun. December 23, 2012 Dallas San Antonio 6:00 PM 7:00 PM
+Sun. December 23, 2012 L.A. Clippers Phoenix 6:00 PM 8:00 PM
+Sun. December 23, 2012 Portland Sacramento 6:00 PM 9:00 PM
+Tue. December 25, 2012 Boston Brooklyn 12:00 PM 12:00 PM
+Tue. December 25, 2012 New York L.A. Lakers 12:00 PM 3:00 PM
+Tue. December 25, 2012 Oklahoma City Miami 5:30 PM 5:30 PM
+Tue. December 25, 2012 Houston Chicago 7:00 PM 8:00 PM
+Tue. December 25, 2012 Denver L.A. Clippers 7:30 PM 10:30 PM
+Wed. December 26, 2012 Cleveland Washington 7:00 PM 7:00 PM
+Wed. December 26, 2012 Miami Charlotte 7:00 PM 7:00 PM
+Wed. December 26, 2012 New Orleans Orlando 7:00 PM 7:00 PM
+Wed. December 26, 2012 Chicago Indiana 7:00 PM 7:00 PM
+Wed. December 26, 2012 Detroit Atlanta 7:30 PM 7:30 PM
+Wed. December 26, 2012 Brooklyn Milwaukee 7:00 PM 8:00 PM
+Wed. December 26, 2012 Philadelphia Memphis 7:00 PM 8:00 PM
+Wed. December 26, 2012 Houston Minnesota 7:00 PM 8:00 PM
+Wed. December 26, 2012 Toronto San Antonio 7:30 PM 8:30 PM
+Wed. December 26, 2012 L.A. Lakers Denver 7:00 PM 9:00 PM
+Wed. December 26, 2012 Golden State Utah 7:00 PM 9:00 PM
+Wed. December 26, 2012 New York Phoenix 7:00 PM 9:00 PM
+Wed. December 26, 2012 Sacramento Portland 7:00 PM 10:00 PM
+Thu. December 27, 2012 Dallas Oklahoma City 7:00 PM 8:00 PM
+Thu. December 27, 2012 Boston L.A. Clippers 7:30 PM 10:30 PM
+Fri. December 28, 2012 Orlando Washington 7:00 PM 7:00 PM
+Fri. December 28, 2012 Phoenix Indiana 7:00 PM 7:00 PM
+Fri. December 28, 2012 Charlotte Brooklyn 7:30 PM 7:30 PM
+Fri. December 28, 2012 Miami Detroit 7:30 PM 7:30 PM
+Fri. December 28, 2012 Atlanta Cleveland 7:30 PM 7:30 PM
+Fri. December 28, 2012 Toronto New Orleans 7:00 PM 8:00 PM
+Fri. December 28, 2012 Denver Dallas 7:30 PM 8:30 PM
+Fri. December 28, 2012 Houston San Antonio 7:30 PM 8:30 PM
+Fri. December 28, 2012 L.A. Clippers Utah 7:00 PM 9:00 PM
+Fri. December 28, 2012 New York Sacramento 7:00 PM 10:00 PM
+Fri. December 28, 2012 Portland L.A. Lakers 7:30 PM 10:30 PM
+Fri. December 28, 2012 Philadelphia Golden State 7:30 PM 10:30 PM
+Sat. December 29, 2012 New Orleans Charlotte 7:00 PM 7:00 PM
+Sat. December 29, 2012 Indiana Atlanta 7:00 PM 7:00 PM
+Sat. December 29, 2012 Toronto Orlando 7:00 PM 7:00 PM
+Sat. December 29, 2012 Cleveland Brooklyn 7:30 PM 7:30 PM
+Sat. December 29, 2012 Washington Chicago 7:00 PM 8:00 PM
+Sat. December 29, 2012 Denver Memphis 7:00 PM 8:00 PM
+Sat. December 29, 2012 Oklahoma City Houston 7:00 PM 8:00 PM
+Sat. December 29, 2012 Phoenix Minnesota 7:00 PM 8:00 PM
+Sat. December 29, 2012 Miami Milwaukee 7:30 PM 8:30 PM
+Sat. December 29, 2012 Philadelphia Portland 7:00 PM 10:00 PM
+Sat. December 29, 2012 Boston Golden State 7:30 PM 10:30 PM
+Sun. December 30, 2012 Milwaukee Detroit 7:30 PM 7:30 PM
+Sun. December 30, 2012 San Antonio Dallas 6:30 PM 7:30 PM
+Sun. December 30, 2012 Boston Sacramento 6:00 PM 9:00 PM
+Sun. December 30, 2012 Utah L.A. Clippers 6:30 PM 9:30 PM
+Mon. December 31, 2012 Memphis Indiana 3:00 PM 3:00 PM
+Mon. December 31, 2012 Charlotte Chicago 2:00 PM 3:00 PM
+Mon. December 31, 2012 Miami Orlando 5:00 PM 5:00 PM
+Mon. December 31, 2012 Atlanta Houston 6:00 PM 7:00 PM
+Mon. December 31, 2012 Phoenix Oklahoma City 7:00 PM 8:00 PM
+Mon. December 31, 2012 Brooklyn San Antonio 7:30 PM 8:30 PM
+Tue. January 1, 2013 Dallas Washington 6:00 PM 6:00 PM
+Tue. January 1, 2013 Portland New York 7:30 PM 7:30 PM
+Tue. January 1, 2013 Sacramento Detroit 7:30 PM 7:30 PM
+Tue. January 1, 2013 Atlanta New Orleans 7:00 PM 8:00 PM
+Tue. January 1, 2013 L.A. Clippers Denver 7:00 PM 9:00 PM
+Tue. January 1, 2013 Philadelphia L.A. Lakers 7:30 PM 10:30 PM
+Wed. January 2, 2013 Portland Toronto 7:00 PM 7:00 PM
+Wed. January 2, 2013 Chicago Orlando 7:00 PM 7:00 PM
+Wed. January 2, 2013 Sacramento Cleveland 7:00 PM 7:00 PM
+Wed. January 2, 2013 Washington Indiana 7:00 PM 7:00 PM
+Wed. January 2, 2013 Memphis Boston 7:30 PM 7:30 PM
+Wed. January 2, 2013 Dallas Miami 7:30 PM 7:30 PM
+Wed. January 2, 2013 San Antonio Milwaukee 7:00 PM 8:00 PM
+Wed. January 2, 2013 New Orleans Houston 7:00 PM 8:00 PM
+Wed. January 2, 2013 Brooklyn Oklahoma City 7:00 PM 8:00 PM
+Wed. January 2, 2013 Minnesota Utah 7:00 PM 9:00 PM
+Wed. January 2, 2013 Philadelphia Phoenix 7:00 PM 9:00 PM
+Wed. January 2, 2013 L.A. Clippers Golden State 7:30 PM 10:30 PM
+Thu. January 3, 2013 San Antonio New York 7:30 PM 7:30 PM
+Thu. January 3, 2013 Minnesota Denver 7:00 PM 9:00 PM
+Fri. January 4, 2013 Sacramento Toronto 7:00 PM 7:00 PM
+Fri. January 4, 2013 Brooklyn Washington 7:00 PM 7:00 PM
+Fri. January 4, 2013 Cleveland Charlotte 7:00 PM 7:00 PM
+Fri. January 4, 2013 Chicago Miami 7:30 PM 7:30 PM
+Fri. January 4, 2013 Atlanta Detroit 7:30 PM 7:30 PM
+Fri. January 4, 2013 Indiana Boston 8:00 PM 8:00 PM
+Fri. January 4, 2013 Portland Memphis 7:00 PM 8:00 PM
+Fri. January 4, 2013 Philadelphia Oklahoma City 7:00 PM 8:00 PM
+Fri. January 4, 2013 Houston Milwaukee 7:30 PM 8:30 PM
+Fri. January 4, 2013 Utah Phoenix 7:00 PM 9:00 PM
+Fri. January 4, 2013 L.A. Lakers L.A. Clippers 7:30 PM 10:30 PM
+Sat. January 5, 2013 Boston Atlanta 7:00 PM 7:00 PM
+Sat. January 5, 2013 New York Orlando 7:00 PM 7:00 PM
+Sat. January 5, 2013 Milwaukee Indiana 7:00 PM 7:00 PM
+Sat. January 5, 2013 Sacramento Brooklyn 7:30 PM 7:30 PM
+Sat. January 5, 2013 Houston Cleveland 7:30 PM 7:30 PM
+Sat. January 5, 2013 Portland Minnesota 7:00 PM 8:00 PM
+Sat. January 5, 2013 New Orleans Dallas 7:30 PM 8:30 PM
+Sat. January 5, 2013 Philadelphia San Antonio 7:30 PM 8:30 PM
+Sat. January 5, 2013 Utah Denver 7:00 PM 9:00 PM
+Sat. January 5, 2013 Golden State L.A. Clippers 7:30 PM 10:30 PM
+Sun. January 6, 2013 Oklahoma City Toronto 1:00 PM 1:00 PM
+Sun. January 6, 2013 Washington Miami 6:00 PM 6:00 PM
+Sun. January 6, 2013 Charlotte Detroit 7:30 PM 7:30 PM
+Sun. January 6, 2013 Memphis Phoenix 6:00 PM 8:00 PM
+Sun. January 6, 2013 Denver L.A. Lakers 6:30 PM 9:30 PM
+Mon. January 7, 2013 Oklahoma City Washington 7:00 PM 7:00 PM
+Mon. January 7, 2013 Boston New York 7:30 PM 7:30 PM
+Mon. January 7, 2013 Cleveland Chicago 7:00 PM 8:00 PM
+Mon. January 7, 2013 San Antonio New Orleans 7:00 PM 8:00 PM
+Mon. January 7, 2013 Dallas Utah 7:00 PM 9:00 PM
+Mon. January 7, 2013 Memphis Sacramento 7:00 PM 10:00 PM
+Mon. January 7, 2013 Orlando Portland 7:00 PM 10:00 PM
+Tue. January 8, 2013 Brooklyn Philadelphia 7:00 PM 7:00 PM
+Tue. January 8, 2013 Miami Indiana 7:00 PM 7:00 PM
+Tue. January 8, 2013 Phoenix Milwaukee 7:00 PM 8:00 PM
+Tue. January 8, 2013 L.A. Lakers Houston 7:00 PM 8:00 PM
+Tue. January 8, 2013 Atlanta Minnesota 7:00 PM 8:00 PM
+Wed. January 9, 2013 Philadelphia Toronto 7:00 PM 7:00 PM
+Wed. January 9, 2013 Utah Charlotte 7:00 PM 7:00 PM
+Wed. January 9, 2013 Atlanta Cleveland 7:00 PM 7:00 PM
+Wed. January 9, 2013 Phoenix Boston 7:30 PM 7:30 PM
+Wed. January 9, 2013 Milwaukee Chicago 7:00 PM 8:00 PM
+Wed. January 9, 2013 Houston New Orleans 7:00 PM 8:00 PM
+Wed. January 9, 2013 L.A. Lakers San Antonio 7:00 PM 8:00 PM
+Wed. January 9, 2013 Minnesota Oklahoma City 7:00 PM 8:00 PM
+Wed. January 9, 2013 Orlando Denver 7:00 PM 9:00 PM
+Wed. January 9, 2013 Dallas L.A. Clippers 7:30 PM 10:30 PM
+Wed. January 9, 2013 Memphis Golden State 7:30 PM 10:30 PM
+Thu. January 10, 2013 New York Indiana 8:00 PM 8:00 PM
+Thu. January 10, 2013 Dallas Sacramento 7:00 PM 10:00 PM
+Thu. January 10, 2013 Miami Portland 7:30 PM 10:30 PM
+Fri. January 11, 2013 Charlotte Toronto 7:00 PM 7:00 PM
+Fri. January 11, 2013 Houston Boston 7:30 PM 7:30 PM
+Fri. January 11, 2013 Phoenix Brooklyn 7:30 PM 7:30 PM
+Fri. January 11, 2013 Utah Atlanta 7:30 PM 7:30 PM
+Fri. January 11, 2013 Chicago New York 8:00 PM 8:00 PM
+Fri. January 11, 2013 San Antonio Memphis 7:00 PM 8:00 PM
+Fri. January 11, 2013 Minnesota New Orleans 7:00 PM 8:00 PM
+Fri. January 11, 2013 Detroit Milwaukee 7:30 PM 8:30 PM
+Fri. January 11, 2013 Cleveland Denver 7:00 PM 9:00 PM
+Fri. January 11, 2013 Oklahoma City L.A. Lakers 7:30 PM 10:30 PM
+Fri. January 11, 2013 Portland Golden State 7:30 PM 10:30 PM
+Sat. January 12, 2013 Orlando L.A. Clippers 12:30 PM 3:30 PM
+Sat. January 12, 2013 Atlanta Washington 7:00 PM 7:00 PM
+Sat. January 12, 2013 Charlotte Indiana 7:00 PM 7:00 PM
+Sat. January 12, 2013 Houston Philadelphia 7:30 PM 7:30 PM
+Sat. January 12, 2013 Utah Detroit 7:30 PM 7:30 PM
+Sat. January 12, 2013 Phoenix Chicago 7:00 PM 8:00 PM
+Sat. January 12, 2013 Memphis Dallas 8:00 PM 9:00 PM
+Sat. January 12, 2013 Miami Sacramento 7:00 PM 10:00 PM
+Sun. January 13, 2013 New Orleans New York 12:00 PM 12:00 PM
+Sun. January 13, 2013 Milwaukee Toronto 1:00 PM 1:00 PM
+Sun. January 13, 2013 Indiana Brooklyn 6:00 PM 6:00 PM
+Sun. January 13, 2013 Minnesota San Antonio 6:00 PM 7:00 PM
+Sun. January 13, 2013 Golden State Denver 6:00 PM 8:00 PM
+Sun. January 13, 2013 Oklahoma City Portland 6:00 PM 9:00 PM
+Sun. January 13, 2013 Cleveland L.A. Lakers 6:30 PM 9:30 PM
+Mon. January 14, 2013 Orlando Washington 7:00 PM 7:00 PM
+Mon. January 14, 2013 Charlotte Boston 7:30 PM 7:30 PM
+Mon. January 14, 2013 Atlanta Chicago 7:00 PM 8:00 PM
+Mon. January 14, 2013 L.A. Clippers Memphis 7:00 PM 8:00 PM
+Mon. January 14, 2013 Minnesota Dallas 7:30 PM 8:30 PM
+Mon. January 14, 2013 Miami Utah 7:00 PM 9:00 PM
+Mon. January 14, 2013 Oklahoma City Phoenix 7:00 PM 9:00 PM
+Mon. January 14, 2013 Cleveland Sacramento 7:00 PM 10:00 PM
+Tue. January 15, 2013 New Orleans Philadelphia 7:00 PM 7:00 PM
+Tue. January 15, 2013 Indiana Charlotte 7:00 PM 7:00 PM
+Tue. January 15, 2013 Toronto Brooklyn 7:30 PM 7:30 PM
+Tue. January 15, 2013 L.A. Clippers Houston 7:00 PM 8:00 PM
+Tue. January 15, 2013 Portland Denver 7:00 PM 9:00 PM
+Tue. January 15, 2013 Milwaukee L.A. Lakers 7:30 PM 10:30 PM
+Wed. January 16, 2013 Chicago Toronto 7:00 PM 7:00 PM
+Wed. January 16, 2013 Indiana Orlando 7:00 PM 7:00 PM
+Wed. January 16, 2013 Brooklyn Atlanta 7:30 PM 7:30 PM
+Wed. January 16, 2013 New Orleans Boston 8:00 PM 8:00 PM
+Wed. January 16, 2013 Denver Oklahoma City 7:00 PM 8:00 PM
+Wed. January 16, 2013 Houston Dallas 7:30 PM 8:30 PM
+Wed. January 16, 2013 Memphis San Antonio 7:30 PM 8:30 PM
+Wed. January 16, 2013 Washington Sacramento 7:00 PM 10:00 PM
+Wed. January 16, 2013 Cleveland Portland 7:00 PM 10:00 PM
+Wed. January 16, 2013 Miami Golden State 7:30 PM 10:30 PM
+Thu. January 17, 2013 New York Detroit TBD TBD
+Thu. January 17, 2013 L.A. Clippers Minnesota 7:00 PM 8:00 PM
+Thu. January 17, 2013 Milwaukee Phoenix 7:00 PM 9:00 PM
+Thu. January 17, 2013 Miami L.A. Lakers 7:30 PM 10:30 PM
+Fri. January 18, 2013 Chicago Boston 7:00 PM 7:00 PM
+Fri. January 18, 2013 Toronto Philadelphia 7:00 PM 7:00 PM
+Fri. January 18, 2013 Charlotte Orlando 7:00 PM 7:00 PM
+Fri. January 18, 2013 Houston Indiana 7:00 PM 7:00 PM
+Fri. January 18, 2013 Atlanta Brooklyn 7:30 PM 7:30 PM
+Fri. January 18, 2013 Sacramento Memphis 7:00 PM 8:00 PM
+Fri. January 18, 2013 Golden State San Antonio 7:30 PM 8:30 PM
+Fri. January 18, 2013 Washington Denver 7:00 PM 9:00 PM
+Fri. January 18, 2013 Oklahoma City Dallas 8:30 PM 9:30 PM
+Sat. January 19, 2013 Sacramento Charlotte 7:00 PM 7:00 PM
+Sat. January 19, 2013 San Antonio Atlanta 7:00 PM 7:00 PM
+Sat. January 19, 2013 Memphis Chicago 7:00 PM 8:00 PM
+Sat. January 19, 2013 Golden State New Orleans 7:00 PM 8:00 PM
+Sat. January 19, 2013 Houston Minnesota 7:00 PM 8:00 PM
+Sat. January 19, 2013 Cleveland Utah 7:00 PM 9:00 PM
+Sat. January 19, 2013 Milwaukee Portland 7:00 PM 10:00 PM
+Sat. January 19, 2013 Washington L.A. Clippers 7:30 PM 10:30 PM
+Sun. January 20, 2013 L.A. Lakers Toronto 1:00 PM 1:00 PM
+Sun. January 20, 2013 Dallas Orlando 6:00 PM 6:00 PM
+Sun. January 20, 2013 Boston Detroit 7:30 PM 7:30 PM
+Sun. January 20, 2013 Oklahoma City Denver 6:00 PM 8:00 PM
+Mon. January 21, 2013 Indiana Memphis 12:00 PM 1:00 PM
+Mon. January 21, 2013 Sacramento New Orleans 12:00 PM 1:00 PM
+Mon. January 21, 2013 Houston Charlotte 2:00 PM 2:00 PM
+Mon. January 21, 2013 Minnesota Atlanta 2:00 PM 2:00 PM
+Mon. January 21, 2013 Brooklyn New York 3:30 PM 3:30 PM
+Mon. January 21, 2013 L.A. Clippers Golden State 1:00 PM 4:00 PM
+Mon. January 21, 2013 San Antonio Philadelphia 7:00 PM 7:00 PM
+Mon. January 21, 2013 L.A. Lakers Chicago 8:30 PM 9:30 PM
+Mon. January 21, 2013 Washington Portland 7:00 PM 10:00 PM
+Tue. January 22, 2013 Boston Cleveland 7:00 PM 7:00 PM
+Tue. January 22, 2013 Orlando Detroit 7:30 PM 7:30 PM
+Tue. January 22, 2013 Philadelphia Milwaukee 7:00 PM 8:00 PM
+Tue. January 22, 2013 Oklahoma City L.A. Clippers 7:30 PM 10:30 PM
+Wed. January 23, 2013 Atlanta Charlotte 7:00 PM 7:00 PM
+Wed. January 23, 2013 Toronto Miami 7:30 PM 7:30 PM
+Wed. January 23, 2013 Detroit Chicago 7:00 PM 8:00 PM
+Wed. January 23, 2013 L.A. Lakers Memphis 7:00 PM 8:00 PM
+Wed. January 23, 2013 Denver Houston 7:00 PM 8:00 PM
+Wed. January 23, 2013 Brooklyn Minnesota 7:00 PM 8:00 PM
+Wed. January 23, 2013 New Orleans San Antonio 7:30 PM 8:30 PM
+Wed. January 23, 2013 Washington Utah 7:00 PM 9:00 PM
+Wed. January 23, 2013 Phoenix Sacramento 7:00 PM 10:00 PM
+Wed. January 23, 2013 Indiana Portland 7:00 PM 10:00 PM
+Wed. January 23, 2013 Oklahoma City Golden State 7:30 PM 10:30 PM
+Thu. January 24, 2013 Toronto Orlando 7:00 PM 7:00 PM
+Thu. January 24, 2013 New York Boston 8:00 PM 8:00 PM
+Thu. January 24, 2013 L.A. Clippers Phoenix 8:30 PM 10:30 PM
+Fri. January 25, 2013 Minnesota Washington 7:00 PM 7:00 PM
+Fri. January 25, 2013 Boston Atlanta 7:30 PM 7:30 PM
+Fri. January 25, 2013 Detroit Miami 7:30 PM 7:30 PM
+Fri. January 25, 2013 Milwaukee Cleveland 7:30 PM 7:30 PM
+Fri. January 25, 2013 Golden State Chicago 7:00 PM 8:00 PM
+Fri. January 25, 2013 Brooklyn Memphis 7:00 PM 8:00 PM
+Fri. January 25, 2013 Houston New Orleans 7:00 PM 8:00 PM
+Fri. January 25, 2013 San Antonio Dallas 7:00 PM 8:00 PM
+Fri. January 25, 2013 Oklahoma City Sacramento 7:00 PM 10:00 PM
+Fri. January 25, 2013 Utah L.A. Lakers 7:30 PM 10:30 PM
+Sat. January 26, 2013 Cleveland Toronto 7:00 PM 7:00 PM
+Sat. January 26, 2013 New York Philadelphia 7:00 PM 7:00 PM
+Sat. January 26, 2013 Chicago Washington 7:00 PM 7:00 PM
+Sat. January 26, 2013 Minnesota Charlotte 7:00 PM 7:00 PM
+Sat. January 26, 2013 Brooklyn Houston 7:00 PM 8:00 PM
+Sat. January 26, 2013 Golden State Milwaukee 7:30 PM 8:30 PM
+Sat. January 26, 2013 Phoenix San Antonio 7:30 PM 8:30 PM
+Sat. January 26, 2013 Sacramento Denver 7:00 PM 9:00 PM
+Sat. January 26, 2013 Indiana Utah 7:30 PM 9:30 PM
+Sat. January 26, 2013 L.A. Clippers Portland 7:00 PM 10:00 PM
+Sun. January 27, 2013 Miami Boston 1:00 PM 1:00 PM
+Sun. January 27, 2013 Oklahoma City L.A. Lakers 12:30 PM 3:30 PM
+Sun. January 27, 2013 Detroit Orlando 6:00 PM 6:00 PM
+Sun. January 27, 2013 New Orleans Memphis 5:00 PM 6:00 PM
+Sun. January 27, 2013 Atlanta New York 6:30 PM 6:30 PM
+Sun. January 27, 2013 Phoenix Dallas 6:30 PM 7:30 PM
+Sun. January 27, 2013 Portland L.A. Clippers 6:30 PM 9:30 PM
+Mon. January 28, 2013 Golden State Toronto 7:00 PM 7:00 PM
+Mon. January 28, 2013 Memphis Philadelphia 7:00 PM 7:00 PM
+Mon. January 28, 2013 Sacramento Washington 7:00 PM 7:00 PM
+Mon. January 28, 2013 Orlando Brooklyn 7:30 PM 7:30 PM
+Mon. January 28, 2013 Charlotte Chicago 7:00 PM 8:00 PM
+Mon. January 28, 2013 Indiana Denver 7:00 PM 9:00 PM
+Mon. January 28, 2013 Houston Utah 7:00 PM 9:00 PM
+Tue. January 29, 2013 Golden State Cleveland 7:00 PM 7:00 PM
+Tue. January 29, 2013 Milwaukee Detroit 7:30 PM 7:30 PM
+Tue. January 29, 2013 Dallas Portland 7:00 PM 10:00 PM
+Tue. January 29, 2013 New Orleans L.A. Lakers 7:30 PM 10:30 PM
+Wed. January 30, 2013 Washington Philadelphia 7:00 PM 7:00 PM
+Wed. January 30, 2013 Detroit Indiana 7:00 PM 7:00 PM
+Wed. January 30, 2013 Sacramento Boston 7:30 PM 7:30 PM
+Wed. January 30, 2013 Orlando New York 7:30 PM 7:30 PM
+Wed. January 30, 2013 Toronto Atlanta 7:30 PM 7:30 PM
+Wed. January 30, 2013 Miami Brooklyn 8:00 PM 8:00 PM
+Wed. January 30, 2013 Chicago Milwaukee 7:00 PM 8:00 PM
+Wed. January 30, 2013 L.A. Clippers Minnesota 7:00 PM 8:00 PM
+Wed. January 30, 2013 Charlotte San Antonio 7:30 PM 8:30 PM
+Wed. January 30, 2013 Houston Denver 7:00 PM 9:00 PM
+Wed. January 30, 2013 New Orleans Utah 7:00 PM 9:00 PM
+Wed. January 30, 2013 L.A. Lakers Phoenix 8:30 PM 10:30 PM
+Thu. January 31, 2013 Memphis Oklahoma City 7:00 PM 8:00 PM
+Thu. January 31, 2013 Dallas Golden State 7:30 PM 10:30 PM
+Fri. February 1, 2013 L.A. Clippers Toronto 7:00 PM 7:00 PM
+Fri. February 1, 2013 Miami Indiana 7:00 PM 7:00 PM
+Fri. February 1, 2013 Orlando Boston 7:30 PM 7:30 PM
+Fri. February 1, 2013 Chicago Brooklyn 7:30 PM 7:30 PM
+Fri. February 1, 2013 Milwaukee New York 7:30 PM 7:30 PM
+Fri. February 1, 2013 Sacramento Philadelphia 7:30 PM 7:30 PM
+Fri. February 1, 2013 Cleveland Detroit 7:30 PM 7:30 PM
+Fri. February 1, 2013 Washington Memphis 7:00 PM 8:00 PM
+Fri. February 1, 2013 New Orleans Denver 7:00 PM 9:00 PM
+Fri. February 1, 2013 Portland Utah 7:00 PM 9:00 PM
+Fri. February 1, 2013 Dallas Phoenix 7:00 PM 9:00 PM
+Fri. February 1, 2013 L.A. Lakers Minnesota 8:30 PM 9:30 PM
+Sat. February 2, 2013 Chicago Atlanta 7:00 PM 7:00 PM
+Sat. February 2, 2013 Sacramento New York 7:30 PM 7:30 PM
+Sat. February 2, 2013 Oklahoma City Cleveland 7:30 PM 7:30 PM
+Sat. February 2, 2013 Charlotte Houston 7:00 PM 8:00 PM
+Sat. February 2, 2013 New Orleans Minnesota 7:00 PM 8:00 PM
+Sat. February 2, 2013 Orlando Milwaukee 7:30 PM 8:30 PM
+Sat. February 2, 2013 Washington San Antonio 7:30 PM 8:30 PM
+Sat. February 2, 2013 Utah Portland 7:00 PM 10:00 PM
+Sat. February 2, 2013 Phoenix Golden State 7:30 PM 10:30 PM
+Sun. February 3, 2013 L.A. Clippers Boston 1:00 PM 1:00 PM
+Sun. February 3, 2013 L.A. Lakers Detroit 1:00 PM 1:00 PM
+Sun. February 3, 2013 Miami Toronto 2:00 PM 2:00 PM
+Mon. February 4, 2013 Orlando Philadelphia 7:00 PM 7:00 PM
+Mon. February 4, 2013 L.A. Clippers Washington 7:00 PM 7:00 PM
+Mon. February 4, 2013 Detroit New York 7:30 PM 7:30 PM
+Mon. February 4, 2013 Charlotte Miami 7:30 PM 7:30 PM
+Mon. February 4, 2013 Dallas Oklahoma City 7:00 PM 8:00 PM
+Mon. February 4, 2013 Portland Minnesota 7:00 PM 8:00 PM
+Mon. February 4, 2013 Sacramento Utah 7:00 PM 9:00 PM
+Tue. February 5, 2013 Atlanta Indiana 7:00 PM 7:00 PM
+Tue. February 5, 2013 L.A. Lakers Brooklyn 7:30 PM 7:30 PM
+Tue. February 5, 2013 Phoenix Memphis 7:00 PM 8:00 PM
+Tue. February 5, 2013 Golden State Houston 7:00 PM 8:00 PM
+Tue. February 5, 2013 Milwaukee Denver 7:00 PM 9:00 PM
+Wed. February 6, 2013 Boston Toronto 7:00 PM 7:00 PM
+Wed. February 6, 2013 Indiana Philadelphia 7:00 PM 7:00 PM
+Wed. February 6, 2013 New York Washington 7:00 PM 7:00 PM
+Wed. February 6, 2013 L.A. Clippers Orlando 7:00 PM 7:00 PM
+Wed. February 6, 2013 Charlotte Cleveland 7:00 PM 7:00 PM
+Wed. February 6, 2013 Memphis Atlanta 7:30 PM 7:30 PM
+Wed. February 6, 2013 Houston Miami 7:30 PM 7:30 PM
+Wed. February 6, 2013 Brooklyn Detroit 7:30 PM 7:30 PM
+Wed. February 6, 2013 Phoenix New Orleans 7:00 PM 8:00 PM
+Wed. February 6, 2013 Golden State Oklahoma City 7:00 PM 8:00 PM
+Wed. February 6, 2013 Portland Dallas 7:30 PM 8:30 PM
+Wed. February 6, 2013 San Antonio Minnesota 8:00 PM 9:00 PM
+Wed. February 6, 2013 Milwaukee Utah 7:00 PM 9:00 PM
+Thu. February 7, 2013 L.A. Lakers Boston 8:00 PM 8:00 PM
+Thu. February 7, 2013 Chicago Denver 8:30 PM 10:30 PM
+Fri. February 8, 2013 Brooklyn Washington 7:00 PM 7:00 PM
+Fri. February 8, 2013 L.A. Lakers Charlotte 7:00 PM 7:00 PM
+Fri. February 8, 2013 Toronto Indiana 7:00 PM 7:00 PM
+Fri. February 8, 2013 New Orleans Atlanta 7:30 PM 7:30 PM
+Fri. February 8, 2013 San Antonio Detroit 7:30 PM 7:30 PM
+Fri. February 8, 2013 Orlando Cleveland 7:30 PM 7:30 PM
+Fri. February 8, 2013 L.A. Clippers Miami 8:00 PM 8:00 PM
+Fri. February 8, 2013 Golden State Memphis 7:00 PM 8:00 PM
+Fri. February 8, 2013 Portland Houston 7:00 PM 8:00 PM
+Fri. February 8, 2013 Phoenix Oklahoma City 7:00 PM 8:00 PM
+Fri. February 8, 2013 New York Minnesota 7:00 PM 8:00 PM
+Fri. February 8, 2013 Chicago Utah 8:30 PM 10:30 PM
+Sat. February 9, 2013 Denver Cleveland 7:30 PM 7:30 PM
+Sat. February 9, 2013 Charlotte Philadelphia 8:00 PM 8:00 PM
+Sat. February 9, 2013 Detroit Milwaukee 7:30 PM 8:30 PM
+Sat. February 9, 2013 Golden State Dallas 7:30 PM 8:30 PM
+Sat. February 9, 2013 Utah Sacramento 7:00 PM 10:00 PM
+Sun. February 10, 2013 L.A. Clippers New York 1:00 PM 1:00 PM
+Sun. February 10, 2013 L.A. Lakers Miami 3:30 PM 3:30 PM
+Sun. February 10, 2013 Denver Boston 6:00 PM 6:00 PM
+Sun. February 10, 2013 New Orleans Toronto 6:00 PM 6:00 PM
+Sun. February 10, 2013 Portland Orlando 6:00 PM 6:00 PM
+Sun. February 10, 2013 Minnesota Memphis 5:00 PM 6:00 PM
+Sun. February 10, 2013 San Antonio Brooklyn 8:00 PM 8:00 PM
+Sun. February 10, 2013 Oklahoma City Phoenix 6:00 PM 8:00 PM
+Sun. February 10, 2013 Houston Sacramento 6:00 PM 9:00 PM
+Mon. February 11, 2013 L.A. Clippers Philadelphia 7:00 PM 7:00 PM
+Mon. February 11, 2013 Boston Charlotte 7:00 PM 7:00 PM
+Mon. February 11, 2013 Minnesota Cleveland 7:00 PM 7:00 PM
+Mon. February 11, 2013 Brooklyn Indiana 7:00 PM 7:00 PM
+Mon. February 11, 2013 New Orleans Detroit 7:30 PM 7:30 PM
+Mon. February 11, 2013 San Antonio Chicago 7:00 PM 8:00 PM
+Mon. February 11, 2013 Washington Milwaukee 7:00 PM 8:00 PM
+Mon. February 11, 2013 Atlanta Dallas 7:30 PM 8:30 PM
+Tue. February 12, 2013 Denver Toronto 7:00 PM 7:00 PM
+Tue. February 12, 2013 Portland Miami 7:30 PM 7:30 PM
+Tue. February 12, 2013 Sacramento Memphis 7:00 PM 8:00 PM
+Tue. February 12, 2013 Oklahoma City Utah 7:00 PM 9:00 PM
+Tue. February 12, 2013 Phoenix L.A. Lakers 7:30 PM 10:30 PM
+Tue. February 12, 2013 Houston Golden State 7:30 PM 10:30 PM
+Wed. February 13, 2013 Atlanta Orlando 7:00 PM 7:00 PM
+Wed. February 13, 2013 San Antonio Cleveland 7:00 PM 7:00 PM
+Wed. February 13, 2013 Charlotte Indiana 7:00 PM 7:00 PM
+Wed. February 13, 2013 Chicago Boston 7:30 PM 7:30 PM
+Wed. February 13, 2013 Denver Brooklyn 7:30 PM 7:30 PM
+Wed. February 13, 2013 Toronto New York 7:30 PM 7:30 PM
+Wed. February 13, 2013 Washington Detroit 7:30 PM 7:30 PM
+Wed. February 13, 2013 Philadelphia Milwaukee 7:00 PM 8:00 PM
+Wed. February 13, 2013 Portland New Orleans 7:00 PM 8:00 PM
+Wed. February 13, 2013 Utah Minnesota 7:00 PM 8:00 PM
+Wed. February 13, 2013 Sacramento Dallas 7:30 PM 8:30 PM
+Wed. February 13, 2013 Houston L.A. Clippers 7:30 PM 10:30 PM
+Thu. February 14, 2013 Miami Oklahoma City 7:00 PM 8:00 PM
+Thu. February 14, 2013 L.A. Clippers L.A. Lakers 7:30 PM 10:30 PM
+Tue. February 19, 2013 Toronto Washington 7:00 PM 7:00 PM
+Tue. February 19, 2013 Charlotte Orlando 7:00 PM 7:00 PM
+Tue. February 19, 2013 Milwaukee Brooklyn 7:30 PM 7:30 PM
+Tue. February 19, 2013 Memphis Detroit 7:30 PM 7:30 PM
+Tue. February 19, 2013 Chicago New Orleans 7:00 PM 8:00 PM
+Tue. February 19, 2013 Boston Denver 7:00 PM 9:00 PM
+Tue. February 19, 2013 Golden State Utah 7:00 PM 9:00 PM
+Tue. February 19, 2013 San Antonio Sacramento 7:00 PM 10:00 PM
+Tue. February 19, 2013 Phoenix Portland 7:00 PM 10:00 PM
+Wed. February 20, 2013 Memphis Toronto 7:00 PM 7:00 PM
+Wed. February 20, 2013 Detroit Charlotte 7:00 PM 7:00 PM
+Wed. February 20, 2013 New Orleans Cleveland 7:00 PM 7:00 PM
+Wed. February 20, 2013 New York Indiana 7:00 PM 7:00 PM
+Wed. February 20, 2013 Miami Atlanta 8:00 PM 8:00 PM
+Wed. February 20, 2013 Brooklyn Milwaukee 7:00 PM 8:00 PM
+Wed. February 20, 2013 Oklahoma City Houston 7:00 PM 8:00 PM
+Wed. February 20, 2013 Philadelphia Minnesota 7:00 PM 8:00 PM
+Wed. February 20, 2013 Orlando Dallas 7:30 PM 8:30 PM
+Wed. February 20, 2013 Boston L.A. Lakers 7:30 PM 10:30 PM
+Wed. February 20, 2013 Phoenix Golden State 7:30 PM 10:30 PM
+Thu. February 21, 2013 Miami Chicago 7:00 PM 8:00 PM
+Thu. February 21, 2013 San Antonio L.A. Clippers 7:30 PM 10:30 PM
+Fri. February 22, 2013 New York Toronto 7:00 PM 7:00 PM
+Fri. February 22, 2013 Denver Washington 7:00 PM 7:00 PM
+Fri. February 22, 2013 Chicago Charlotte 7:00 PM 7:00 PM
+Fri. February 22, 2013 Detroit Indiana 7:00 PM 7:00 PM
+Fri. February 22, 2013 Houston Brooklyn 7:30 PM 7:30 PM
+Fri. February 22, 2013 Sacramento Atlanta 7:30 PM 7:30 PM
+Fri. February 22, 2013 Orlando Memphis 7:00 PM 8:00 PM
+Fri. February 22, 2013 Dallas New Orleans 7:00 PM 8:00 PM
+Fri. February 22, 2013 Minnesota Oklahoma City 7:00 PM 8:00 PM
+Fri. February 22, 2013 Boston Phoenix 7:00 PM 9:00 PM
+Fri. February 22, 2013 Portland L.A. Lakers 7:30 PM 10:30 PM
+Fri. February 22, 2013 San Antonio Golden State 7:30 PM 10:30 PM
+Sat. February 23, 2013 Houston Washington 7:00 PM 7:00 PM
+Sat. February 23, 2013 Denver Charlotte 7:00 PM 7:00 PM
+Sat. February 23, 2013 Cleveland Orlando 7:00 PM 7:00 PM
+Sat. February 23, 2013 Miami Philadelphia 7:30 PM 7:30 PM
+Sat. February 23, 2013 Indiana Detroit 7:30 PM 7:30 PM
+Sat. February 23, 2013 Atlanta Milwaukee 7:30 PM 8:30 PM
+Sat. February 23, 2013 Utah L.A. Clippers 7:30 PM 10:30 PM
+Sun. February 24, 2013 L.A. Lakers Dallas 12:00 PM 1:00 PM
+Sun. February 24, 2013 Memphis Brooklyn 3:30 PM 3:30 PM
+Sun. February 24, 2013 Golden State Minnesota 2:30 PM 3:30 PM
+Sun. February 24, 2013 Cleveland Miami 6:00 PM 6:00 PM
+Sun. February 24, 2013 Sacramento New Orleans 5:00 PM 6:00 PM
+Sun. February 24, 2013 Philadelphia New York 7:00 PM 7:00 PM
+Sun. February 24, 2013 San Antonio Phoenix 6:00 PM 8:00 PM
+Sun. February 24, 2013 Boston Portland 6:00 PM 9:00 PM
+Sun. February 24, 2013 Chicago Oklahoma City 8:30 PM 9:30 PM
+Mon. February 25, 2013 Washington Toronto 7:00 PM 7:00 PM
+Mon. February 25, 2013 Atlanta Detroit 7:30 PM 7:30 PM
+Mon. February 25, 2013 L.A. Lakers Denver 7:00 PM 9:00 PM
+Mon. February 25, 2013 Boston Utah 7:00 PM 9:00 PM
+Tue. February 26, 2013 Orlando Philadelphia 7:00 PM 7:00 PM
+Tue. February 26, 2013 Golden State Indiana 7:00 PM 7:00 PM
+Tue. February 26, 2013 Sacramento Miami 7:30 PM 7:30 PM
+Tue. February 26, 2013 Cleveland Chicago 7:00 PM 8:00 PM
+Tue. February 26, 2013 Brooklyn New Orleans 7:00 PM 8:00 PM
+Tue. February 26, 2013 Milwaukee Dallas 7:30 PM 8:30 PM
+Tue. February 26, 2013 Minnesota Phoenix 7:00 PM 9:00 PM
+Tue. February 26, 2013 Charlotte L.A. Clippers 7:30 PM 10:30 PM
+Wed. February 27, 2013 Sacramento Orlando 7:00 PM 7:00 PM
+Wed. February 27, 2013 Toronto Cleveland 7:00 PM 7:00 PM
+Wed. February 27, 2013 Golden State New York 7:30 PM 7:30 PM
+Wed. February 27, 2013 Detroit Washington 8:00 PM 8:00 PM
+Wed. February 27, 2013 Dallas Memphis 7:00 PM 8:00 PM
+Wed. February 27, 2013 Milwaukee Houston 7:00 PM 8:00 PM
+Wed. February 27, 2013 New Orleans Oklahoma City 7:00 PM 8:00 PM
+Wed. February 27, 2013 Phoenix San Antonio 7:30 PM 8:30 PM
+Wed. February 27, 2013 Atlanta Utah 7:00 PM 9:00 PM
+Wed. February 27, 2013 Denver Portland 7:30 PM 10:30 PM
+Thu. February 28, 2013 L.A. Clippers Indiana 7:00 PM 7:00 PM
+Thu. February 28, 2013 Philadelphia Chicago 7:00 PM 8:00 PM
+Thu. February 28, 2013 Minnesota L.A. Lakers 7:30 PM 10:30 PM
+Fri. March 1, 2013 Indiana Toronto 7:00 PM 7:00 PM
+Fri. March 1, 2013 New York Washington 7:00 PM 7:00 PM
+Fri. March 1, 2013 Houston Orlando 7:00 PM 7:00 PM
+Fri. March 1, 2013 Golden State Boston 7:30 PM 7:30 PM
+Fri. March 1, 2013 Memphis Miami 7:30 PM 7:30 PM
+Fri. March 1, 2013 L.A. Clippers Cleveland 7:30 PM 7:30 PM
+Fri. March 1, 2013 Dallas Brooklyn 8:00 PM 8:00 PM
+Fri. March 1, 2013 Detroit New Orleans 7:00 PM 8:00 PM
+Fri. March 1, 2013 Sacramento San Antonio 7:30 PM 8:30 PM
+Fri. March 1, 2013 Charlotte Utah 7:00 PM 9:00 PM
+Fri. March 1, 2013 Atlanta Phoenix 7:00 PM 9:00 PM
+Fri. March 1, 2013 Oklahoma City Denver 8:30 PM 10:30 PM
+Sat. March 2, 2013 Golden State Philadelphia 7:00 PM 7:00 PM
+Sat. March 2, 2013 Brooklyn Chicago 7:00 PM 8:00 PM
+Sat. March 2, 2013 Toronto Milwaukee 7:30 PM 8:30 PM
+Sat. March 2, 2013 Minnesota Portland 7:00 PM 10:00 PM
+Sun. March 3, 2013 Miami New York 1:00 PM 1:00 PM
+Sun. March 3, 2013 Oklahoma City L.A. Clippers 12:30 PM 3:30 PM
+Sun. March 3, 2013 Philadelphia Washington 6:00 PM 6:00 PM
+Sun. March 3, 2013 Memphis Orlando 6:00 PM 6:00 PM
+Sun. March 3, 2013 Charlotte Sacramento 3:00 PM 6:00 PM
+Sun. March 3, 2013 Dallas Houston 6:00 PM 7:00 PM
+Sun. March 3, 2013 Detroit San Antonio 6:00 PM 7:00 PM
+Sun. March 3, 2013 Chicago Indiana 8:00 PM 8:00 PM
+Sun. March 3, 2013 Atlanta L.A. Lakers 6:30 PM 9:30 PM
+Mon. March 4, 2013 New York Cleveland 7:00 PM 7:00 PM
+Mon. March 4, 2013 Utah Milwaukee 7:00 PM 8:00 PM
+Mon. March 4, 2013 Orlando New Orleans 7:00 PM 8:00 PM
+Mon. March 4, 2013 Miami Minnesota 7:00 PM 8:00 PM
+Mon. March 4, 2013 Atlanta Denver 7:00 PM 9:00 PM
+Mon. March 4, 2013 Charlotte Portland 7:00 PM 10:00 PM
+Mon. March 4, 2013 Toronto Golden State 7:30 PM 10:30 PM
+Tue. March 5, 2013 Boston Philadelphia 7:00 PM 7:00 PM
+Tue. March 5, 2013 L.A. Lakers Oklahoma City 8:30 PM 9:30 PM
+Tue. March 5, 2013 Denver Sacramento 7:00 PM 10:00 PM
+Wed. March 6, 2013 Brooklyn Charlotte 7:00 PM 7:00 PM
+Wed. March 6, 2013 Utah Cleveland 7:00 PM 7:00 PM
+Wed. March 6, 2013 Boston Indiana 7:00 PM 7:00 PM
+Wed. March 6, 2013 Philadelphia Atlanta 7:30 PM 7:30 PM
+Wed. March 6, 2013 Orlando Miami 7:30 PM 7:30 PM
+Wed. March 6, 2013 New York Detroit 7:30 PM 7:30 PM
+Wed. March 6, 2013 Portland Memphis 7:00 PM 8:00 PM
+Wed. March 6, 2013 L.A. Lakers New Orleans 7:00 PM 8:00 PM
+Wed. March 6, 2013 Washington Minnesota 7:00 PM 8:00 PM
+Wed. March 6, 2013 Houston Dallas 7:30 PM 8:30 PM
+Wed. March 6, 2013 Chicago San Antonio 8:00 PM 9:00 PM
+Wed. March 6, 2013 Toronto Phoenix 7:00 PM 9:00 PM
+Wed. March 6, 2013 Milwaukee L.A. Clippers 7:30 PM 10:30 PM
+Wed. March 6, 2013 Sacramento Golden State 7:30 PM 10:30 PM
+Thu. March 7, 2013 Oklahoma City New York 8:00 PM 8:00 PM
+Thu. March 7, 2013 L.A. Clippers Denver 8:30 PM 10:30 PM
+Fri. March 8, 2013 Oklahoma City Charlotte 7:00 PM 7:00 PM
+Fri. March 8, 2013 Indiana Orlando 7:00 PM 7:00 PM
+Fri. March 8, 2013 Atlanta Boston 7:30 PM 7:30 PM
+Fri. March 8, 2013 Washington Brooklyn 7:30 PM 7:30 PM
+Fri. March 8, 2013 Dallas Detroit 7:30 PM 7:30 PM
+Fri. March 8, 2013 Memphis Cleveland 7:30 PM 7:30 PM
+Fri. March 8, 2013 Philadelphia Miami 8:00 PM 8:00 PM
+Fri. March 8, 2013 Utah Chicago 7:00 PM 8:00 PM
+Fri. March 8, 2013 Portland San Antonio 7:30 PM 8:30 PM
+Fri. March 8, 2013 Phoenix Sacramento 7:00 PM 10:00 PM
+Fri. March 8, 2013 Toronto L.A. Lakers 7:30 PM 10:30 PM
+Fri. March 8, 2013 Houston Golden State 7:30 PM 10:30 PM
+Sat. March 9, 2013 Brooklyn Atlanta 7:00 PM 7:00 PM
+Sat. March 9, 2013 Utah New York 7:30 PM 7:30 PM
+Sat. March 9, 2013 Charlotte Washington 8:00 PM 8:00 PM
+Sat. March 9, 2013 New Orleans Memphis 7:00 PM 8:00 PM
+Sat. March 9, 2013 Minnesota Denver 7:00 PM 9:00 PM
+Sat. March 9, 2013 Houston Phoenix 7:00 PM 9:00 PM
+Sat. March 9, 2013 Milwaukee Golden State 7:30 PM 10:30 PM
+Sun. March 10, 2013 Boston Oklahoma City 12:00 PM 1:00 PM
+Sun. March 10, 2013 Chicago L.A. Lakers 12:30 PM 3:30 PM
+Sun. March 10, 2013 Cleveland Toronto 6:00 PM 6:00 PM
+Sun. March 10, 2013 Philadelphia Orlando 6:00 PM 6:00 PM
+Sun. March 10, 2013 Indiana Miami 6:00 PM 6:00 PM
+Sun. March 10, 2013 Portland New Orleans 6:00 PM 7:00 PM
+Sun. March 10, 2013 Dallas Minnesota 6:00 PM 7:00 PM
+Sun. March 10, 2013 Milwaukee Sacramento 6:00 PM 9:00 PM
+Sun. March 10, 2013 Detroit L.A. Clippers 6:30 PM 9:30 PM
+Mon. March 11, 2013 Brooklyn Philadelphia 7:00 PM 7:00 PM
+Mon. March 11, 2013 Oklahoma City San Antonio 7:30 PM 8:30 PM
+Mon. March 11, 2013 Detroit Utah 7:00 PM 9:00 PM
+Mon. March 11, 2013 Denver Phoenix 7:00 PM 10:00 PM
+Mon. March 11, 2013 New York Golden State 7:30 PM 10:30 PM
+Tue. March 12, 2013 Boston Charlotte 7:00 PM 7:00 PM
+Tue. March 12, 2013 L.A. Lakers Orlando 7:00 PM 7:00 PM
+Tue. March 12, 2013 Washington Cleveland 7:00 PM 7:00 PM
+Tue. March 12, 2013 New Orleans Brooklyn 7:30 PM 7:30 PM
+Tue. March 12, 2013 Atlanta Miami 7:30 PM 7:30 PM
+Tue. March 12, 2013 Dallas Milwaukee 7:00 PM 8:00 PM
+Tue. March 12, 2013 San Antonio Minnesota 7:00 PM 8:00 PM
+Tue. March 12, 2013 Memphis Portland 7:00 PM 10:00 PM
+Wed. March 13, 2013 Miami Philadelphia 7:00 PM 7:00 PM
+Wed. March 13, 2013 Milwaukee Washington 7:00 PM 7:00 PM
+Wed. March 13, 2013 Minnesota Indiana 7:00 PM 7:00 PM
+Wed. March 13, 2013 Toronto Boston 7:30 PM 7:30 PM
+Wed. March 13, 2013 L.A. Lakers Atlanta 7:30 PM 7:30 PM
+Wed. March 13, 2013 Phoenix Houston 7:00 PM 8:00 PM
+Wed. March 13, 2013 Utah Oklahoma City 7:00 PM 8:00 PM
+Wed. March 13, 2013 Chicago Sacramento 7:00 PM 10:00 PM
+Wed. March 13, 2013 New York Denver 8:30 PM 10:30 PM
+Wed. March 13, 2013 Memphis L.A. Clippers 7:30 PM 10:30 PM
+Wed. March 13, 2013 Detroit Golden State 7:30 PM 10:30 PM
+Thu. March 14, 2013 Dallas San Antonio 7:00 PM 8:00 PM
+Thu. March 14, 2013 New York Portland 7:30 PM 10:30 PM
+Fri. March 15, 2013 Charlotte Toronto 7:00 PM 7:00 PM
+Fri. March 15, 2013 New Orleans Washington 7:00 PM 7:00 PM
+Fri. March 15, 2013 L.A. Lakers Indiana 7:00 PM 7:00 PM
+Fri. March 15, 2013 Phoenix Atlanta 7:30 PM 7:30 PM
+Fri. March 15, 2013 Minnesota Houston 7:00 PM 8:00 PM
+Fri. March 15, 2013 Orlando Oklahoma City 7:00 PM 8:00 PM
+Fri. March 15, 2013 Miami Milwaukee 7:30 PM 8:30 PM
+Fri. March 15, 2013 Cleveland Dallas 7:30 PM 8:30 PM
+Fri. March 15, 2013 Memphis Denver 7:00 PM 9:00 PM
+Fri. March 15, 2013 Chicago Golden State 7:30 PM 10:30 PM
+Sat. March 16, 2013 Phoenix Washington 7:00 PM 7:00 PM
+Sat. March 16, 2013 Charlotte Boston 7:30 PM 7:30 PM
+Sat. March 16, 2013 Indiana Philadelphia 7:30 PM 7:30 PM
+Sat. March 16, 2013 Cleveland San Antonio 7:30 PM 8:30 PM
+Sat. March 16, 2013 Memphis Utah 8:00 PM 10:00 PM
+Sat. March 16, 2013 Detroit Portland 7:00 PM 10:00 PM
+Sun. March 17, 2013 Miami Toronto 1:00 PM 1:00 PM
+Sun. March 17, 2013 Orlando Milwaukee 12:00 PM 1:00 PM
+Sun. March 17, 2013 New York L.A. Clippers 12:30 PM 3:30 PM
+Sun. March 17, 2013 Golden State Houston 6:00 PM 7:00 PM
+Sun. March 17, 2013 New Orleans Minnesota 6:00 PM 7:00 PM
+Sun. March 17, 2013 Oklahoma City Dallas 6:30 PM 7:30 PM
+Sun. March 17, 2013 Atlanta Brooklyn 8:00 PM 8:00 PM
+Sun. March 17, 2013 Sacramento L.A. Lakers 6:30 PM 9:30 PM
+Mon. March 18, 2013 Portland Philadelphia 7:00 PM 7:00 PM
+Mon. March 18, 2013 Washington Charlotte 7:00 PM 7:00 PM
+Mon. March 18, 2013 Indiana Cleveland 7:00 PM 7:00 PM
+Mon. March 18, 2013 Dallas Atlanta 7:30 PM 7:30 PM
+Mon. March 18, 2013 Brooklyn Detroit 7:30 PM 7:30 PM
+Mon. March 18, 2013 Miami Boston 8:00 PM 8:00 PM
+Mon. March 18, 2013 Denver Chicago 7:00 PM 8:00 PM
+Mon. March 18, 2013 Minnesota Memphis 7:00 PM 8:00 PM
+Mon. March 18, 2013 Golden State New Orleans 7:00 PM 8:00 PM
+Mon. March 18, 2013 L.A. Lakers Phoenix 7:00 PM 10:00 PM
+Mon. March 18, 2013 New York Utah 8:30 PM 10:30 PM
+Tue. March 19, 2013 Orlando Indiana 7:00 PM 7:00 PM
+Tue. March 19, 2013 Portland Milwaukee 7:00 PM 8:00 PM
+Tue. March 19, 2013 Denver Oklahoma City 7:00 PM 8:00 PM
+Tue. March 19, 2013 L.A. Clippers Sacramento 7:00 PM 10:00 PM
+Wed. March 20, 2013 Toronto Charlotte 7:00 PM 7:00 PM
+Wed. March 20, 2013 Miami Cleveland 7:00 PM 7:00 PM
+Wed. March 20, 2013 Orlando New York 7:30 PM 7:30 PM
+Wed. March 20, 2013 Milwaukee Atlanta 7:30 PM 7:30 PM
+Wed. March 20, 2013 Oklahoma City Memphis 7:00 PM 8:00 PM
+Wed. March 20, 2013 Boston New Orleans 7:00 PM 8:00 PM
+Wed. March 20, 2013 Utah Houston 7:00 PM 8:00 PM
+Wed. March 20, 2013 Brooklyn Dallas 7:00 PM 8:00 PM
+Wed. March 20, 2013 Golden State San Antonio 7:30 PM 8:30 PM
+Wed. March 20, 2013 Washington Phoenix 7:00 PM 10:00 PM
+Wed. March 20, 2013 Philadelphia L.A. Clippers 7:30 PM 10:30 PM
+Thu. March 21, 2013 Portland Chicago 7:00 PM 8:00 PM
+Thu. March 21, 2013 Philadelphia Denver 7:00 PM 9:00 PM
+Thu. March 21, 2013 Minnesota Sacramento 7:00 PM 10:00 PM
+Fri. March 22, 2013 New York Toronto 7:00 PM 7:00 PM
+Fri. March 22, 2013 Oklahoma City Orlando 7:00 PM 7:00 PM
+Fri. March 22, 2013 Milwaukee Indiana 7:00 PM 7:00 PM
+Fri. March 22, 2013 Portland Atlanta 7:30 PM 7:30 PM
+Fri. March 22, 2013 Detroit Miami 7:30 PM 7:30 PM
+Fri. March 22, 2013 Memphis New Orleans 7:00 PM 8:00 PM
+Fri. March 22, 2013 Cleveland Houston 7:00 PM 8:00 PM
+Fri. March 22, 2013 Boston Dallas 7:30 PM 8:30 PM
+Fri. March 22, 2013 Utah San Antonio 7:30 PM 8:30 PM
+Fri. March 22, 2013 Minnesota Phoenix 7:00 PM 10:00 PM
+Fri. March 22, 2013 Washington L.A. Lakers 7:30 PM 10:30 PM
+Sat. March 23, 2013 Detroit Charlotte 7:00 PM 7:00 PM
+Sat. March 23, 2013 Toronto New York 7:30 PM 7:30 PM
+Sat. March 23, 2013 Indiana Chicago 7:00 PM 8:00 PM
+Sat. March 23, 2013 Boston Memphis 7:00 PM 8:00 PM
+Sat. March 23, 2013 Sacramento Denver 7:00 PM 9:00 PM
+Sat. March 23, 2013 Brooklyn L.A. Clippers 7:30 PM 10:30 PM
+Sat. March 23, 2013 Washington Golden State 7:30 PM 10:30 PM
+Sun. March 24, 2013 Atlanta Milwaukee 2:00 PM 3:00 PM
+Sun. March 24, 2013 Charlotte Miami 6:00 PM 6:00 PM
+Sun. March 24, 2013 San Antonio Houston 6:00 PM 7:00 PM
+Sun. March 24, 2013 Portland Oklahoma City 6:00 PM 7:00 PM
+Sun. March 24, 2013 Chicago Minnesota 6:00 PM 7:00 PM
+Sun. March 24, 2013 Utah Dallas 6:30 PM 7:30 PM
+Sun. March 24, 2013 Brooklyn Phoenix 6:00 PM 9:00 PM
+Sun. March 24, 2013 Philadelphia Sacramento 6:00 PM 9:00 PM
+Mon. March 25, 2013 Memphis Washington 7:00 PM 7:00 PM
+Mon. March 25, 2013 Miami Orlando 7:00 PM 7:00 PM
+Mon. March 25, 2013 Atlanta Indiana 7:00 PM 7:00 PM
+Mon. March 25, 2013 Denver New Orleans 7:00 PM 8:00 PM
+Mon. March 25, 2013 Philadelphia Utah 7:00 PM 9:00 PM
+Mon. March 25, 2013 L.A. Lakers Golden State 7:30 PM 10:30 PM
+Tue. March 26, 2013 New York Boston 7:00 PM 7:00 PM
+Tue. March 26, 2013 Minnesota Detroit 7:30 PM 7:30 PM
+Tue. March 26, 2013 L.A. Clippers Dallas 8:30 PM 9:30 PM
+Wed. March 27, 2013 Atlanta Toronto 7:00 PM 7:00 PM
+Wed. March 27, 2013 Milwaukee Philadelphia 7:00 PM 7:00 PM
+Wed. March 27, 2013 Orlando Charlotte 7:00 PM 7:00 PM
+Wed. March 27, 2013 Boston Cleveland 7:00 PM 7:00 PM
+Wed. March 27, 2013 Memphis New York 7:30 PM 7:30 PM
+Wed. March 27, 2013 Miami Chicago 7:00 PM 8:00 PM
+Wed. March 27, 2013 L.A. Clippers New Orleans 7:00 PM 8:00 PM
+Wed. March 27, 2013 Indiana Houston 7:00 PM 8:00 PM
+Wed. March 27, 2013 Washington Oklahoma City 7:00 PM 8:00 PM
+Wed. March 27, 2013 L.A. Lakers Minnesota 7:00 PM 8:00 PM
+Wed. March 27, 2013 Denver San Antonio 7:30 PM 8:30 PM
+Wed. March 27, 2013 Phoenix Utah 7:00 PM 9:00 PM
+Wed. March 27, 2013 Sacramento Golden State 7:30 PM 10:30 PM
+Wed. March 27, 2013 Brooklyn Portland 7:30 PM 10:30 PM
+Thu. March 28, 2013 L.A. Lakers Milwaukee 7:00 PM 8:00 PM
+Thu. March 28, 2013 Indiana Dallas 7:30 PM 8:30 PM
+Thu. March 28, 2013 Sacramento Phoenix 7:00 PM 10:00 PM
+Fri. March 29, 2013 Washington Orlando 7:00 PM 7:00 PM
+Fri. March 29, 2013 Atlanta Boston 7:30 PM 7:30 PM
+Fri. March 29, 2013 Charlotte New York 7:30 PM 7:30 PM
+Fri. March 29, 2013 Toronto Detroit 7:30 PM 7:30 PM
+Fri. March 29, 2013 Philadelphia Cleveland 7:30 PM 7:30 PM
+Fri. March 29, 2013 Houston Memphis 7:00 PM 8:00 PM
+Fri. March 29, 2013 Miami New Orleans 7:00 PM 8:00 PM
+Fri. March 29, 2013 Oklahoma City Minnesota 7:00 PM 8:00 PM
+Fri. March 29, 2013 L.A. Clippers San Antonio 7:30 PM 8:30 PM
+Fri. March 29, 2013 Brooklyn Denver 7:00 PM 9:00 PM
+Fri. March 29, 2013 Utah Portland 7:00 PM 10:00 PM
+Sat. March 30, 2013 Chicago Dallas 1:00 PM 2:00 PM
+Sat. March 30, 2013 Orlando Atlanta 7:00 PM 7:00 PM
+Sat. March 30, 2013 Charlotte Philadelphia 7:30 PM 7:30 PM
+Sat. March 30, 2013 L.A. Clippers Houston 7:00 PM 8:00 PM
+Sat. March 30, 2013 Memphis Minnesota 7:00 PM 8:00 PM
+Sat. March 30, 2013 Oklahoma City Milwaukee 7:30 PM 8:30 PM
+Sat. March 30, 2013 Brooklyn Utah 7:00 PM 9:00 PM
+Sat. March 30, 2013 Indiana Phoenix 7:00 PM 10:00 PM
+Sat. March 30, 2013 L.A. Lakers Sacramento 7:00 PM 10:00 PM
+Sat. March 30, 2013 Portland Golden State 7:30 PM 10:30 PM
+Sun. March 31, 2013 Toronto Washington 6:00 PM 6:00 PM
+Sun. March 31, 2013 Cleveland New Orleans 5:00 PM 6:00 PM
+Sun. March 31, 2013 Detroit Chicago 6:00 PM 7:00 PM
+Sun. March 31, 2013 Miami San Antonio 6:00 PM 7:00 PM
+Sun. March 31, 2013 Boston New York 7:30 PM 7:30 PM
+Mon. April 1, 2013 Detroit Toronto 7:00 PM 7:00 PM
+Mon. April 1, 2013 Cleveland Atlanta 7:30 PM 7:30 PM
+Mon. April 1, 2013 Charlotte Milwaukee 7:00 PM 8:00 PM
+Mon. April 1, 2013 San Antonio Memphis 7:00 PM 8:00 PM
+Mon. April 1, 2013 Orlando Houston 7:00 PM 8:00 PM
+Mon. April 1, 2013 Boston Minnesota 7:00 PM 8:00 PM
+Mon. April 1, 2013 Portland Utah 7:00 PM 9:00 PM
+Mon. April 1, 2013 Indiana L.A. Clippers 7:30 PM 10:30 PM
+Tue. April 2, 2013 Chicago Washington 7:00 PM 7:00 PM
+Tue. April 2, 2013 New York Miami 8:00 PM 8:00 PM
+Tue. April 2, 2013 Dallas L.A. Lakers 7:30 PM 10:30 PM
+Wed. April 3, 2013 Washington Toronto 7:00 PM 7:00 PM
+Wed. April 3, 2013 Philadelphia Charlotte 7:00 PM 7:00 PM
+Wed. April 3, 2013 New York Atlanta 7:00 PM 7:00 PM
+Wed. April 3, 2013 Brooklyn Cleveland 7:00 PM 7:00 PM
+Wed. April 3, 2013 Detroit Boston 7:30 PM 7:30 PM
+Wed. April 3, 2013 Minnesota Milwaukee 7:00 PM 8:00 PM
+Wed. April 3, 2013 Orlando San Antonio 7:30 PM 8:30 PM
+Wed. April 3, 2013 Denver Utah 7:00 PM 9:00 PM
+Wed. April 3, 2013 Houston Sacramento 7:00 PM 10:00 PM
+Wed. April 3, 2013 Memphis Portland 7:00 PM 10:00 PM
+Wed. April 3, 2013 Phoenix L.A. Clippers 7:30 PM 10:30 PM
+Wed. April 3, 2013 New Orleans Golden State 7:30 PM 10:30 PM
+Thu. April 4, 2013 Chicago Brooklyn 7:00 PM 7:00 PM
+Thu. April 4, 2013 Dallas Denver 7:00 PM 9:00 PM
+Thu. April 4, 2013 San Antonio Oklahoma City 8:30 PM 9:30 PM
+Fri. April 5, 2013 Miami Charlotte 7:00 PM 7:00 PM
+Fri. April 5, 2013 Cleveland Boston 7:30 PM 7:30 PM
+Fri. April 5, 2013 Milwaukee New York 7:30 PM 7:30 PM
+Fri. April 5, 2013 Philadelphia Atlanta 7:30 PM 7:30 PM
+Fri. April 5, 2013 Oklahoma City Indiana 8:00 PM 8:00 PM
+Fri. April 5, 2013 Orlando Chicago 7:00 PM 8:00 PM
+Fri. April 5, 2013 Toronto Minnesota 7:00 PM 8:00 PM
+Fri. April 5, 2013 New Orleans Utah 7:00 PM 9:00 PM
+Fri. April 5, 2013 Golden State Phoenix 7:00 PM 10:00 PM
+Fri. April 5, 2013 Dallas Sacramento 7:00 PM 10:00 PM
+Fri. April 5, 2013 Houston Portland 7:00 PM 10:00 PM
+Fri. April 5, 2013 Memphis L.A. Lakers 7:30 PM 10:30 PM
+Sat. April 6, 2013 Indiana Washington 7:00 PM 7:00 PM
+Sat. April 6, 2013 Charlotte Brooklyn 7:30 PM 7:30 PM
+Sat. April 6, 2013 Philadelphia Miami 7:30 PM 7:30 PM
+Sat. April 6, 2013 Detroit Minnesota 7:00 PM 8:00 PM
+Sat. April 6, 2013 Toronto Milwaukee 7:30 PM 8:30 PM
+Sat. April 6, 2013 Atlanta San Antonio 7:30 PM 8:30 PM
+Sat. April 6, 2013 Houston Denver 7:00 PM 9:00 PM
+Sun. April 7, 2013 New York Oklahoma City 12:00 PM 1:00 PM
+Sun. April 7, 2013 L.A. Lakers L.A. Clippers 12:30 PM 3:30 PM
+Sun. April 7, 2013 Washington Boston 6:00 PM 6:00 PM
+Sun. April 7, 2013 Orlando Cleveland 6:00 PM 6:00 PM
+Sun. April 7, 2013 Memphis Sacramento 3:00 PM 6:00 PM
+Sun. April 7, 2013 Chicago Detroit 7:30 PM 7:30 PM
+Sun. April 7, 2013 Utah Golden State 5:00 PM 8:00 PM
+Sun. April 7, 2013 New Orleans Phoenix 6:00 PM 9:00 PM
+Sun. April 7, 2013 Dallas Portland 6:00 PM 9:00 PM
+Tue. April 9, 2013 Cleveland Indiana 7:00 PM 7:00 PM
+Tue. April 9, 2013 Philadelphia Brooklyn 7:30 PM 7:30 PM
+Tue. April 9, 2013 Washington New York 7:30 PM 7:30 PM
+Tue. April 9, 2013 Milwaukee Miami 7:30 PM 7:30 PM
+Tue. April 9, 2013 Toronto Chicago 7:00 PM 8:00 PM
+Tue. April 9, 2013 Charlotte Memphis 7:00 PM 8:00 PM
+Tue. April 9, 2013 Phoenix Houston 7:00 PM 8:00 PM
+Tue. April 9, 2013 Oklahoma City Utah 7:00 PM 9:00 PM
+Tue. April 9, 2013 New Orleans L.A. Lakers 7:30 PM 10:30 PM
+Tue. April 9, 2013 Minnesota Golden State 7:30 PM 10:30 PM
+Wed. April 10, 2013 Atlanta Philadelphia 7:00 PM 7:00 PM
+Wed. April 10, 2013 Miami Washington 7:00 PM 7:00 PM
+Wed. April 10, 2013 Milwaukee Orlando 7:00 PM 7:00 PM
+Wed. April 10, 2013 Detroit Cleveland 7:00 PM 7:00 PM
+Wed. April 10, 2013 Brooklyn Boston 8:00 PM 8:00 PM
+Wed. April 10, 2013 Phoenix Dallas 7:30 PM 8:30 PM
+Wed. April 10, 2013 New Orleans Sacramento 7:00 PM 10:00 PM
+Wed. April 10, 2013 L.A. Lakers Portland 7:00 PM 10:00 PM
+Wed. April 10, 2013 San Antonio Denver 8:30 PM 10:30 PM
+Wed. April 10, 2013 Minnesota L.A. Clippers 7:30 PM 10:30 PM
+Thu. April 11, 2013 New York Chicago 7:00 PM 8:00 PM
+Thu. April 11, 2013 Oklahoma City Golden State 7:30 PM 10:30 PM
+Fri. April 12, 2013 Chicago Toronto 7:00 PM 7:00 PM
+Fri. April 12, 2013 Philadelphia Washington 7:00 PM 7:00 PM
+Fri. April 12, 2013 Brooklyn Indiana 7:00 PM 7:00 PM
+Fri. April 12, 2013 Milwaukee Atlanta 7:30 PM 7:30 PM
+Fri. April 12, 2013 Boston Miami 7:30 PM 7:30 PM
+Fri. April 12, 2013 Charlotte Detroit 7:30 PM 7:30 PM
+Fri. April 12, 2013 New York Cleveland 7:30 PM 7:30 PM
+Fri. April 12, 2013 L.A. Clippers New Orleans 7:00 PM 8:00 PM
+Fri. April 12, 2013 Memphis Houston 7:00 PM 8:00 PM
+Fri. April 12, 2013 Denver Dallas 7:30 PM 8:30 PM
+Fri. April 12, 2013 Sacramento San Antonio 7:30 PM 8:30 PM
+Fri. April 12, 2013 Minnesota Utah 7:00 PM 9:00 PM
+Fri. April 12, 2013 Oklahoma City Portland 7:00 PM 10:00 PM
+Fri. April 12, 2013 Golden State L.A. Lakers 7:30 PM 10:30 PM
+Sat. April 13, 2013 Milwaukee Charlotte 7:00 PM 7:00 PM
+Sat. April 13, 2013 Boston Orlando 7:00 PM 7:00 PM
+Sat. April 13, 2013 L.A. Clippers Memphis 7:00 PM 8:00 PM
+Sat. April 13, 2013 Phoenix Minnesota 7:00 PM 8:00 PM
+Sun. April 14, 2013 Chicago Miami 1:00 PM 1:00 PM
+Sun. April 14, 2013 Brooklyn Toronto 3:30 PM 3:30 PM
+Sun. April 14, 2013 Indiana New York 3:30 PM 3:30 PM
+Sun. April 14, 2013 Cleveland Philadelphia 3:30 PM 3:30 PM
+Sun. April 14, 2013 Portland Denver 3:00 PM 5:00 PM
+Sun. April 14, 2013 Dallas New Orleans 5:00 PM 6:00 PM
+Sun. April 14, 2013 Sacramento Houston 6:00 PM 7:00 PM
+Sun. April 14, 2013 San Antonio L.A. Lakers 6:30 PM 9:30 PM
+Mon. April 15, 2013 New York Charlotte 7:00 PM 7:00 PM
+Mon. April 15, 2013 Chicago Orlando 7:00 PM 7:00 PM
+Mon. April 15, 2013 Miami Cleveland 7:00 PM 7:00 PM
+Mon. April 15, 2013 Washington Brooklyn 7:30 PM 7:30 PM
+Mon. April 15, 2013 Philadelphia Detroit 7:30 PM 7:30 PM
+Mon. April 15, 2013 Denver Milwaukee 7:00 PM 8:00 PM
+Mon. April 15, 2013 Memphis Dallas 7:00 PM 8:00 PM
+Mon. April 15, 2013 Sacramento Oklahoma City 7:00 PM 8:00 PM
+Mon. April 15, 2013 Utah Minnesota 7:00 PM 8:00 PM
+Mon. April 15, 2013 Houston Phoenix 7:00 PM 10:00 PM
+Mon. April 15, 2013 San Antonio Golden State 7:30 PM 10:30 PM
+Tue. April 16, 2013 Toronto Atlanta 7:30 PM 7:30 PM
+Tue. April 16, 2013 Indiana Boston 8:00 PM 8:00 PM
+Tue. April 16, 2013 Portland L.A. Clippers 7:30 PM 10:30 PM
+Wed. April 17, 2013 Boston Toronto 8:00 PM 8:00 PM
+Wed. April 17, 2013 Detroit Brooklyn 8:00 PM 8:00 PM
+Wed. April 17, 2013 Atlanta New York 8:00 PM 8:00 PM
+Wed. April 17, 2013 Cleveland Charlotte 8:00 PM 8:00 PM
+Wed. April 17, 2013 Orlando Miami 8:00 PM 8:00 PM
+Wed. April 17, 2013 Philadelphia Indiana 8:00 PM 8:00 PM
+Wed. April 17, 2013 Washington Chicago 7:00 PM 8:00 PM
+Wed. April 17, 2013 Utah Memphis 7:00 PM 8:00 PM
+Wed. April 17, 2013 New Orleans Dallas 7:00 PM 8:00 PM
+Wed. April 17, 2013 Minnesota San Antonio 7:00 PM 8:00 PM
+Wed. April 17, 2013 Milwaukee Oklahoma City 7:00 PM 8:00 PM
+Wed. April 17, 2013 Phoenix Denver 6:00 PM 8:00 PM
+Wed. April 17, 2013 Houston L.A. Lakers 7:30 PM 10:30 PM
+Wed. April 17, 2013 L.A. Clippers Sacramento 7:30 PM 10:30 PM
+Wed. April 17, 2013 Golden State Portland 7:30 PM 10:30 PM

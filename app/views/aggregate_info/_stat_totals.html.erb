@@ -1,0 +1,30 @@
+    <section class="stat_totals">
+      <table>
+        <thead><tr><td colspan="18">Stat Totals</td></tr></thead>
+        <thead> <tr> <th> player </th> <th> min </th> <th> fgm </th> <th> fga </th> <th> 3sm </th> <th> 3sa </th> <th> ftm </th> <th> fta </th> <th> oreb </th> <th> dreb </th> <th> treb </th><th> ast </th> <th> stl </th> <th> blk </th> <th> to </th> <th> pf </th> <th> pm </th> <th> pts </th> </tr> </thead>
+        <tbody>
+          <% @total_lines.each do |line| %>
+            <tr data-player="<%= line.line_name %>">
+              <td data-stat="line_name"><%= line.line_name %></td>
+              <td data-stat="minutes"><%= line.minutes %></td>
+              <td data-stat="field_goals_made"><%= line.field_goals_made %></td>
+              <td data-stat="field_goals_attempted"><%= line.field_goals_attempted %></td>
+              <td data-stat="threes_made"><%= line.threes_made %></td>
+              <td data-stat="threes_attempted"><%= line.threes_attempted %></td>
+              <td data-stat="free_throws_made"><%= line.free_throws_made %></td>
+              <td data-stat="free_throws_attempted"><%= line.free_throws_attempted %></td>
+              <td data-stat="offensive_rebounds"><%= line.offensive_rebounds %></td>
+              <td data-stat="defensive_rebounds"><%= line.defensive_rebounds %></td>
+              <td data-stat="total_rebounds"><%= line.total_rebounds %></td>
+              <td data-stat="assists"><%= line.assists %></td>
+              <td data-stat="steals"><%= line.steals %></td>
+              <td data-stat="blocks"><%= line.blocks %></td>
+              <td data-stat="turnovers"><%= line.turnovers %></td>
+              <td data-stat="personal_fouls"><%= line.personal_fouls %></td>
+              <td data-stat="plus_minus"><%= line.plus_minus %></td>
+              <td data-stat="points"><%= line.points %></td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </section>

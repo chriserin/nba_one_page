@@ -1,0 +1,3 @@
+    <div class="game-text" data-game-text="<%= @team_boxscore_lines.first.game_text %>"></div>
+    <%= render :partial => 'boxscore', :locals => {:boxscore_lines => @team_boxscore_lines, :class_label => "team-boxscore" } %>
+    <%= render :partial => 'boxscore', :locals => {:boxscore_lines => @opponent_boxscore_lines, :class_label => "opponent-boxscore" } %>

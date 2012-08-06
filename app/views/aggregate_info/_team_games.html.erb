@@ -1,0 +1,20 @@
+<section class="team-games <%= class_label %>">
+  <table>
+    <thead>
+      <tr><th><%= class_label.gsub("-", " ").titleize %></th></tr>
+    </thead>
+  </table>
+<div class="scroll-pane">
+  <table>
+    <tbody>
+      <% games.reverse.each do |game| %>
+        <tr class="team-game <%= game.game_result %>" data-time="<%= game.game_date.to_datetime.to_i * 1000 %>" data-team="<%= game.team %>">
+          <td><%= game.game_date.to_datetime.strftime("%m/%d") %></td>
+          <td><%= game.game_text %></td>
+          <td><%= game.game_result %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>
+</section>

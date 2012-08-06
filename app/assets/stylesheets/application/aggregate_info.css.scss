@@ -1,0 +1,331 @@
+body {
+  background: #eeeeee;
+}
+
+table, th, td
+{
+  border: 1px solid black;
+}
+
+table, tr{
+  background: white;
+}
+
+table {
+  thead {
+    text-align: center;
+    font-weight: 900;
+  }
+}
+
+.game-score {
+  position: absolute;
+  width: 100%;
+  top: 120px;
+  border: 2px solid black;
+  z-index: 100;
+
+  background: white;
+
+  font: {
+    weight: 900;
+    size: 60px;
+  }
+
+  text: {
+    align: center;
+  }
+}
+
+.content-area {
+  width: 960px;
+  margin: 0 auto;
+  background-color: #f3f3f3;
+  @include box-shadow(0 -2px 5px 3px hsla(0, 0%, 0%, 0.4));
+  position: relative;
+
+  header {
+    width: 100%;
+
+    color: #080808;
+
+    text-align: center;
+    float: left;
+
+    margin-bottom: 85px;
+
+    .title {
+      width: 33%;
+      height: 111px;
+      padding-top: 9px;
+      border: 1px solid black;
+
+      margin-right: 2px;
+
+      float: left;
+
+      background: white;
+
+      font: {
+        size: 72px;
+        family: 'Bevan', serif;
+      }
+    }
+
+    .record-box {
+      height: 120px;
+      width: 78px;
+      float: left;
+      background: #f9f5f5;
+      clear: none;
+      border: 1px solid black;
+      cursor: pointer;
+
+      .record-description {
+        margin-top: 40px;
+        font-weight: bold;
+        text-align: center;
+      }
+
+      .record-datum {
+        text-align: center;
+      }
+    }
+  }
+
+  .standings, .team-games, .graph-info {
+    width: 318px;
+    float: left;
+    margin-right: 2px;
+
+    table {
+
+      width: 318px;
+      thead {
+        text-align: center;
+        font-weight: 900;
+      }
+
+      tbody {
+        tr {
+          font-size: 14px;
+          text-align: center;
+          line-height: 22px;
+        }
+
+        td:first-child {
+          font-size: 14px;
+          font-weight: bold;
+          text-align: left;
+          padding-left: 4px;
+        }
+      }
+
+      .W { background: rgba(100, 250, 100, .1); }
+      .L { background: rgba(250, 100, 100, .1); }
+    }
+  }
+
+  .team-games, .graph-info {
+    tr { cursor: pointer;}
+  }
+
+  .standings {
+    .division {
+      display: none;
+      color: #cecece;
+    }
+
+    .division.selected {
+      display: table-row-group;
+      color: black;
+    }
+
+    .division-label {
+      color: #cecece;
+      cursor: pointer;
+    }
+
+    .conference-link {
+      color: #cecece;
+      cursor: pointer;
+    }
+
+    .division-label.selected {
+      color: black;
+    }
+  }
+
+  .western.standings {
+    display: none;
+  }
+
+  .team-games {
+    height: 650px;
+    display: none;
+
+    .scroll-pane {
+      height: 627px;
+      width: 100%;
+      overflow: hidden;
+    }
+
+    .scroll-pane table {
+      border-top-style: hidden;
+    }
+
+    td:nth-child(3) {
+      width: 50px;
+    }
+
+
+    .jspTrack { background: transparent; }
+
+    .jspVerticalBar { background: transparent; }
+
+    .jspDrag { 
+      background: rgba(200, 200, 200, .8);
+      border-radius: 20px;
+    }
+  }
+
+
+  .boxscore {
+    border: 1px solid black;
+    width: 638px;
+    float: right;
+
+    .boxscore-link {
+      color: #cecece;
+      cursor: pointer;
+    }
+
+    table {
+      width: 100%;
+      border-style: hidden;
+
+      td:nth-child(2), th:nth-child(2), td:nth-child(4), th:nth-child(4), td:nth-child(6), th:nth-child(6), td:nth-child(8), th:nth-child(8), td:nth-child(11), th:nth-child(11) {
+        border-right-color: black;
+      }
+
+      .field-goals, .free-throws {
+        background: rgba(245, 245, 245, .5);
+      }
+
+      .threes, .rebounds {
+        background: rgba(252, 252, 252, .5);
+      }
+
+      td {
+        border-color: #f0f0f0;
+      }
+
+
+      thead {
+        font-size: 14px;
+        line-height: 22px;
+
+        &:first-child {
+          th:first-child {
+            font-size: 18px;
+          }
+        }
+      }
+
+      tbody {
+        tr {
+          font-size: 12px;
+          text-align: center;
+          line-height: 22px;
+        }
+
+        tr:nth-child(5){
+          border-bottom: 2px solid black;
+        }
+
+        tr:nth-child(even) {
+          background-color: rgba(255, 230, 230, .2);
+        }
+
+        td:first-child {
+          font-size: 14px;
+          text-align: left;
+          padding-left: 4px;
+        }
+
+      }
+    }
+  }
+
+  .opponent-boxscore {
+    display: none;
+  }
+
+  .stat_totals {
+    width: 100%;
+    margin-top: 2px;
+    float: right;
+
+    table {
+      width: 100%;
+      float: right;
+
+      tbody {
+        tr {
+          font-size: 12px;
+          text-align: center;
+          line-height: 22px;
+        }
+
+        td:first-child {
+          font-size: 14px;
+          text-align: left;
+          padding-left: 4px;
+        }
+      }
+    }
+  }
+
+  .graph-info-container {
+    display: none;
+    height: 273px;
+    width: 318px;
+    margin-top: 2px;
+    float: left;
+    background: transparent;
+    overflow: hidden;
+
+    .graph-info {
+      table {
+        thead {
+          font-size: 9px;
+          line-height: 19px;
+        }
+
+        td {
+          border-left: 0px;
+          border-right: 0px;
+        }
+      }
+    }
+  }
+
+  .graph-container {
+    height: 251px;
+    width: 618px;
+    padding: 10px;
+    margin-top: 2px;
+    border: 1px solid black;
+    float: right;
+    background: white;
+
+    .graph {
+      height: 100%;
+      width: 100%;
+
+      .flotr-title {
+        text-transform: capitalize;
+      }
+    }
+  }
+}
