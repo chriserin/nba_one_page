@@ -6,14 +6,15 @@
 $ ->
   get_data()
 
-  $(".stat_totals td").on 'click', ->
+  $(".stat-totals tbody td").on 'click', ->
     stat = $(this).attr("data-stat")
     player = $(this).parent().attr("data-player")
     column_index = $(this).index()
+    return if column_index is 0
     get_data(player, stat)
-    $(".stat_totals td, .stat_totals tr").removeClass("highlited")
+    $(".stat-totals td, .stat-totals tr").removeClass("highlited")
     highlite_color = "rgba(0, 0, 255, 0.2)"
-    $(".stat_totals td:nth-child(#{column_index + 1})").addClass("highlited")
+    $(".stat-totals td:nth-child(#{column_index + 1})").addClass("highlited")
     $(this).parent().addClass("highlited")
 
 options = {

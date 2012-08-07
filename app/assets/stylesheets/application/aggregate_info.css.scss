@@ -281,6 +281,11 @@ table {
       width: 100%;
       float: right;
 
+      thead {
+        th {width: 36px;}
+        th:first-child {width: 200px;}
+      }
+
       tbody {
         tr {
           font-size: 12px;
@@ -320,6 +325,9 @@ table {
     .totals-link, .per-game-link, .per-36-link {
       cursor: pointer;
       color: #cecece;
+
+      font-size: 16px;
+      line-height: 22px;
     }
 
     .selected-stat-group-link {
