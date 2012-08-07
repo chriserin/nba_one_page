@@ -11,10 +11,10 @@ $ ->
     player = $(this).parent().attr("data-player")
     column_index = $(this).index()
     get_data(player, stat)
-    $(".stat_totals td, .stat_totals tr").css("background", "transparent")
+    $(".stat_totals td, .stat_totals tr").removeClass("highlited")
     highlite_color = "rgba(0, 0, 255, 0.2)"
-    $(".stat_totals td:nth-child(#{column_index + 1})").css("background", highlite_color)
-    $(this).parent().css("background", highlite_color)
+    $(".stat_totals td:nth-child(#{column_index + 1})").addClass("highlited")
+    $(this).parent().addClass("highlited")
 
 options = {
   shadowSize: 0;

@@ -20,7 +20,7 @@ table {
 
 .game-score {
   position: absolute;
-  width: 100%;
+  width: 956px;;
   top: 120px;
   border: 2px solid black;
   z-index: 100;
@@ -190,7 +190,7 @@ table {
   }
 
 
-  .boxscore {
+  .boxscore, .stat-totals {
     border: 1px solid black;
     width: 638px;
     float: right;
@@ -204,7 +204,11 @@ table {
       width: 100%;
       border-style: hidden;
 
-      td:nth-child(2), th:nth-child(2), td:nth-child(4), th:nth-child(4), td:nth-child(6), th:nth-child(6), td:nth-child(8), th:nth-child(8), td:nth-child(11), th:nth-child(11) {
+      .first-stat-column {
+        border-left-color: black;
+      }
+
+      .last-stat-column {
         border-right-color: black;
       }
 
@@ -239,12 +243,13 @@ table {
           line-height: 22px;
         }
 
-        tr:nth-child(5){
-          border-bottom: 2px solid black;
-        }
 
         tr:nth-child(even) {
-          background-color: rgba(255, 230, 230, .2);
+          background: rgba(255, 230, 230, .2);
+        }
+
+        tr.total {
+          background: rgba(100, 100, 100, .2)
         }
 
         td:first-child {
@@ -257,11 +262,17 @@ table {
     }
   }
 
+  .boxscore {
+    tr:nth-child(5) {
+      border-bottom: 2px solid black;
+    }
+  }
+
   .opponent-boxscore {
     display: none;
   }
 
-  .stat_totals {
+  .stat-totals {
     width: 100%;
     margin-top: 2px;
     float: right;
@@ -275,6 +286,7 @@ table {
           font-size: 12px;
           text-align: center;
           line-height: 22px;
+
         }
 
         td:first-child {
@@ -282,7 +294,36 @@ table {
           text-align: left;
           padding-left: 4px;
         }
+
+        tr.highlited {
+          background: rgba(0, 0, 255, 0.2);
+        }
+
+        td.highlited {
+          background: rgba(0, 0, 255, 0.2);
+        }
       }
+    }
+
+    .per-game, .per-36, .totals {
+      display: none;
+    }
+
+    .per-36 {
+      display: none;
+    }
+
+    .selected-stat-group {
+      display: table-row-group;
+    }
+
+    .totals-link, .per-game-link, .per-36-link {
+      cursor: pointer;
+      color: #cecece;
+    }
+
+    .selected-stat-group-link {
+      color: black;
     }
   }
 

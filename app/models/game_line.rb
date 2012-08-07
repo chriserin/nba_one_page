@@ -38,6 +38,9 @@ class GameLine
   field :plus_minus, type: Integer, default: 0
   field :points, type: Integer, default: 0
 
+  field :games, type: Integer, default: 1
+
+
   def game_text
     if is_home
       "#{team_abbr} #{team_score} - #{opponent_abbr} #{opponent_score}"
@@ -50,9 +53,26 @@ class GameLine
     result = GameLine.new
     result[:line_name] = line_name
     result[:is_total] = self[:is_total]
+    result[:is_opponent_total] = self[:is_opponent_total]
     self.fields.select{|key, value| value.type == Integer }.keys.each do |field_name|
       result[field_name] = (self[field_name] || 0) + (right_side_object[field_name] || 0)
     end
     result
+  end
+
+  def method_missing(meth, *args, &block)
+    divisor = meth.to_s.split("_").last
+    stat = meth.to_s.gsub(/_#{divisor}$/, "")
+    if divisor == "g"
+      round(attributes[stat] / (attributes["games"] * 1.0))
+    elsif attributes["minutes"] and attributes["minutes"] > 0
+      round((attributes[stat] * (divisor.to_i * 1.0)) / attributes["minutes"])
+    else
+      attributes[stat]
+    end
+  end
+
+  def round(num)
+    (num * 10).ceil / 10.0
   end
 end

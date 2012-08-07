@@ -49,11 +49,11 @@ $ ->
     $(".#{division}").addClass("selected")
     $(this).addClass("selected")
 
-  $(".team-boxscore .boxscore-link").on 'click', ->
+  $("body").on 'click', ".team-boxscore .boxscore-link", ->
     $(".team-boxscore").css("display", "none")
     $(".opponent-boxscore").css("display", "block")
 
-  $(".opponent-boxscore .boxscore-link").on 'click', ->
+  $("body").on 'click', ".opponent-boxscore .boxscore-link", ->
     $(".opponent-boxscore").css("display", "none")
     $(".team-boxscore").css("display", "block")
 
@@ -81,3 +81,11 @@ $ ->
 
     $(".graph-info-container").css("display", "block")
 
+  $(".stat-totals thead span").on 'click', ->
+    $(".selected-stat-group-link").removeClass("selected-stat-group-link")
+    $(this).addClass("selected-stat-group-link")
+    $(".stat-totals tbody").removeClass("selected-stat-group")
+
+  $(".per-36-link").on 'click', -> $(".per-36").addClass("selected-stat-group")
+  $(".per-game-link").on 'click', -> $(".per-game").addClass("selected-stat-group")
+  $(".totals-link").on 'click', -> $(".totals").addClass("selected-stat-group")

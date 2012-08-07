@@ -6,21 +6,21 @@
           <% boxscore_lines.each do |line| %>
             <% if line.is_total and ! line.is_opponent_total %>
               <% (14 - boxscore_lines.count).times do %>
-                <tr class=""> <td>--</td> <td>--</td> <td class="field-goals">--</td> <td class="field-goals">--</td> <td class="threes">--</td> <td class="threes">--</td> <td class="free-throws">--</td> <td class="free-throws">--</td> <td class="rebounds">--</td> <td class="rebounds">--</td> <td class="rebounds">--</td> <td>--</td> <td>--</td> <td>--</td> <td>--</td> <td>--</td> <td>--</td> <td>--</td> </tr>
+                <tr class=""> <td>--</td> <td class="last-stat-column">--</td> <td class="field-goals">--</td> <td class="field-goals last-stat-column">--</td> <td class="threes">--</td> <td class="threes last-stat-column">--</td> <td class="free-throws">--</td> <td class="free-throws last-stat-column">--</td> <td class="rebounds">--</td> <td class="rebounds">--</td> <td class="rebounds last-stat-column">--</td> <td>--</td> <td>--</td> <td>--</td> <td>--</td> <td>--</td> <td>--</td> <td>--</td> </tr>
               <% end %>
             <% end %>
             <tr class="<%= line.starter ? "starter" : "" %> <%= line.is_total ? "total" : "" %>">
               <td><%= line.is_opponent_total ? line.opponent : line.line_name %></td>
-              <td><%= line.minutes %></td>
+              <td class="last-stat-column"><%= line.minutes %></td>
               <td class="field-goals"><%= line.field_goals_made %></td>
-              <td class="field-goals"><%= line.field_goals_attempted %></td>
+              <td class="field-goals last-stat-column"><%= line.field_goals_attempted %></td>
               <td class="threes"><%= line.threes_made %></td>
-              <td class="threes"><%= line.threes_attempted %></td>
+              <td class="threes last-stat-column"><%= line.threes_attempted %></td>
               <td class="free-throws"><%= line.free_throws_made %></td>
-              <td class="free-throws"><%= line.free_throws_attempted %></td>
+              <td class="free-throws last-stat-column"><%= line.free_throws_attempted %></td>
               <td class="rebounds"><%= line.offensive_rebounds %></td>
               <td class="rebounds"><%= line.defensive_rebounds %></td>
-              <td class="rebounds"><%= line.total_rebounds %></td>
+              <td class="rebounds last-stat-column"><%= line.total_rebounds %></td>
               <td><%= line.assists %></td>
               <td><%= line.steals %></td>
               <td><%= line.blocks %></td>

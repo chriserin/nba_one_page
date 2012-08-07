@@ -2,7 +2,7 @@ class AggregateInfoController < ApplicationController
 
   def index
     # group the lines by player and then total the grouped lines
-    @total_lines = GameLine.where("team" => /Bulls/).group_by{ |line| line.line_name }.values.map{ |lines_array| lines_array.inject(:+) }
+    @total_lines = GameLine.where("team" => /Bulls/).group_by{ |line| line.line_name }.values.map{ |lines_array| lines_array.inject(:+) }.sort_by { |total_line| total_line.minutes }.reverse
     @standings = Standings.get_standings
     @team = @standings.get_team("Chicago Bulls")
     @team_boxscore_lines = GameLine.where("team" => "Chicago Bulls", "game_date" => @team.get_last_game_date).desc(:starter).asc(:is_total).asc(:is_opponent_total).desc(:minutes)

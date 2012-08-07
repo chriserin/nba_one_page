@@ -3,7 +3,6 @@
 <div class="full-screen-container">
   <link href='http://fonts.googleapis.com/css?family=Bevan' rel='stylesheet' type='text/css'>
 
-  <div class="game-score"><%= @team.get_last_game_text %></div>
   <div class="content-area clearfix">
     <header>
       <div class="title">BULLS</div>
@@ -17,6 +16,7 @@
       <div class="record-box"><div class="record-description">A Left</div><div class="record-datum">0</div></div>
     </header>
 
+    <div class="game-score"><%= @team.get_last_game_text %></div>
     <div class="boxscores">
       <%= render :partial => 'boxscore', :locals => {:boxscore_lines => @team_boxscore_lines, :class_label => "team-boxscore" } %>
       <%= render :partial => 'boxscore', :locals => {:boxscore_lines => @opponent_boxscore_lines, :class_label => "opponent-boxscore" } %>
