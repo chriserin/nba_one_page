@@ -14,15 +14,18 @@ $ ->
     $(".stat-totals td, .stat-totals tr").removeClass("highlited")
     $(".stat-totals td:nth-child(#{column_index + 1})").addClass("highlited")
     $(".stat-totals tr:nth-child(#{row_index + 1})").addClass("highlited")
+    $(".legend .player").text(player)
+    $(".legend .statistic").text(prepare_stat(stat))
 
   $(".totals tr:nth-child(9) td:nth-child(12)").trigger("click")
 
 options = {
+  colors: {'rgba(18, 50, 180, 1)'}
   shadowSize: 0;
   HtmlText : true,
   points: {
     show: true,
-    radius: 1
+    radius: .2
   },
   lines: {show: true},
   xaxis : {
@@ -45,19 +48,35 @@ options = {
     trackDecimals: 2,
     trackFormatter: (o) ->
       "#{o.series.data[o.index][2]}"
+  },
+  grid: {
+    color: '#aaaaaa',      
+    backgroundColor: '#fcfcfc', 
+    backgroundImage: null, 
+    watermarkAlpha: 0.4,   
+    tickColor: '#DDDDDD',  
+    labelMargin: 9,        
+    verticalLines: true,   
+    minorVerticalLines: true, 
+    horizontalLines: true, 
+    minorHorizontalLines: true, 
+    outlineWidth: 2,       
+    outline : 'sw',      
+    circular: false        
   }
 }
 
-get_data = (player = "Derrick Rose", stat = "points") ->
+get_data = (player = "Derrick Rose", stat = "points", data_index = 0) ->
+  window.raw_points = window.raw_points || []
   $.getJSON "rolled_data/#{encodeURIComponent(player)}/#{stat}.json", (data) ->
-    window.graph = draw_graph data["rolled_points"], {title: "#{player} #{prepare_stat(stat)}"}
+    window.graph = draw_graph data["rolled_points"], {title: null }# "#{player} #{prepare_stat(stat)}"}
     window.stat = prepare_stat_abbr(stat)
-    window.raw_points = data["raw_points"]
+    window.raw_points[data_index] = data["raw_points"]
 
 draw_graph = (data, opts) ->
   container = $(".graph")[0]
   merged_options = Flotr._.extend(Flotr._.clone(options), opts || {})
-  Flotr.draw(container, [data], merged_options)
+  Flotr.draw(container, [{data: data, color: 'rgb(28, 28, 157)'}], merged_options)
 
 prepare_stat = (stat) ->
   stat.split("_").join(" ")

@@ -25,8 +25,8 @@
     <%= render :partial => 'team_games', :locals => { :games => @team.games, :class_label => "all-games" } %>
     <%= render :partial => 'team_games', :locals => { :games => @team.home_games, :class_label => "home-games" } %>
     <%= render :partial => 'team_games', :locals => { :games => @team.away_games, :class_label => "away-games" } %>
-    <section class="graph-info-container"><div class="graph-info"><table><thead></thead><tbody></tbody></table></div></section>
     <section class="graph-container"><div class="graph"></div></section>
+    <%= render 'graph_info' %>
     <%= render 'stat_totals' %>
   </div>
 </div>

@@ -57,25 +57,26 @@ $ ->
     $(".opponent-boxscore").css("display", "none")
     $(".team-boxscore").css("display", "block")
 
-  $(".graph").on 'graph:click', (event, index) ->
+  $(".graph").on 'graph:click', (event, closest_point) ->
     $(".standings, .team-games").css("height", "402px").css("overflow", "hidden")
     $(".scroll-pane").css("height", "376px").css("overflow", "hidden")
     $(".scroll-pane:visible").each ->
       $(this).data('jsp').reinitialise()
 
     $(".graph-info thead, .graph-info tbody").empty()
-    $(".graph-info thead").append("<tr><th colspan='3'>#{$(".flotr-titles .flotr-title").text()} 10 games prior to #{moment.utc(window.raw_points[index][0]).format("M/DD")}</th></tr>")
+    $(".graph-info thead, .graph-info tbody").empty()
+    $(".graph-info-container").css("height", "314px")
 
     items_count = 0
     not_null_count = 0
-    for j in [index..0]
+    for j in [closest_point.dataIndex..0]
       items_count++
       if window.raw_points[j][1] != null
         not_null_count++
       if not_null_count == 10
         break
 
-    for datum in window.raw_points[index + 1 - items_count..index]
+    for datum in window.raw_points[closest_point.seriesIndex][closest_point.dataIndex + 1 - items_count..closest_point.dataIndex]
       if datum[1] != null
         $(".graph-info tbody").prepend($("<tr data-time='#{datum[0]}' data-team='Chicago Bulls'><td>#{moment.utc(datum[0]).format("M/DD")}</td><td>#{datum[2]}</td><td><strong>#{datum[1]}</strong> #{window.stat}</td></tr>"))
 

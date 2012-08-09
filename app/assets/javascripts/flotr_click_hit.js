@@ -11,7 +11,7 @@
             console.log(mouse);
             var closest = this.clickHit.closest(mouse);
             console.log(closest);
-            $(".graph").trigger("graph:click", closest.x.dataIndex);
+            $(".graph").trigger("graph:click", closest);
         },
 
         closest: function(mouse) {
