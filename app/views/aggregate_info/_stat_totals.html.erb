@@ -1,13 +1,13 @@
     <section class="stat-totals">
       <table>
-        <thead class="stats-view-titles"><tr><td colspan="19"><span class="totals-link selected-stat-group-link">Season Totals</span> <span class="per-game-link">Average Per Game</span> <span class="per-36-link">Average Per 36 minutes last-stat-column</span></td></tr></thead>
+        <thead class="stats-view-titles"><tr><td colspan="19"><span class="totals-link selected-stat-group-link">Season Totals</span> <span class="per-game-link">Average Per Game</span> <span class="per-36-link">Average Per 36 minutes</span></td></tr></thead>
         <thead> <tr> <th> player </th> <th> g </th> <th> min </th> <th> fgm </th> <th> fga </th> <th> 3sm </th> <th> 3sa </th> <th> ftm </th> <th> fta </th> <th> oreb </th> <th> dreb </th> <th> treb </th><th> ast </th> <th> stl </th> <th> blk </th> <th> to </th> <th> pf </th> <th> pm </th> <th> pts </th> </tr> </thead>
         <tbody class="totals selected-stat-group">
           <% @total_lines.each do |line| %>
             <tr data-player="<%= line.line_name %>" class="<%= line.is_total || line.is_opponent_total ? "total" : "" %>">
               <td data-stat="line_name"><%= line.line_name %></td>
               <td data-stat="games"><%= line.games %></td>
-              <td data-stat="minutes last-stat-column"><%= line.minutes %></td>
+              <td data-stat="minutes" class="last-stat-column"><%= line.minutes %></td>
               <td data-stat="field_goals_made" class="field-goals"><%= line.field_goals_made %></td>
               <td data-stat="field_goals_attempted" class="field-goals last-stat-column"><%= line.field_goals_attempted %></td>
               <td data-stat="threes_made" class="threes"><%= line.threes_made %></td>
@@ -32,7 +32,7 @@
             <tr data-player="<%= line.line_name %>" class="<%= line.is_total || line.is_opponent_total ? "total" : "" %>">
               <td data-stat="line_name"><%= line.line_name %></td>
               <td data-stat="games"><%= line.games %></td>
-              <td data-stat="minutes last-stat-column"><%= line.minutes_g %></td>
+              <td data-stat="minutes" class="last-stat-column"><%= line.minutes_g %></td>
               <td data-stat="field_goals_made" class="field-goals"><%= line.field_goals_made_g %></td>
               <td data-stat="field_goals_attempted" class="field-goals last-stat-column"><%= line.field_goals_attempted_g %></td>
               <td data-stat="threes_made" class="threes"><%= line.threes_made_g %></td>
@@ -57,7 +57,7 @@
             <tr data-player="<%= line.line_name %>" class="<%= line.is_total || line.is_opponent_total ? "total" : "" %>">
               <td data-stat="line_name"><%= line.line_name %></td>
               <td data-stat="games"><%= line.games %></td>
-              <td data-stat="minutes last-stat-column">--</td>
+              <td data-stat="minutes" class="last-stat-column">--</td>
               <td data-stat="field_goals_made" class="field-goals"><%= line.field_goals_made_36 %></td>
               <td data-stat="field_goals_attempted" class="field-goals last-stat-column"><%= line.field_goals_attempted_36 %></td>
               <td data-stat="threes_made" class="threes"><%= line.threes_made_36 %></td>

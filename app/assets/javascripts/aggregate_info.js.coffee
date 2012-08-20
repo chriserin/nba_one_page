@@ -63,24 +63,25 @@ $ ->
     $(".scroll-pane:visible").each ->
       $(this).data('jsp').reinitialise()
 
-    $(".graph-info thead, .graph-info tbody").empty()
-    $(".graph-info thead, .graph-info tbody").empty()
-    $(".graph-info-container").css("height", "314px")
+    $(".graph-info tbody").empty()
+    $(".graph-info-container").css("height", "310px")
 
     items_count = 0
     not_null_count = 0
-    for j in [closest_point.dataIndex..0]
+    for j in [closest_point.point.dataIndex..0]
       items_count++
-      if window.raw_points[j][1] != null
+      if window.raw_points[0][j][1] != null
         not_null_count++
       if not_null_count == 10
         break
 
-    for datum in window.raw_points[closest_point.seriesIndex][closest_point.dataIndex + 1 - items_count..closest_point.dataIndex]
+    for datum in window.raw_points[closest_point.point.seriesIndex][closest_point.point.dataIndex + 1 - items_count..closest_point.point.dataIndex]
       if datum[1] != null
         $(".graph-info tbody").prepend($("<tr data-time='#{datum[0]}' data-team='Chicago Bulls'><td>#{moment.utc(datum[0]).format("M/DD")}</td><td>#{datum[2]}</td><td><strong>#{datum[1]}</strong> #{window.stat}</td></tr>"))
 
-    $(".graph-info-container").css("display", "block")
+    $(".graph-info thead tr th .player").text(window.player)
+    $(".graph-info thead tr th .stat").text(window.stat_full)
+    $(".graph-info-container tbody").css("display", "table-row-group")
 
   $(".stat-totals thead span").on 'click', ->
     $(".selected-stat-group-link").removeClass("selected-stat-group-link")

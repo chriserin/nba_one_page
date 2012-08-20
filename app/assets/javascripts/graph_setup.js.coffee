@@ -5,8 +5,8 @@
 
 $ ->
   $(".stat-totals tbody td").on 'click', ->
-    stat = $(this).attr("data-stat")
-    player = $(this).parent().attr("data-player")
+    window.stat = stat = $(this).attr("data-stat")
+    window.player = player = $(this).parent().attr("data-player")
     column_index = $(this).index()
     row_index = $(this).parent().index()
     return if column_index is 0
@@ -14,8 +14,6 @@ $ ->
     $(".stat-totals td, .stat-totals tr").removeClass("highlited")
     $(".stat-totals td:nth-child(#{column_index + 1})").addClass("highlited")
     $(".stat-totals tr:nth-child(#{row_index + 1})").addClass("highlited")
-    $(".legend .player").text(player)
-    $(".legend .statistic").text(prepare_stat(stat))
 
   $(".totals tr:nth-child(9) td:nth-child(12)").trigger("click")
 
@@ -46,8 +44,7 @@ options = {
     position: 'ne',
     sensibility: 4,
     trackDecimals: 2,
-    trackFormatter: (o) ->
-      "#{o.series.data[o.index][2]}"
+    trackFormatter: (o) -> "#{o.series.data[o.index][2]}"
   },
   grid: {
     color: '#aaaaaa',      
@@ -69,9 +66,13 @@ options = {
 get_data = (player = "Derrick Rose", stat = "points", data_index = 0) ->
   window.raw_points = window.raw_points || []
   $.getJSON "rolled_data/#{encodeURIComponent(player)}/#{stat}.json", (data) ->
-    window.graph = draw_graph data["rolled_points"], {title: null }# "#{player} #{prepare_stat(stat)}"}
+    window.graph = draw_graph data["rolled_points"], {title: "#{player} #{prepare_stat(stat)}"}
     window.stat = prepare_stat_abbr(stat)
+    window.stat_full = prepare_stat(stat)
     window.raw_points[data_index] = data["raw_points"]
+
+    $(".graph-info thead tr th .player").text(window.player)
+    $(".graph-info thead tr th .stat").text(window.stat_full)
 
 draw_graph = (data, opts) ->
   container = $(".graph")[0]
