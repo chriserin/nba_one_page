@@ -1,4 +1,4 @@
-    <section class="western standings clearfix">
+    <div class="western standings clearfix">
       <table>
         <thead><tr><td colspan="5"><span class="division-label" data-division="<%= Standings::SOUTHWEST_DIVISION %>">Southwest</span> <span class="division-label selected" data-division="<%= Standings::PACIFIC_DIVISION %>">Pacific</span> <span class="division-label" data-division="<%= Standings::NORTHWEST_DIVISION %>">Northwest</span></td></tr></thead>
         <thead><tr><th>Team</th><th>W</th><th>L</th><th>Pct</th><th>Gb</th></tr></thead>
@@ -12,4 +12,4 @@
         <thead><tr><th>Team</th><th>W</th><th>L</th><th>Pct</th><th>Gb</th></tr></thead>
         <%= render :partial => 'individual_standings', :locals => { :organization => Standings::WESTERN_CONFERENCE, :standings_type => "conference", :selected => false } %>
       </table>
-    </section>
+    </div>

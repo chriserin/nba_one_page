@@ -1,0 +1,11 @@
+
+      <div class="title">BULLS</div>
+      <div class="record-box"><div class="record-description">A Left</div><div class="record-datum">0</div></div>
+      <div class="record-box"><div class="record-description">H Left</div><div class="record-datum">0</div></div>
+      <div class="record-box"><div class="record-description">Streak</div><div class="record-datum"><%= @team.streak %></div></div>
+      <div class="record-box show-away-games"><div class="record-description">Away</div><div class="record-datum"><%= @team.away_record.first %> - <%= @team.away_record.last %></div></div>
+      <div class="record-box show-home-games"><div class="record-description">Home</div><div class="record-datum"><%= @team.home_record.first %> - <%= @team.home_record.last %></div></div>
+      <div class="record-box show-games"><div class="record-description">Last 20</div><div class="record-datum"><%= @team.record_last(20).first %> - <%= @team.record_last(20).last %></div></div>
+      <div class="record-box show-games"><div class="record-description">Last 10</div><div class="record-datum"><%= @team.record_last(10).first %> - <%= @team.record_last(10).last %></div></div>
+      <div class="record-box show-standings"><div class="record-description">Record</div><div class="record-datum"><%= @team.wins %> - <%= @team.losses %></div></div>
+

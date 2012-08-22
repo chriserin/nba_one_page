@@ -22,13 +22,15 @@ $graph-second-line: rgba(247, 182, 95, 1);
 $flotr-grid-label: #222222;
 $header-text: #080808;
 
+$standard-border: 1px solid $table-border;
+
 body {
   background: $site-background;
 }
 
 table, th, td
 {
-  border: 1px solid $table-border;
+  border: $standard-border;
 }
 
 table, tr{
@@ -42,6 +44,82 @@ table {
   }
 }
 
+left-column-table {
+  width: 318px;
+  margin-right: 2px;
+
+  float: left;
+
+  table {
+    width: 318px;
+
+    thead {
+      font-weight: 900;
+      text-align: center;
+    }
+
+    tbody {
+      tr {
+        font-size: 14px;
+        line-height: 22px;
+        text-align: center;
+
+        td:first-child {
+          padding-left: 4px;
+          font-size: 14px;
+          font-weight: bold;
+          text-align: left;
+        }
+      }
+    }
+  }
+}
+
+stat-table-style {
+
+  table {
+    width: 100%;
+    border-style: hidden;
+
+    td { border-color: $secondary-table-border; }
+    .last-stat-column { border-right-color: $table-border; }
+    .field-goals, .free-throws { background: $secondary-column-background; }
+    .threes, .rebounds { background: $tertiary-column-background; }
+
+    thead {
+      font-size: 14px;
+      line-height: 22px;
+
+      &:first-child {
+        th:first-child {
+          font-size: 18px;
+        }
+      }
+    }
+
+    tbody {
+      tr {
+        font-size: 12px;
+        line-height: 22px;
+        text-align: center;
+      }
+
+      tr:nth-child(even) {
+        background: $secondary-row;
+      }
+
+      tr.total {
+        background: $total-row;
+      }
+
+      td:first-child {
+        padding-left: 4px;
+        font-size: 14px;
+        text-align: left;
+      }
+    }
+  }
+}
 
 .content-area {
   width: 960px;
@@ -75,7 +153,7 @@ table {
       width: 33%;
       height: 111px;
       padding-top: 9px;
-      border: 1px solid $table-border;
+      border: $standard-border;
       margin-right: 1px;
 
       float: left;
@@ -91,7 +169,7 @@ table {
     .record-box {
       height: 120px;
       width: 78px;
-      border: 1px solid $table-border;
+      border: $standard-border;
 
       float: right;
       background: $record-box-background;
@@ -106,7 +184,7 @@ table {
     }
   }
 
-  .game-score {
+  section.game-score {
     width: 958px;
     border: solid $table-border;
     border-width: 2px 1px;
@@ -126,99 +204,75 @@ table {
     }
   }
 
-  .standings, .team-games, .graph-info {
-    width: 318px;
-    margin-right: 2px;
+  section.games-info {
+    .standings {
+      @extend left-column-table;
 
-    float: left;
+      tbody.division {
+        display: none;
+        color: $unselected-item;
 
-    table {
-      width: 318px;
-
-      thead {
-        font-weight: 900;
-        text-align: center;
-      }
-
-      tbody {
-        tr {
-          font-size: 14px;
-          line-height: 22px;
-          text-align: center;
-
-          td:first-child {
-            padding-left: 4px;
-            font-size: 14px;
-            font-weight: bold;
-            text-align: left;
-          }
+        &.division.selected {
+          display: table-row-group;
+          color: $selected-item;
         }
       }
+
+      .division-label, .conference-link {
+        color: $unselected-item;
+        cursor: pointer;
+
+        &.selected {
+          color: $selected-item;
+        }
+      }
+
     }
-  }
 
-  .team-games, .graph-info {
-    tr { cursor: pointer;}
-  }
-
-  .standings {
-    tbody.division {
+    .western.standings {
       display: none;
-      color: $unselected-item;
+    }
 
-      &.division.selected {
-        display: table-row-group;
-        color: $selected-item;
+    .team-games {
+      @extend left-column-table;
+
+      height: 604px;
+      display: none;
+
+      .scroll-pane {
+        height: 578px;
+        width: 100%;
+        overflow: hidden;
       }
-    }
 
-    .division-label, .conference-link {
-      color: $unselected-item;
-      cursor: pointer;
+      table {
+        border-top-style: hidden;
 
-      &.selected {
-        color: $selected-item;
+        td:nth-child(3) {
+          width: 50px;
+        }
+
+        tr { cursor: pointer;}
       }
-    }
 
-  }
 
-  .western.standings {
-    display: none;
-  }
+      .W { background: $win-background; }
+      .L { background: $loss-background; }
 
-  .team-games {
-    height: 604px;
-    display: none;
+      .jspTrack { background: transparent; }
+      .jspVerticalBar { background: transparent; }
 
-    .scroll-pane {
-      height: 578px;
-      width: 100%;
-      overflow: hidden;
-    }
-
-    table {
-      border-top-style: hidden;
-
-      td:nth-child(3) {
-        width: 50px;
+      .jspDrag {
+        background: $scroll-bar;
       }
-    }
-
-    .W { background: $win-background; }
-    .L { background: $loss-background; }
-
-    .jspTrack { background: transparent; }
-    .jspVerticalBar { background: transparent; }
-
-    .jspDrag {
-      background: $scroll-bar;
     }
   }
 
-  .boxscore, .stat-totals {
+  section.boxscores {
+    @extend stat-table-style;
+
     width: 638px;
-    border: 1px solid $table-border;
+    border: $standard-border;
     float: right;
 
     .boxscore-link {
@@ -226,59 +280,19 @@ table {
       cursor: pointer;
     }
 
-    table {
-      width: 100%;
-      border-style: hidden;
-
-      td { border-color: $secondary-table-border; }
-      .last-stat-column { border-right-color: $table-border; }
-      .field-goals, .free-throws { background: $secondary-column-background; }
-      .threes, .rebounds { background: $tertiary-column-background; }
-
-      thead {
-        font-size: 14px;
-        line-height: 22px;
-
-        &:first-child {
-          th:first-child {
-            font-size: 18px;
-          }
-        }
-      }
-
-      tbody {
-        tr {
-          font-size: 12px;
-          line-height: 22px;
-          text-align: center;
-        }
-
-        tr:nth-child(even) {
-          background: $secondary-row;
-        }
-
-        tr.total {
-          background: $total-row;
-        }
-
-        td:first-child {
-          padding-left: 4px;
-          font-size: 14px;
-          text-align: left;
-        }
-      }
+    .boxscore {
+      th:first-child { width: 181px; }
+      tr:nth-child(5) { border-bottom: 2px solid $table-border; }
     }
+
+    .opponent-boxscore { display: none; }
   }
 
-  .boxscore {
-    th:first-child { width: 181px; }
-    tr:nth-child(5) { border-bottom: 2px solid $table-border; }
-  }
+  section.stat-totals {
+    @extend stat-table-style;
 
-  .opponent-boxscore { display: none; }
-
-  .stat-totals {
     width: 958px;
+    border: $standard-border;
     margin-top: 2px;
     float: right;
 
@@ -314,56 +328,14 @@ table {
     }
   }
 
-  .graph-info-container {
-    width: 318px;
-    height: 60px;
-    margin-top: 2px;
-
-    float: left;
-    overflow: hidden;
-
-    .graph-info {
-      color: $table-border;
-      background-color: white;
-
-      table {
-        font-size: 12px;
-        line-height: 16px;
-
-        thead th {
-          height: 56px;
-          background: red;
-          font-size: 18px;
-          text-align: left;
-          text-transform: capitalize;
-          border: 1px solid $table-border;
-          line-height: 20px;
-          .stat {
-            background: yellow;
-            opacity: .4;
-          }
-        }
-
-        tbody {
-          display: none;
-
-          td {
-            border-left: 0;
-            border-right: 0;
-          }
-        }
-      }
-    }
-  }
-
-  .graph-container {
+  section.graph-container {
     width: 622px;
     height: 292px;
     padding: 10px;
     padding-bottom: 6px;
     padding-left: 6px;
     padding-top: 10px;
-    border: 1px solid $table-border;
+    border: $standard-border;
     margin-top: 2px;
     float: right;
     background: white;
@@ -387,6 +359,54 @@ table {
 
       .flotr-mouse-value {
         border-radius: 0px !important;
+      }
+    }
+  }
+
+  section.graph-info {
+    .graph-info-container {
+      width: 318px;
+      height: 60px;
+      margin-top: 2px;
+
+      float: left;
+      overflow: hidden;
+
+      .graph-info {
+        @extend left-column-table;
+
+        color: $table-border;
+        background-color: white;
+
+        table {
+          font-size: 12px;
+          line-height: 16px;
+
+          thead th {
+            height: 56px;
+            background: red;
+            font-size: 18px;
+            text-align: left;
+            text-transform: capitalize;
+            border: $standard-border;
+            line-height: 20px;
+            .stat {
+              background: yellow;
+              opacity: .4;
+            }
+          }
+
+          tbody {
+            display: none;
+
+            td {
+              border-left: 0;
+              border-right: 0;
+            }
+
+            tr { cursor: pointer;}
+          }
+        }
       }
     }
   }

@@ -3,29 +3,35 @@
 
   <div class="content-area clearfix">
     <div class="border-filler"></div>
+
     <header>
-      <div class="title">BULLS</div>
-      <div class="record-box"><div class="record-description">A Left</div><div class="record-datum">0</div></div>
-      <div class="record-box"><div class="record-description">H Left</div><div class="record-datum">0</div></div>
-      <div class="record-box"><div class="record-description">Streak</div><div class="record-datum"><%= @team.streak %></div></div>
-      <div class="record-box show-away-games"><div class="record-description">Away</div><div class="record-datum"><%= @team.away_record.first %> - <%= @team.away_record.last %></div></div>
-      <div class="record-box show-home-games"><div class="record-description">Home</div><div class="record-datum"><%= @team.home_record.first %> - <%= @team.home_record.last %></div></div>
-      <div class="record-box show-games"><div class="record-description">Last 20</div><div class="record-datum"><%= @team.record_last(20).first %> - <%= @team.record_last(20).last %></div></div>
-      <div class="record-box show-games"><div class="record-description">Last 10</div><div class="record-datum"><%= @team.record_last(10).first %> - <%= @team.record_last(10).last %></div></div>
-      <div class="record-box show-standings"><div class="record-description">Record</div><div class="record-datum"><%= @team.wins %> - <%= @team.losses %></div></div>
+      <%= render :partial => 'header_content' %>
     </header>
 
-    <div class="game-score"><%= @team.get_last_game_text %></div>
-    <div class="boxscores">
+    <section class="game-score"><%= @team.get_last_game_text %></section>
+
+    <section class="boxscores">
       <%= render :partial => 'boxscore', :locals => {:boxscore_lines => @team_boxscore_lines, :class_label => "team-boxscore" } %>
       <%= render :partial => 'boxscore', :locals => {:boxscore_lines => @opponent_boxscore_lines, :class_label => "opponent-boxscore" } %>
-    </div>
-    <%= render 'standings' %>
-    <%= render :partial => 'team_games', :locals => { :games => @team.games, :class_label => "all-games" } %>
-    <%= render :partial => 'team_games', :locals => { :games => @team.home_games, :class_label => "home-games" } %>
-    <%= render :partial => 'team_games', :locals => { :games => @team.away_games, :class_label => "away-games" } %>
-    <section class="graph-container"><div class="graph"></div></section>
-    <%= render 'graph_info' %>
-    <%= render 'stat_totals' %>
+    </section>
+
+    <section class="games-info">
+      <%= render 'standings' %>
+      <%= render :partial => 'team_games', :locals => { :games => @team.games, :class_label => "all-games" } %>
+      <%= render :partial => 'team_games', :locals => { :games => @team.home_games, :class_label => "home-games" } %>
+      <%= render :partial => 'team_games', :locals => { :games => @team.away_games, :class_label => "away-games" } %>
+    </section>
+
+    <section class="graph-container">
+      <div class="graph"></div>
+    </section>
+
+    <section class="graph-info">
+      <%= render 'graph_info' %>
+    </section>
+
+    <section class="stat-totals">
+      <%= render 'stat_totals' %>
+    </section>
   </div>
 </div>
