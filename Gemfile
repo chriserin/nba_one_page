@@ -20,6 +20,7 @@ end
 
 gem 'jquery-rails'
 gem 'html5-rails'
+gem 'rails-backbone'
 
 gem 'unicorn'
 
@@ -29,3 +30,11 @@ gem 'table-for'
 
 gem 'iron_worker'
 gem "mechanize", "~> 2.5.1"
+gem 'dalli'
+
+group :test do
+  gem 'database_cleaner'
+  gem 'minitest'
+  gem 'miniskirt'
+  gem 'spork-minitest', '~> 0.0.2'
+end

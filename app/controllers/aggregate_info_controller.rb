@@ -1,21 +1,26 @@
 class AggregateInfoController < ApplicationController
+  caches_page :index
 
   def index
-    # group the lines by player and then total the grouped lines
-    @total_lines = GameLine.where("team" => /Bulls/).group_by{ |line| line.line_name }.values.map{ |lines_array| lines_array.inject(:+) }.sort_by { |total_line| total_line.minutes }.reverse
-    @standings = Standings.get_standings
-    @team = @standings.get_team("Chicago Bulls")
-    @team_boxscore_lines = GameLine.where("team" => "Chicago Bulls", "game_date" => @team.get_last_game_date).desc(:starter).asc(:is_total).asc(:is_opponent_total).desc(:minutes)
-    @opponent_boxscore_lines = GameLine.where("opponent" => "Chicago Bulls", "game_date" => @team.get_last_game_date).desc(:starter).asc(:is_total).asc(:is_opponent_total).desc(:minutes)
+    team         = params[:team] || "Bulls"
+    season       = Nba::Season.new "2012"
+    @total_lines = season.total_statistics_for_team(team)
+    @standings   = season.standings
+    @schedule    = season.schedule(team)
+    @boxscore    = season.boxscore(@schedule.date_of_last_game_played, team)
   end
 
   def boxscore
-    @team = params[:team]
-    @date = params[:date]
+    team      = params[:team]
+    date      = params[:date]
     game_date = Time.at(@date.to_i / 1000).utc().strftime("%Y-%m-%d")
-    @team_boxscore_lines = GameLine.where("team" => @team, "game_date" => game_date).desc(:starter).asc(:is_total).asc(:is_opponent_total).desc(:minutes)
-    @opponent_boxscore_lines = GameLine.where("opponent" => @team, "game_date" => game_date.to_s).desc(:starter).asc(:is_total).asc(:is_opponent_total).desc(:minutes)
+    @boxscore = season.boxscore(team, @schedule.date_of_last_game_played)
 
-    render 'boxscore', :layout => false
+    render :layout => false
+  end
+
+  def clear_cache
+    expire_page action: :index
+    render :nothing => true
   end
 end

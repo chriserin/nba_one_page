@@ -17,7 +17,7 @@ class TeamRecord
   end
 
   def set_games_back(organization, first_place_record, last_number_of_games = nil)
-    games_back["#{organization}-#{last_number_of_games || ""}"] = games_back_from(first_place_record, last_number_of_games)
+    self.games_back["#{organization}-#{last_number_of_games || ""}"] = games_back_from(first_place_record, last_number_of_games)
   end
 
   def games_back_from(other_team_record, last_number_of_games)
@@ -68,12 +68,20 @@ class TeamRecord
     "#{streak_number} #{latest_result}"
   end
 
-  def get_last_game_text
+  def last_game_text
     games.last.game_text
   end
 
-  def get_last_game_date
+  def last_game_date
     games.last.game_date
+  end
+
+  def previous_game_text
+    games[-2].game_text
+  end
+
+  def next_game_text
+    ScheduledGame.next_game_text_for(team)
   end
 
   def team_abbr

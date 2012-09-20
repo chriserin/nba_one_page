@@ -12,11 +12,26 @@
 //
 //= require jquery
 //= require jquery_ujs
+//= require underscore
+//= require json2
+//= require backbone
+//
 //= require h5bp
 //= require moment.js
 //= require jquery.mousewheel.js
 //= require jquery.jscrollpane.js
 //= require flotr2.min.js
-//= require flotr_click_hit.js
-//= require aggregate_info
-//= require graph_setup
+//= require utils/flotr_click_hit.js
+//
+//
+// >>>>>>> Require Backbone files <<<<<<<
+//= require nba_one_page
+//
+//= require_tree ./data
+//= require_tree ./models
+//= require_tree ./collections
+//= require ./views/modular_view
+//= require ./views/view_factory
+//= require_tree ./views
+//= require_tree ./routers
+//= require_tree ../templates

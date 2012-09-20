@@ -16,5 +16,14 @@
 
     <%# Javascript at the bottom for fast page loading %>
     <%= render "javascripts" %>
+
+    <%# Initialize backbone %>
+    <script type="text/javascript">
+      $(function () {
+          var data = null; // perhaps pass backbone some data.
+
+          NbaOnePage.initialize(data);
+      });
+    </script>
   </body>
 </html>

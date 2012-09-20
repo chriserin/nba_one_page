@@ -104,7 +104,7 @@ class BoxscoreInterpreter
 
       end
     end
-    
+
     if [HOME_STARTERS, HOME_BENCH, AWAY_STARTERS, AWAY_BENCH].include? group
       data[group].each &process_line
     else

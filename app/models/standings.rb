@@ -30,7 +30,7 @@ class Standings
   end
 
   def self.get_standings
-    standings = Standings.new GameLine.where("is_total" => true, "is_opponent_total" => false)
+    standings = Standings.new GameLine.game_totals
   end
 
   def inspect

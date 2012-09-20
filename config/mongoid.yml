@@ -2,6 +2,10 @@ development:
   sessions:
     default:
       uri: mongodb://localhost:27017/main
+test:
+  sessions:
+    default:
+      uri: mongodb://localhost:27017/test
 production:
   sessions:
     default:

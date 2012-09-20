@@ -1,6 +1,11 @@
 
         <tbody class="<%= "#{organization} #{standings_type}#{ selected ? " selected" : ""}"%>">
-          <% @standings.get_standings_for(organization).each do |team_record| %>
-            <tr><td><%= team_record.team_abbr %></td><td><%= team_record.wins %></td><td><%= team_record.losses %></td><td><%= number_with_precision(team_record.win_pct, :precision => 3 ) %></td><td><%= team_record.get_games_back(organization) %></td></tr>
+          <% @standings.categorize(organization).each do |standing| %>
+            <tr>
+              <td><%= standing.abbr %></td>
+              <td><%= standing.wins %></td>
+              <td><%= standing.losses %></td>
+              <td><%= number_with_precision(standing.win_pct, :precision => 3 ) %></td>
+              <td><%= standing.games_back(organization) %></td></tr>
           <% end %>
         </tbody>

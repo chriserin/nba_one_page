@@ -40,6 +40,28 @@ class GameLine
 
   field :games, type: Integer, default: 1
 
+  scope :team_lines,      ->(team) { where(:team => /#{team}/) }
+  scope :opponent_lines,  ->(team) { where(:opponent => /#{team}/) }
+  scope :game_lines,      ->(game_date) { where(:game_date => game_date) }
+  scope :totals,          where("is_total" => true, "is_opponent_total" => false)
+  scope :win_loss_totals, totals
+  scope :results,         totals
+  scope :team_results,    ->(team) { where(:team => /#{team}/).totals }
+  scope :matchup_lines,   ->(team) { any_of({:team => /#{team}/}, {:opponent => /#{team}/}) }
+  scope :boxscore_lines,  ->(team, game_date) { matchup_lines(team).game_lines(game_date).boxscore_sort }
+  scope :boxscore_sort,   order_by(:starter => :desc, :is_total => :asc, :is_opponent_total => :asc, :minutes => :desc)
+
+  def self.team_boxscore_lines_sorted(team, game_date)
+    team_lines(team).game_lines(game_date).boxscore_sort
+  end
+
+  def self.opponent_boxscore_lines_sorted(team, game_date)
+    opponent_lines(team).game_lines(game_date).boxscore_sort
+  end
+
+  def self.statistic_total_lines(team)
+    @total_lines = team_lines(team).group_by{ |line| line.line_name }.values.map{ |lines_array| lines_array.inject(:+) }.sort_by { |total_line| total_line.minutes }.reverse
+  end
 
   def game_text
     if is_home
@@ -49,30 +71,50 @@ class GameLine
     end
   end
 
-  def +(right_side_object)
+  #overload addition operator to create totals lines
+  def +(right_side_line)
     result = GameLine.new
-    result[:line_name] = line_name
-    result[:is_total] = self[:is_total]
-    result[:is_opponent_total] = self[:is_opponent_total]
-    self.fields.select{|key, value| value.type == Integer }.keys.each do |field_name|
-      result[field_name] = (self[field_name] || 0) + (right_side_object[field_name] || 0)
+    copy_fields(result, :line_name, :is_total, :is_opponent_total)
+
+    GameLine.statistic_fields.each do |statistic|
+      result[statistic] = stat(statistic) + right_side_line.stat(statistic)
     end
-    result
+
+    return result
   end
 
-  def method_missing(meth, *args, &block)
-    divisor = meth.to_s.split("_").last
-    stat = meth.to_s.gsub(/_#{divisor}$/, "")
-    if divisor == "g"
-      round(attributes[stat] / (attributes["games"] * 1.0))
-    elsif attributes["minutes"] and attributes["minutes"] > 0
-      round((attributes[stat] * (divisor.to_i * 1.0)) / attributes["minutes"])
-    else
-      attributes[stat]
-    end
+  def stat(statistic_name)
+    self[statistic_name] || 0
+  end
+
+  def copy_fields(result, *fields)
+    fields.each { |f| result[f] = self[f] }
   end
 
   def round(num)
     (num * 10).ceil / 10.0
+  end
+
+  def game_date_millis
+    game_date.to_datetime.to_i * 1000
+  end
+
+  def self.statistic_fields
+    self.fields.select{|key, value| value.type == Integer }.keys
+  end
+
+  statistic_fields.each do |stat_field|
+    define_method "#{stat_field}_g" do
+      round(attributes[stat_field] / (attributes["games"] * 1.0))
+    end
+
+    define_method "#{stat_field}_36" do
+      minutes = attributes["minutes"]
+      if minutes == 0
+        "--"
+      else
+        round(attributes[stat_field] * 36.0 / attributes["minutes"])
+      end
+    end
   end
 end

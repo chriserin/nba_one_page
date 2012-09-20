@@ -8,7 +8,7 @@
       </table>
 
       <table>
-        <thead><tr><td colspan="5">Eastern <span class="conference-link">Western</span></td></tr></thead>
+        <thead><tr><td colspan="5">Eastern <span class="conference-link" data-division="<%= Standings::PACIFIC_DIVISION %>">western</span></td></tr></thead>
         <thead><tr><th>Team</th><th>W</th><th>L</th><th>Pct</th><th>Gb</th></tr></thead>
         <%= render :partial => 'individual_standings', :locals => { :organization => Standings::EASTERN_CONFERENCE, :standings_type => "conference", :selected => true } %>
       </table>

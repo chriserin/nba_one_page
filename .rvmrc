@@ -1,1 +1,3 @@
 rvm use d3@nba_one_page
+alias tall='testdrb ./test/**/*_test.rb'
+alias trec="testdrb $(find test -name '*_test.rb' -type f -printf '%TY-%Tm-%Td %TT %p\n' | sort -r | head -1 | cut -b 32-128)"
