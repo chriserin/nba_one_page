@@ -9,4 +9,4 @@ test:
 production:
   sessions:
     default:
-      uri: <%= ((defined? params) && params['mongohq_url']) ? params['mongohq_url'] : :ENV['MONGOHQ_URL'] %>
+      uri: <%= ((defined? params) && params['mongohq_url']) ? params['mongohq_url'] : ENV['MONGOHQ_URL'] %>
