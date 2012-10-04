@@ -1,0 +1,82 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: http://espn.go.com/nba/scoreboard?date=20120315/
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept:
+      - ! '*/*'
+      User-Agent:
+      - Mechanize/2.5.1 Ruby/1.9.3p125 (http://github.com/tenderlove/mechanize/)
+      Accept-Encoding:
+      - gzip,deflate,identity
+      Accept-Charset:
+      - ISO-8859-1,utf-8;q=0.7,*;q=0.7
+      Accept-Language:
+      - en-us,en;q=0.5
+      Host:
+      - espn.go.com
+      Connection:
+      - keep-alive
+      Keep-Alive:
+      - 300
+  response:
+    status:
+      code: 503
+      message: !binary |-
+        U2VydmljZSBVbmF2YWlsYWJsZQ==
+    headers:
+      !binary "Q29udGVudC1UeXBl":
+      - !binary |-
+        dGV4dC9odG1s
+      !binary "TGFzdC1Nb2RpZmllZA==":
+      - !binary |-
+        VHVlLCAyOCBGZWIgMjAxMiAxODowMjozNiBHTVQ=
+      !binary "Q29udGVudC1FbmNvZGluZw==":
+      - !binary |-
+        Z3ppcA==
+      !binary "Q29udGVudC1MZW5ndGg=":
+      - !binary |-
+        NDg0
+      !binary "QWNjZXB0LVJhbmdlcw==":
+      - !binary |-
+        Ynl0ZXM=
+      !binary "RGF0ZQ==":
+      - !binary |-
+        V2VkLCAwMyBPY3QgMjAxMiAyMjoxNToyNyBHTVQ=
+      !binary "QWdl":
+      - !binary |-
+        MjU0MDk=
+      !binary "WC1DbmVjdGlvbg==":
+      - !binary |-
+        Y2xvc2U=
+      !binary "UDNw":
+      - !binary |-
+        Q1A9IkNBTyBEU1AgQ09SIENVUmEgQURNYSBERVZhIFRBSWEgUFNBYSBQU0Rh
+        IElWQWkgSVZEaSBDT05pIE9VUiBTQU1vIE9UUm8gQlVTIFBIWSBPTkwgVU5J
+        IFBVUiBDT00gTkFWIElOVCBERU0gQ05UIFNUQSBQUkUi
+      !binary "U2V0LUNvb2tpZQ==":
+      - !binary |-
+        U1dJRD02MDBCREVENi1GRTUxLTQzM0EtQjBERS0xRThBN0UwNDE3MDQ7IHBh
+        dGg9LzsgZXhwaXJlcz1XZWQsIDAzLU9jdC0yMDMyIDIyOjE1OjI3IEdNVDsg
+        ZG9tYWluPWdvLmNvbTs=
+    body:
+      encoding: ASCII-8BIT
+      string: !binary |-
+        H4sIAAAAAAAAA4VSwXLaMBC98xUbXWyGWAqBHig2hxoyzUxCGWKm7XR6UKwN
+        KLUl115j8veVMTTttJ36siv5vbfvrR1ezD/EyefVAnaUZ7DavLu7jYEFQnwc
+        xULMkzl8ep/c38GQX0FSSlNp0tbITIjFkvXYjqh4K0TTNLwZcVtuRbIWh1Zr
+        2JJPbUC/MLkixWa98DjwkGemiv4iM5xMJh37iEWpXCFNGc4WD6slBLC0BDe2
+        NioU3X0vzJEktFoBfq/1PmKxNYSGguSlQAZpd4oY4YFEqz2FdCfLCilqtFG2
+        qYLh9ZtrBsKJidPQR6teXLkIAlij0iWmBGShQlmmOyjkFjkEgUM82TIHZ2Fn
+        VcS2SAxk2kb+Ga+jcKwKw7eWpzYXlRhfjQUDI3OMWAe4cTouNLgn1Kao3Thn
+        36lopdCcsSU+HX3+B+bkGexlVrueyhpP2VqvrlZpqYsz8biVZ7mX3e3JgrJp
+        nbut8Vdz3M3mR02IXt9nNpVt3OnvtNTabxqjL55d41PkXaJJrcLN+ja2eWGN
+        g/h/SPQvvSngoXDLriJv4BtsYC4J/cG5G4wW436fk90k8QOV2mz9/lf+bLXx
+        Pa8//afzqn7MNfkOEYouZruN0yc+/hKz3g8UtuxTFAMAAA==
+    http_version: 
+  recorded_at: Wed, 03 Oct 2012 22:15:53 GMT
+recorded_with: VCR 2.2.5

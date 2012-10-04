@@ -17,6 +17,7 @@ module Nba
     "Houston Rockets"        => { :abbr => "HOU", :div => "southwest", :conference => "western" },
     "Washington Wizards"     => { :abbr => "WAS", :div => "southeast", :conference => "eastern" },
     "New Jersey Nets"        => { :abbr => "NJN", :div => "atlantic",  :conference => "eastern" },
+    "Brooklyn Nets"          => { :abbr => "BKN", :div => "atlantic",  :conference => "eastern" },
     "Charlotte Bobcats"      => { :abbr => "CHA", :div => "southeast", :conference => "eastern" },
     "Milwaukee Bucks"        => { :abbr => "MIL", :div => "central",   :conference => "eastern" },
     "Minnesota Timberwolves" => { :abbr => "MIN", :div => "northwest", :conference => "western" },

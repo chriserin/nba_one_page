@@ -15,4 +15,9 @@ class Season < MiniTest::Unit::TestCase
     season = Nba::Season.new "2012"
     refute_nil(season.total_statistics_for_team("Bulls"))
   end
+
+  def test_schedule
+    season = Nba::Season.new "2012"
+    refute_nil(season.schedule "Bulls")
+  end
 end

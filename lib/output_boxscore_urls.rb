@@ -9,6 +9,9 @@ s_date = Date.parse("2011-12-25")
 e_date = Date.parse("2012-04-26")
 #e_date = Date.parse("2012-01-01")
 
+s_date = DateTime.now.in_time_zone("America/Chicago").yesterday
+e_date = s_date
+
 (s_date..e_date).each do |date|
   sleep 1
   agent.get("http://espn.go.com/nba/scoreboard?date=#{date.strftime('%Y%m%d')}/") do |page|

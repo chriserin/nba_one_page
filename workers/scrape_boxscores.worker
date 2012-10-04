@@ -1,0 +1,11 @@
+runtime "ruby"
+exec 'boxscore_scraper_worker.rb'
+name 'ScrapeBoxscores'
+
+dir '../app/scraper_steps'
+file '../app/services/nba/teams.rb'
+file '../app/models/game_line.rb'
+file '../config/mongoid.yml'
+
+gem 'mongoid'
+gem 'mechanize'

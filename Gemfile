@@ -28,7 +28,7 @@ gem 'lorem'
 
 gem 'table-for'
 
-gem 'iron_worker'
+gem 'iron_worker_ng'
 gem "mechanize", "~> 2.5.1"
 gem 'dalli'
 
@@ -37,4 +37,6 @@ group :test do
   gem 'minitest'
   gem 'miniskirt'
   gem 'spork-minitest', '~> 0.0.2'
+  gem 'vcr'
+  gem 'webmock'
 end

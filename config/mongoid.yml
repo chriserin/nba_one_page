@@ -1,7 +1,7 @@
 development:
   sessions:
     default:
-      uri: mongodb://localhost:27017/main
+      uri: <%= "mongodb://localhost:27017/main" %>
 test:
   sessions:
     default:
@@ -9,4 +9,4 @@ test:
 production:
   sessions:
     default:
-      uri: <%= ENV['MONGOHQ_URL'] %>
+      uri: <%= (defined? params) ? params['mongohq_url'] : :ENV['MONGOHQ_URL'] %>

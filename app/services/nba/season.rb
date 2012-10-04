@@ -21,7 +21,7 @@ module Nba
     def schedule(team)
       results        = GameLine.team_results(team)
       unplayed_games = ScheduledGame.unplayed_team_games(team)
-      Nba::Schedule.new results, unplayed_games
+      Nba::Schedule.new results, unplayed_games, team
     end
 
     def total_statistics_for_team(team)

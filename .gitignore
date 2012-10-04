@@ -25,3 +25,6 @@ capybara-*.html
 **.orig
 rerun.txt
 pickle-email-*.html
+
+#ignore local ironworker credentials
+iron.jron

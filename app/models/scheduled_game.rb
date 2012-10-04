@@ -25,7 +25,7 @@ class ScheduledGame
   end
 
   def game_text
-    "fix me"
+    "#{Nba::TEAMS[away_team][:abbr]} @ #{Nba::TEAMS[home_team][:abbr]}"
   end
 
   def game_result
