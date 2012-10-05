@@ -28,8 +28,8 @@
 //= require nba_one_page
 //
 //= require_tree ./data
-//= require_tree ./models
-//= require_tree ./collections
+// require_tree ./models
+// require_tree ./collections
 //= require ./views/modular_view
 //= require ./views/view_factory
 //= require_tree ./views
