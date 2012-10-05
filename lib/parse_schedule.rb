@@ -43,7 +43,7 @@ module ScheduleParse
 
   ScheduledGame.delete_all
 
-  schedule_path = Rails.root.join("schedule.txt")
+  schedule_path = Rails.root.join("data", "schedule.txt")
   File.open(schedule_path).each_line do |line|
     words = line.split(" ")
     date_str = words[1..3].join(" ")
