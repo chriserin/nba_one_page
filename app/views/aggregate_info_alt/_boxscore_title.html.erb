@@ -1,0 +1,5 @@
+<% if ! boxscore_line.is_home %>
+  <%= boxscore_line.team_abbr %> @ <span class="boxscore-link"><%= boxscore_line.opponent_abbr %></span>
+<% else %>
+  <span class="boxscore-link"><%= boxscore_line.opponent_abbr %></span> @ <%= boxscore_line.team_abbr %>
+<% end %>

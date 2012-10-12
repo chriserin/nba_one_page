@@ -1,0 +1,44 @@
+<div class="full-screen-container">
+  <link href='http://fonts.googleapis.com/css?family=Bevan' rel='stylesheet' type='text/css'>
+
+  <div class="content-area clearfix">
+    <div class="border-filler"></div>
+
+    <header>
+      <%= render :partial => 'aggregate_info_alt/header_content' %>
+    </header>
+
+    <section class="game-score">
+      <span class="previous"><%= @schedule.previous_game_text %></span>
+      <span class="current"><%= @schedule.latest_game_text %></span>
+      <span class="next"><%= @schedule.next_game_text %></span>
+    </section>
+
+    <section class="boxscores">
+      <h1>Boxscore</h1>
+      <nav>
+        <li><%= "Chicago" %></li>
+        <li><%= "Cleveland" %></li>
+      </nav>
+      <%= render :partial => 'aggregate_info_alt/boxscore', :locals => {:boxscore_lines => @boxscore.team_lines, :class_label => "team-boxscore" } %>
+      <%= render :partial => 'aggregate_info_alt/boxscore', :locals => {:boxscore_lines => @boxscore.opponent_lines, :class_label => "opponent-boxscore" } %>
+    </section>
+
+    <section class="standings">
+      <h1>Standings</h1>
+      <nav><li>Eastern</li><li>Western</li></nav>
+      <%= render 'aggregate_info_alt/standings' %>
+    </section>
+
+    <section class="games clearfix">
+      <h1>Games</h1>
+      <%= render :partial => 'aggregate_info_alt/team_games', :locals => { :games => @schedule.played_games, :class_label => "all-games" } %>
+      <%= render :partial => 'aggregate_info_alt/team_games', :locals => { :games => @schedule.upcoming_home_games, :class_label => "home-games" } %>
+      <%= render :partial => 'aggregate_info_alt/team_games', :locals => { :games => @schedule.upcoming_away_games, :class_label => "away-games" } %>
+    </section>
+
+    <section class="stat-totals">
+      <%= render 'aggregate_info_alt/stat_totals' %>
+    </section>
+  </div>
+</div>

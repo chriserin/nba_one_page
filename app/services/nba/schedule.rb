@@ -39,10 +39,12 @@ module Nba
     def unplayed_home_games
       unplayed_games.select {|game| game.home_team == team }
     end
+    alias upcoming_home_games unplayed_home_games
 
     def unplayed_away_games
       unplayed_games.select {|game| game.away_team == team }
     end
+    alias upcoming_away_games unplayed_away_games
 
     def played_home_games
       played_games.select {|game| game.is_home }

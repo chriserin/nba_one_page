@@ -2,12 +2,18 @@ class AggregateInfoController < ApplicationController
   caches_page :index
 
   def index
+    @alternate_style = params[:alt]
+
     team         = params[:team] || "Bulls"
     season       = Nba::Season.new "2012"
     @total_lines = season.total_statistics_for_team(team)
     @standings   = season.standings
     @schedule    = season.schedule(team)
     @boxscore    = season.boxscore(@schedule.date_of_last_game_played, team)
+
+    if @alternate_style
+      render "aggregate_info_alt/index"
+    end
   end
 
   def boxscore

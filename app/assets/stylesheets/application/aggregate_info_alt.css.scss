@@ -1,0 +1,71 @@
+$max-width: 64em;
+
+@import "bourbon";
+@import "neat";
+
+$core-color: blue;
+
+.content-area {
+  @include outer-container;
+}
+
+.record-box {display: none; }
+
+section {
+  width: 100%;
+  background-color: transparentize($core-color, .9);
+  margin: 10px 0;
+
+  nav {
+    float: left;
+    @include fill-parent;
+    li {
+      border: 1px solid darken($core-color, 100%);
+      @include span-columns(1.5);
+    }
+  }
+
+  table {
+    width: 100%;
+  }
+}
+
+section.boxscores {
+  .opponent-boxscore {display: none;}
+}
+
+section.standings {
+  div.standings {
+    div.division-standings {
+      @include span-columns(4);
+      @include nth-omega(3n);
+    }
+  }
+
+  .western.standings { display: none; }
+}
+
+section.games {
+  div.team-games {
+    @include span-columns(4);
+    //@include nth-omega(3n);
+  }
+
+  //Jquery scroll pane plugin styling.
+  .scroll-pane {
+    height: 577px;
+    width: 100%;
+    overflow: hidden;
+  }
+
+  .jspTrack { background: transparent; }
+  .jspVerticalBar { background: transparent; }
+
+  .jspDrag {
+    background: darken($core-color, 100%);
+  }
+}
+
+section.stat-totals {
+  .per-game, .per-36 {display: none;}
+}

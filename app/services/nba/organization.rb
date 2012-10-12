@@ -1,0 +1,9 @@
+module Nba
+  class Organization
+    DIVISIONS = %w{atlantic central southeast northwest pacific southwest}
+    CONFERENCES = %w{eastern western}
+    ATLANTIC_DIVISION, CENTRAL_DIVISION, SOUTHEAST_DIVISION, NORTHWEST_DIVISION, PACIFIC_DIVISION, SOUTHWEST_DIVISION = DIVISIONS
+    EASTERN_CONFERENCE, WESTERN_CONFERENCE = CONFERENCES
+  end
+end
+

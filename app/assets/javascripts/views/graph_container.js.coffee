@@ -25,5 +25,6 @@ jQuery ->
 
     drawGraph: (data, opts) ->
       container = $(".graph")[0]
-      mergedOptions = Flotr._.extend(Flotr._.clone(NbaOnePage.Data.TotalStatGraphOptions), opts || {})
-      Flotr.draw(container, [{data: data, color: 'rgb(28, 28, 157)'}], mergedOptions)
+      if container
+        mergedOptions = Flotr._.extend(Flotr._.clone(NbaOnePage.Data.TotalStatGraphOptions), opts || {})
+        Flotr.draw(container, [{data: data, color: 'rgb(28, 28, 157)'}], mergedOptions)

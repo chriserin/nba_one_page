@@ -1,3 +1,6 @@
+
+@import "compass/css3";
+
 $site-background: #eeeeee;
 $general-background: white;
 $table-background: white;
@@ -272,7 +275,7 @@ section {
 
       //Jquery scroll pane plugin styling.
       .scroll-pane {
-        height: 577px;
+        height: 400px;
         width: 100%;
         overflow: hidden;
       }

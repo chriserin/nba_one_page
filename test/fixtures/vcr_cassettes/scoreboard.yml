@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: get
-    uri: http://espn.go.com/nba/scoreboard?date=20120315/
+    uri: http://espn.go.com/nba/scoreboard?date=20120315
     body:
       encoding: US-ASCII
       string: ''

@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: get
-    uri: http://espn.go.com/nba/scoreboard?date=20120315/
+    uri: http://espn.go.com/nba/scoreboard?date=20120315
     body:
       encoding: US-ASCII
       string: ''
@@ -465,7 +465,7 @@ http_interactions:
   recorded_at: Wed, 03 Oct 2012 16:27:14 GMT
 - request:
     method: get
-    uri: http://espn.go.com/nba/scoreboard?date=20120316/
+    uri: http://espn.go.com/nba/scoreboard?date=20120316
     body:
       encoding: US-ASCII
       string: ''

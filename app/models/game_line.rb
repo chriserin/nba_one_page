@@ -1,5 +1,6 @@
 class GameLine
   include Mongoid::Document
+  include Mongoid::Timestamps
 
   field :line_name, type: String
   field :position, type: String
