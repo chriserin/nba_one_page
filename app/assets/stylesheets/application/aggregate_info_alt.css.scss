@@ -16,14 +16,35 @@ section {
   background-color: transparentize($core-color, .9);
   margin: 10px 0;
 
-  nav {
-    float: left;
+  .section-header {
     @include fill-parent;
-    li {
-      border: 1px solid darken($core-color, 100%);
-      @include span-columns(1.5);
+
+    h1 {
+      display: inline; 
+      float: left; 
+      @include span-columns(2);
+      margin-top: 0px;
+    }
+
+    nav.section-content {
+      float: left;
+      display: inline;
+      //@include fill-parent;
+      @include span-columns(6);
+      li {
+        border: 1px solid darken($core-color, 100%);
+        @include span-columns(1.5 of 6);
+      }
+    }
+
+    nav.sections {
+      @include span-columns(3);
+      li {
+        @include span-columns(1.5 of 6);
+      }
     }
   }
+
 
   table {
     width: 100%;
@@ -46,9 +67,10 @@ section.standings {
 }
 
 section.games {
-  div.team-games {
-    @include span-columns(4);
-    //@include nth-omega(3n);
+  div.games-wrapper {
+    div.team-games {
+      @include span-columns(4);
+    }
   }
 
   //Jquery scroll pane plugin styling.
