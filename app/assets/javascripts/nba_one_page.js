@@ -22,6 +22,7 @@ window.NbaOnePage = {
     NbaOnePage.ViewState["stat_totals"] = factory.create(NbaOnePage.Views.StatTotals)
     NbaOnePage.ViewState["graph_info"] = factory.create(NbaOnePage.Views.GraphInfo)
     NbaOnePage.ViewState["games"] = factory.create(NbaOnePage.Views.Games)
+    NbaOnePage.ViewState["section_navigation"] = factory.create(NbaOnePage.Views.SectionNavigation)
 
     //trigger click to initialize the graph.  maybe belongs in view initialization code?
     $(".totals tr:nth-child(9) td:nth-child(12)").trigger("click")

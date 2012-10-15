@@ -10,6 +10,7 @@
         <li><%= "Chicago" %></li>
         <li><%= "Cleveland" %></li>
         </nav>
+        <%= render :partial => 'aggregate_info_alt/between_sections_nav' %>
       </div>
       <%= render :partial => 'aggregate_info_alt/boxscore', :locals => {:boxscore_lines => @boxscore.team_lines, :class_label => "team-boxscore" } %>
       <%= render :partial => 'aggregate_info_alt/boxscore', :locals => {:boxscore_lines => @boxscore.opponent_lines, :class_label => "opponent-boxscore" } %>
@@ -19,6 +20,7 @@
       <div class="section-header clearfix">
         <h1>Standings</h1>
         <nav class="section-content"><li>Eastern</li><li>Western</li></nav>
+        <%= render :partial => 'aggregate_info_alt/between_sections_nav' %>
       </div>
       <%= render 'aggregate_info_alt/standings' %>
     </section>
@@ -26,6 +28,8 @@
     <section class="games">
       <div class="section-header clearfix">
         <h1>Games</h1>
+        <nav class="section-content"><li></li></nav>
+        <%= render :partial => 'aggregate_info_alt/between_sections_nav' %>
       </div>
       <div class="games-wrapper clearfix">
         <%= render :partial => 'aggregate_info_alt/team_games', :locals => { :games => @schedule.played_games, :class_label => "all-games" } %>
@@ -38,6 +42,7 @@
       <div class="section-header clearfix">
         <h1>Stat Totals</h1>
         <nav class="section-content"><li>Totals</li><li>Per Game</li><li>Per 36 Mins</li></nav>
+        <%= render :partial => 'aggregate_info_alt/between_sections_nav' %>
       </div>
       <%= render 'aggregate_info_alt/stat_totals' %>
     </section>

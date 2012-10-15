@@ -3,7 +3,7 @@ $max-width: 64em;
 @import "bourbon";
 @import "neat";
 
-$core-color: blue;
+$core-color: #C1261B;
 
 .content-area {
   @include outer-container;
@@ -13,8 +13,9 @@ $core-color: blue;
 
 section {
   width: 100%;
-  background-color: transparentize($core-color, .9);
   margin: 10px 0;
+  border: 1px solid $core-color;
+  padding: 2px;
 
   .section-header {
     @include fill-parent;
@@ -24,6 +25,7 @@ section {
       float: left; 
       @include span-columns(2);
       margin-top: 0px;
+      margin-bottom: 5px;
     }
 
     nav.section-content {
@@ -37,10 +39,27 @@ section {
       }
     }
 
-    nav.sections {
-      @include span-columns(3);
-      li {
-        @include span-columns(1.5 of 6);
+    nav.between-sections {
+    
+      @include shift(2.5);
+      @include span-columns(1.5);
+      .up {
+        float: left;
+        width: 0px;
+        height: 0px;
+        border-width: 0px 16px 25px;
+        border-color: transparent transparent black;
+        border-style: solid;
+        margin-right: 10px;
+      }
+
+      .down {
+        float: left;
+        width: 0px;
+        height: 0px;
+        border-width: 25px 16px 0px;
+        border-color: black transparent transparent;
+        border-style: solid;
       }
     }
   }

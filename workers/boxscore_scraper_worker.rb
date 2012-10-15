@@ -17,4 +17,4 @@ scoreboard_date = if params[:env] == :development
                     nil
                   end
 
-ScrapeBoxscores.scrape(DateTime.new 2012, 3, 15)
+ScrapeBoxscores.scrape(scoreboard_date)
