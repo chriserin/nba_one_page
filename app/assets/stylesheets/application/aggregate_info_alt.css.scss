@@ -58,11 +58,13 @@ stat-table-style {
 section {
   width: 100%;
   margin: 10px 0;
-  border: 1px solid $core-color;
+  border: 1px solid darken($core-color, 20%);
   padding: 2px;
 
   .section-header {
     @include fill-parent;
+    background-color: $core-color;
+    color: white;
 
     h1 {
       display: inline; 
