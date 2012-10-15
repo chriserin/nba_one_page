@@ -14,7 +14,7 @@ Mongoid.load!('mongoid.yml', params[:env])
 scoreboard_date = if params[:env] == :development
                     DateTime.new 2012, 3, 15
                   elsif params[:env] == :production
-                    nil
+                    DateTime.now - 1
                   end
 
 ScrapeBoxscores.scrape(scoreboard_date)
