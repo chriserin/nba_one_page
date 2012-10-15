@@ -9,11 +9,11 @@ require 'scraper_steps/nba_scoreboard_scraper'
 require 'scraper_steps/nba_boxscore_scraper'
 require 'scraper_steps/nba_boxscore_converter'
 
-Mongoid.load!('mongoid.yml', params[:env])
+Mongoid.load!('mongoid.yml', params['env'])
 
-scoreboard_date = if params[:env] == :development
+scoreboard_date = if params['env'] == :development
                     DateTime.new 2012, 3, 15
-                  elsif params[:env] == :production
+                  elsif params['env'] == :production
                     DateTime.now - 1
                   end
 p params

@@ -5,11 +5,55 @@ $max-width: 64em;
 
 $core-color: #C1261B;
 
+stat-table-style {
+
+  table {
+    width: 100%;
+    border-style: hidden;
+
+    td { border-color: darken($core-color, 60%); }
+    .last-stat-column { border-width: 0 1px 0 0; border-right-color: black ; }//mix($core-color, rgb(50, 50, 50)); }
+    .field-goals, .free-throws { background: transparentize(lighten(grayscale($core-color), 10%), .9); }
+    .threes, .rebounds { background: transparentize(lighten(grayscale($core-color), 30%), .9); }
+
+    thead {
+      font-size: 14px;
+      line-height: 22px;
+
+      &:first-child {
+        th:first-child {
+          font-size: 18px;
+        }
+      }
+    }
+
+    tbody {
+      tr {
+        font-size: 12px;
+        line-height: 22px;
+        text-align: center;
+      }
+
+      tr:nth-child(even) {
+        background: transparentize(lighten($core-color, 40%), .8);
+      }
+
+      tr.total {
+        background: transparentize(lighten(grayscale($core-color), 30%), .8);
+      }
+
+      td:first-child {
+        padding-left: 4px;
+        font-size: 14px;
+        text-align: left;
+      }
+    }
+  }
+}
+
 .content-area {
   @include outer-container;
 }
-
-.record-box {display: none; }
 
 section {
   width: 100%;
@@ -72,6 +116,7 @@ section {
 }
 
 section.boxscores {
+  @extend stat-table-style;
   .opponent-boxscore {display: none;}
 }
 
@@ -109,5 +154,6 @@ section.games {
 }
 
 section.stat-totals {
+  @extend stat-table-style;
   .per-game, .per-36 {display: none;}
 }
