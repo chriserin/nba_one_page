@@ -17,4 +17,6 @@ scoreboard_date = if params[:env] == :development
                     DateTime.now - 1
                   end
 
+p scoreboard_date
+
 ScrapeBoxscores.scrape(scoreboard_date)
