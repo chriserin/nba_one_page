@@ -14,5 +14,13 @@ module Nba
     def opponent_lines
       select { |game| game.opponent =~ /#{team_orientation}/ }
     end
+
+    def team
+      Nba::TEAMS[team_lines.first.team][:abbr]
+    end
+
+    def opponent
+      Nba::TEAMS[opponent_lines.first.team][:abbr]
+    end
   end
 end

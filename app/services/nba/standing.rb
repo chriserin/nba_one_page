@@ -10,7 +10,7 @@ module Nba
     end
 
     def pct
-      wins / (wins + losses) * 1.0
+      wins / ((wins + losses) * 1.0)
     end
     alias :win_percentage :pct
     alias :win_pct :pct

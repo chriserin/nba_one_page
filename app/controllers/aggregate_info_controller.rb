@@ -4,7 +4,7 @@ class AggregateInfoController < ApplicationController
   def index
     @alternate_style = params[:alt]
 
-    team         = params[:team] || "Bulls"
+    team = @team = params[:team] || "Bulls"
     season       = Nba::Season.new "2012"
     @total_lines = season.total_statistics_for_team(team)
     @standings   = season.standings

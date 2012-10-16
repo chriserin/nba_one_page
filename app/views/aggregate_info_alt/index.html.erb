@@ -7,8 +7,8 @@
       <div class="section-header clearfix">
         <h1>Boxscore</h1>
         <nav class="section-content">
-        <li><%= "Chicago" %></li>
-        <li><%= "Cleveland" %></li>
+        <li class="selected"><%= @boxscore.team %></li>
+        <li><%= @boxscore.opponent %></li>
         </nav>
         <%= render :partial => 'aggregate_info_alt/between_sections_nav' %>
       </div>
@@ -19,7 +19,7 @@
     <section class="standings">
       <div class="section-header clearfix">
         <h1>Standings</h1>
-        <nav class="section-content"><li>Eastern</li><li>Western</li></nav>
+        <nav class="section-content"><li class="selected">eastern</li><li>western</li></nav>
         <%= render :partial => 'aggregate_info_alt/between_sections_nav' %>
       </div>
       <%= render 'aggregate_info_alt/standings' %>
@@ -41,7 +41,7 @@
     <section class="stat-totals">
       <div class="section-header clearfix">
         <h1>Stat Totals</h1>
-        <nav class="section-content"><li>Totals</li><li>Per Game</li><li>Per 36 Mins</li></nav>
+        <nav class="section-content"><li class="selected" data-type="totals">Totals</li><li data-type="per-game">Per Game</li><li data-type="per-36">Per 36 Mins</li></nav>
         <%= render :partial => 'aggregate_info_alt/between_sections_nav' %>
       </div>
       <%= render 'aggregate_info_alt/stat_totals' %>

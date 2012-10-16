@@ -5,6 +5,11 @@ $max-width: 64em;
 
 $core-color: #C1261B;
 
+tr {
+  font-size: 12px;
+  line-height: 22px;
+}
+
 stat-table-style {
 
   table {
@@ -21,8 +26,11 @@ stat-table-style {
       line-height: 22px;
 
       &:first-child {
+        th { text-align: center; }
+
         th:first-child {
           font-size: 18px;
+          text-align: left;
         }
       }
     }
@@ -55,16 +63,18 @@ stat-table-style {
   @include outer-container;
 }
 
+nav li {cursor: pointer; }
+
 section {
   width: 100%;
   margin: 10px 0;
-  border: 1px solid darken($core-color, 20%);
   padding: 2px;
 
   .section-header {
     @include fill-parent;
     background-color: $core-color;
     color: white;
+    padding-top: 3px;
 
     h1 {
       display: inline; 
@@ -77,12 +87,18 @@ section {
     nav.section-content {
       float: left;
       display: inline;
+      color: black;
       //@include fill-parent;
       @include span-columns(6);
       li {
         text-align: center;
+        background-color: lighten(grayscale($core-color), 40%);
         border: 1px solid darken($core-color, 100%);
         @include span-columns(1.5 of 6);
+      }
+
+      li.selected {
+        background: white;
       }
     }
 
@@ -98,6 +114,7 @@ section {
         border-color: transparent transparent black;
         border-style: solid;
         margin-right: 10px;
+        cursor: pointer;
       }
 
       .down {
@@ -107,6 +124,7 @@ section {
         border-width: 25px 16px 0px;
         border-color: black transparent transparent;
         border-style: solid;
+        cursor: pointer;
       }
     }
   }
@@ -122,11 +140,27 @@ section.boxscores {
   .opponent-boxscore {display: none;}
 }
 
+
+//Standings\\
 section.standings {
+
+  li {
+    text-transform: capitalize;
+  }
+
   div.standings {
     div.division-standings {
       @include span-columns(4);
       @include nth-omega(3n);
+
+    }
+
+    thead td {
+      background: rgba(150, 150, 150, .2);
+    }
+
+    tr.selected-team {
+      background-color: transparentize(lighten($core-color, 20%), .8);
     }
   }
 
@@ -137,6 +171,21 @@ section.games {
   div.games-wrapper {
     div.team-games {
       @include span-columns(4);
+
+      $win-color: transparentize(green, .85);
+      $loss-color: transparentize(red, .85);
+      tr:nth-child(even) {
+        $even-color: transparentize(grayscale(lighten($core-color, 50%)), .65);
+        &.W {
+          background: mix($win-color, $even-color);
+        }
+        &.L {
+          background: mix($loss-color, $even-color);
+        }
+      }
+
+      tr.W {background: $win-color;}
+      tr.L {background: $loss-color;}
     }
   }
 
@@ -157,5 +206,6 @@ section.games {
 
 section.stat-totals {
   @extend stat-table-style;
-  .per-game, .per-36 {display: none;}
+  .totals, .per-game, .per-36 {display: none;}
+  .selected { display: table-row-group;}
 }

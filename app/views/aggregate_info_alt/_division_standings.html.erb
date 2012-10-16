@@ -3,6 +3,6 @@
         <table class="division">
           <thead><tr><td colspan="5"><span class="division-label selected" data-division="<%= division %>"><%= division %></span></td></tr></thead>
           <thead><tr><th>Team</th><th>W</th><th>L</th><th>Pct</th><th>Gb</th></tr></thead>
-          <%= render :partial => 'individual_standings', :locals => { :organization => division, :standings_type => "division", :selected => false } %>
+          <%= render :partial => 'aggregate_info_alt/individual_standings', :locals => { :organization => division, :standings_type => "division", :selected => false } %>
         </table>
       </div>

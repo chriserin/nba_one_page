@@ -1,7 +1,7 @@
 
         <tbody class="<%= "#{organization} #{standings_type}#{ selected ? " selected" : ""}"%>">
           <% @standings.categorize(organization).each do |standing| %>
-            <tr>
+            <tr class="<%= "selected-team" if standing.team_name =~ /#{@team}/ %>">
               <td><%= standing.abbr %></td>
               <td><%= standing.wins %></td>
               <td><%= standing.losses %></td>

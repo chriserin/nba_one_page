@@ -16,10 +16,12 @@ window.NbaOnePage = {
 
     var factory = new NbaOnePage.ViewFactory()
     NbaOnePage.ViewState["standings"] = factory.create(NbaOnePage.Views.StandingsView)
+    NbaOnePage.ViewState["standings_alt"] = factory.create(NbaOnePage.Views.StandingsAltView)
     NbaOnePage.ViewState["header"] = factory.create(NbaOnePage.Views.Header)
     NbaOnePage.ViewState["boxscores"] = factory.create(NbaOnePage.Views.Boxscores)
     NbaOnePage.ViewState["graph"] = factory.create(NbaOnePage.Views.GraphContainer)
     NbaOnePage.ViewState["stat_totals"] = factory.create(NbaOnePage.Views.StatTotals)
+    NbaOnePage.ViewState["stat_totals_alt"] = factory.create(NbaOnePage.Views.StatTotalsAlt)
     NbaOnePage.ViewState["graph_info"] = factory.create(NbaOnePage.Views.GraphInfo)
     NbaOnePage.ViewState["games"] = factory.create(NbaOnePage.Views.Games)
     NbaOnePage.ViewState["section_navigation"] = factory.create(NbaOnePage.Views.SectionNavigation)

@@ -5,6 +5,7 @@ jQuery ->
       "click .conference-link": "conferenceClick"
       "click .division-label": "divisionClick"
       "click tr": "gameRowClick"
+      "click nav.section-content li"  : "navConferenceClick"
 
     gameRowClick: (event) ->
       @eventBus.trigger('boxscores:load', event)
@@ -25,3 +26,12 @@ jQuery ->
       $(".division-label, .division").removeClass("selected")
       $(".division-label[data-division=#{division}]").addClass("selected")
       $(".#{division}").addClass("selected")
+
+    navConferenceClick: (event) ->
+      $(@el).find("nav.section-content li").removeClass("selected")
+      $currentTarget = $(event.currentTarget)
+      $currentTarget.addClass("selected")
+
+      $(".standings").css("display", "none")
+      $(".#{$currentTarget.text()}.standings").css("display", "block")
+      @selectDivision(division)
