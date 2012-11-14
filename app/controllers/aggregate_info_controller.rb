@@ -1,14 +1,12 @@
 class AggregateInfoController < ApplicationController
-  caches_page :index
+  #caches_page :index
 
   def index
     @alternate_style = params[:alt]
 
     team = @team = params[:team] || "Bulls"
     year = @year = params[:year] || "2012"
-    puts params
-    puts @year
-    puts params[:year]
+
     season       = Nba::Season.new(year)
     @total_lines = season.total_statistics_for_team(team)
     @standings   = season.standings
