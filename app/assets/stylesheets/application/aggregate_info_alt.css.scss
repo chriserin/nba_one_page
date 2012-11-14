@@ -63,6 +63,8 @@ stat-table-style {
   @include outer-container;
 }
 
+body {background: lighten($core-color, 10%);}
+
 nav li {cursor: pointer; }
 
 section {
@@ -74,7 +76,9 @@ section {
     @include fill-parent;
     background-color: $core-color;
     color: white;
-    padding-top: 3px;
+    padding-top: 8px;
+    padding-bottom: 5px;
+    padding-left: 10px;
 
     h1 {
       display: inline; 
@@ -88,7 +92,7 @@ section {
       float: left;
       display: inline;
       color: black;
-      //@include fill-parent;
+
       @include span-columns(6);
       li {
         text-align: center;
@@ -103,7 +107,7 @@ section {
     }
 
     nav.between-sections {
-    
+
       @include shift(2.5);
       @include span-columns(1.5);
       .up {
@@ -132,6 +136,11 @@ section {
 
   table {
     width: 100%;
+  }
+
+  div.section-content {
+    background: white;
+    padding: 0 10px;
   }
 }
 
@@ -189,6 +198,11 @@ section.games {
     }
   }
 
+  nav.between-sections {
+
+    @include shift(8.5);
+  }
+
   //Jquery scroll pane plugin styling.
   .scroll-pane {
     height: 577px;
@@ -208,4 +222,17 @@ section.stat-totals {
   @extend stat-table-style;
   .totals, .per-game, .per-36 {display: none;}
   .selected { display: table-row-group;}
+
+  td {
+    width: 40px;
+  }
+
+  td:first-child {
+    padding-left: 4px;
+    font-size: 14px;
+    text-align: left;
+    width: 270px;
+  }
+
+  .graph-container { background: white;}
 }

@@ -6,20 +6,26 @@ module Nba
       end
     end
 
-    def initialize(year); end;
+    def initialize(year)
+      @year = year 
+    end
 
     def boxscore(date, team)
-      lines = GameLine.boxscore_lines(team, date)
-      Nba::Boxscore.new(lines, team)
+      if date
+        lines = GameLine.season(@year).boxscore_lines(team, date)
+        Nba::Boxscore.new(lines, team)
+      else
+        nil
+      end
     end
 
     def standings
-      wins_and_losses = GameLine.win_loss_totals
+      wins_and_losses = GameLine.season(@year).win_loss_totals
       Nba::Standings.new(wins_and_losses)
     end
 
     def schedule(team)
-      results        = GameLine.team_results(team)
+      results        = GameLine.season(@year).team_results(team)
       unplayed_games = ScheduledGame.unplayed_team_games(team)
       Nba::Schedule.new results, unplayed_games, team
     end

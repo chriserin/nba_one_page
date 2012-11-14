@@ -5,7 +5,8 @@ class AggregateInfoController < ApplicationController
     @alternate_style = params[:alt]
 
     team = @team = params[:team] || "Bulls"
-    season       = Nba::Season.new "2012"
+    year = params[:year] || "2012"
+    season       = Nba::Season.new year
     @total_lines = season.total_statistics_for_team(team)
     @standings   = season.standings
     @schedule    = season.schedule(team)

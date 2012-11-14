@@ -2,6 +2,7 @@ NbaOnePage::Application.routes.draw do
   root :to => "aggregate_info#index"
 
   get 'rolled_data/:name(/:stat)' => "rolled_data#show"
+  get 'rolled_data_alt/:name(/:stat)' => "rolled_data_alt#show"
   get 'boxscore/:team/:date' => "aggregate_info#boxscore"
 
 

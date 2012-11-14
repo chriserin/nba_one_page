@@ -13,7 +13,11 @@ module Nba
     end
 
     def date_of_last_game_played
-      played_games.sort_by {|game| game.game_date}.last.game_date
+      if played_games.size > 0
+        played_games.sort_by {|game| game.game_date}.last.game_date
+      else
+        nil
+      end
     end
 
     def latest_game_text

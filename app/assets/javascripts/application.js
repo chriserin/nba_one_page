@@ -22,6 +22,8 @@
 //= require jquery.jscrollpane.js
 //= require flotr2.min.js
 //= require utils/flotr_click_hit.js
+//= require raphael
+//= require morris
 //
 //
 // >>>>>>> Require Backbone files <<<<<<<

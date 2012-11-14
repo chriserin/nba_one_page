@@ -9,6 +9,11 @@ class ScheduleTest < MiniTest::Unit::TestCase
     Nba::Schedule.new(played_games, unplayed_games, "Chicago Bulls")
   end
 
+  def init_schedule_no_played_games
+    unplayed_games = 20.times.map { |i| Factory.build :scheduled_game, :home_team => (i % 2 == 0 ? "Chicago Bulls" : "Denver Nuggets"), :away_team => (i % 2 == 0 ? "Denver Nuggets" : "Chicago Bulls") }
+    Nba::Schedule.new([], unplayed_games, "Chicago Bulls")
+  end
+
   def test_initialize
     schedule = init_schedule()
     refute_nil(schedule)
@@ -90,5 +95,11 @@ class ScheduleTest < MiniTest::Unit::TestCase
     assert_equal("Chicago Bulls", games.first.away_team)
     assert_equal(GameLine, games.last.class)
     assert_equal(ScheduledGame, games.first.class)
+  end
+
+  def test_no_played_games
+    schedule = init_schedule_no_played_games()
+    date = schedule.date_of_last_game_played
+    assert_nil(date)
   end
 end
