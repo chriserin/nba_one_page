@@ -30,7 +30,7 @@ class NbaBoxscoreScraper < ScraperStep
       home_team  = page.text_of(HOME_ROW_FIRST_COLUMN)
       away_team  = page.text_of(AWAY_ROW_FIRST_COLUMN)
       home_score = page.text_of(HOME_SCORE_FROM_TITLE)
-      away_score = page.text_of(HOME_ROW_FIRST_COLUMN)
+      away_score = page.text_of(AWAY_SCORE_FROM_TITLE)
       game_date  = DateTime.parse(page.text_of(GAME_TIME))
 
       page.search(BOXSCORE_TABLE).each do |table_body|
