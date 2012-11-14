@@ -4,14 +4,14 @@ class AggregateInfoController < ApplicationController
   def index
     @alternate_style = params[:alt]
 
-    team = @team = params[:team] || "Bulls"
-    year = @year = params[:year] || "2012"
+    @team = params[:team] || "Bulls"
+    @year = params[:year] || "2012"
 
-    season       = Nba::Season.new(year)
-    @total_lines = season.total_statistics_for_team(team)
+    season       = Nba::Season.new(@year)
+    @total_lines = season.total_statistics_for_team(@team)
     @standings   = season.standings
-    @schedule    = season.schedule(team)
-    @boxscore    = season.boxscore(@schedule.date_of_last_game_played, team)
+    @schedule    = season.schedule(@team)
+    @boxscore    = season.boxscore(@schedule.date_of_last_game_played, @team)
 
     if @alternate_style
       render "aggregate_info_alt/index"
