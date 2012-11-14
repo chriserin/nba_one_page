@@ -6,6 +6,9 @@ class AggregateInfoController < ApplicationController
 
     team = @team = params[:team] || "Bulls"
     year = @year = params[:year] || "2012"
+    puts params
+    puts @year
+    puts params[:year]
     season       = Nba::Season.new(year)
     @total_lines = season.total_statistics_for_team(team)
     @standings   = season.standings
