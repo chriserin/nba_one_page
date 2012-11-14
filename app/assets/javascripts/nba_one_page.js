@@ -6,7 +6,7 @@ window.NbaOnePage = {
   ViewState: {},
   Data: {GraphPoints: []},
   State: {},
-  initialize: function(data) {
+  initialize: function(year) {
     new NbaOnePage.Routers.NbaOnePageRouter({ collection: this.tasks, users: this.users });
 
     if (!Backbone.history.started) {
@@ -25,7 +25,7 @@ window.NbaOnePage = {
     NbaOnePage.ViewState["graph_info"] = factory.create(NbaOnePage.Views.GraphInfo)
     NbaOnePage.ViewState["games"] = factory.create(NbaOnePage.Views.Games)
     NbaOnePage.ViewState["section_navigation"] = factory.create(NbaOnePage.Views.SectionNavigation)
-    NbaOnePage.ViewState["graph_container_alt"] = factory.create(NbaOnePage.Views.GraphContainerAlt)
+    NbaOnePage.ViewState["graph_container_alt"] = factory.create(NbaOnePage.Views.GraphContainerAlt, {'year': year})
 
     //trigger click to initialize the graph.  maybe belongs in view initialization code?
     $(".totals tr:nth-child(9) td:nth-child(12)").trigger("click")

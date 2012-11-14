@@ -2,11 +2,12 @@ jQuery ->
   class NbaOnePage.Views.GraphContainerAlt extends NbaOnePage.Views.ModularView
     el: 'section.stat-totals .graph-container'
 
-    initialize: () ->
+    initialize: (options) ->
+      @year = options.year
       @getData()
 
     getData: (player = "Derrick Rose", stat = "points") ->
-      $.getJSON "rolled_data_alt/#{encodeURIComponent(player)}/#{stat}.json", (data) =>
+      $.getJSON "rolled_data_alt/#{encodeURIComponent(player)}/#{stat}/#{@year}.json", (data) =>
         @render_graph(data, stat)
 
     render_graph: (data, stat) ->
