@@ -31,7 +31,7 @@ module Nba
     end
 
     def total_statistics_for_team(team)
-      GameLine.statistic_total_lines(team)
+      GameLine.season(@year).statistic_total_lines(team)
     end
   end
 end
