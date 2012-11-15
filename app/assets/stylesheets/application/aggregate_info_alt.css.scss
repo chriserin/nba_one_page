@@ -234,5 +234,12 @@ section.stat-totals {
     width: 270px;
   }
 
-  .graph-container { background: white;}
+  .graph-container {
+    background: white;
+    height: 342px;
+  }
+
+  .highlited {
+    background: transparentize(lighten($core-color, 20%), .5) !important;
+  }
 }
