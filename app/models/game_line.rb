@@ -51,7 +51,7 @@ class GameLine
   scope :matchup_lines,   ->(team) { any_of({:team => /#{team}/}, {:opponent => /#{team}/}) }
   scope :boxscore_lines,  ->(team, game_date) { matchup_lines(team).game_lines(game_date).boxscore_sort }
   scope :boxscore_sort,   order_by(:starter => :desc, :is_total => :asc, :is_opponent_total => :asc, :minutes => :desc)
-  scope :season2013,      where(:game_date.gt => "2012-10-30", :game_date.lt => "2013-08-01")
+  scope :season2013,      where(:game_date.gt => "2012-10-29", :game_date.lt => "2013-08-01")
 
   def self.season(year)
     if year == "2013"
