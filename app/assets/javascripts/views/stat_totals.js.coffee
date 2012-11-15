@@ -8,6 +8,9 @@ jQuery ->
       "click .per-game-link": "selectPerGamesLink"
       "click .totals-link": "selectTotalsLink"
 
+    initialize: (options) ->
+      @eventNameSpace = options.eventNameSpace || 'statsGrid'
+
     statsGridClick: (e) ->
       $currentTarget = $(e.currentTarget)
       columnIndex = $currentTarget.index()
@@ -16,7 +19,7 @@ jQuery ->
 
       NbaOnePage.State.stat = stat = $currentTarget.attr("data-stat")
       NbaOnePage.State.player = player = $currentTarget.parent().attr("data-player")
-      @eventBus.trigger("statsGrid:click", player, stat)
+      @eventBus.trigger("#{@eventNameSpace}:gridClick", player, stat)
 
       @highliteGridSelection(columnIndex, rowIndex)
 

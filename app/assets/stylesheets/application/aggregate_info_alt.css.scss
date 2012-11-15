@@ -218,7 +218,7 @@ section.games {
   }
 }
 
-section.stat-totals {
+section.stat-totals, section.former-players {
   @extend stat-table-style;
   .totals, .per-game, .per-36 {display: none;}
   .selected { display: table-row-group;}

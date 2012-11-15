@@ -45,7 +45,17 @@
         <nav class="section-content"><li class="selected" data-type="totals">Totals</li><li data-type="per-game">Per Game</li><li data-type="per-36">Per 36 Mins</li></nav>
         <%= render :partial => 'aggregate_info_alt/between_sections_nav' %>
       </div>
-      <%= render 'aggregate_info_alt/stat_totals' %>
+      <%= render :partial => 'aggregate_info_alt/stat_totals', :locals => { :lines => @total_lines} %>
+      <div class="graph-container"></div>
+    </section>
+
+    <section class="former-players">
+      <div class="section-header clearfix">
+        <h1>Former Players</h1>
+        <nav class="section-content"><li class="selected" data-type="totals">Totals</li><li data-type="per-game">Per Game</li><li data-type="per-36">Per 36 Mins</li></nav>
+        <%= render :partial => 'aggregate_info_alt/between_sections_nav' %>
+      </div>
+      <%= render :partial => 'aggregate_info_alt/stat_totals', :locals => { :lines => @former_player_lines} %>
       <div class="graph-container"></div>
     </section>
   </div>

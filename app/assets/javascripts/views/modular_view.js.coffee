@@ -3,4 +3,8 @@ class NbaOnePage.Views.ModularView extends Backbone.View
     super
     @globalEvents = @globalEvents or {}
     for event, handler of @globalEvents
-      @eventBus.bind event, _.bind @[handler], @
+      if @eventNameSpace
+        @eventBus.bind "#{@eventNameSpace}:" + event, _.bind @[handler], @
+      else
+        @eventBus.bind event, _.bind @[handler], @
+

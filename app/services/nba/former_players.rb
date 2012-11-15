@@ -1,6 +1,6 @@
 module Nba
   FORMER_PLAYERS = {
-    "Chicago" => [
+    "Chicago Bulls" => [
       "Ben Gordon",
       "Tyrus Thomas",
       "Elton Brand",
@@ -8,7 +8,49 @@ module Nba
       "Kyle Korver",
       "CJ Watson",
       "Omer Asik",
-      "John Lucas",
-      "John Salmons"
-    ]
+      "John  Lucas",
+      "John Salmons",
+      "Metta World Peace",
+      "Jamal Crawford",
+      "Eddy Curry",
+      "Jannero Pargo",
+      "Chris Duhon",
+      "Thabo Sefolosha",
+      "Aaron Gray",
+      "James Johnson",
+      "Hakim Warrick",
+      "Keith Bogans",
+      "Kurt Thomas"
+    ],
+    "New York Knicks"        => [],
+    "Boston Celtics"         => [],
+    "Dallas Mavericks"       => [],
+    "Miami Heat"             => [],
+    "Los Angeles Lakers"     => [],
+    "Oklahoma City Thunder"  => [],
+    "Orlando Magic"          => [],
+    "Golden State Warriors"  => [],
+    "Los Angeles Clippers"   => [],
+    "Cleveland Cavaliers"    => [],
+    "Toronto Raptors"        => [],
+    "Indiana Pacers"         => [],
+    "Detroit Pistons"        => [],
+    "Houston Rockets"        => [],
+    "Washington Wizards"     => [],
+    "New Jersey Nets"        => [],
+    "Brooklyn Nets"          => [],
+    "Charlotte Bobcats"      => [],
+    "Milwaukee Bucks"        => [],
+    "Minnesota Timberwolves" => [],
+    "Denver Nuggets"         => [],
+    "San Antonio Spurs"      => [],
+    "Memphis Grizzlies"      => [],
+    "Phoenix Suns"           => [],
+    "New Orleans Hornets"    => [],
+    "Portland Trail Blazers" => [],
+    "Philadelphia 76ers"     => [],
+    "Sacramento Kings"       => [],
+    "Atlanta Hawks"          => [],
+    "Utah Jazz"              => []
   }
+end

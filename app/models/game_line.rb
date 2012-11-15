@@ -73,6 +73,11 @@ class GameLine
     @total_lines = team_lines(team).group_by{ |line| line.line_name }.values.map{ |lines_array| lines_array.inject(:+) }.sort_by { |total_line| total_line.minutes }.reverse
   end
 
+  def self.statistic_total_lines_former_players(team)
+    former_players = Nba::FORMER_PLAYERS[team]
+    @total_lines = self.in("line_name" => former_players).group_by{ |line| line.line_name }.values.map{ |lines_array| lines_array.inject(:+) }.sort_by { |total_line| total_line.minutes }.reverse
+  end
+
   def game_text
     if is_home
       "#{team_abbr} #{team_score} - #{opponent_abbr} #{opponent_score}"

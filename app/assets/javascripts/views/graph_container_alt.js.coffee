@@ -5,9 +5,10 @@ jQuery ->
     initialize: (options) ->
       @year = options.year
       @getData()
+      @eventNameSpace = options.eventNameSpace || 'statsGrid'
 
     globalEvents:
-      'statsGrid:click': 'statsGridClick'
+      'gridClick': 'statsGridClick'
 
     statsGridClick: (player, stat) ->
       @getData(player, stat)
