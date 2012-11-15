@@ -22,8 +22,8 @@ jQuery ->
 
     highliteGridSelection: (column, row) ->
       $(".stat-totals td, .stat-totals tr").removeClass("highlited")
-      $(".stat-totals td:nth-child(#{column + 1})").addClass("highlited")
-      $(".stat-totals tr:nth-child(#{row + 1})").addClass("highlited")
+      $(".stat-totals tbody td:nth-child(#{column + 1})").addClass("highlited")
+      $(".stat-totals tbody tr:nth-child(#{row + 1})").addClass("highlited")
 
     selectStatLink: (event)->
       $(".selected-stat-group-link").removeClass("selected-stat-group-link")

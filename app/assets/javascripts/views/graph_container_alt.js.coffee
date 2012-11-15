@@ -27,3 +27,5 @@ jQuery ->
         labels: [stat]
         lineColors: ['#C1261B']
         hoverLabelFormat: (d, x) -> moment(d.date).format("MM/DD") + "\n" +  d.description
+        dateFormat: (d) -> moment(d).format("MM/DD")
+        xLabelFormat: (d) -> moment(d).format("MM/DD")
