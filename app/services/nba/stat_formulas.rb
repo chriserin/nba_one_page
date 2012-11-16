@@ -13,7 +13,7 @@ module Nba
     end
 
     def defensive_rebound_percentage(defensive_rebounds, team_minutes, minutes, team_defensive_rebounds, opponent_offensive_rebounds)
-      100 * (defensive_rebounds * (team_minutes / 5)) / (minutes * (team_defensive_rebounds + opponent_offensive_rebounds)))
+      100 * (defensive_rebounds * (team_minutes / 5)) / (minutes * (team_defensive_rebounds + opponent_offensive_rebounds))
     end
 
     def effective_field_goal_percentage

@@ -13,8 +13,6 @@ class AggregateInfoController < ApplicationController
     @schedule    = season.schedule(@team)
     @boxscore    = season.boxscore(@schedule.date_of_last_game_played, @team)
     @former_player_lines = season.total_statistics_for_former_players(@boxscore.team_lines.first.team)
-    p "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX"
-    p @former_player_lines
 
     if @alternate_style
       render "aggregate_info_alt/index"
