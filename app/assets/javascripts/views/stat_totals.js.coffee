@@ -2,7 +2,7 @@ jQuery ->
   class NbaOnePage.Views.StatTotals extends NbaOnePage.Views.ModularView
     el: 'section.stat-totals'
     events:
-      "click .totals tr td": 'statsGridClick'
+      "click tbody tr td": 'statsGridClick'
       "click .stat-totals thead span": "selectStatLink"
       "click .per-36-link": "selectPer36Link"
       "click .per-game-link": "selectPerGamesLink"
