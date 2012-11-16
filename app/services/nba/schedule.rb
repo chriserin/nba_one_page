@@ -40,13 +40,17 @@ module Nba
       (played_home_games + unplayed_home_games).reverse
     end
 
+    def filtered_unplayed_games
+      unplayed_games.select {|game| game.game_date > DateTime.parse(played_games.last.game_date) }
+    end
+
     def unplayed_home_games
-      unplayed_games.select {|game| game.home_team == team }
+      filtered_unplayed_games.select {|game| game.home_team == team }
     end
     alias upcoming_home_games unplayed_home_games
 
     def unplayed_away_games
-      unplayed_games.select {|game| game.away_team == team }
+      filtered_unplayed_games.select {|game| game.away_team == team }
     end
     alias upcoming_away_games unplayed_away_games
 

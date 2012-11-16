@@ -34,8 +34,8 @@
       </div>
       <div class="section-content games-wrapper clearfix">
         <%= render :partial => 'aggregate_info_alt/team_games', :locals => { :games => @schedule.played_games, :class_label => "all-games" } %>
-        <%= render :partial => 'aggregate_info_alt/team_games', :locals => { :games => @schedule.upcoming_home_games, :class_label => "home-games" } %>
-        <%= render :partial => 'aggregate_info_alt/team_games', :locals => { :games => @schedule.upcoming_away_games, :class_label => "away-games" } %>
+        <%= render :partial => 'aggregate_info_alt/team_games', :locals => { :games => @schedule.upcoming_home_games.reverse, :class_label => "home-games" } %>
+        <%= render :partial => 'aggregate_info_alt/team_games', :locals => { :games => @schedule.upcoming_away_games.reverse, :class_label => "away-games" } %>
       </div>
     </section>
 

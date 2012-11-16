@@ -181,20 +181,28 @@ section.games {
     div.team-games {
       @include span-columns(4);
 
-      $win-color: transparentize(green, .85);
-      $loss-color: transparentize(red, .85);
+      $win-color: transparentize(green, .1);
+      $loss-color: transparentize(red, .1);
       tr:nth-child(even) {
-        $even-color: transparentize(grayscale(lighten($core-color, 50%)), .65);
+        $even-color: transparentize(grayscale(lighten($core-color, 30%)), .7);
         &.W {
-          background: mix($win-color, $even-color);
+          background: $even-color;
         }
         &.L {
-          background: mix($loss-color, $even-color);
+          background: $even-color;
         }
       }
 
-      tr.W {background: $win-color;}
-      tr.L {background: $loss-color;}
+      tr.W {
+          td:nth-child(3) {
+            color: $win-color;
+          }
+      }
+      tr.L {
+          td:nth-child(3) {
+            color: $loss-color;
+          }
+      }
     }
   }
 
