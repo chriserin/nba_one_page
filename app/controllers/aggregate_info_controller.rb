@@ -2,7 +2,7 @@ class AggregateInfoController < ApplicationController
   #caches_page :index
 
   def index
-    @alternate_style = params[:alt]
+    @alternate_style = params[:alt] || true
 
     @team = params[:team] || "Bulls"
     @year = params[:year] || "2012"

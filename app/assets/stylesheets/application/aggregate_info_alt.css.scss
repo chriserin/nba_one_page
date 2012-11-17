@@ -63,14 +63,19 @@ stat-table-style {
   @include outer-container;
 }
 
-body {background: lighten($core-color, 10%);}
+body {background: mix(lighten($core-color, 50%), lighten(gray, 20%));}
 
 nav li {cursor: pointer; }
 
 section {
   width: 100%;
   margin: 10px 0;
-  padding: 2px;
+
+  border: solid $core-color 8px;
+  @include border-radius(20px);
+  background: white;
+  overflow: hidden;
+  padding-bottom: 6px;
 
   .section-header {
     @include fill-parent;
