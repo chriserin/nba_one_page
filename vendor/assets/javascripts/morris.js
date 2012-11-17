@@ -134,6 +134,7 @@
           row = data[index];
           ret = {};
           ret.label = row[this.options.xkey];
+          ret.originalData = row;
           if (this.options.parseTime) {
             ret.x = Morris.parseDate(ret.label);
             if (this.options.dateFormat) {
@@ -334,9 +335,6 @@
       _results = [];
       for (lineY = _i = firstY, _ref = this.yInterval; firstY <= lastY ? _i <= lastY : _i >= lastY; lineY = _i += _ref) {
         v = parseFloat(lineY.toFixed(this.precision));
-        if (v < this.ymin) {
-          continue;
-        }
         y = this.transY(v);
         this.r.text(this.left - this.options.padding / 2, y, this.yAxisFormat(v)).attr('font-size', this.options.gridTextSize).attr('fill', this.options.gridTextColor).attr('text-anchor', 'end');
         _results.push(this.r.path("M" + this.left + "," + y + "H" + (this.left + this.width)).attr('stroke', this.options.gridLineColor).attr('stroke-width', this.options.gridStrokeWidth));
@@ -489,6 +487,9 @@
       hideHover: false,
       xLabels: 'auto',
       xLabelFormat: null,
+      hoverLabelFormat: function(label, originalData) {
+        return label;
+      },
       continuousLine: false
     };
 
@@ -748,7 +749,7 @@
       var i, l, maxLabelWidth, row, xloc, y, yloc, _i, _len, _ref;
       this.hoverSet.show();
       row = this.data[index];
-      this.xLabel.attr('text', row.label);
+      this.xLabel.attr('text', this.options.hoverLabelFormat(row.label, row.originalData));
       _ref = row.y;
       for (i = _i = 0, _len = _ref.length; _i < _len; i = ++_i) {
         y = _ref[i];

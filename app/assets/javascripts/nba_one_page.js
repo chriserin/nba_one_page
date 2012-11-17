@@ -33,5 +33,6 @@ window.NbaOnePage = {
 
     //trigger click to initialize the graph.  maybe belongs in view initialization code?
     $(".totals tr:nth-child(9) td:nth-child(12)").trigger("click")
+    $(".former-players tr:nth-child(9) td:nth-child(12)").trigger("click")
   }
 };

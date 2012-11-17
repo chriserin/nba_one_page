@@ -8,7 +8,9 @@ module Nba
     def roll_data(statistic, days)
       return [] if @lines.size == 0
       data = @lines.map { |g| RolledDatum.new g.game_date, g.send(statistic), g.game_text }
-      results = data.each_with_index {|datum, index| data[[index - (days - 1), 0].max..index].each {|new_datum| datum.add_to_total(new_datum.data_for_date)} }
+      results = data.each_with_index do |datum, index| 
+        data[[index - (days - 1), 0].max..index].each {|new_datum| datum.add_to_total(new_datum)}
+      end
 
       (results + unplayed_results(results)).sort_by {|datum| datum.date}
     end
@@ -20,15 +22,17 @@ module Nba
   end
 
   class RolledDatum
-    attr_accessor :date, :data_for_date, :total_data, :data_divisor, :description, :averaged_data
+    attr_accessor :date, :start_date, :data_for_date, :total_data, :data_divisor, :description, :averaged_data
 
     def initialize(date, data_for_date, description)
       @date, @data_for_date, @description = date, data_for_date, description
+      @start_date = @date
     end
 
-    def add_to_total(new_data)
+    def add_to_total(new_datum)
       @total_data ||= 0
-      @total_data += new_data
+      @total_data += new_datum.data_for_date
+      @start_date = @start_date < new_datum.date ? @start_date : new_datum.date
       @data_divisor ||= 0
       @data_divisor += 1
       @averaged_data = (@total_data / @data_divisor.to_f).round 2

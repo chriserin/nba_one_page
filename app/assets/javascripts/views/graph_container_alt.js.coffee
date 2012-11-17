@@ -27,6 +27,12 @@ jQuery ->
         ymin: 'auto'
         labels: [stat]
         lineColors: ['#C1261B']
-        hoverLabelFormat: (d, x) -> moment(d.date).format("MM/DD") + "\n" +  d.description
+        hoverLabelFormat: (label, data) ->
+          game_date = moment(data.date).format("MM/DD")
+          if(data['averaged_data'])
+            moment(data.start_date).format("MM/DD") + " - " + game_date
+          else
+            "#{game_date} DNP"
+
         dateFormat: (d) -> moment(d).format("MM/DD")
         xLabelFormat: (d) -> moment(d).format("MM/DD")
