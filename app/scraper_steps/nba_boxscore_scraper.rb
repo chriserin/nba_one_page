@@ -21,7 +21,7 @@ class NbaBoxscoreScraper < ScraperStep
   def scrape(url)
     # each element of boxscore_sections will be an array that contains lines of data.  Each element will look like this: [[points, minuts], [points, minutes]]
     boxscore_sections = []
-    home_team, away_team, home_score, away_score, game_date = nil
+    home_team, away_team, home_score, away_score, game_date, periods = nil
 
     agent = Mechanize.new
 
@@ -32,6 +32,7 @@ class NbaBoxscoreScraper < ScraperStep
       home_score = page.text_of(HOME_SCORE_FROM_TITLE)
       away_score = page.text_of(AWAY_SCORE_FROM_TITLE)
       game_date  = DateTime.parse(page.text_of(GAME_TIME))
+      periods = page.search(".period").size
 
       page.search(BOXSCORE_TABLE).each do |table_body|
         lines = []
@@ -50,7 +51,7 @@ class NbaBoxscoreScraper < ScraperStep
       end
     end
 
-    return boxscore_sections, home_team, away_team, game_date, home_score, away_score
+    return boxscore_sections, home_team, away_team, game_date, home_score, away_score, periods
   end
 
   def each_row(table)

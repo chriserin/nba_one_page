@@ -6,7 +6,7 @@ $max-width: 64em;
 $core-color: #C1261B;
 
 tr {
-  font-size: 12px;
+  font-size: 14px;
   line-height: 22px;
 }
 
@@ -48,6 +48,10 @@ stat-table-style {
 
       tr.total {
         background: transparentize(lighten(grayscale($core-color), 30%), .8);
+      }
+
+      tr.total, tr.subtotal {
+        font-weight: bold;
       }
 
       td:first-child {

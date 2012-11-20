@@ -5,7 +5,7 @@ class AggregateInfoController < ApplicationController
     @alternate_style = params[:alt] || true
 
     @team = params[:team] || "Bulls"
-    @year = params[:year] || "2012"
+    @year = params[:year] || "2013"
 
     season       = Nba::Season.new(@year)
     @total_lines = season.total_statistics_for_team(@team)

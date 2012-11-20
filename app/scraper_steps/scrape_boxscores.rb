@@ -9,4 +9,12 @@ class ScrapeBoxscores
     boxscore_scraper = NbaBoxscoreScraper.new(NbaBoxscoreConverter.new)
     boxscore_scraper.run(urls)
   end
+
+  def self.scrape_2013()
+    GameLine.season2013.delete_all
+    (DateTime.new(2012, 10, 29)..(DateTime.now - 1)).each do |date|
+      self.scrape(date)
+      sleep(2)
+    end
+  end
 end
