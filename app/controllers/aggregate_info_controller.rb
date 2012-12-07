@@ -27,7 +27,11 @@ class AggregateInfoController < ApplicationController
   end
 
   def clear_cache
-    Dir.new("#{Rails.root}/public").each { |f| p  (Nba::TEAMS.keys.any? {|t| t =~ /#{f.gsub(".html", "")}/ } and not (f == ".." or f == ".")) ? File.delete("#{Rails.root}/public/#{f}") : "no"; };
+    Dir.new("#{Rails.root}/public").each do |file|
+      if (Nba::TEAMS.keys.any? {|team| team =~ /#{file.gsub(".html", "")}/ } and not (file == ".." or file == ".")) or file == "index.html"
+        File.delete("#{Rails.root}/public/#{file}")
+      end
+    end
     render :nothing => true
   end
 end
