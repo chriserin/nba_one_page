@@ -28,7 +28,7 @@
     <script type="text/javascript">
       <%= yield :javascript %>
     </script>
-    <% if Rails.production? %>
+    <% if Rails.env.production? %>
       <script type="text/javascript">
 
         var _gaq = _gaq || [];
