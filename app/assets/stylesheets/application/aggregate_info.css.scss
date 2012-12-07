@@ -1,97 +1,53 @@
+$max-width: 64em;
 
-@import "compass/css3";
+@import "bourbon";
+@import "neat";
 
-$site-background: #eeeeee;
-$general-background: white;
-$table-background: white;
-$table-border: black;
-$game-score-background: white;
-$content-area-background: #f3f3f3;
-$title-background: white;
-$record-box-background: #f9f5f5;
-$win-background: rgba(100, 250, 100, .1);
-$loss-background: rgba(250, 100, 100, .1);
-$unselected-item: #cecece;
-$selected-item: black;
-$scroll-bar: rgba(200, 200, 200, .8);
-$secondary-column-background: rgba(245, 245, 245, .5);
-$tertiary-column-background: rgba(252, 252, 252, .5);
-$secondary-table-border: #f0f0f0;
-$secondary-row: rgba(255, 230, 230, .2);
-$total-row: rgba(100, 100, 100, .2);
-$stat-highlite-background: rgba(0, 0, 255, 0.2);
-$graph-first-line: rgba(96, 169, 225, 1);
-$graph-second-line: rgba(247, 182, 95, 1);
-$flotr-grid-label: #222222;
-$header-text: #080808;
+$core-color: #C1261B;
 
-$standard-border: 1px solid $table-border;
-
-body {
-  background: $site-background;
+tr {
+  font-size: 14px;
+  line-height: 22px;
 }
 
-table, th, td
-{
-  border: $standard-border;
-}
-
-table, tr{
-  background: $table-background;
-}
-
-table {
-  thead {
-    text-align: center;
-    font-weight: 900;
-  }
-}
-
-left-column-table {
-
-  table {
-    width: 318px;
-
-    thead {
-      font-weight: 900;
-      text-align: center;
-    }
-
-    tbody {
-      tr {
-        font-size: 14px;
-        line-height: 22px;
-        text-align: center;
-
-        td:first-child {
-          padding-left: 4px;
-          font-size: 14px;
-          font-weight: bold;
-          text-align: left;
-        }
-      }
-    }
-  }
-}
 
 stat-table-style {
 
   table {
     width: 100%;
-    border-style: hidden;
+    //border-style: hidden;
 
-    td { border-color: $secondary-table-border; }
-    .last-stat-column { border-right-color: $table-border; }
-    .field-goals, .free-throws { background: $secondary-column-background; }
-    .threes, .rebounds { background: $tertiary-column-background; }
+    .field-goals, .free-throws, .threes {
+      text-align: right;
+      width: 20px;
+      padding-right: 5px;
+
+      &.last-stat-column:before {
+        text-align: left;
+        content: '-';
+        white-space: pre;
+        margin-left: -3px;
+        margin-right: 3px;
+      }
+      &.last-stat-column {
+        text-align: left;
+        padding-right: 4px;
+      }
+    }
+
+    .field-goals, .free-throws { background: transparentize(lighten(grayscale($core-color), 10%), .9); }
+    .threes, .rebounds { background: transparentize(lighten(grayscale($core-color), 30%), .9); }
 
     thead {
       font-size: 14px;
       line-height: 22px;
 
-      &:first-child {
+      & {
+        th { text-align: center; }
+
         th:first-child {
           font-size: 18px;
+          text-align: left;
         }
       }
     }
@@ -104,11 +60,22 @@ stat-table-style {
       }
 
       tr:nth-child(even) {
-        background: $secondary-row;
+        background: transparentize(lighten($core-color, 40%), .8);
       }
 
       tr.total {
-        background: $total-row;
+        background: transparentize(lighten(grayscale($core-color), 30%), .8);
+        border-bottom: 1px solid lighten(gray, 30%);
+      }
+
+      tr.total, tr.subtotal {
+        font-weight: bold;
+      }
+
+      tr.subtotal {
+        border-top: 1px solid black;
+        border-bottom: 1px solid $core-color;
+        background: transparentize(lighten($core-color, 30%), .8);
       }
 
       td:first-child {
@@ -120,335 +87,223 @@ stat-table-style {
   }
 }
 
-section {
-  @include transition (all 0.5s ease-in-out);
+.content-area {
+  @include outer-container;
 }
 
-.content-area {
-  width: 960px;
-  margin: 0 auto;
-  background-color: transparent;
-  @include box-shadow(0 -2px 5px 3px hsla(0, 0%, 0%, 0.4));
-  position: relative;
+body {background: mix(lighten($core-color, 50%), lighten(gray, 20%));}
 
-  .border-filler {
-    border: $standard-border;
-    border-bottom: 0;
+nav li {cursor: pointer; }
 
-    position: absolute;
-    width: 958px;
-    height: 99%;
-    top: 0px;
-    left: 0px;
-    z-index: -1;
-    background: $content-area-background;
-  }
 
-  header {
-    width: 100%;
 
-    color: $header-text;
+section {
+  width: 100%;
+  margin: 10px 0;
 
-    text-align: center;
-    float: left;
+  border: solid $core-color 8px;
+  @include border-radius(20px);
+  background: white;
+  overflow: hidden;
+  padding-bottom: 6px;
 
-    .title {
-      width: 33%;
-      height: 111px;
-      padding-top: 9px;
-      border: $standard-border;
-      margin-right: 1px;
+  .section-header {
+    @include fill-parent;
+    background-color: $core-color;
+    color: white;
+    padding-top: 8px;
+    padding-bottom: 5px;
+    padding-left: 10px;
 
+    h1 {
+      display: inline; 
+      float: left; 
+      @include span-columns(2);
+      margin-top: 0px;
+      margin-bottom: 5px;
+    }
+
+    nav.section-content {
       float: left;
+      display: inline;
+      color: black;
 
-      background: $title-background;
+      @include span-columns(6);
+      li {
+        text-align: center;
+        background-color: lighten(grayscale($core-color), 40%);
+        border: 1px solid lighten(black, 25%);
+        @include span-columns(1.5 of 6);
+        @include box-shadow(inset 0 0 3px 0px hsla(0, 0%, 0%, 0.65));
+        color: grey;
+        @include transition-duration(.1s);
+        @include transition-timing-function(linear);
+      }
 
-      font: {
-        size: 72px;
-        family: 'Bevan', serif;
+      li.selected {
+        background: white;
+        @include box-shadow(0 0 4px 0px white);
+        border: 1px solid white;
+        color: black;
       }
     }
 
-    .record-box {
-      height: 120px;
-      width: 78px;
-      border: $standard-border;
+    nav.between-sections {
 
-      float: right;
-      background: $record-box-background;
-
-      text-align: center;
-      cursor: pointer;
-
-      .record-description {
-        margin-top: 40px;
-        font-weight: bold;
-      }
-    }
-  }
-
-  section.game-score {
-    width: 958px;
-    border: solid $table-border;
-    border-width: 2px 1px;
-    float: left;
-    margin-bottom: -1px;
-    margin-top: -1px;
-
-    background: $game-score-background;
-
-
-    span { float: left; height: 76px; line-height: 84px; }
-
-    span.next, span.previous {
-      width: 239px;
-      text: {
-        align: center;
-      }
-    }
-
-    span.current {
-      width: 480px;
-      font: {
-        weight: 900;
-        size: 60px;
-      }
-      text: {
-        align: center;
-      }
-    }
-  }
-
-  section.games-info {
-    height: 602px;
-    width: 318px;
-    margin-right: 2px;
-
-    float: left;
-    overflow: hidden;
-
-    .standings {
-      @extend left-column-table;
-
-      tbody.division {
-        display: none;
-        color: $unselected-item;
-
-        &.division.selected {
-          display: table-row-group;
-          color: $selected-item;
-        }
-      }
-
-      .division-label, .conference-link {
-        color: $unselected-item;
-        text-transform: capitalize;
+      @include shift(2.5);
+      @include span-columns(1.5);
+      .up {
+        float: left;
+        width: 0px;
+        height: 0px;
+        border-width: 0px 16px 25px;
+        border-color: transparent transparent black;
+        border-style: solid;
+        margin-right: 10px;
         cursor: pointer;
-
-        &.selected {
-          color: $selected-item;
-        }
-      }
-    }
-
-    .western.standings {
-      display: none;
-    }
-
-    .team-games {
-      @extend left-column-table;
-
-      display: none;
-
-      table {
-        border-top-style: hidden;
-
-        td:nth-child(3) {
-          width: 50px;
-        }
-
-        tr { cursor: pointer;}
       }
 
-      .W { background: $win-background; }
-      .L { background: $loss-background; }
-
-      //Jquery scroll pane plugin styling.
-      .scroll-pane {
-        height: 400px;
-        width: 100%;
-        overflow: hidden;
+      .down {
+        float: left;
+        width: 0px;
+        height: 0px;
+        border-width: 25px 16px 0px;
+        border-color: black transparent transparent;
+        border-style: solid;
+        cursor: pointer;
       }
-
-      .jspTrack { background: transparent; }
-      .jspVerticalBar { background: transparent; }
-
-      .jspDrag {
-        background: $scroll-bar;
-      }
-    }
-
-    &.contracted {
-      height: 402px;
-      overflow: hidden;
-      .scroll-pane { height: 376px; }
     }
   }
 
-  section.boxscores {
-    @extend stat-table-style;
 
-    height: 400px;
-    width: 638px;
-    border: $standard-border;
-    float: right;
-
-    .boxscore-link {
-      color: $unselected-item;
-      cursor: pointer;
-    }
-
-    .boxscore {
-      th:first-child { width: 181px; }
-      tr:nth-child(5) { border-bottom: 2px solid $table-border; }
-    }
-
-    .opponent-boxscore { display: none; }
+  table {
+    width: 100%;
   }
 
-
-  section.graph-container {
-    //total-height: 310px;
-    //total-width: 640px;
-    height: 292px;
-    width: 622px;
-    padding-top: 10px;
-    padding-bottom: 6px;
-    padding-left: 6px;
-    padding-right: 10px;
-    border: $standard-border;
-    margin-top: 2px;
-    float: right;
+  div.section-content {
     background: white;
+    padding: 0 10px;
+  }
+}
 
-    .graph {
-      height: 100%;
-      width: 100%;
+section.boxscores {
+  @extend stat-table-style;
+  .boxscore {display: none;}
+  .boxscore.selected {display: block;}
+  .section-header h1 {
+    @include span-columns(3);
+  }
+  nav.between-sections {
+    @include shift(1.5);
+  }
+}
 
-      //Override the style generated by flotr2 jquery plugin.
-      .flotr-grid-label {
-        color: $flotr-grid-label;
-        font-weight: bold;
+
+section.standings {
+
+  li {
+    text-transform: capitalize;
+  }
+
+  div.standings {
+    div.division-standings {
+      @include span-columns(4);
+      @include nth-omega(3n);
+    }
+
+    .standings-title {
+      height: 25px;
+      background: rgba(150, 150, 150, .2);
+    }
+
+    tr:nth-child(8) {
+      border-bottom: 1px solid black;
+    }
+
+    tr.selected-team {
+      background-color: transparentize(lighten($core-color, 20%), .8);
+    }
+  }
+
+  div.standings { display: none; }
+  div.standings.selected { display: block;}
+}
+
+section.games {
+  div.games-wrapper {
+    div.team-games {
+      @include span-columns(4);
+
+      $win-color: transparentize(green, .1);
+      $loss-color: transparentize(red, .1);
+      tr:nth-child(even) {
+        $even-color: transparentize(grayscale(lighten($core-color, 30%)), .7);
+        &.W {
+          background: $even-color;
+        }
+        &.L {
+          background: $even-color;
+        }
       }
 
-      .flotr-title {
-        text-transform: capitalize;
-        background: red !important;
-        width: auto !important;
-        padding: 0 4px !important;
-        margin-left: -2px;
+      tr.W {
+          td:nth-child(3) {
+            color: $win-color;
+          }
       }
-
-      .flotr-mouse-value {
-        border-radius: 0px !important;
+      tr.L {
+          td:nth-child(3) {
+            color: $loss-color;
+          }
       }
     }
   }
 
-  section.graph-info {
-    height: 110px;
-    width: 318px;
-    margin-top: 2px;
-    float: left;
+  nav.between-sections {
+
+    @include shift(8.5);
+  }
+
+  //Jquery scroll pane plugin styling.
+  .scroll-pane {
+    height: 577px;
+    width: 100%;
     overflow: hidden;
-
-    tbody { display: hidden; }
-
-
-    .graph-info-container {
-
-      .graph-info {
-        @extend left-column-table;
-
-        color: $table-border;
-        background-color: white;
-
-        table {
-          font-size: 12px;
-          line-height: 16px;
-
-          thead th {
-            height: 106px;
-            background: red;
-            font-size: 18px;
-            text-align: left;
-            text-transform: capitalize;
-            border: $standard-border;
-            line-height: 20px;
-
-            .stat {
-              background: yellow;
-              opacity: .4;
-            }
-          }
-
-          tbody {
-
-            td {
-              border-left: 0;
-              border-right: 0;
-            }
-
-            tr { cursor: pointer;}
-          }
-        }
-      }
-    }
-
-    &.expanded {
-      height: 310px;
-      tbody { display: table-row-group; }
-    }
   }
 
-  section.stat-totals {
-    @extend stat-table-style;
+  .jspTrack { background: transparent; }
+  .jspVerticalBar { background: transparent; }
 
-    //total-height: depends on number of rows.
-    width: 958px;
-    border: $standard-border;
-    margin-top: 2px;
-    float: right;
+  .jspDrag {
+    background: darken($core-color, 100%);
+  }
+}
 
-    table {
-      width: 100%;
+section.stat-totals, section.former-players {
+  @extend stat-table-style;
+  .totals, .per-game, .per-36, .advanced {display: none;}
+  .selected { display: table-row-group;}
 
-      thead.stats-view-titles {
-        font-size: 16px;
-        line-height: 22px;
-        text-align: left;
+  td {
+    width: 40px;
+  }
 
-        span {
-          margin-left: 20px;
-          color: $unselected-item;
-          cursor: pointer;
+  td:first-child {
+    padding-left: 4px;
+    font-size: 14px;
+    text-align: left;
+    width: 270px;
+  }
 
-          &.selected-stat-group-link { color: $selected-item; }
-        }
-      }
+  .graph-container {
+    background: white;
+    height: 342px;
+  }
 
-      thead {
-        th {width: 36px;}
-        th:first-child {width: 200px;}
-      }
-
-      tbody {
-        tr.highlited { background: $stat-highlite-background; }
-        td.highlited { background: $stat-highlite-background; }
-
-        &.per-game, &.per-36, &.totals { display: none; }
-        &.selected-stat-group { display: table-row-group; }
-      }
-    }
+  .highlited {
+    $highlite-color: transparentize(lighten($core-color, 20%), .5);
+    background: $highlite-color !important;
+    @include transition-duration(.3s);
+    @include transition-timing-function(linear);
   }
 }

@@ -1,5 +1,5 @@
 class AggregateInfoController < ApplicationController
-  #caches_page :index
+  caches_page :index
 
   def index
     @alternate_style = params[:alt] || true
@@ -27,7 +27,7 @@ class AggregateInfoController < ApplicationController
   end
 
   def clear_cache
-    expire_page action: :index
+    Dir.new("#{Rails.root}/public").each { |f| p  (Nba::TEAMS.keys.any? {|t| t =~ /#{f.gsub(".html", "")}/ } and not (f == ".." or f == ".")) ? File.delete("#{Rails.root}/public/#{f}") : "no"; };
     render :nothing => true
   end
 end

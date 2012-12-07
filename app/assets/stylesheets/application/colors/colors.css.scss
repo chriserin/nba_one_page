@@ -1,0 +1,102 @@
+
+@import "bourbon";
+
+
+stat-table-colors {
+
+  table {
+    .field-goals, .free-throws { background: transparentize(lighten(grayscale($core-color), 10%), .9); }
+    .threes, .rebounds { background: transparentize(lighten(grayscale($core-color), 30%), .9); }
+
+    tbody {
+
+      tr:nth-child(even) {
+        background: transparentize(lighten($core-color, 40%), .8);
+      }
+
+      tr.total {
+        background: transparentize(lighten(grayscale($core-color), 30%), .8);
+      }
+
+
+      tr.subtotal {
+        border-bottom: 1px solid $core-color;
+        background: transparentize(lighten($core-color, 30%), .8);
+      }
+    }
+  }
+}
+
+
+body {background: mix(lighten($core-color, 50%), lighten(gray, 20%));}
+
+section {
+
+  border: solid $core-color 8px;
+
+  .section-header {
+    background-color: $core-color;
+
+    nav.section-content {
+      li {
+        background-color: lighten(grayscale($core-color), 40%);
+      }
+    }
+  }
+}
+
+section.boxscores {
+  @extend stat-table-colors;
+}
+
+
+section.standings {
+  div.standings {
+    tr.selected-team {
+      background-color: transparentize(lighten($core-color, 20%), .8);
+    }
+  }
+}
+
+section.games {
+  div.games-wrapper {
+    div.team-games {
+
+      $win-color: transparentize(green, .1);
+      $loss-color: transparentize(red, .1);
+      tr:nth-child(even) {
+        $even-color: transparentize(grayscale(lighten($core-color, 30%)), .7);
+        &.W {
+          background: $even-color;
+        }
+        &.L {
+          background: $even-color;
+        }
+      }
+
+      tr.W {
+          td:nth-child(3) {
+            color: $win-color;
+          }
+      }
+      tr.L {
+          td:nth-child(3) {
+            color: $loss-color;
+          }
+      }
+    }
+  }
+
+  .jspDrag {
+    background: darken($core-color, 100%);
+  }
+}
+
+section.stat-totals, section.former-players {
+  @extend stat-table-colors;
+
+  .highlited {
+    $highlite-color: transparentize(lighten($core-color, 20%), .5);
+    background: $highlite-color !important;
+  }
+}
