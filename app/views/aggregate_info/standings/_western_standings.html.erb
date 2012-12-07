@@ -4,7 +4,7 @@
       <%= render :partial => 'aggregate_info/standings/division_standings', :locals => { :division => Nba::Organization::NORTHWEST_DIVISION } %>
       <%= render :partial => 'aggregate_info/standings/division_standings', :locals => { :division => Nba::Organization::SOUTHWEST_DIVISION } %>
 
-      <div class="clearfix">
+      <div class="clearfix conference-standings">
         <div class="standings-title">Western</div>
         <table>
           <%= render :partial => 'aggregate_info/standings/individual_standings', :locals => { :organization => Nba::Organization::WESTERN_CONFERENCE, :standings_type => "conference", :selected => false, :expanded => true } %>

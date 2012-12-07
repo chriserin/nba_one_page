@@ -211,6 +211,11 @@ section.standings {
       @include nth-omega(3n);
     }
 
+    div.conference-standings {
+      float: left;
+      width: 100%;
+    }
+
     .standings-title {
       height: 25px;
       background: rgba(150, 150, 150, .2);
