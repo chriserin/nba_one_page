@@ -46,7 +46,8 @@ NbaOnePage::Application.configure do
   # config.action_controller.asset_host = "http://assets.example.com"
 
   # Precompile additional assets (application.js, application.css, and all non-JS/CSS are already added)
-  config.assets.precompile += %w( polyfills.js application/aggregate_info.css application/aggregate_info_alt.css )
+  team_colors = ["NYK", "BOS", "DAL", "MIA", "LAL", "CHI", "OKC", "ORL", "GSW", "LAC", "CLE", "TOR", "IND", "DET", "HOU", "WAS", "BKN", "CHA", "MIL", "MIN", "DEN", "SAN", "MEM", "PHX", "NOH", "POR", "PHI", "SAC", "ATL", "UTA"]
+  config.assets.precompile += %w( polyfills.js application/aggregate_info.css ) + team_colors.map {|abbr| "application/colors/#{abbr.downcase}.css" }
 
   # Disable delivery errors, bad email addresses will be ignored
   # config.action_mailer.raise_delivery_errors = false
