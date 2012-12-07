@@ -1,7 +1,7 @@
 class NbaBoxscoreConverter < ScraperStep
 
-  def run(data, home_team, away_team, game_date, home_score, away_score, periods)
-    converter = Converter.new(data, home_team, away_team, game_date, home_score, away_score, periods)
+  def run(data, home_team, away_team, game_date, home_score, away_score, periods, home_turnovers, away_turnovers)
+    converter = Converter.new(data, home_team, away_team, game_date, home_score, away_score, periods, home_turnovers, away_turnovers)
     converter.convert()
   end
 
@@ -9,15 +9,23 @@ class NbaBoxscoreConverter < ScraperStep
     attr_accessor :data, :home_team, :away_team, :game_date, :home_score, :away_score, :periods
 
     AWAY_STARTERS, AWAY_BENCH, AWAY_TOTALS, HOME_STARTERS, HOME_BENCH, HOME_TOTALS = [*0..5]
+    HOME_OPPONENT_TOTALS, AWAY_OPPONENT_TOTALS = HOME_TOTALS + 5, AWAY_TOTALS + 5
     NAME, MINUTES, FIELD_GOAL_INFO, THREES_INFO, FREE_THROWS_INFO, OFFENSIVE_REBOUNDS, DEFENSIVE_REBOUNDS, REBOUNDS, ASSISTS, STEALS, BLOCKS, TURNOVERS, PERSONAL_FOULS, PLUS_MINUS, POINTS = [*0..14]
 
-    def initialize(data, home_team, away_team, game_date, home_score, away_score, periods)
-      @data, @home_team, @away_team, @game_date, @home_score, @away_score, @periods = data, home_team, away_team, game_date, home_score, away_score, periods
+    def initialize(data, home_team, away_team, game_date, home_score, away_score, periods, home_turnovers, away_turnovers)
+      @data, @home_team, @away_team, @game_date, @home_score, @away_score, @periods, @home_turnovers, @away_turnovers = data, home_team, away_team, game_date, home_score, away_score, periods, home_turnovers, away_turnovers
       @totals = {}
     end
 
     def convert
-      process_order = [HOME_TOTALS, AWAY_TOTALS, HOME_BENCH, HOME_STARTERS, AWAY_BENCH, AWAY_STARTERS]
+      process_boxscore_section(HOME_TOTALS)
+      process_boxscore_section(AWAY_TOTALS)
+      @totals[HOME_TOTALS].update_attributes!(assign_opponent_totals({}, AWAY_TOTALS))
+      @totals[AWAY_TOTALS].update_attributes!(assign_opponent_totals({}, HOME_TOTALS))
+      @totals[HOME_OPPONENT_TOTALS].update_attributes!(assign_opponent_totals({}, AWAY_TOTALS))
+      @totals[AWAY_OPPONENT_TOTALS].update_attributes!(assign_opponent_totals({}, HOME_TOTALS))
+
+      process_order = [HOME_BENCH, HOME_STARTERS, AWAY_BENCH, AWAY_STARTERS]
       process_order.each do |section|
         process_boxscore_section(section)
       end
@@ -47,7 +55,7 @@ class NbaBoxscoreConverter < ScraperStep
         game_line_properties[:team_conference]       = Nba::TEAMS[team][:conference]
         game_line_properties[:game_date]             = game_date.to_date.strftime("%Y-%m-%d")
         game_line_properties[:game_result]           = get_result(section, home_score.to_i, away_score.to_i)
-        game_line_properties[:is_total]              = (section == HOME_TOTALS or section == AWAY_TOTALS)
+        game_line_properties[:is_total]              = is_total = (section == HOME_TOTALS or section == AWAY_TOTALS)
         game_line_properties[:is_opponent_total]     = false
         game_line_properties[:opponent]              = opp_team = (is_home(section) ? away_team : home_team)
         game_line_properties[:opponent_abbr]         = Nba::TEAMS[opp_team][:abbr]
@@ -59,7 +67,7 @@ class NbaBoxscoreConverter < ScraperStep
         game_line_properties[:team_minutes]          = 240 + (@periods - 4) * 25
 
         #player information
-        game_line_properties[:starter]               = (section == HOME_STARTERS or section == AWAY_STARTERS)
+        game_line_properties[:games_started]         = (section == HOME_STARTERS or section == AWAY_STARTERS) ? 1 : 0
         game_line_properties[:line_name]             = (line[NAME].present? ? line[NAME].split(',')[0] : get_name(home_team, away_team, section)).gsub(".", "")
         game_line_properties[:position]              = line[NAME].split(',')[1]
         game_line_properties[:minutes]               = line[MINUTES]
@@ -75,9 +83,9 @@ class NbaBoxscoreConverter < ScraperStep
         game_line_properties[:assists]               = line[ASSISTS]
         game_line_properties[:steals]                = line[STEALS]
         game_line_properties[:blocks]                = line[BLOCKS]
-        game_line_properties[:turnovers]             = line[TURNOVERS]
+        game_line_properties[:turnovers]             = (is_total ? (is_home(section) ? @home_turnovers : @away_turnovers) : line[TURNOVERS])
         game_line_properties[:personal_fouls]        = line[PERSONAL_FOULS]
-        game_line_properties[:plus_minus]            = line[PLUS_MINUS]
+        game_line_properties[:plus_minus]            = ( is_total ? (is_home(section) ? (@home_score.to_i - @away_score.to_i) : (@away_score.to_i - @home_score.to_i) ) : line[PLUS_MINUS])
         game_line_properties[:points]                = line[POINTS]
 
         if section == HOME_STARTERS or section == HOME_BENCH
@@ -93,7 +101,13 @@ class NbaBoxscoreConverter < ScraperStep
           game_line_properties[:opponent]          = (is_home(section) ? home_team : away_team)
           game_line_properties[:game_result]       = get_result(section, away_score.to_i, home_score.to_i)
           game_line_properties[:is_opponent_total] = true
-          GameLine.create!(game_line_properties)
+          @totals[section + 5] = GameLine.create!(game_line_properties)
+        end
+
+        if section == HOME_STARTERS or section == HOME_BENCH
+          assign_opponent_totals(game_line_properties, AWAY_TOTALS)
+        elsif section == AWAY_STARTERS or section == AWAY_BENCH
+          assign_opponent_totals(game_line_properties, HOME_TOTALS)
         end
       end
 
@@ -113,9 +127,16 @@ class NbaBoxscoreConverter < ScraperStep
                                       :opponent_conference,
                                       :game_date,
                                       :game_result,
-                                      :starter,
+                                      :games_started,
                                       :is_home,
                                       :team_score,
+                                      :team_turnovers,
+                                      :team_free_throws_attempted,
+                                      :team_field_goals_attempted,
+                                      :team_defensive_rebounds,
+                                      :team_offensive_rebounds,
+                                      :team_total_rebounds,
+                                      :team_field_goals,
                                       :opponent_score,
                                       :opponent_free_throws_attempted,
                                       :opponent_field_goals_made,
@@ -143,12 +164,15 @@ class NbaBoxscoreConverter < ScraperStep
       end
     end
 
-    def assign_opponent_totals(game_line_properties, totals_section)
+    def assign_opponent_totals(game_line_properties = {}, totals_section)
 
+      game_line_properties[:team_turnovers]                 = opposite_section(totals_section).turnovers
+      game_line_properties[:team_free_throws_attempted]     = opposite_section(totals_section).free_throws_attempted
+      game_line_properties[:team_field_goals_attempted]     = opposite_section(totals_section).field_goals_attempted
       game_line_properties[:team_field_goals]               = opposite_section(totals_section).field_goals_made
-      game_line_properties[:team_defensive_rebounds]        = opposite_section(totals_section).team_defensive_rebounds
-      game_line_properties[:team_offensive_rebounds]        = opposite_section(totals_section).team_offensive_rebounds
-      game_line_properties[:team_total_rebounds]            = opposite_section(totals_section).team_total_rebounds
+      game_line_properties[:team_defensive_rebounds]        = opposite_section(totals_section).defensive_rebounds
+      game_line_properties[:team_offensive_rebounds]        = opposite_section(totals_section).offensive_rebounds
+      game_line_properties[:team_total_rebounds]            = opposite_section(totals_section).total_rebounds
       game_line_properties[:opponent_free_throws_attempted] = @totals[totals_section].free_throws_attempted
       game_line_properties[:opponent_field_goals_made]      = @totals[totals_section].field_goals_made
       game_line_properties[:opponent_field_goals_attempted] = @totals[totals_section].field_goals_attempted
@@ -157,6 +181,7 @@ class NbaBoxscoreConverter < ScraperStep
       game_line_properties[:opponent_defensive_rebounds]    = @totals[totals_section].defensive_rebounds
       game_line_properties[:opponent_total_rebounds]        = @totals[totals_section].total_rebounds
       game_line_properties[:opponent_turnovers]             = @totals[totals_section].turnovers
+      return game_line_properties
     end
 
     def opposite_section(totals_section)

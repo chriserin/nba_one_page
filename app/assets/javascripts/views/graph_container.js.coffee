@@ -1,30 +1,39 @@
 jQuery ->
   class NbaOnePage.Views.GraphContainer extends NbaOnePage.Views.ModularView
-    el: 'section.graph-container'
-    events:
-      'graph:click .graph': 'displayGraphInfo'
+    el: 'section.stat-totals .graph-container'
+
+    initialize: (options) ->
+      @year = options.year
+      @eventNameSpace = options.eventNameSpace || 'stat_totals'
 
     globalEvents:
-      'statsGrid:click': 'statsGridClick'
-
-    displayGraphInfo: (event, closestPoint) ->
-      @eventBus.trigger('graphInfo:displayLastTenGames', event, closestPoint)
+      'gridClick': 'statsGridClick'
 
     statsGridClick: (player, stat) ->
       @getData(player, stat)
 
-    getData: (player = "Derrick Rose", stat = "points", data_index = 0) ->
-      @current_stat = stat
-      $.getJSON "rolled_data/#{encodeURIComponent(player)}/#{stat}.json", (data) =>
-        NbaOnePage.Data.GraphPoints.push data["raw_points"]
-        @drawGraph data["rolled_points"], {title: "#{player} #{stat.split("_").join(" ")}"}
+    getData: (player = "Derrick Rose", stat = "points") ->
+      $.getJSON "rolled_data/#{encodeURIComponent(player)}/#{stat}/#{@year}.json", (data) =>
+        @render_graph(data, stat)
 
-        $(".graph-info thead tr th .player").text(player)
-        $(".graph-info thead tr th .stat").text(stat.split("_").join(" "))
+    render_graph: (data, stat) ->
+      $(@el).empty()
+      stat_without_underscores = stat.replace(/_/g, " ")
+      Morris.Line
+        element: @el
+        data: data
+        xkey: 'date'
+        ykeys: ['averaged_data']
+        ymin: 'auto'
+        labels: [stat_without_underscores]
+        lineColors: ['#C1261B']
+        continuousLine: false
+        hoverLabelFormat: (label, data) ->
+          game_date = moment(data.date).format("MM/DD")
+          if(data['averaged_data'])
+            moment(data.start_date).format("MM/DD") + " - " + game_date
+          else
+            "#{game_date} DNP"
 
-
-    drawGraph: (data, opts) ->
-      container = $(".graph")[0]
-      if container
-        mergedOptions = Flotr._.extend(Flotr._.clone(NbaOnePage.Data.TotalStatGraphOptions), opts || {})
-        Flotr.draw(container, [{data: data, color: 'rgb(28, 28, 157)'}], mergedOptions)
+        dateFormat: (d) -> moment(d).format("MM/DD")
+        xLabelFormat: (d) -> moment(d).format("MM/DD")

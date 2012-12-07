@@ -1,0 +1,7 @@
+
+      <div class="division-standings">
+        <table class="division">
+          <div class="standings-title"><%= division %></div>
+          <%= render :partial => 'aggregate_info/standings/individual_standings', :locals => { :organization => division, :standings_type => "division", :selected => false, :expanded => false } %>
+        </table>
+      </div>

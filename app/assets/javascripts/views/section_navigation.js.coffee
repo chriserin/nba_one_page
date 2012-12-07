@@ -18,3 +18,7 @@ jQuery ->
 
       if $nextSection and $nextSection.position()
         $("body").animate({scrollTop: "#{($nextSection.position().top)}px"})
+
+    navigateTo: (sectionName) ->
+      $section = $("section.#{sectionName}")
+      $("body").animate({scrollTop: "#{($section.position().top)}px"})

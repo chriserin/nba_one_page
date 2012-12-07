@@ -1,0 +1,59 @@
+    <div class="section-content boxscore <%= class_label %>">
+      <table>
+        <thead class=""><tr>
+            <th> player </th>
+            <th> min </th>
+            <th class="field-goals"> fgm </th>
+            <th class="field-goals"> fga </th>
+            <th class="field-goal-percentage"> fg% </th>
+            <th class="threes"> 3m </th>
+            <th class="threes"> 3a </th>
+            <th class="threes-percentage"> 3% </th>
+            <th class="free-throws"> ftm </th>
+            <th class="free-throws"> fta </th>
+            <th class="free-throw-percentage"> ft% </th>
+            <th class="rebounds"> orb </th>
+            <th class="rebounds"> drb </th>
+            <th class="rebounds"> trb </th>
+            <th> ast </th>
+            <th> stl </th>
+            <th> blk </th>
+            <th> to </th>
+            <th> pf </th>
+            <th> pm </th>
+            <th> pts </th>
+        </tr></thead>
+        <tbody>
+          <% boxscore_lines.each do |line| %>
+            <% if line.line_name =~ /Bench/ %>
+              <% (16 - boxscore_lines.count).times do %>
+                <tr class=""> <td>--</td> <td class="last-stat-column">--</td> <td class="field-goals">--</td> <td class="field-goals last-stat-column">--</td><td>--</td> <td class="threes">--</td> <td class="threes last-stat-column">--</td><td>--</td> <td class="free-throws">--</td> <td class="free-throws last-stat-column">--</td><td>--</td> <td class="rebounds">--</td> <td class="rebounds">--</td> <td class="rebounds last-stat-column">--</td> <td>--</td> <td>--</td> <td>--</td> <td>--</td> <td>--</td> <td>--</td> <td>--</td> </tr>
+              <% end %>
+            <% end %>
+            <tr class="<%= line.games_started == 1 ? "starter" : "" %> <%= line.is_total ? "total" : "" %> <%= line.is_subtotal ? "subtotal" : "" %>">
+              <td><%= line.is_opponent_total ? line.opponent : line.line_name %></td>
+              <td class="last-stat-column"><%= line.minutes %></td>
+              <td class="field-goals"><%= line.field_goals_made %></td>
+              <td class="field-goals last-stat-column"><%= line.field_goals_attempted %></td>
+              <td class="field-goal-percentage last-stat-column"><%= format_percentage(line.field_goal_percentage) %></td>
+              <td class="threes"><%= line.threes_made %></td>
+              <td class="threes last-stat-column"><%= line.threes_attempted %></td>
+              <td class="threes-percentage last-stat-column"><%= format_percentage(line.threes_percentage) %></td>
+              <td class="free-throws"><%= line.free_throws_made %></td>
+              <td class="free-throws last-stat-column"><%= line.free_throws_attempted %></td>
+              <td class="free-throws-percentage last-stat-column"><%= format_percentage(line.free_throw_percentage) %></td>
+              <td class="rebounds"><%= line.offensive_rebounds %></td>
+              <td class="rebounds"><%= line.defensive_rebounds %></td>
+              <td class="rebounds last-stat-column"><%= line.total_rebounds %></td>
+              <td><%= line.assists %></td>
+              <td><%= line.steals %></td>
+              <td><%= line.blocks %></td>
+              <td><%= line.turnovers %></td>
+              <td><%= line.personal_fouls %></td>
+              <td><%= line.plus_minus %></td>
+              <td><%= line.points %></td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>

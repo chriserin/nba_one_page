@@ -20,7 +20,8 @@ module Nba
       "James Johnson",
       "Hakim Warrick",
       "Keith Bogans",
-      "Kurt Thomas"
+      "Kurt Thomas",
+      "Ronnie Brewer"
     ],
     "New York Knicks"        => [],
     "Boston Celtics"         => [],

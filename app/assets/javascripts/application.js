@@ -24,6 +24,7 @@
 //= require utils/flotr_click_hit.js
 //= require raphael
 //= require morris
+//= require jquery.tablesorter.js
 //
 //
 // >>>>>>> Require Backbone files <<<<<<<

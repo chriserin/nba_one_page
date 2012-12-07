@@ -2,40 +2,61 @@
   <link href='http://fonts.googleapis.com/css?family=Bevan' rel='stylesheet' type='text/css'>
 
   <div class="content-area clearfix">
-    <div class="border-filler"></div>
 
-    <header>
-      <%= render :partial => 'header_content' %>
-    </header>
+    <% if @boxscore %>
+      <section class="boxscores">
+        <div class="section-header clearfix">
+          <h1><%= @boxscore.title %></h1>
+          <nav class="section-content">
+          <li class="selected" data-boxscore="team-boxscore"><%= @boxscore.team %></li>
+          <li data-boxscore="opponent-boxscore"><%= @boxscore.opponent %></li>
+          </nav>
+          <%= render :partial => 'between_sections_nav' %>
+        </div>
+        <%= render :partial => 'aggregate_info/boxscore/boxscore', :locals => {:boxscore_lines => @boxscore.team_lines, :class_label => "team-boxscore" } %>
+        <%= render :partial => 'aggregate_info/boxscore/boxscore', :locals => {:boxscore_lines => @boxscore.opponent_lines, :class_label => "opponent-boxscore" } %>
+      </section>
+    <% end %>
 
-    <section class="game-score">
-      <span class="previous"><%= @schedule.previous_game_text %></span>
-      <span class="current"><%= @schedule.latest_game_text %></span>
-      <span class="next"><%= @schedule.next_game_text %></span>
+    <section class="standings">
+      <div class="section-header clearfix">
+        <h1>Standings</h1>
+        <nav class="section-content"><li class="<%= (Nba::TEAMS[@team][:conference] == "eastern" ) ? "selected": "" %>">eastern</li><li class="<%= (Nba::TEAMS[@team][:conference] == "western" ) ? "selected": "" %>">western</li></nav>
+        <%= render :partial => 'between_sections_nav' %>
+      </div>
+      <%= render 'aggregate_info/standings/standings' %>
     </section>
 
-    <section class="boxscores">
-      <%= render :partial => 'boxscore', :locals => {:boxscore_lines => @boxscore.team_lines, :class_label => "team-boxscore" } %>
-      <%= render :partial => 'boxscore', :locals => {:boxscore_lines => @boxscore.opponent_lines, :class_label => "opponent-boxscore" } %>
-    </section>
-
-    <section class="games-info">
-      <%= render 'standings' %>
-      <%= render :partial => 'team_games', :locals => { :games => @schedule.all_games, :class_label => "all-games" } %>
-      <%= render :partial => 'team_games', :locals => { :games => @schedule.home_games, :class_label => "home-games" } %>
-      <%= render :partial => 'team_games', :locals => { :games => @schedule.away_games, :class_label => "away-games" } %>
-    </section>
-
-    <section class="graph-container">
-      <div class="graph"></div>
-    </section>
-
-    <section class="graph-info">
-      <%= render 'graph_info' %>
+    <section class="games">
+      <div class="section-header clearfix">
+        <h1>Games</h1>
+        <%= render :partial => 'between_sections_nav' %>
+      </div>
+      <div class="section-content games-wrapper clearfix">
+        <%= render :partial => 'aggregate_info/games/team_games', :locals => { :games => @schedule.played_games, :class_label => "all-games" } %>
+        <%= render :partial => 'aggregate_info/games/team_games', :locals => { :games => @schedule.upcoming_home_games.reverse, :class_label => "home-games" } %>
+        <%= render :partial => 'aggregate_info/games/team_games', :locals => { :games => @schedule.upcoming_away_games.reverse, :class_label => "away-games" } %>
+      </div>
     </section>
 
     <section class="stat-totals">
-      <%= render 'stat_totals' %>
+      <div class="section-header clearfix">
+        <h1>Stat Totals</h1>
+        <nav class="section-content"><li class="selected" data-type="totals">Totals</li><li data-type="per-game">Per Game</li><li data-type="per-36">Per 36 Mins</li><li data-type="advanced">Advanced</li></nav>
+        <%= render :partial => 'between_sections_nav' %>
+      </div>
+      <%= render :partial => 'aggregate_info/stats/stat_totals', :locals => { :lines => @total_lines} %>
+      <div class="graph-container"></div>
+    </section>
+
+    <section class="former-players">
+      <div class="section-header clearfix">
+        <h1>Former Players</h1>
+        <nav class="section-content"><li class="selected" data-type="totals">Totals</li><li data-type="per-game">Per Game</li><li data-type="per-36">Per 36 Mins</li><li data-type="advanced">Advanced</li></nav>
+        <%= render :partial => 'between_sections_nav' %>
+      </div>
+      <%= render :partial => 'aggregate_info/stats/stat_totals', :locals => { :lines => @former_player_lines} %>
+      <div class="graph-container"></div>
     </section>
   </div>
 </div>

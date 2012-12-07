@@ -2,22 +2,21 @@ jQuery ->
   class NbaOnePage.Views.Boxscores extends NbaOnePage.Views.ModularView
     el: 'section.boxscores'
     events:
-      'click .boxscore-link'                   : 'clickBoxscoreLink'
       'click nav.section-content li'           : 'clickBoxscoreNav'
 
     globalEvents:
       'boxscores:load': 'loadBoxscore'
 
+    initialize: ->
+      $(".team-boxscore").addClass("selected")
+
     clickBoxscoreLink: (e) ->
-      $team_boxscore = $(".team-boxscore")
-      $opponent_boxscore = $(".opponent-boxscore")
-      teamBoxscoreDisplay = $team_boxscore.css("display")
+      $currentTarget = $(e.currentTarget)
+      boxscore_to_display = $currentTarget.data("boxscore")
 
-      $team_boxscore.css("display", @reverse(teamBoxscoreDisplay))
-      $opponent_boxscore.css("display", teamBoxscoreDisplay)
+      $(".boxscore").removeClass("selected")
+      $(".#{boxscore_to_display}").addClass("selected")
 
-    reverse: (displayValue) ->
-      if displayValue is 'block' then 'none' else 'block'
 
     loadBoxscore: (event) ->
       $currentTarget = $(event.currentTarget)

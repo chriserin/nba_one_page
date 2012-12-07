@@ -3,7 +3,7 @@ module Nba
     attr_accessor :played_games, :unplayed_games, :team
 
     def initialize(played_games, unplayed_games, team)
-      self.played_games   = played_games
+      self.played_games   = played_games.sort_by {|g| g.game_date}
       self.unplayed_games = unplayed_games
       self.team = Nba::TEAMS.keys.find { |key| key =~ /#{team}/}
     end

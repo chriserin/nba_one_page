@@ -4,8 +4,9 @@ class AggregateInfoController < ApplicationController
   def index
     @alternate_style = params[:alt] || true
 
-    @team = params[:team] || "Bulls"
+    team_param = params[:team] || "Bulls"
     @year = params[:year] || "2013"
+    @team = Nba::TEAMS.keys.find { |key| key =~ /#{team_param}/ }
 
     season       = Nba::Season.new(@year)
     @total_lines = season.total_statistics_for_team(@team)
@@ -14,9 +15,6 @@ class AggregateInfoController < ApplicationController
     @boxscore    = season.boxscore(@schedule.date_of_last_game_played, @team)
     @former_player_lines = season.total_statistics_for_former_players(@boxscore.team_lines.first.team)
 
-    if @alternate_style
-      render "aggregate_info_alt/index"
-    end
   end
 
   def boxscore

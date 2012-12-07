@@ -1,3 +1,14 @@
+
+module TrueFalseComparison
+  def <=>(other)
+    raise ArgumentError unless [TrueClass, FalseClass].include?(other.class)
+    other ? (self ? 0 : -1) : (self ? 1 : 0)
+  end
+end
+
+TrueClass.send(:include, TrueFalseComparison)
+FalseClass.send(:include, TrueFalseComparison)
+
 class GameLine
   include Mongoid::Document
   include Mongoid::Timestamps
@@ -15,7 +26,6 @@ class GameLine
   field :opponent_conference, type: String
   field :game_date, type: String
   field :game_result, type: String
-  field :starter, type: Boolean
   field :is_total, type: Boolean
   field :is_subtotal, type: Boolean
   field :is_opponent_total, type: Boolean
@@ -42,6 +52,9 @@ class GameLine
   field :plus_minus, type: Integer, default: 0
   field :points, type: Integer, default: 0
 
+  field :team_turnovers, type: Integer, default: 0
+  field :team_free_throws_attempted, type: Integer, default: 0
+  field :team_field_goals_attempted, type: Integer, default: 0
   field :team_defensive_rebounds, type: Integer, default: 0
   field :team_offensive_rebounds, type: Integer, default: 0
   field :team_total_rebounds, type: Integer, default: 0
@@ -56,6 +69,9 @@ class GameLine
   field :opponent_turnovers, type: Integer, default: 0
 
   field :games, type: Integer, default: 1
+  field :games_started, type: Integer, default: 0
+  attr_writer :topfive
+  def topfive; @topfive || false; end
 
   scope :team_lines,      ->(team) { where(:team => /#{team}/) }
   scope :opponent_lines,  ->(team) { where(:opponent => /#{team}/) }
@@ -66,7 +82,7 @@ class GameLine
   scope :team_results,    ->(team) { where(:team => /#{team}/).totals }
   scope :matchup_lines,   ->(team) { any_of({:team => /#{team}/}, {:opponent => /#{team}/}) }
   scope :boxscore_lines,  ->(team, game_date) { matchup_lines(team).game_lines(game_date).boxscore_sort }
-  scope :boxscore_sort,   order_by(:starter => :desc, :is_total => :asc, :is_opponent_total => :asc, :is_subtotal => :asc, :minutes => :desc)
+  scope :boxscore_sort,   order_by(:games_started => :desc, :is_total => :asc, :is_opponent_total => :asc, :is_subtotal => :asc, :minutes => :desc)
   scope :season2013,      where(:game_date.gt => "2012-10-29", :game_date.lt => "2013-08-01")
 
   def self.season(year)
@@ -85,8 +101,14 @@ class GameLine
     opponent_lines(team).game_lines(game_date).boxscore_sort
   end
 
+#order_by(:games_started => :desc, :is_total => :asc, :is_opponent_total => :asc, :is_subtotal => :asc, :minutes => :desc)
   def self.statistic_total_lines(team)
-    @total_lines = team_lines(team).group_by{ |line| line.line_name }.values.map{ |lines_array| lines_array.inject(:+) }.sort_by { |total_line| total_line.minutes }.reverse
+    @total_lines = team_lines(team).group_by{ |line| line.line_name }.values.map{ |lines_array| lines_array.inject(:+) }
+    @total_lines = @total_lines.sort_by { |line| line.games_started }.reverse
+    @total_lines[0..5].each do |line|
+      line.topfive = true unless line.is_subtotal
+    end
+    return @total_lines
   end
 
   def self.statistic_total_lines_former_players(team)
@@ -107,7 +129,7 @@ class GameLine
     result = GameLine.new
     right_side_line = right_side_line || GameLine.new
 
-    copy_fields(result, :line_name, :is_total, :is_opponent_total)
+    copy_fields(result, :line_name, :is_total, :is_opponent_total, :is_subtotal)
 
     GameLine.statistic_fields.each do |statistic|
       result[statistic] = stat(statistic) + right_side_line.stat(statistic)

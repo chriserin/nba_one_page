@@ -22,5 +22,9 @@ module Nba
     def opponent
       Nba::TEAMS[opponent_lines.first.team][:abbr]
     end
+
+    def title
+      team_lines.first.game_text
+    end
   end
 end

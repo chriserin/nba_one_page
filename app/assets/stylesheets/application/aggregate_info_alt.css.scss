@@ -10,14 +10,34 @@ tr {
   line-height: 22px;
 }
 
+
 stat-table-style {
 
   table {
     width: 100%;
-    border-style: hidden;
+    //border-style: hidden;
 
     td { border-color: darken($core-color, 60%); }
     .last-stat-column { border-width: 0 1px 0 0; border-right-color: black ; }//mix($core-color, rgb(50, 50, 50)); }
+
+    .field-goals, .free-throws, .threes {
+      text-align: right;
+      width: 20px;
+      padding-right: 5px;
+
+      &.last-stat-column:before {
+        text-align: left;
+        content: '-';
+        white-space: pre;
+        margin-left: -3px;
+        margin-right: 3px;
+      }
+      &.last-stat-column {
+        text-align: left;
+        padding-right: 4px;
+      }
+    }
+
     .field-goals, .free-throws { background: transparentize(lighten(grayscale($core-color), 10%), .9); }
     .threes, .rebounds { background: transparentize(lighten(grayscale($core-color), 30%), .9); }
 
@@ -25,7 +45,7 @@ stat-table-style {
       font-size: 14px;
       line-height: 22px;
 
-      &:first-child {
+      & {
         th { text-align: center; }
 
         th:first-child {
@@ -48,10 +68,17 @@ stat-table-style {
 
       tr.total {
         background: transparentize(lighten(grayscale($core-color), 30%), .8);
+        border-bottom: 1px solid lighten(gray, 30%);
       }
 
       tr.total, tr.subtotal {
         font-weight: bold;
+      }
+
+      tr.subtotal {
+        border-top: 1px solid black;
+        border-bottom: 1px solid $core-color;
+        background: transparentize(lighten($core-color, 30%), .8);
       }
 
       td:first-child {
@@ -70,6 +97,8 @@ stat-table-style {
 body {background: mix(lighten($core-color, 50%), lighten(gray, 20%));}
 
 nav li {cursor: pointer; }
+
+
 
 section {
   width: 100%;
@@ -106,12 +135,19 @@ section {
       li {
         text-align: center;
         background-color: lighten(grayscale($core-color), 40%);
-        border: 1px solid darken($core-color, 100%);
+        border: 1px solid lighten(black, 25%);
         @include span-columns(1.5 of 6);
+        @include box-shadow(inset 0 0 3px 0px hsla(0, 0%, 0%, 0.65));
+        color: grey;
+        @include transition-duration(.1s);
+        @include transition-timing-function(linear);
       }
 
       li.selected {
         background: white;
+        @include box-shadow(0 0 4px 0px white);
+        border: 1px solid white;
+        color: black;
       }
     }
 
@@ -155,11 +191,17 @@ section {
 
 section.boxscores {
   @extend stat-table-style;
-  .opponent-boxscore {display: none;}
+  .boxscore {display: none;}
+  .boxscore.selected {display: block;}
+  .section-header h1 {
+    @include span-columns(3);
+  }
+  nav.between-sections {
+    @include shift(1.5);
+  }
 }
 
 
-//Standings\\
 section.standings {
 
   li {
@@ -170,11 +212,15 @@ section.standings {
     div.division-standings {
       @include span-columns(4);
       @include nth-omega(3n);
-
     }
 
-    thead td {
+    .standings-title {
+      height: 25px;
       background: rgba(150, 150, 150, .2);
+    }
+
+    tr:nth-child(8) {
+      border-bottom: 1px solid black;
     }
 
     tr.selected-team {
@@ -182,7 +228,8 @@ section.standings {
     }
   }
 
-  .western.standings { display: none; }
+  div.standings { display: none; }
+  div.standings.selected { display: block;}
 }
 
 section.games {
@@ -237,7 +284,7 @@ section.games {
 
 section.stat-totals, section.former-players {
   @extend stat-table-style;
-  .totals, .per-game, .per-36 {display: none;}
+  .totals, .per-game, .per-36, .advanced {display: none;}
   .selected { display: table-row-group;}
 
   td {
@@ -257,6 +304,9 @@ section.stat-totals, section.former-players {
   }
 
   .highlited {
-    background: transparentize(lighten($core-color, 20%), .5) !important;
+    $highlite-color: transparentize(lighten($core-color, 20%), .5);
+    background: $highlite-color !important;
+    @include transition-duration(.3s);
+    @include transition-timing-function(linear);
   }
 }

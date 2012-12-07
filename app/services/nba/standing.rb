@@ -1,12 +1,13 @@
 module Nba
   class Standing
-    attr_accessor :standings, :wins, :losses, :team_name
+    attr_accessor :standings, :wins, :losses, :team_name, :games, :games_total
 
     def initialize(team_name, games, standings)
-      self.team_name = team_name
-      self.wins      = count(games, "W")
-      self.losses    = count(games, "L")
-      self.standings = standings
+      @team_name = team_name
+      @wins      = count(games, "W")
+      @losses    = count(games, "L")
+      @standings = standings
+      @games_total = games.inject(:+)
     end
 
     def pct
@@ -35,6 +36,22 @@ module Nba
 
     def abbr
       TEAMS[team_name][:abbr]
+    end
+
+    def pace
+      @games_total.pace
+    end
+
+    def offensive_rating
+      @games_total.offensive_rating.round 2
+    end
+
+    def defensive_rating
+      @games_total.defensive_rating.round 2
+    end
+
+    def rating_difference
+      (@games_total.offensive_rating - @games_total.defensive_rating).round 2
     end
 
     private

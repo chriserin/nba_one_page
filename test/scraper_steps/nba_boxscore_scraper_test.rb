@@ -33,4 +33,18 @@ class NbaBoxscoreScraperTest < MiniTest::Unit::TestCase
 
     assert_equal DateTime, game_date.class
   end
+
+  def test_team_turnovers
+    scraper = NbaBoxscoreScraper.new nil
+    boxscore_sections = []
+    args = nil
+
+    VCR.use_cassette('boxscore') do
+      args = scraper.scrape("http://scores.espn.go.com/nba/boxscore?gameId=320127004")
+      refute_nil args.last
+    end
+
+    assert_equal 15, args.last
+    assert_equal 10, args[-2]
+  end
 end

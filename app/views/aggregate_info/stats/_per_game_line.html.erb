@@ -1,0 +1,26 @@
+
+            <tr data-player="<%= line.line_name %>" class="<%= line.is_total || line.is_opponent_total ? "total" : "" %> <%= line.is_subtotal ? "subtotal" : "" %>">
+              <td data-stat="line_name"><%= line.line_name %></td>
+              <td data-stat="games"><%= line.games %></td>
+              <td data-stat="games_started"><%= line.games_started %></td>
+              <td data-stat="minutes" class="last-stat-column"><%= line.minutes_g %></td>
+              <td data-stat="field_goals_made" class="field-goals"><%= line.field_goals_made_g %></td>
+              <td data-stat="field_goals_attempted" class="field-goals last-stat-column"><%= line.field_goals_attempted_g %></td>
+              <td data-stat="field_goal_percentage" class="field-goal-percentage last-stat-column"><%= format_percentage(line.field_goal_percentage) %></td>
+              <td data-stat="threes_made" class="threes"><%= line.threes_made_g %></td>
+              <td data-stat="threes_attempted" class="threes last-stat-column"><%= line.threes_attempted_g %></td>
+              <td data-stat="threes_percentage" class="threes-percentage last-stat-column"><%= format_percentage(line.threes_percentage) %></td>
+              <td data-stat="free_throws_made" class="free-throws"><%= line.free_throws_made_g %></td>
+              <td data-stat="free_throws_attempted" class="free-throws last-stat-column"><%= line.free_throws_attempted_g %></td>
+              <td data-stat="free_throw_percentage" class="free-throws-percentage last-stat-column"><%= format_percentage(line.free_throw_percentage) %></td>
+              <td data-stat="offensive_rebounds" class="rebounds"><%= line.offensive_rebounds_g %></td>
+              <td data-stat="defensive_rebounds" class="rebounds"><%= line.defensive_rebounds_g %></td>
+              <td data-stat="total_rebounds" class="rebounds last-stat-column"><%= line.total_rebounds_g %></td>
+              <td data-stat="assists"><%= line.assists_g %></td>
+              <td data-stat="steals"><%= line.steals_g %></td>
+              <td data-stat="blocks"><%= line.blocks_g %></td>
+              <td data-stat="turnovers"><%= line.turnovers_g %></td>
+              <td data-stat="personal_fouls"><%= line.personal_fouls_g %></td>
+              <td data-stat="plus_minus"><%= line.plus_minus_g %></td>
+              <td data-stat="points"><%= line.points_g %></td>
+            </tr>

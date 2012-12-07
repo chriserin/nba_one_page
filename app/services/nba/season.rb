@@ -31,11 +31,12 @@ module Nba
     end
 
     def total_statistics_for_team(team)
-      GameLine.season(@year).statistic_total_lines(team)
+      lines = GameLine.season(@year).statistic_total_lines(team)
+      Nba::TeamTotals.new lines
     end
 
     def total_statistics_for_former_players(team)
-      GameLine.season(@year).statistic_total_lines_former_players(team)
+      Nba::TeamTotals.new GameLine.season(@year).statistic_total_lines_former_players(team)
     end
   end
 end
