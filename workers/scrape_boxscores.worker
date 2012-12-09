@@ -4,6 +4,7 @@ name 'ScrapeBoxscores'
 
 dir '../app/scraper_steps'
 file '../app/services/nba/teams.rb'
+file '../app/services/nba/stat_formulas.rb'
 file '../app/models/game_line.rb'
 file '../config/mongoid.yml'
 
