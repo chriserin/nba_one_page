@@ -42,6 +42,8 @@ module Nba
           @components = [formula] if @components == nil
           set_data(components, line)
         end
+      else
+        @averaged_data = nil
       end
       @start_date = @date
     end
