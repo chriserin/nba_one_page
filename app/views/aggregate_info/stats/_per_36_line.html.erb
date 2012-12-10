@@ -1,7 +1,6 @@
             <tr data-player="<%= line.line_name %>" class="<%= line.is_total || line.is_opponent_total ? "total" : "" %> <%= line.is_subtotal ? "subtotal" : "" %>">
-              <td data-stat="line_name"><%= line.line_name %></td>
-              <td data-stat="games"><%= line.games %></td>
-              <td data-stat="games_started"><%= line.games_started %></td>
+              <td data-stat="line_name"><%= line.line_name_or_nickname %></td>
+              <td data-stat="games"><%= line.games_started %>/<%= line.games %></td>
               <td data-stat="minutes" class="last-stat-column"><%= line.minutes %></td>
               <td data-stat="field_goals_made_36" class="field-goals"><%= line.field_goals_made_36 %></td>
               <td data-stat="field_goals_attempted_36" class="field-goals last-stat-column"><%= line.field_goals_attempted_36 %></td>
@@ -19,6 +18,7 @@
               <td data-stat="steals_36"><%= line.steals_36 %></td>
               <td data-stat="blocks_36"><%= line.blocks_36 %></td>
               <td data-stat="turnovers_36"><%= line.turnovers_36 %></td>
+              <td data-stat="game_score_36" class=""><%= line.game_score_36 %></td>
               <td data-stat="personal_fouls_36"><%= line.personal_fouls_36 %></td>
               <td data-stat="plus_minus_36"><%= line.plus_minus_36 %></td>
               <td data-stat="points_36"><%= line.points_36 %></td>

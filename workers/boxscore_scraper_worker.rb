@@ -2,6 +2,7 @@
 require 'mongoid'
 require 'mechanize'
 require 'teams'
+require 'stat_formulas'
 require 'game_line'
 require 'scraper_steps/scraper_step'
 require 'scraper_steps/scrape_boxscores'

@@ -124,12 +124,20 @@ class GameLine
     end
   end
 
+  def line_name_or_nickname
+    (is_subtotal or is_total) ? nickname : line_name
+  end
+
+  def nickname
+    line_name.gsub(team, Nba::TEAMS[team][:nickname])
+  end
+
   #overload addition operator to create totals lines
   def +(right_side_line)
     result = GameLine.new
     right_side_line = right_side_line || GameLine.new
 
-    copy_fields(result, :line_name, :is_total, :is_opponent_total, :is_subtotal)
+    copy_fields(result, :line_name, :team, :is_total, :is_opponent_total, :is_subtotal)
 
     GameLine.statistic_fields.each do |statistic|
       result[statistic] = stat(statistic) + right_side_line.stat(statistic)
@@ -158,9 +166,9 @@ class GameLine
     self.fields.select{|key, value| value.type == Integer }.keys
   end
 
-  statistic_fields.each do |stat_field|
+  (statistic_fields + [:game_score]).each do |stat_field|
     define_method "#{stat_field}_g" do
-      round(attributes[stat_field] / (attributes["games"] * 1.0))
+      round(send(stat_field) / (attributes["games"] * 1.0))
     end
 
     define_method "#{stat_field}_36" do
@@ -168,7 +176,7 @@ class GameLine
       if minutes == 0
         "--"
       else
-        round(attributes[stat_field] * 36.0 / attributes["minutes"])
+        round(send(stat_field) * 36.0 / attributes["minutes"])
       end
     end
   end

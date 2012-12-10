@@ -21,6 +21,7 @@ stat-table-style {
       text-align: right;
       width: 20px;
       padding-right: 5px;
+      padding-left: 2px;
 
       &.last-stat-column:before {
         text-align: left;
@@ -30,8 +31,9 @@ stat-table-style {
         margin-right: 3px;
       }
       &.last-stat-column {
+        padding-left: 0px;
         text-align: left;
-        padding-right: 4px;
+        padding-right: 2px;
       }
     }
 
@@ -297,7 +299,7 @@ section.stat-totals, section.former-players {
     padding-left: 4px;
     font-size: 14px;
     text-align: left;
-    width: 270px;
+    width: 200px;
   }
 
   .graph-container {
