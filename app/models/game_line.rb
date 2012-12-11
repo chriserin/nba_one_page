@@ -70,6 +70,11 @@ class GameLine
 
   field :games, type: Integer, default: 1
   field :games_started, type: Integer, default: 0
+
+  index({ line_name: 1 })
+  index({ game_date: 1 })
+  index({ team: 1 })
+
   attr_writer :topfive
   def topfive; @topfive || false; end
 
