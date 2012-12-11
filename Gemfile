@@ -23,6 +23,7 @@ gem 'jquery-rails'
 gem 'html5-rails'
 gem 'rails-backbone'
 
+gem 'sinatra'
 gem 'unicorn'
 
 gem 'lorem'

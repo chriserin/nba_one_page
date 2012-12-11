@@ -134,6 +134,7 @@
           row = data[index];
           ret = {};
           ret.label = row[this.options.xkey];
+          ret.originalData = row;
           if (this.options.parseTime) {
             ret.x = Morris.parseDate(ret.label);
             if (this.options.dateFormat) {
@@ -330,6 +331,7 @@
       var firstY, lastY, lineY, v, y, _i, _ref, _results;
       firstY = this.ymin;
       lastY = this.ymax;
+      this.yInterval = parseFloat(this.yInterval.toFixed(this.precision));
       _results = [];
       for (lineY = _i = firstY, _ref = this.yInterval; firstY <= lastY ? _i <= lastY : _i >= lastY; lineY = _i += _ref) {
         v = parseFloat(lineY.toFixed(this.precision));
@@ -485,6 +487,9 @@
       hideHover: false,
       xLabels: 'auto',
       xLabelFormat: null,
+      hoverLabelFormat: function(label, originalData) {
+        return label;
+      },
       continuousLine: true
     };
 
@@ -733,7 +738,7 @@
     };
 
     Line.prototype.drawHover = function() {
-      var i, idx, yLabel, _i, _ref, _results;
+      var i, idx, yLabel, _i, _ref;
       this.hoverHeight = this.options.hoverFontSize * 1.5 * (this.options.ykeys.length + 1);
       this.hover = this.r.rect(-10, -this.hoverHeight / 2 - this.options.hoverPaddingY, 20, this.hoverHeight + this.options.hoverPaddingY * 2, 10).attr('fill', this.options.hoverFillColor).attr('stroke', this.options.hoverBorderColor).attr('stroke-width', this.options.hoverBorderWidth).attr('opacity', this.options.hoverOpacity);
       this.xLabel = this.r.text(0, (this.options.hoverFontSize * 0.75) - this.hoverHeight / 2, '').attr('fill', this.options.hoverLabelColor).attr('font-weight', 'bold').attr('font-size', this.options.hoverFontSize);
@@ -741,21 +746,20 @@
       this.hoverSet.push(this.hover);
       this.hoverSet.push(this.xLabel);
       this.yLabels = [];
-      _results = [];
       for (i = _i = 0, _ref = this.options.ykeys.length; 0 <= _ref ? _i < _ref : _i > _ref; i = 0 <= _ref ? ++_i : --_i) {
         idx = this.cumulative ? this.options.ykeys.length - i - 1 : i;
         yLabel = this.r.text(0, this.options.hoverFontSize * 1.5 * (idx + 1.5) - this.hoverHeight / 2, '').attr('fill', this.colorForSeries(i)).attr('font-size', this.options.hoverFontSize);
         this.yLabels.push(yLabel);
-        _results.push(this.hoverSet.push(yLabel));
+        this.hoverSet.push(yLabel);
       }
-      return _results;
+      return this.hideHover();
     };
 
     Line.prototype.updateHover = function(index) {
       var i, l, maxLabelWidth, row, xloc, y, yloc, _i, _len, _ref;
       this.hoverSet.show();
       row = this.data[index];
-      this.xLabel.attr('text', row.label);
+      this.xLabel.attr('text', this.options.hoverLabelFormat(row.label, row.originalData));
       _ref = row.y;
       for (i = _i = 0, _len = _ref.length; _i < _len; i = ++_i) {
         y = _ref[i];
