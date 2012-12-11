@@ -1,7 +1,7 @@
     <div class="section-content stat-totals">
       <table>
         <thead class="totals per-game per-36 selected"> <tr> <th> player </th> <th> gs/g </th><th> min </th> <th> fg </th> <th> fga </th> <th> fg% </th>  <th> 3p </th> <th> 3pa </th> <th> 3p% </th> <th> ft </th> <th> fta </th> <th> ft% </th> <th> orb </th> <th> drb </th> <th> trb </th><th> ast </th> <th> stl </th> <th> blk </th> <th> to </th><th> gsc </th> <th> pf </th> <th> pm </th> <th> pts </th> </tr> </thead>
-        <thead class="advanced"> <tr> <th> player </th> <th> gs/g </th><th> min </th> <th> ts% </th> <th> efg% </th> <th> orb% </th> <th> drb% </th> <th> trb% </th> <th> gsc </th> <th> ast% </th> <th> stl% </th> <th> blk% </th> <th> tov% </th><th> usg% </th><th> pace </th></tr> </thead>
+        <thead class="advanced"> <tr> <th> player </th> <th> gs/g </th><th> min </th> <th> ts% </th> <th> efg% </th> <th> usg% </th><th> orb% </th> <th> drb% </th> <th> trb% </th> <th> gsc </th> <th> ast% </th> <th> stl% </th> <th> blk% </th> <th> tov% </th><th> pace </th></tr> </thead>
         <tbody class="totals selected" data-type="totals">
           <%= render :partial => 'aggregate_info/stats/lines_order', :locals => {:lines => lines, :partial_name => "totals_line"} %>
         </tbody>

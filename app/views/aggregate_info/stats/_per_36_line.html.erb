@@ -4,22 +4,22 @@
               <td data-stat="minutes" class="last-stat-column"><%= line.minutes %></td>
               <td data-stat="field_goals_made_36" class="field-goals"><%= line.field_goals_made_36 %></td>
               <td data-stat="field_goals_attempted_36" class="field-goals last-stat-column"><%= line.field_goals_attempted_36 %></td>
-              <td data-stat="field_goal_percentage" class="field-goal-percentage last-stat-column"><%= format_percentage(line.field_goal_percentage) %></td>
+              <td data-stat="field_goal_percentage" class="field-goal-percentage last-stat-column percentage"><%= format_percentage(line.field_goal_percentage) %></td>
               <td data-stat="threes_made_36" class="threes"><%= line.threes_made_36 %></td>
               <td data-stat="threes_attempted_36" class="threes last-stat-column"><%= line.threes_attempted_36 %></td>
-              <td data-stat="threes_percentage" class="threes-percentage last-stat-column"><%=  format_percentage(line.threes_percentage) %></td>
+              <td data-stat="threes_percentage" class="threes-percentage last-stat-column percentage"><%=  format_percentage(line.threes_percentage) %></td>
               <td data-stat="free_throws_made_36" class="free-throws"><%= line.free_throws_made_36 %></td>
               <td data-stat="free_throws_attempted_36" class="free-throws last-stat-column"><%= line.free_throws_attempted_36 %></td>
-              <td data-stat="free_throw_percentage" class="free-throws-percentage last-stat-column"><%=  format_percentage(line.free_throw_percentage) %></td>
+              <td data-stat="free_throw_percentage" class="free-throws-percentage last-stat-column percentage"><%=  format_percentage(line.free_throw_percentage) %></td>
               <td data-stat="offensive_rebounds_36" class="rebounds"><%= line.offensive_rebounds_36 %></td>
               <td data-stat="defensive_rebounds_36" class="rebounds"><%= line.defensive_rebounds_36 %></td>
               <td data-stat="total_rebounds_36" class="rebounds last-stat-column"><%= line.total_rebounds_36 %></td>
               <td data-stat="assists_36"><%= line.assists_36 %></td>
-              <td data-stat="steals_36"><%= line.steals_36 %></td>
-              <td data-stat="blocks_36"><%= line.blocks_36 %></td>
+              <td data-stat="steals_36" class="steals"><%= line.steals_36 %></td>
+              <td data-stat="blocks_36" class="blocks"><%= line.blocks_36 %></td>
               <td data-stat="turnovers_36"><%= line.turnovers_36 %></td>
               <td data-stat="game_score_36" class=""><%= line.game_score_36 %></td>
-              <td data-stat="personal_fouls_36"><%= line.personal_fouls_36 %></td>
+              <td data-stat="personal_fouls_36" class="fouls"><%= line.personal_fouls_36 %></td>
               <td data-stat="plus_minus_36"><%= line.plus_minus_36 %></td>
               <td data-stat="points_36"><%= line.points_36 %></td>
             </tr>

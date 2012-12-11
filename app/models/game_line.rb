@@ -172,11 +172,11 @@ class GameLine
     end
 
     define_method "#{stat_field}_36" do
-      minutes = attributes["minutes"]
+      minutes = attributes["minutes"] / (is_subtotal ? 5.0 : 1.0)
       if minutes == 0
         "--"
       else
-        round(send(stat_field) * 36.0 / attributes["minutes"])
+        round(send(stat_field) * 36.0 / minutes)
       end
     end
   end

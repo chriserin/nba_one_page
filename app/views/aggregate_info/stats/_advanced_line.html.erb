@@ -1,19 +1,18 @@
             <tr data-player="<%= line.line_name %>" class="<%= line.is_total || line.is_opponent_total ? "total" : "" %> <%= line.is_subtotal ? "subtotal" : "" %>">
               <td data-stat="line_name"><%= line.line_name_or_nickname %></td>
-              <td data-stat="games"><%= line.games_started %>/<%= line.games %></td>
-              <td data-stat="games_started"><%= line.games_started %></td>
-              <td data-stat="minutes"><%= line.minutes %></td>
-              <td data-stat="true_shooting_percentage" class="field-goals"><%= format_percentage(line.true_shooting_percentage) %></td>
-              <td data-stat="effective_field_goal_percentage" class="field-goals"><%= format_percentage(line.effective_field_goal_percentage) %></td>
-              <td data-stat="usage"><%= line.usage %></td>
-              <td data-stat="<%= line.is_total ? "team_" : ""%>offensive_rebound_percentage" class="rebounds"><%= line.is_total ? line.team_offensive_rebound_percentage : line.offensive_rebound_percentage %></td>
-              <td data-stat="<%= line.is_total ? "team_" : ""%>defensive_rebound_percentage" class="rebounds"><%= line.is_total ? line.team_defensive_rebound_percentage : line.defensive_rebound_percentage %></td>
-              <td data-stat="<%= line.is_total ? "team_" : ""%>total_rebound_percentage" class="rebounds"><%= line.is_total ? line.team_total_rebound_percentage : line.total_rebound_percentage %></td>
+              <td data-stat="games"><%= (line.is_total or line.is_subtotal) ? "--" : "#{line.games_started}/#{line.games}" %></td>
+              <td data-stat="minutes"><%= (line.is_total) ? "--" : line.minutes %></td>
+              <td data-stat="true_shooting_percentage" class="adv-percentage"><%= format_percentage(line.true_shooting_percentage) %></td>
+              <td data-stat="effective_field_goal_percentage" class="adv-percentage"><%= format_percentage(line.effective_field_goal_percentage) %></td>
+              <td data-stat="usage"><%= (line.is_total or line.is_subtotal) ? "--" : format_estimate_percentage(line.usage) %></td>
+              <td data-stat="<%= line.is_total ? "team_" : ""%>offensive_rebound_percentage" class="rebounds"><%= format_estimate_percentage(line.is_total ? line.team_offensive_rebound_percentage : line.offensive_rebound_percentage) %></td>
+              <td data-stat="<%= line.is_total ? "team_" : ""%>defensive_rebound_percentage" class="rebounds"><%= format_estimate_percentage(line.is_total ? line.team_defensive_rebound_percentage : line.defensive_rebound_percentage) %></td>
+              <td data-stat="<%= line.is_total ? "team_" : ""%>total_rebound_percentage" class="rebounds"><%= format_estimate_percentage(line.is_total ? line.team_total_rebound_percentage : line.total_rebound_percentage) %></td>
               <td data-stat="game_score" class=""><%= line.game_score %></td>
-              <td data-stat="<%= line.is_total ? "team_" : ""%>assist_percentage"><%= line.is_total ? line.team_assist_percentage : line.assist_percentage %></td>
-              <td data-stat="<%= line.is_total ? "team_" : ""%>steal_percentage"><%= line.is_total ? line.team_steal_percentage : line.steal_percentage %></td>
-              <td data-stat="<%= line.is_total ? "team_" : ""%>block_percentage"><%= line.is_total ? line.team_block_percentage : line.block_percentage %></td>
+              <td data-stat="<%= line.is_total ? "team_" : ""%>assist_percentage"><%=  (line.is_subtotal) ? "--" : (format_estimate_percentage(line.is_total ? line.team_assist_percentage : line.assist_percentage)) %></td>
+              <td data-stat="<%= line.is_total ? "team_" : ""%>steal_percentage"><%= format_estimate_percentage(line.is_total ? line.team_steal_percentage : line.steal_percentage) %></td>
+              <td data-stat="<%= line.is_total ? "team_" : ""%>block_percentage"><%= format_estimate_percentage(line.is_total ? line.team_block_percentage : line.block_percentage) %></td>
               <td data-stat="turnover_percentage"><%= line.turnover_percentage %></td>
-              <td data-stat="pace"><%= line.pace %></td>
+              <td data-stat="pace"><%=  (line.is_total) ? line.pace : "--" %></td>
             </tr>
 

@@ -4,22 +4,22 @@
               <td data-stat="minutes" class="last-stat-column"><%= line.minutes %></td>
               <td data-stat="field_goals_made" class="field-goals"><%= line.field_goals_made %></td>
               <td data-stat="field_goals_attempted" class="field-goals last-stat-column"><%= line.field_goals_attempted %></td>
-              <td data-stat="field_goal_percentage" class="field-goal-percentage last-stat-column"><%= format_percentage(line.field_goal_percentage) %></td>
+              <td data-stat="field_goal_percentage" class="field-goal-percentage last-stat-column percentage"><%= format_percentage(line.field_goal_percentage) %></td>
               <td data-stat="threes_made" class="threes"><%= line.threes_made %></td>
               <td data-stat="threes_attempted" class="threes last-stat-column"><%= line.threes_attempted %></td>
-              <td data-stat="threes_percentage" class="threes-percentage last-stat-column"><%= format_percentage(line.threes_percentage) %></td>
+              <td data-stat="threes_percentage" class="threes-percentage last-stat-column percentage"><%= format_percentage(line.threes_percentage) %></td>
               <td data-stat="free_throws_made" class="free-throws"><%= line.free_throws_made %></td>
               <td data-stat="free_throws_attempted" class="free-throws last-stat-column"><%= line.free_throws_attempted %></td>
-              <td data-stat="free_throw_percentage" class="free-throws-percentage last-stat-column"><%= format_percentage(line.free_throw_percentage) %></td>
+              <td data-stat="free_throw_percentage" class="free-throws-percentage last-stat-column percentage"><%= format_percentage(line.free_throw_percentage) %></td>
               <td data-stat="offensive_rebounds" class="rebounds"><%= line.offensive_rebounds %></td>
               <td data-stat="defensive_rebounds" class="rebounds"><%= line.defensive_rebounds %></td>
               <td data-stat="total_rebounds" class="rebounds last-stat-column"><%= line.total_rebounds %></td>
               <td data-stat="assists"><%= line.assists %></td>
-              <td data-stat="steals"><%= line.steals %></td>
-              <td data-stat="blocks"><%= line.blocks %></td>
+              <td data-stat="steals" class="steals"><%= line.steals %></td>
+              <td data-stat="blocks" class="blocks"><%= line.blocks %></td>
               <td data-stat="turnovers"><%= line.turnovers %></td>
               <td data-stat="game_score" class=""><%= line.game_score %></td>
-              <td data-stat="personal_fouls"><%= line.personal_fouls %></td>
+              <td data-stat="personal_fouls" class="fouls"><%= line.personal_fouls %></td>
               <td data-stat="plus_minus"><%= line.plus_minus %></td>
               <td data-stat="points"><%= line.points %></td>
             </tr>
