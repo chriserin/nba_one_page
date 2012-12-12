@@ -1,6 +1,9 @@
 
 @import "bourbon";
 
+#navigation {
+  background-color: transparentize($core-color, .2);
+}
 
 stat-table-colors {
 
