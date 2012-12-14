@@ -89,15 +89,15 @@ module Nba
     end
 
     def easy_games_left
-      filter_wrapped_games_by_today.count {|game| game.difficulty < 6}
+      filter_wrapped_games_by_today.count {|game| game.difficulty < 5}
     end
 
     def medium_games_left
-      filter_wrapped_games_by_today.count {|game| game.difficulty < 8 and game.difficulty >= 6}
+      filter_wrapped_games_by_today.count {|game| game.difficulty < 7 and game.difficulty >= 5}
     end
 
     def hard_games_left
-      filter_wrapped_games_by_today.count {|game| game.difficulty >= 8}
+      filter_wrapped_games_by_today.count {|game| game.difficulty >= 7}
     end
 
     def avg_difficulty_left
