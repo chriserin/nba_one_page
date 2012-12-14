@@ -13,6 +13,10 @@ module Nba
       select { |standing| standing.division == division_or_conference || standing.conference == division_or_conference}
     end
 
+    def find_team(team)
+      find {|standing| standing.team_name =~ /#{team}/ }
+    end
+
     private
     def calculate_standings(wins_and_losses)
       wins_and_losses.group_by{ |line| line.team }.each_pair do |team, games|

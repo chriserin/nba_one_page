@@ -20,11 +20,9 @@
 //= require moment.js
 //= require jquery.mousewheel.js
 //= require jquery.jscrollpane.js
-//= require flotr2.min.js
-//= require utils/flotr_click_hit.js
+//= require jquery.tablesorter.js
 //= require raphael
 //= require morris
-//= require jquery.tablesorter.js
 //
 //
 // >>>>>>> Require Backbone files <<<<<<<

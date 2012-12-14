@@ -20,14 +20,17 @@ module Nba
     end
 
     def standings
+      return @standings if @standings
       wins_and_losses = GameLine.season(@year).win_loss_totals
-      Nba::Standings.new(wins_and_losses)
+      @standings = Nba::Standings.new(wins_and_losses)
     end
 
-    def schedule(team)
-      results        = GameLine.season(@year).team_results(team)
-      unplayed_games = ScheduledGame.unplayed_team_games(team)
-      Nba::Schedule.new results, unplayed_games, team
+    def schedule(team, standings)
+      results        = standings.find_team(team).games
+      scheduled_games = ScheduledGame.all
+      schedule = Nba::Schedule.new scheduled_games, standings
+      team_unplayed_games = schedule.unplayed_games_for_team(team)
+      Nba::TeamSchedule.new results, team_unplayed_games, team, standings, schedule
     end
 
     def total_statistics_for_team(team)

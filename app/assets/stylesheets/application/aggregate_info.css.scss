@@ -125,7 +125,7 @@ stat-table-style {
 body {background: mix(lighten($core-color, 50%), lighten(gray, 20%));}
 
 nav li {cursor: pointer; }
-
+ul li {list-style: none;}
 
 
 section {
@@ -269,13 +269,33 @@ section.standings {
 }
 
 section.games {
-  div.games-wrapper {
-    div.team-games {
+  div.games-summary {
+    border-bottom: 2px solid black;
+    ul {
       @include span-columns(4);
+      font-size: 16px;
+      padding: 0;
+      margin-bottom: 4px;
+
+      .game-summary-title {
+        font-weight: bold;
+      }
+
+      .game-summary-count {
+        float: right;
+      }
+    }
+  }
+  div.games-wrapper {
+    ul {
+      font-size: 14px;
+      line-height: 20px;
+      @include span-columns(4);
+      padding-left: 0px;
 
       $win-color: transparentize(green, .1);
       $loss-color: transparentize(red, .1);
-      tr:nth-child(even) {
+      li:nth-child(even) {
         $even-color: transparentize(grayscale(lighten($core-color, 30%)), .7);
         &.W {
           background: $even-color;
@@ -285,16 +305,41 @@ section.games {
         }
       }
 
-      tr.W {
-          td:nth-child(3) {
-            color: $win-color;
-          }
+      span.W {
+        color: $win-color;
       }
-      tr.L {
-          td:nth-child(3) {
-            color: $loss-color;
-          }
+      span.L {
+        color: $loss-color;
       }
+
+      span.result, span.game-difficulty {float: right;}
+      span.game-date {
+        margin-right: 5px;
+        font-weight: bold;
+      }
+      span.back-to-back, span.four-in-five, span.opponent-back-to-back, span.opponent-four-in-five {
+        font-size: 10px;
+        color: maroon;
+        margin-left: 4px;
+        margin-right: 4px;
+        float: right;
+      }
+      span.four-in-five {
+        color: blue;
+      }
+
+      span.opponent-back-to-back {
+        color: green;
+      }
+
+      span.opponent-four-in-five {
+        color: orange;
+      }
+
+
+      li.not-difficult {background: #f3f3f3;}
+      li.all-star-game {background: transparentize(blue, .85);}
+      li.first-game { border-bottom: 1px solid black;}
     }
   }
 

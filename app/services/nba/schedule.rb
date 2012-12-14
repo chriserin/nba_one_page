@@ -1,104 +1,250 @@
 module Nba
+
   class Schedule
+    def initialize(games, standings)
+      @team_schedules = {}
+      Nba::TEAMS.keys.each do |team|
+        team_games = games.select {|game| game.home_team == team or game.away_team == team}
+        @team_schedules[team] = Nba::TeamSchedule.new [], team_games, team, standings, self
+      end
+    end
+
+    def find_team_schedule(team)
+      @team_schedules[team]
+    end
+
+    def unplayed_games_for_team(team)
+      @team_schedules[team].filter_games_by_today
+    end
+  end
+
+  class TeamSchedule
     attr_accessor :played_games, :unplayed_games, :team
 
-    def initialize(played_games, unplayed_games, team)
-      self.played_games   = played_games.sort_by {|g| g.game_date}
-      self.unplayed_games = unplayed_games
-      self.team = Nba::TEAMS.keys.find { |key| key =~ /#{team}/}
-    end
+    def initialize(played_games, unplayed_games, team, standings, schedule)
+      @played_games, @unplayed_games, @team = played_games, unplayed_games, team
 
-    def games_with_latest_as_middle(number_of_games)
-      (played_games_for_display(number_of_games) + unplayed_games_for_display(number_of_games)).reverse
-    end
-
-    def date_of_last_game_played
-      if played_games.size > 0
-        played_games.sort_by {|game| game.game_date}.last.game_date
-      else
-        nil
+      @wrapped_played_games = []
+      @wrapped_unplayed_games = []
+      (@played_games + @unplayed_games).sort_by {|g| g.game_date.to_date }.each do |game|
+        previous_schedule_game = games.last
+        if game.class == GameLine
+          @wrapped_played_games.push Nba::ScheduleGame.new(team, game, previous_schedule_game, standings, schedule)
+        else
+          @wrapped_unplayed_games.push Nba::ScheduleGame.new(team, game, previous_schedule_game, standings, schedule)
+        end
       end
     end
 
-    def latest_game_text
-      played_games.last.game_text
+    def display_games
+      @wrapped_played_games.reverse + (@wrapped_unplayed_games + [Nba::AllStarGame]).sort_by{|g| g.game_date}
     end
 
-    def previous_game_text
-      played_games[-1].game_text
+    def games
+      @wrapped_played_games + @wrapped_unplayed_games
     end
 
-    def next_game_text
-      unplayed_games.first.game_text
+    def find_game(game_date)
+      games.find {|game| game.game_date.to_date == game_date.to_date }
     end
 
-    def all_games
-      played_games + unplayed_games
+    def filter_games_by_today
+      @unplayed_games.select {|game| game.game_date.to_date >= Date.today}
     end
 
-    def home_games
-      (played_home_games + unplayed_home_games).reverse
+    def filter_wrapped_games_by_today
+      @wrapped_unplayed_games.select {|game| game.game_date.to_date >= Date.today}
     end
 
-    def filtered_unplayed_games
-      unplayed_games.select {|game| game.game_date > DateTime.parse(played_games.last.game_date) }
+    def back_to_back_count
+      games.count {|game| game.is_back_to_back?}
     end
 
-    def unplayed_home_games
-      filtered_unplayed_games.select {|game| game.home_team == team }
-    end
-    alias upcoming_home_games unplayed_home_games
-
-    def unplayed_away_games
-      filtered_unplayed_games.select {|game| game.away_team == team }
-    end
-    alias upcoming_away_games unplayed_away_games
-
-    def played_home_games
-      played_games.select {|game| game.is_home }
+    def four_in_five_count
+      games.count {|game| game.is_four_in_five?}
     end
 
-    def played_away_games
-      played_games.select {|game| not game.is_home }
+    def opponent_back_to_back_count
+      games.count {|game| game.is_opponent_back_to_back?}
     end
 
-    def away_games
-      (played_away_games + unplayed_away_games).reverse
+    def opponent_four_in_five_count
+      games.count {|game| game.is_opponent_four_in_five?}
     end
 
-    def streak
+    def back_to_back_count_left
+      filter_wrapped_games_by_today.count {|game| game.is_back_to_back? }
     end
 
-    def away_wins; end; def away_losses; end;
-    def home_wins; end; def home_losses; end;
-    def last_twenty_wins; end; def last_twenty_losses; end;
-    def last_ten_wins; end; def last_ten_losses; end;
-    def wins; end; def losses; end;
+    def opponent_back_to_back_count_left
+      filter_wrapped_games_by_today.count {|game| game.is_opponent_back_to_back? }
+    end
 
-    private
+    def home_games_left
+      filter_games_by_today.count {|game| game.home_team == @team }
+    end
 
-    def unplayed_games_for_display(n)
-      games_to_show = n / 2 + n % 2
+    def away_games_left
+      filter_games_by_today.count {|game| game.away_team == @team }
+    end
 
-      if games_to_show > unplayed_games.length
-        unplayed_games
-      elsif games_to_show > played_games.length
-        unplayed_games.first(n - played_games.length)
+    def easy_games_left
+      filter_wrapped_games_by_today.count {|game| game.difficulty < 6}
+    end
+
+    def medium_games_left
+      filter_wrapped_games_by_today.count {|game| game.difficulty < 8 and game.difficulty >= 6}
+    end
+
+    def hard_games_left
+      filter_wrapped_games_by_today.count {|game| game.difficulty >= 8}
+    end
+
+    def avg_difficulty_left
+      avg_games = filter_wrapped_games_by_today
+      (avg_games.map{|game| game.difficulty }.inject(:+) / avg_games.count.to_f).round(1)
+    end
+  end
+
+  class AllStarGame
+    class << self
+      def game_description
+        "ALL-STAR GAME IN HOUSTON"
+      end
+
+      def game; self; end
+
+      def game_date
+        "2013-02-17".to_date
+      end
+
+      def formatted_game_date
+        "02/17"
+      end
+
+      def is_opponent_back_to_back?
+        false
+      end
+
+      def is_opponent_four_in_five?
+        false
+      end
+
+      def is_back_to_back?
+        false
+      end
+
+      def is_four_in_five?
+        false
+      end
+
+      def difficulty
+        ""
+      end
+    end
+  end
+
+  class ScheduleGame
+    attr_accessor :team, :game, :previous_schedule_game
+
+    def initialize(team, game, previous_schedule_game, standings, schedule)
+      @team, @game, @previous_schedule_game, @standings, @schedule = team, game, previous_schedule_game, standings, schedule
+    end
+
+    def game_description
+      if game.class == GameLine
+        @game.game_text
       else
-        unplayed_games.first games_to_show
+        @game.game_text_for team
       end
     end
 
-    def played_games_for_display(n)
-      games_to_show = n / 2
+    def result_description
+      "#{@game.game_result}#{difference_indicator}#{@game.plus_minus.abs}"
+    end
 
-      if games_to_show > unplayed_games.length
-        played_games.last(n - unplayed_games.length)
-      elsif games_to_show > played_games.length
-        played_games
+    def difference_indicator
+      @game.game_result == "W" ? "+" : "-"
+    end
+
+    def difficulty
+      standing = find_opponent_standing
+      result = (6 * standing.win_pct) + (4 * standing.opponent_win_pct) + (is_home? ? 0 : 1) + rested_rating - opponent_rested_rating
+      result.round(1)
+    end
+
+    def rested_rating
+      rating = 0
+      rating += 1 if is_back_to_back?
+      rating += 1 if is_four_in_five?
+      return rating
+    end
+
+    def opponent_rested_rating
+      opponent_game.rested_rating
+    end
+
+    def is_opponent_back_to_back?
+      opponent_game.is_back_to_back?
+    end
+
+    def is_opponent_four_in_five?
+      opponent_game.is_four_in_five?
+    end
+
+    def opponent_game
+      @schedule.find_team_schedule(opponent).find_game(game_date)
+    end
+
+    def is_back_to_back?
+      @previous_schedule_game and @previous_schedule_game.game_date.to_date == @game.game_date.to_date - 1
+    end
+
+    def game_date
+      @game.game_date
+    end
+
+    def formatted_game_date
+      game_date.to_date.strftime("%m/%d")
+    end
+
+    def is_four_in_five?
+      third_previous_schedule_game = get_previous_game(3)
+      return false unless third_previous_schedule_game
+      third_previous_schedule_game.game_date.to_date == @game.game_date.to_date - 4
+    end
+
+    def get_previous_game(number)
+      if number <= 1
+        @previous_schedule_game
       else
-        played_games.last games_to_show
+        return nil unless @previous_schedule_game
+        @previous_schedule_game.get_previous_game(number - 1)
       end
+    end
+
+    def find_opponent_standing
+      @standings.find_team(opponent)
+    end
+
+    def opponent
+      if @game.class == ScheduledGame
+        @game.opponent_of(team)
+      else
+        @game.opponent
+      end
+    end
+
+    def is_home?
+      if @game.class == ScheduledGame
+        @game.home_team == @team
+      else
+        @game.is_home
+      end
+    end
+
+    def inspect
+      @game.to_s
     end
   end
 end

@@ -7,29 +7,16 @@ class ScheduledGame
   field :played, type: Boolean, :default => false
   field :parsed, type: Boolean, :default => false
 
-  def self.next_game_for(team)
-    games(team).first
-  end
-
-  def self.next_game_text_for(team)
-    self.next_game_for(team).game_text_for(team)
-  end
-
   def game_text_for(team)
-
     if team == home_team
-      "#{game_date.strftime("%m/%d")} #{away_team}"
+      "v. #{Nba::TEAMS[away_team][:nickname]}"
     else
-      "#{game_data} @#{home_team}"
+      "@ #{Nba::TEAMS[home_team][:nickname]}"
     end
   end
 
   def game_text
     "#{Nba::TEAMS[away_team][:abbr]} @ #{Nba::TEAMS[home_team][:abbr]}"
-  end
-
-  def game_result
-    "fix me"
   end
 
   def game_date_millis
@@ -40,7 +27,15 @@ class ScheduledGame
     home_team
   end
 
+  def opponent_of(team_name)
+    if(team_name =~ /#{home_team}/)
+      away_team
+    else
+      home_team
+    end
+  end
+
   scope :games,               ->(team) { any_of({home_team: /#{team}/}, {away_team: /#{team}/}) }
-  scope :unplayed,            order_by(:game_date => :asc).where(parsed: false)
+  scope :unplayed,            order_by(:game_date => :asc).where(:game_date.gte => DateTime.now)
   scope :unplayed_team_games, ->(team) { games(team).unplayed }
 end

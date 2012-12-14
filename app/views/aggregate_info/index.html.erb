@@ -31,10 +31,32 @@
         <h1>Games</h1>
         <%= render :partial => 'between_sections_nav' %>
       </div>
-      <div class="section-content games-wrapper clearfix">
-        <%= render :partial => 'aggregate_info/games/team_games', :locals => { :games => @schedule.played_games, :class_label => "all-games" } %>
-        <%= render :partial => 'aggregate_info/games/team_games', :locals => { :games => @schedule.upcoming_home_games.reverse, :class_label => "home-games" } %>
-        <%= render :partial => 'aggregate_info/games/team_games', :locals => { :games => @schedule.upcoming_away_games.reverse, :class_label => "away-games" } %>
+      <div class="section-content clearfix">
+        <div class="games-summary clearfix">
+          <ul>
+            <li><span class="game-summary-title">Back 2 Backs: </span><span class="game-summary-count"> <%= @schedule.back_to_back_count %></span></li>
+            <li><span class="game-summary-title">Four in Fives: </span><span class="game-summary-count"><%= @schedule.four_in_five_count %></span></li>
+            <li><span class="game-summary-title">Opponent Back 2 Backs: </span><span class="game-summary-count"><%= @schedule.opponent_back_to_back_count %></span></li>
+            <li><span class="game-summary-title">Opponent Four in Fives:</span><span class="game-summary-count"> <%= @schedule.opponent_four_in_five_count %></span></li>
+          </ul>
+          <ul>
+            <li><span class="game-summary-title">Home Games Left:</span><span class="game-summary-count"> <%= @schedule.home_games_left %></span></li>
+            <li><span class="game-summary-title">Away Games Left:</span><span class="game-summary-count"> <%= @schedule.away_games_left %></span></li>
+            <li><span class="game-summary-title">Back 2 Backs Left:</span><span class="game-summary-count"> <%= @schedule.back_to_back_count_left %></span></li>
+            <li><span class="game-summary-title">Opponent Back 2 Backs Left:</span><span class="game-summary-count"> <%= @schedule.opponent_back_to_back_count_left %></span></li>
+          </ul>
+          <ul>
+            <li><span class="game-summary-title">Difficulty 0 - 6 Left:</span><span class="game-summary-count"> <%= @schedule.easy_games_left %></span></li>
+            <li><span class="game-summary-title">Difficulty 6 - 8 Left:</span><span class="game-summary-count"> <%= @schedule.medium_games_left %></span></li>
+            <li><span class="game-summary-title">Difficulty 8 and up Left:</span><span class="game-summary-count"> <%= @schedule.hard_games_left %></span></li>
+            <li><span class="game-summary-title">Avg Difficulty Left:</span><span class="game-summary-count"> <%= @schedule.avg_difficulty_left %></span></li>
+          </ul>
+        </div>
+        <div class="games-wrapper">
+          <%= render :partial => 'aggregate_info/games/games_column', :locals => {:start => 0, :finish => 27} %>
+          <%= render :partial => 'aggregate_info/games/games_column', :locals => {:start => 28, :finish => 55} %>
+          <%= render :partial => 'aggregate_info/games/games_column', :locals => {:start => 56, :finish => 83} %>
+        </div>
       </div>
     </section>
 

@@ -1,0 +1,41 @@
+        <ul>
+        <% @schedule.display_games[start..finish].each do |game| %>
+          <% if game.game.class == GameLine %>
+            <li class="game-result <%= game == @schedule.games.first ? "first-game" : ""%>">
+            <span class="game-date">
+              <%= game.formatted_game_date %>
+            </span>
+            <span class="game-description">
+              <%= game.game_description %>
+            </span>
+            <span class="result <%= game.game.game_result %>">
+              <%= game.result_description %>
+            </span>
+            </li>
+          <% else %>
+            <li class="<%= (game.difficulty.to_f < 6 and game.class == Nba::ScheduleGame) ? "not-difficult" : "" %> <%= game == Nba::AllStarGame ? "all-star-game" : "" %>">
+            <span class="game-date">
+              <%= game.formatted_game_date %>
+            </span>
+            <span class="game-description">
+              <%= game.game_description %>
+            </span>
+            <span class="game-difficulty">
+              <%= game.difficulty %>
+            </span>
+            <% if game.is_back_to_back? %>
+              <span class="back-to-back">b2b</span>
+            <% end %>
+            <% if game.is_four_in_five? %>
+              <span class="four-in-five">4i5</span>
+            <% end %>
+            <% if game.is_opponent_back_to_back? %>
+              <span class="opponent-back-to-back">ob2b</span>
+            <% end %>
+            <% if game.is_opponent_four_in_five? %>
+              <span class="opponent-four-in-five">o4i5</span>
+            <% end %>
+            </li>
+          <% end %>
+        <% end %>
+        </ul>
