@@ -26,5 +26,21 @@ module Nba
     def title
       team_lines.first.game_text
     end
+
+    def team_score
+      team_lines.first.team_score
+    end
+
+    def opponent_score
+      team_lines.first.opponent_score
+    end
+
+    def game_date
+      first.game_date
+    end
+
+    def formatted_game_date
+      game_date.to_date.strftime("%m%d")
+    end
   end
 end

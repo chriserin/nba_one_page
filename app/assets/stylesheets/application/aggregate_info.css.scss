@@ -295,15 +295,6 @@ section.games {
 
       $win-color: transparentize(green, .1);
       $loss-color: transparentize(red, .1);
-      li:nth-child(even) {
-        $even-color: transparentize(grayscale(lighten($core-color, 30%)), .7);
-        &.W {
-          background: $even-color;
-        }
-        &.L {
-          background: $even-color;
-        }
-      }
 
       span.W {
         color: $win-color;
@@ -317,49 +308,36 @@ section.games {
         margin-right: 5px;
         font-weight: bold;
       }
-      span.back-to-back, span.four-in-five, span.opponent-back-to-back, span.opponent-four-in-five {
-        font-size: 10px;
-        color: maroon;
-        margin-left: 4px;
-        margin-right: 4px;
-        float: right;
-      }
-      span.four-in-five {
-        color: blue;
-      }
-
-      span.opponent-back-to-back {
-        color: green;
-      }
-
-      span.opponent-four-in-five {
-        color: orange;
-      }
 
 
       li.not-difficult {background: #f3f3f3;}
       li.all-star-game {background: transparentize(blue, .85);}
       li.first-game { border-bottom: 1px solid black;}
     }
+
   }
 
   nav.between-sections {
-
     @include shift(8.5);
   }
 
-  //Jquery scroll pane plugin styling.
-  .scroll-pane {
-    height: 577px;
-    width: 100%;
-    overflow: hidden;
+  span.back-to-back, span.four-in-five, span.opponent-back-to-back, span.opponent-four-in-five {
+    font-size: 10px;
+    color: maroon;
+    margin-left: 4px;
+    margin-right: 4px;
+    float: right;
+  }
+  span.four-in-five {
+    color: blue;
   }
 
-  .jspTrack { background: transparent; }
-  .jspVerticalBar { background: transparent; }
+  span.opponent-back-to-back {
+    color: green;
+  }
 
-  .jspDrag {
-    background: darken($core-color, 100%);
+  span.opponent-four-in-five {
+    color: orange;
   }
 }
 
@@ -389,5 +367,25 @@ section.stat-totals, section.former-players {
     background: $highlite-color !important;
     @include transition-duration(.3s);
     @include transition-timing-function(linear);
+  }
+}
+
+section.links {
+  nav.between-sections {
+    @include shift(8.5);
+  }
+}
+
+section.boxscores-summary {
+  .boxscore-summary {
+    border: 1px solid $core-color;
+    background: lighten($core-color, 40%);
+    margin: 2px;
+    height: 40px;
+    @include span-columns(1.5);
+    div.away-score, div.home-score {height: 20px; line-height: 20px;}
+    div.home-score {}
+    span.team-abbr {float: left; margin-left: 4px;}
+    span.score {float: right; margin-right: 4px;}
   }
 }

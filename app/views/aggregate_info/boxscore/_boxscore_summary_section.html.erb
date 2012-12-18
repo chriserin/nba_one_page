@@ -1,0 +1,13 @@
+      <section class="boxscores-summary">
+        <div class="section-header clearfix">
+          <h1><%= @boxscores.first.first.game_date %></h1>
+          <%= render :partial => 'between_sections_nav' %>
+        </div>
+        <% @boxscores.each do |boxscore| %>
+          <div class="boxscore-summary clear-fix" data-game-date="<%= boxscore.formatted_game_date %>" data-team="<%= boxscore.team.downcase %>">
+            <div class="away-score clear-fix"><span class="team-abbr"><%= boxscore.team %></span><span class="score"><%= boxscore.team_score %></span></div>
+            <div class="home-score clear-fix"><span class="team-abbr"><%= boxscore.opponent %></span><span class="score"><%= boxscore.opponent_score %></span></div>
+          </div>
+        <% end %>
+      </section>
+

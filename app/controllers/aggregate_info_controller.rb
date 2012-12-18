@@ -14,7 +14,6 @@ class AggregateInfoController < ApplicationController
     @schedule    = season.schedule(@team, @standings)
     @boxscore    = season.boxscore(@schedule.played_games.last.game_date, @team)
     @former_player_lines = season.total_statistics_for_former_players(@boxscore.team_lines.first.team)
-
   end
 
   def boxscore
@@ -24,6 +23,12 @@ class AggregateInfoController < ApplicationController
     @boxscore = season.boxscore(team, @schedule.date_of_last_game_played)
 
     render :layout => false
+  end
+
+  def all_boxscores
+    @title     = "boxscores"
+    season     = Nba::Season.new(@year)
+    @boxscores = season.all_yesterdays_boxscores
   end
 
   def clear_cache

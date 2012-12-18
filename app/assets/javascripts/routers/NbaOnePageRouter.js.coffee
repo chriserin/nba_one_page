@@ -4,6 +4,7 @@ jQuery ->
       "": "index"
       "stat_totals/:player/:stat":         "loadTotalsGraph"
       "stat_totals_former_players/:player/:stat": "loadFormerPlayersGraph"
+      "boxscore/:date/:team": "navigateToBoxscore"
 
     index: =>
 
@@ -17,3 +18,8 @@ jQuery ->
 
     loadGraph: (viewName, player, stat) =>
       NbaOnePage.ViewState[viewName].updateSection(player, stat)
+
+    loadBoxscore: (date, team) =>
+
+    navigateToBoxscore: (date, team) =>
+      NbaOnePage.ViewState["section_navigation"].navigateTo("boxscores.#{date}.#{team}")

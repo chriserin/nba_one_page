@@ -22,7 +22,7 @@ module Nba
     "Milwaukee Bucks"        => { :abbr => "MIL", :div => "central",   :conference => "eastern", :nickname => "Bucks" },
     "Minnesota Timberwolves" => { :abbr => "MIN", :div => "northwest", :conference => "western", :nickname => "Timberwolves" },
     "Denver Nuggets"         => { :abbr => "DEN", :div => "northwest", :conference => "western", :nickname => "Nuggets" },
-    "San Antonio Spurs"      => { :abbr => "SAN", :div => "southwest", :conference => "western", :nickname => "Spurs" },
+    "San Antonio Spurs"      => { :abbr => "SAS", :div => "southwest", :conference => "western", :nickname => "Spurs" },
     "Memphis Grizzlies"      => { :abbr => "MEM", :div => "southwest", :conference => "western", :nickname => "Grizzlies" },
     "Phoenix Suns"           => { :abbr => "PHX", :div => "pacific",   :conference => "western", :nickname => "Suns" },
     "New Orleans Hornets"    => { :abbr => "NOH", :div => "southwest", :conference => "western", :nickname => "Hornets" },

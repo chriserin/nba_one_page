@@ -3,18 +3,7 @@
   <div class="content-area clearfix">
 
     <% if @boxscore %>
-      <section class="boxscores">
-        <div class="section-header clearfix">
-          <h1><%= @boxscore.title %></h1>
-          <nav class="section-content">
-          <li class="selected" data-boxscore="team-boxscore"><%= @boxscore.team %></li>
-          <li data-boxscore="opponent-boxscore"><%= @boxscore.opponent %></li>
-          </nav>
-          <%= render :partial => 'between_sections_nav' %>
-        </div>
-        <%= render :partial => 'aggregate_info/boxscore/boxscore', :locals => {:boxscore_lines => @boxscore.team_lines, :class_label => "team-boxscore" } %>
-        <%= render :partial => 'aggregate_info/boxscore/boxscore', :locals => {:boxscore_lines => @boxscore.opponent_lines, :class_label => "opponent-boxscore" } %>
-      </section>
+      <%= render :partial => 'aggregate_info/boxscore/boxscore_section', :locals => {:boxscore => @boxscore, :expanded => false } %>
     <% end %>
 
     <section class="standings">
@@ -34,10 +23,10 @@
       <div class="section-content clearfix">
         <div class="games-summary clearfix">
           <ul>
-            <li><span class="game-summary-title">Back 2 Backs: </span><span class="game-summary-count"> <%= @schedule.back_to_back_count %></span></li>
-            <li><span class="game-summary-title">Four in Fives: </span><span class="game-summary-count"><%= @schedule.four_in_five_count %></span></li>
-            <li><span class="game-summary-title">Opponent Back 2 Backs: </span><span class="game-summary-count"><%= @schedule.opponent_back_to_back_count %></span></li>
-            <li><span class="game-summary-title">Opponent Four in Fives:</span><span class="game-summary-count"> <%= @schedule.opponent_four_in_five_count %></span></li>
+            <li><span class="game-summary-title">Back 2 Backs: </span><span class="game-summary-count"> <%= @schedule.back_to_back_count %></span><span class="back-to-back">b2b</span></li>
+            <li><span class="game-summary-title">Four in Fives: </span><span class="game-summary-count"><%= @schedule.four_in_five_count %></span><span class="four-in-five">4i5</span></li>
+            <li><span class="game-summary-title">Opponent Back 2 Backs: </span><span class="game-summary-count"><%= @schedule.opponent_back_to_back_count %></span><span class="opponent-back-to-back">ob2b</span></li>
+            <li><span class="game-summary-title">Opponent Four in Fives:</span><span class="game-summary-count"> <%= @schedule.opponent_four_in_five_count %></span><span class="opponent-four-in-five">o4i5</span></li>
           </ul>
           <ul>
             <li><span class="game-summary-title">Home Games Left:</span><span class="game-summary-count"> <%= @schedule.home_games_left %></span></li>
@@ -78,6 +67,21 @@
       </div>
       <%= render :partial => 'aggregate_info/stats/stat_totals', :locals => { :lines => @former_player_lines} %>
       <div class="graph-container"></div>
+    </section>
+
+    <section class="links">
+      <div class="section-header clearfix">
+        <h1>Links</h1>
+        <nav class="section-content"></nav>
+        <%= render :partial => 'between_sections_nav' %>
+      </div>
+        <div class="section-content clearfix">
+          <a href="http://www.basketball-reference.com/teams/<%= brk_abbr_replace(Nba::TEAMS[@team][:abbr]) %>/2013.html#advanced::none">basketball reference</a>
+          <a href="http://www.82games.com/1213/1213<%= Nba::TEAMS[@team][:abbr] %>.HTM">82games</a>
+          <a href="http://hoopdata.com/teamgl.aspx?team=<%= abbr_replace(Nba::TEAMS[@team][:abbr]) %>">hoop data</a>
+          <a href="http://www.nba.com/statistics/plusminus/plusminus_sort.jsp?pcomb=5&season=22012&split=9&team=<%= abbr_replace(Nba::TEAMS[@team][:nickname]) %>">nba.com plus minus</a>
+          <a href="http://data.shamsports.com/content/pages/data/salaries/<%= Nba::TEAMS[@team][:nickname].downcase %>.jsp">sham salaries</a>
+        </div>
     </section>
   </div>
 </div>

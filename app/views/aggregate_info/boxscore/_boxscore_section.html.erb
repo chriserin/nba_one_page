@@ -1,0 +1,14 @@
+      <section class="boxscores <%= boxscore.formatted_game_date %> <%= boxscore.team.downcase %> <%= boxscore.opponent.downcase %>">
+        <div class="section-header clearfix">
+          <h1><%= boxscore.title %></h1>
+          <% unless expanded %>
+            <nav class="section-content">
+              <li class="selected" data-boxscore="team-boxscore"><%= boxscore.team %></li>
+              <li data-boxscore="opponent-boxscore"><%= boxscore.opponent %></li>
+            </nav>
+          <% end %>
+          <%= render :partial => 'between_sections_nav' %>
+        </div>
+        <%= render :partial => 'aggregate_info/boxscore/boxscore', :locals => {:boxscore_lines => boxscore.team_lines, :class_label => "team-boxscore", :expanded => expanded } %>
+        <%= render :partial => 'aggregate_info/boxscore/boxscore', :locals => {:boxscore_lines => boxscore.opponent_lines, :class_label => expanded ? "team-boxscore" : "opponent-boxscore", :expanded => expanded } %>
+      </section>

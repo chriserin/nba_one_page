@@ -1,6 +1,7 @@
 NbaOnePage::Application.routes.draw do
-  root :to => "aggregate_info#index"
+  root :to => "aggregate_info#all_boxscores"
   get 'rolled_data/:name/:stat/:year.json', :to => DataRollerApp
+  get 'all_boxscores' => "aggregate_info#all_boxscores"
 
   get 'boxscore/:team/:date' => "aggregate_info#boxscore"
   get 'test/' => "application#test"

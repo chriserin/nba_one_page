@@ -1,0 +1,9 @@
+<div class="full-screen-container">
+
+  <div class="content-area clearfix">
+      <%= render :partial => 'aggregate_info/boxscore/boxscore_summary_section' %>
+    <% @boxscores.each do |boxscore| %>
+      <%= render :partial => 'aggregate_info/boxscore/boxscore_section', :locals => {:boxscore => boxscore, :expanded => true } %>
+    <% end %>
+  </div>
+</div>

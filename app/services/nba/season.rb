@@ -19,6 +19,12 @@ module Nba
       end
     end
 
+    def all_yesterdays_boxscores
+      lines = GameLine.season(@year).game_lines(Date.yesterday).boxscore_sort
+      grouped_lines = lines.group_by {|line| [line.team, line.opponent].sort.join }
+      grouped_lines.values.map {|lines| Nba::Boxscore.new(lines, lines.find{ |line| ! line.is_home}.team)}
+    end
+
     def standings
       return @standings if @standings
       wins_and_losses = GameLine.season(@year).win_loss_totals
