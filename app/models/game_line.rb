@@ -17,11 +17,9 @@ class GameLine
   field :line_name, type: String
   field :position, type: String
   field :team, type: String
-  field :team_abbr, type: String
   field :team_division, type: String
   field :team_conference, type: String
   field :opponent, type: String
-  field :opponent_abbr, type: String
   field :opponent_division, type: String
   field :opponent_conference, type: String
   field :game_date, type: String
@@ -123,6 +121,14 @@ class GameLine
   def self.statistic_total_lines_former_players(team)
     former_players = Nba::FORMER_PLAYERS[team]
     @total_lines = self.in("line_name" => former_players).group_by{ |line| line.line_name }.values.map{ |lines_array| lines_array.inject(:+) }.sort_by { |total_line| total_line.minutes }.reverse
+  end
+
+  def opponent_abbr
+    Nba::TEAMS[opponent][:abbr]
+  end
+
+  def team_abbr
+    Nba::TEAMS[team][:abbr]
   end
 
   def game_text

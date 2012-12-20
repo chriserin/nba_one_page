@@ -51,7 +51,6 @@ class NbaBoxscoreConverter < ScraperStep
         game_line_properties[:team]                  = team = (is_home(section) ? home_team : away_team)
         unless Nba::TEAMS[team]; return; end;
 
-        game_line_properties[:team_abbr]             = Nba::TEAMS[team][:abbr]
         game_line_properties[:team_division]         = Nba::TEAMS[team][:div]
         game_line_properties[:team_conference]       = Nba::TEAMS[team][:conference]
         game_line_properties[:game_date]             = game_date.to_date.strftime("%Y-%m-%d")
@@ -59,7 +58,6 @@ class NbaBoxscoreConverter < ScraperStep
         game_line_properties[:is_total]              = is_total = (section == HOME_TOTALS or section == AWAY_TOTALS)
         game_line_properties[:is_opponent_total]     = false
         game_line_properties[:opponent]              = opp_team = (is_home(section) ? away_team : home_team)
-        game_line_properties[:opponent_abbr]         = Nba::TEAMS[opp_team][:abbr]
         game_line_properties[:opponent_division]     = Nba::TEAMS[opp_team][:div]
         game_line_properties[:opponent_conference]   = Nba::TEAMS[team][:conference]
         game_line_properties[:is_home]               = (is_home(section))
@@ -119,11 +117,9 @@ class NbaBoxscoreConverter < ScraperStep
       sub_total = lines.inject(:+)
       sub_total.line_name = get_total_name(section)
       lines.first.copy_fields(sub_total, :team,
-                                      :team_abbr,
                                       :team_division,
                                       :team_conference,
                                       :opponent,
-                                      :opponent_abbr,
                                       :opponent_division,
                                       :opponent_conference,
                                       :game_date,
