@@ -56,4 +56,4 @@ jQuery ->
       $(@el).find("tbody.#{type}, thead.#{type}").addClass("selected")
 
     defaultClick: () ->
-      $(@el).find(".totals tr:nth-child(3) td:nth-child(7)").trigger("click")
+      $(@el).find(".totals tr:nth-child(3) td:nth-child(16)").trigger("click")
