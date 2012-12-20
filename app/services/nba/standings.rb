@@ -14,15 +14,19 @@ module Nba
     end
 
     def find_team(team)
-      find {|standing| standing.team_name =~ /#{team}/ }
+      find { |standing| standing.team_name =~ /#{team}/ }
+    end
+
+    def team_summaries
+      map { |standing| standing.games_total }
     end
 
     private
     def calculate_standings(wins_and_losses)
-      wins_and_losses.group_by{ |line| line.team }.each_pair do |team, games|
+      wins_and_losses.group_by { |line| line.team }.each_pair do |team, games|
         push Nba::Standing.new(team, games, self)
       end
-      sort_by! {|standing| standing.win_pct }
+      sort_by! { |standing| standing.win_pct }
       reverse!
     end
   end

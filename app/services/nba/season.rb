@@ -19,8 +19,8 @@ module Nba
       end
     end
 
-    def all_yesterdays_boxscores
-      lines = GameLine.season(@year).game_lines(Date.yesterday).boxscore_sort
+    def all_yesterdays_boxscores(date)
+      lines = GameLine.season(@year).game_lines(date || Date.yesterday).boxscore_sort
       grouped_lines = lines.group_by {|line| [line.team, line.opponent].sort.join }
       grouped_lines.values.map {|lines| Nba::Boxscore.new(lines, lines.find{ |line| ! line.is_home}.team)}
     end

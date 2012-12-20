@@ -1,19 +1,30 @@
 class AggregateInfoController < ApplicationController
-  caches_page :index
+  caches_page :index, :team_info
 
-  def index
+  def team_info
     @alternate_style = params[:alt] || true
 
     team_param = params[:team] || "Bulls"
     @year = params[:year] || "2013"
     @team = Nba::TEAMS.keys.find { |key| key =~ /#{team_param}/ }
 
-    season       = Nba::Season.new(@year)
-    @total_lines = season.total_statistics_for_team(@team)
-    @standings   = season.standings
-    @schedule    = season.schedule(@team, @standings)
-    @boxscore    = season.boxscore(@schedule.played_games.last.game_date, @team)
+    season               = Nba::Season.new(@year)
+    @total_lines         = season.total_statistics_for_team(@team)
+    @standings           = season.standings
+    @schedule            = season.schedule(@team, @standings)
+    @boxscore            = season.boxscore(@schedule.played_games.last.game_date, @team)
     @former_player_lines = season.total_statistics_for_former_players(@boxscore.team_lines.first.team)
+  end
+
+  def index
+    date        = params[:date]
+    date        = date.to_date if date
+    @year       = params[:year] || "2013"
+
+    @title      = "index"
+    season      = Nba::Season.new(@year)
+    @standings  = season.standings
+    @opponent_totals = GameLine.season(@year).opponent_totals.group_by { |line| line.team }.map { |team, lines| lines.inject(:+) }
   end
 
   def boxscore
@@ -26,9 +37,14 @@ class AggregateInfoController < ApplicationController
   end
 
   def all_boxscores
-    @title     = "boxscores"
-    season     = Nba::Season.new(@year)
-    @boxscores = season.all_yesterdays_boxscores
+    date        = params[:date]
+    date        = date.to_date if date
+    @year       = params[:year] || "2013"
+
+    @title      = "boxscores"
+    season      = Nba::Season.new(@year)
+    @boxscores  = season.all_yesterdays_boxscores(date)
+    @standings  = season.standings
   end
 
   def clear_cache

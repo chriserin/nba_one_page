@@ -1,87 +1,9 @@
 <div class="full-screen-container">
 
   <div class="content-area clearfix">
-
-    <% if @boxscore %>
-      <%= render :partial => 'aggregate_info/boxscore/boxscore_section', :locals => {:boxscore => @boxscore, :expanded => false } %>
-    <% end %>
-
-    <section class="standings">
-      <div class="section-header clearfix">
-        <h1>Standings</h1>
-        <nav class="section-content"><li class="<%= (Nba::TEAMS[@team][:conference] == "eastern" ) ? "selected": "" %>">eastern</li><li class="<%= (Nba::TEAMS[@team][:conference] == "western" ) ? "selected": "" %>">western</li></nav>
-        <%= render :partial => 'between_sections_nav' %>
-      </div>
-      <%= render 'aggregate_info/standings/standings' %>
-    </section>
-
-    <section class="games">
-      <div class="section-header clearfix">
-        <h1>Games</h1>
-        <%= render :partial => 'between_sections_nav' %>
-      </div>
-      <div class="section-content clearfix">
-        <div class="games-summary clearfix">
-          <ul>
-            <li><span class="game-summary-title">Back 2 Backs: </span><span class="game-summary-count"> <%= @schedule.back_to_back_count %></span><span class="back-to-back">b2b</span></li>
-            <li><span class="game-summary-title">Four in Fives: </span><span class="game-summary-count"><%= @schedule.four_in_five_count %></span><span class="four-in-five">4i5</span></li>
-            <li><span class="game-summary-title">Opponent Back 2 Backs: </span><span class="game-summary-count"><%= @schedule.opponent_back_to_back_count %></span><span class="opponent-back-to-back">ob2b</span></li>
-            <li><span class="game-summary-title">Opponent Four in Fives:</span><span class="game-summary-count"> <%= @schedule.opponent_four_in_five_count %></span><span class="opponent-four-in-five">o4i5</span></li>
-          </ul>
-          <ul>
-            <li><span class="game-summary-title">Home Games Left:</span><span class="game-summary-count"> <%= @schedule.home_games_left %></span></li>
-            <li><span class="game-summary-title">Away Games Left:</span><span class="game-summary-count"> <%= @schedule.away_games_left %></span></li>
-            <li><span class="game-summary-title">Back 2 Backs Left:</span><span class="game-summary-count"> <%= @schedule.back_to_back_count_left %></span></li>
-            <li><span class="game-summary-title">Opponent Back 2 Backs Left:</span><span class="game-summary-count"> <%= @schedule.opponent_back_to_back_count_left %></span></li>
-          </ul>
-          <ul>
-            <li><span class="game-summary-title">Difficulty 0 - 5 Left:</span><span class="game-summary-count"> <%= @schedule.easy_games_left %></span></li>
-            <li><span class="game-summary-title">Difficulty 5 - 7 Left:</span><span class="game-summary-count"> <%= @schedule.medium_games_left %></span></li>
-            <li><span class="game-summary-title">Difficulty 7 and up Left:</span><span class="game-summary-count"> <%= @schedule.hard_games_left %></span></li>
-            <li><span class="game-summary-title">Avg Difficulty Left:</span><span class="game-summary-count"> <%= @schedule.avg_difficulty_left %></span></li>
-          </ul>
-        </div>
-        <div class="games-wrapper">
-          <%= render :partial => 'aggregate_info/games/games_column', :locals => {:start => 0, :finish => 27} %>
-          <%= render :partial => 'aggregate_info/games/games_column', :locals => {:start => 28, :finish => 55} %>
-          <%= render :partial => 'aggregate_info/games/games_column', :locals => {:start => 56, :finish => 83} %>
-        </div>
-      </div>
-    </section>
-
-    <section class="stat-totals">
-      <div class="section-header clearfix">
-        <h1>Stat Totals</h1>
-        <nav class="section-content"><li class="selected" data-type="totals">Totals</li><li data-type="per-game">Per Game</li><li data-type="per-36">Per 36 Mins</li><li data-type="advanced">Advanced</li></nav>
-        <%= render :partial => 'between_sections_nav' %>
-      </div>
-      <%= render :partial => 'aggregate_info/stats/stat_totals', :locals => { :lines => @total_lines} %>
-      <div class="graph-container"></div>
-    </section>
-
-    <section class="former-players">
-      <div class="section-header clearfix">
-        <h1>Former Players</h1>
-        <nav class="section-content"><li class="selected" data-type="totals">Totals</li><li data-type="per-game">Per Game</li><li data-type="per-36">Per 36 Mins</li><li data-type="advanced">Advanced</li></nav>
-        <%= render :partial => 'between_sections_nav' %>
-      </div>
-      <%= render :partial => 'aggregate_info/stats/stat_totals', :locals => { :lines => @former_player_lines} %>
-      <div class="graph-container"></div>
-    </section>
-
-    <section class="links">
-      <div class="section-header clearfix">
-        <h1>Links</h1>
-        <nav class="section-content"></nav>
-        <%= render :partial => 'between_sections_nav' %>
-      </div>
-        <div class="section-content clearfix">
-          <a href="http://www.basketball-reference.com/teams/<%= brk_abbr_replace(Nba::TEAMS[@team][:abbr]) %>/2013.html#advanced::none">basketball reference</a>
-          <a href="http://www.82games.com/1213/1213<%= Nba::TEAMS[@team][:abbr] %>.HTM">82games</a>
-          <a href="http://hoopdata.com/teamgl.aspx?team=<%= abbr_replace(Nba::TEAMS[@team][:abbr]) %>">hoop data</a>
-          <a href="http://www.nba.com/statistics/plusminus/plusminus_sort.jsp?pcomb=5&season=22012&split=9&team=<%= abbr_replace(Nba::TEAMS[@team][:nickname]) %>">nba.com plus minus</a>
-          <a href="http://data.shamsports.com/content/pages/data/salaries/<%= Nba::TEAMS[@team][:nickname].downcase %>.jsp">sham salaries</a>
-        </div>
-    </section>
+    <%= render :partial => 'aggregate_info/team_index' %>
+    <%= render :partial => 'aggregate_info/stats/stat_totals_section', :locals => {:title => "Team Totals", :lines => @standings.team_summaries } %>
+    <%= render :partial => 'aggregate_info/stats/stat_totals_section', :locals => {:title => "Opponent Totals", :lines => @opponent_totals} %>
   </div>
 </div>
+

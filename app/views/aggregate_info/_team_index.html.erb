@@ -1,0 +1,22 @@
+      <section class="links plain">
+        <div class="section-header clearfix">
+          <%= render :partial => 'between_sections_nav' %>
+        </div>
+        <div class="section-content">
+          <% Nba::TeamsWrapper.conferences.each do |conference| %>
+            <ol class="conference">
+              <li class="conference"><%= conference %></li>
+              <% Nba::TeamsWrapper.divisions_by_conference(conference).each do |division| %>
+                <ol class="division">
+                  <li class="division"><%= division %></li>
+                  <% Nba::TeamsWrapper.teams_by_division(division).sort.each do |team| %>
+                    <li>
+                    <a href="/<%= Nba::TEAMS[team][:nickname] %>"><%= team %></li></a>
+                    </li>
+                  <% end %>
+                </ol>
+              <% end %>
+            </ol>
+          <% end %>
+        </div>
+      </section>

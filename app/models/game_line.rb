@@ -82,6 +82,7 @@ class GameLine
   scope :opponent_lines,  ->(team) { where(:opponent => /#{team}/) }
   scope :game_lines,      ->(game_date) { where(:game_date => game_date) }
   scope :totals,          where("is_total" => true, "is_opponent_total" => false)
+  scope :opponent_totals, where("is_total" => true, "is_opponent_total" => true)
   scope :win_loss_totals, totals
   scope :results,         totals
   scope :team_results,    ->(team) { where(:team => /#{team}/).totals }
@@ -106,7 +107,6 @@ class GameLine
     opponent_lines(team).game_lines(game_date).boxscore_sort
   end
 
-#order_by(:games_started => :desc, :is_total => :asc, :is_opponent_total => :asc, :is_subtotal => :asc, :minutes => :desc)
   def self.statistic_total_lines(team)
     @total_lines = team_lines(team).group_by{ |line| line.line_name }.values.map{ |lines_array| lines_array.inject(:+) }
     @total_lines = @total_lines.sort_by { |line| line.games_started }.reverse
@@ -114,6 +114,10 @@ class GameLine
       line.topfive = true unless line.is_subtotal
     end
     return @total_lines
+  end
+
+  def self.team_totals
+    totals.group_by { |line| line.line_name }.values.map { |lines_array| lines_array.inject(:+) }
   end
 
   def self.statistic_total_lines_former_players(team)

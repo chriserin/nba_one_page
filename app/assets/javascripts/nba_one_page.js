@@ -21,13 +21,20 @@ window.NbaOnePage = {
     NbaOnePage.ViewState["stat_totals_former_players"] = factory.create(NbaOnePage.Views.StatTotals, { 'el': 'section.former-players', 'eventNameSpace': 'stat_totals_former_players'})
     NbaOnePage.ViewState["graph_container_former_players"] = factory.create(NbaOnePage.Views.GraphContainer, {'year': year, 'el': 'section.former-players .graph-container', 'eventNameSpace': 'stat_totals_former_players'})
 
+    NbaOnePage.ViewState["team_totals"] = factory.create(NbaOnePage.Views.StatTotals, { 'el': 'section.team-totals', 'eventNameSpace': 'team_totals'})
+    NbaOnePage.ViewState["graph_container_team_totals"] = factory.create(NbaOnePage.Views.GraphContainer, {'year': year, 'el': 'section.team-totals .graph-container', 'eventNameSpace': 'team_totals'})
+    NbaOnePage.ViewState["opponent_totals"] = factory.create(NbaOnePage.Views.StatTotals, { 'el': 'section.opponent-totals', 'eventNameSpace': 'opponent_totals'})
+    NbaOnePage.ViewState["graph_container_opponent_totals"] = factory.create(NbaOnePage.Views.GraphContainer, {'year': year, 'el': 'section.opponent-totals .graph-container', 'eventNameSpace': 'opponent_totals'})
+
     NbaOnePage.ViewState["stat_totals_former_players"].defaultClick()
     NbaOnePage.ViewState["stat_totals"].defaultClick()
+    NbaOnePage.ViewState["team_totals"].defaultClick()
+    NbaOnePage.ViewState["opponent_totals"].defaultClick()
 
-    //$(".stat-totals table").tablesorter()
     $(".former-players table").tablesorter()
     $(".standings table").tablesorter()
-
+    $(".team-totals table").tablesorter()
+    $(".opponent-totals table").tablesorter()
 
     if (!Backbone.history.started) {
       Backbone.history.start();

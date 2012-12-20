@@ -1,4 +1,4 @@
-    <div class="section-content eastern standings clearfix <%= (Nba::TEAMS[@team][:conference] == "eastern" ) ? "selected": "" %>">
+    <div class="section-content eastern standings clearfix <%= ( @team.blank? or Nba::TEAMS[@team][:conference] == "eastern" ) ? "selected": "" %>">
 
       <%= render :partial => 'aggregate_info/standings/division_standings', :locals => { :division => Nba::Organization::CENTRAL_DIVISION } %>
       <%= render :partial => 'aggregate_info/standings/division_standings', :locals => { :division => Nba::Organization::ATLANTIC_DIVISION } %>

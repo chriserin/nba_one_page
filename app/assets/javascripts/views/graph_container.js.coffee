@@ -13,14 +13,20 @@ jQuery ->
       @getData(player, stat)
 
     getData: (player = "Derrick Rose", stat = "points") ->
-      $.getJSON "rolled_data/#{encodeURIComponent(player)}/#{stat}/#{@year}.json", (data) =>
+      $.getJSON "/rolled_data/#{encodeURIComponent(player)}/#{stat}/#{@year}.json", (data) =>
         @render_graph(data, stat)
+        @setTitle(player, stat)
+
+    setTitle: (player, stat) ->
+      stat_without_underscores = stat.replace(/_/g, " ")
+      $(@el).find(".graph-specifics .player").text("#{player}")
+      $(@el).find(".graph-specifics .stat").text("#{stat_without_underscores}")
 
     render_graph: (data, stat) ->
-      $(@el).empty()
+      $(@el).find(".graph").empty()
       stat_without_underscores = stat.replace(/_/g, " ")
       Morris.Line
-        element: @el
+        element: $(@el).find(".graph").get(0)
         data: data
         xkey: 'date'
         ykeys: ['averaged_data']

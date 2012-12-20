@@ -1,15 +1,21 @@
-<% lines.topfive.each do |line| %>
-  <%= render :partial => "aggregate_info/stats/#{partial_name}", :locals => {:line => line} %>
-<% end %>
-<% lines.starters_subtotal.each do |line| %>
-  <%= render :partial => "aggregate_info/stats/#{partial_name}", :locals => {:line => line} %>
-<% end %>
-<% lines.outside_topfive.each do |line| %>
-  <%= render :partial => "aggregate_info/stats/#{partial_name}", :locals => {:line => line} %>
-<% end %>
-<% lines.bench_subtotal.each do |line| %>
-  <%= render :partial => "aggregate_info/stats/#{partial_name}", :locals => {:line => line} %>
-<% end %>
-<% lines.totals.each do |line| %>
-  <%= render :partial => "aggregate_info/stats/#{partial_name}", :locals => {:line => line} %>
+<% if lines.class == Nba::TeamTotals %>
+  <% lines.topfive.each do |line| %>
+    <%= render :partial => "aggregate_info/stats/#{partial_name}", :locals => {:line => line} %>
+  <% end %>
+  <% lines.starters_subtotal.each do |line| %>
+    <%= render :partial => "aggregate_info/stats/#{partial_name}", :locals => {:line => line} %>
+  <% end %>
+  <% lines.outside_topfive.each do |line| %>
+    <%= render :partial => "aggregate_info/stats/#{partial_name}", :locals => {:line => line} %>
+  <% end %>
+  <% lines.bench_subtotal.each do |line| %>
+    <%= render :partial => "aggregate_info/stats/#{partial_name}", :locals => {:line => line} %>
+  <% end %>
+  <% lines.totals.each do |line| %>
+    <%= render :partial => "aggregate_info/stats/#{partial_name}", :locals => {:line => line} %>
+  <% end %>
+<% else %>
+  <% lines.each do |line| %>
+    <%= render :partial => "aggregate_info/stats/#{partial_name}", :locals => {:line => line} %>
+  <% end %>
 <% end %>

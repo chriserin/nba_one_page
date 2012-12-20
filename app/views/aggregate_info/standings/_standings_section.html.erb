@@ -1,0 +1,10 @@
+    <% conference = nil; conference = Nba::TEAMS[@team][:conference] if @team %>
+    <section class="standings">
+      <div class="section-header clearfix">
+        <h1>Standings</h1>
+        <nav class="section-content"><li class="<%= (conference and conference == "eastern" ) ? "selected": "" %>">eastern</li><li class="<%= (conference and conference == "western" ) ? "selected": "" %>">western</li></nav>
+        <%= render :partial => 'between_sections_nav' %>
+      </div>
+      <%= render 'aggregate_info/standings/standings' %>
+    </section>
+

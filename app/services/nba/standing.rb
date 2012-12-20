@@ -3,13 +3,13 @@ module Nba
     attr_accessor :standings, :wins, :losses, :team_name, :games, :games_total, :opponents
 
     def initialize(team_name, games, standings)
-      @team_name = team_name
-      @wins      = count(games, "W")
-      @losses    = count(games, "L")
-      @standings = standings
+      @team_name   = team_name
+      @wins        = count(games, "W")
+      @losses      = count(games, "L")
+      @standings   = standings
       @games_total = games.inject(:+)
-      @opponents = collect_opponents(games)
-      @games = games
+      @opponents   = collect_opponents(games)
+      @games       = games
     end
 
     def pct
@@ -29,7 +29,7 @@ module Nba
     end
 
     def collect_opponents(games)
-      games.map {|g| g.opponent}
+      games.map { |g| g.opponent }
     end
 
     def opponents_combined_record
@@ -39,15 +39,15 @@ module Nba
     end
 
     def opponent_records
-      @opponents.map {|opponent| standings.find {|s| s.team_name == opponent} }
+      @opponents.map { |opponent| standings.find {|s| s.team_name == opponent} }
     end
 
     def opponent_wins(records)
-      records.map {|record| record.wins }.inject(:+)
+      records.map { |record| record.wins }.inject(:+)
     end
 
     def opponent_losses(records)
-      records.map {|record| record.losses }.inject(:+)
+      records.map { |record| record.losses }.inject(:+)
     end
 
     def opponent_win_pct

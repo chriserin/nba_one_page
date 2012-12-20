@@ -1,7 +1,8 @@
             <tr data-player="<%= line.line_name %>" class="<%= line.is_total || line.is_opponent_total ? "total" : "" %> <%= line.is_subtotal ? "subtotal" : "" %>">
               <td data-stat="line_name"><%= line.line_name_or_nickname %></td>
-              <td data-stat="games"><%= line.games_started %>/<%= line.games %></td>
-              <td data-stat="minutes" class="last-stat-column"><%= line.minutes %></td>
+              <td data-stat="games" class="games-started"><%= line.games_started %>/<%= line.games %></td>
+              <td data-stat="games" class="games"><%= line.games %></td>
+              <td data-stat="minutes" class="last-stat-column minutes"><%= line.minutes %></td>
               <td data-stat="field_goals_made" class="field-goals"><%= line.field_goals_made %></td>
               <td data-stat="field_goals_attempted" class="field-goals last-stat-column"><%= line.field_goals_attempted %></td>
               <td data-stat="field_goal_percentage" class="field-goal-percentage last-stat-column percentage"><%= format_percentage(line.field_goal_percentage) %></td>
@@ -18,7 +19,7 @@
               <td data-stat="steals" class="steals"><%= line.steals %></td>
               <td data-stat="blocks" class="blocks"><%= line.blocks %></td>
               <td data-stat="turnovers"><%= line.turnovers %></td>
-              <td data-stat="game_score" class=""><%= line.game_score %></td>
+              <td data-stat="game_score" class="game-score"><%= line.game_score %></td>
               <td data-stat="personal_fouls" class="fouls"><%= line.personal_fouls %></td>
               <td data-stat="plus_minus"><%= line.plus_minus %></td>
               <td data-stat="points"><%= line.points %></td>

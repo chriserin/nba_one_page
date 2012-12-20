@@ -1,7 +1,10 @@
 <div class="full-screen-container">
 
   <div class="content-area clearfix">
-      <%= render :partial => 'aggregate_info/boxscore/boxscore_summary_section' %>
+    <%= render :partial => 'aggregate_info/boxscore/boxscore_summary_section' %>
+    <%= render :partial => 'aggregate_info/standings/standings_section' %>
+    <%= render :partial => 'aggregate_info/stats/stat_totals_section', :locals => {:title => "Team Totals", :lines => @standings.team_summaries } %>
+
     <% @boxscores.each do |boxscore| %>
       <%= render :partial => 'aggregate_info/boxscore/boxscore_section', :locals => {:boxscore => boxscore, :expanded => true } %>
     <% end %>

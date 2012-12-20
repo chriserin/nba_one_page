@@ -98,11 +98,11 @@ module Nba
     end
 
     def offensive_rating
-      (points.to_f / possessions.to_f) * 100
+      ((points.to_f / possessions.to_f) * 100).round 2
     end
 
     def defensive_rating
-      (opponent_score.to_f / possessions.to_f) * 100
+      ((opponent_score.to_f / possessions.to_f) * 100).round 2
     end
 
     def pace
