@@ -4,16 +4,18 @@
         <nav class="section-content"><li class="selected" data-type="totals">Totals</li><li data-type="per-game">Per Game</li><li data-type="per-36" class="per-36">Per 36 Mins</li><li data-type="advanced">Advanced</li></nav>
         <%= render :partial => 'between_sections_nav' %>
       </div>
-      <%= render :partial => 'aggregate_info/stats/stat_totals', :locals => { :lines => lines } %>
-      <div>
-        <div class="graph-container">
-          <div class="graph"></div>
-          <div class="graph-title">
-            <span class="graph-specifics">
-              <span class="player"></span>
-              <span class="stat"></span>
-            </span>
-            <span> 10 Game Rolling Average</span>
+      <div class="section-content stat-totals">
+        <%= render :partial => 'aggregate_info/stats/stat_totals', :locals => { :lines => lines } %>
+        <div>
+          <div class="graph-container">
+            <div class="graph"></div>
+            <div class="graph-title">
+              <span class="graph-specifics">
+                <span class="player"></span>
+                <span class="stat"></span>
+              </span>
+              <span> 10 Game Rolling Average</span>
+            </div>
           </div>
         </div>
       </div>

@@ -142,33 +142,33 @@ stat-table-style {
   @include outer-container;
 }
 
-body {background: lighten(mix($core-color, #fefefe, 20%), 10%);}
+$body-color: lighten(mix($core-color, #cecece, 15%), 17%);
+body {background: $body-color;}
 
 nav li {cursor: pointer; }
 ul li {list-style: none;}
 
 
 section {
+  $section-border-color: #bbbbbb;
   width: 100%;
   margin: 26px 0;
+  padding-bottom: 0px;
 
-  border-left: solid #cecece 1px;
-  border-right: solid #cecece 1px;
-  border-bottom: solid #cecece 1px;
+  border: 0;
   border-top: 0px;
   @include border-radius(2px);
   background: white;
   overflow: hidden;
-  padding-bottom: 6px;
 
   .section-header {
     @include fill-parent;
-    background-color: lighten(grayscale($core-color), 40%);//$core-color;
+    background-color: $body-color;//$core-color;
     color: $core-color;//white;
-    padding-top: 2px;
+    padding-top: 0px;
     padding-bottom: 0px;
     padding-left: 0px;
-    border-bottom: 1px solid black;
+    border-bottom: 1px solid white;
     height: 29px;
 
     h1 {
@@ -179,13 +179,16 @@ section {
       margin-bottom: 0px;
       font-family: "Times New Roman", serif;
       text-transform: uppercase;
-      padding-left: 4px;
+      padding: 2px 4px;
+      background-color: $core-color;
+      color: white;
     }
 
     nav.section-content {
       float: left;
       display: inline;
       color: black;
+
 
       @include shift(2.5);
       @include span-columns(6);
@@ -196,19 +199,22 @@ section {
         @include span-columns(1.5 of 6);
         @include box-shadow(0 0 0 0 transparent);
         color: black;
-        @include transition-duration(.1s);
-        @include transition-timing-function(linear);
+        //@include transition-duration(.1s);
+        //@include transition-timing-function(linear);
         padding-top: 3px;
         height: 28px;
         font-weight: bold;
-        margin-top: -2px;
+        margin-top: 1px;
       }
 
       li.selected {
-        background: $core-color;
+        background: white;//$core-color;
         @include box-shadow(0 0 0 0 transparent);
         border: 0px solid white;
-        color: white;
+        color: black;
+        border-top: solid $section-border-color 1px;
+        border-left: solid $section-border-color 1px;
+        border-right: solid $section-border-color 1px;
       }
     }
 
@@ -249,7 +255,13 @@ section {
   div.section-content {
     background: white;
     padding: 0px 0px;
-    margin-top: 6px;
+    padding-bottom: 6px;
+    margin-top: -1px;
+
+    border-top: solid $section-border-color 1px;
+    border-left: solid $section-border-color 1px;
+    border-right: solid $section-border-color 1px;
+    border-bottom: solid $section-border-color 1px;
   }
 }
 
@@ -268,6 +280,7 @@ section.boxscores {
   }
   .section-content {
     margin-bottom: -1px;
+    padding-bottom: 0px;
   }
   nav.between-sections {
     @include shift(1.5);
