@@ -35,4 +35,5 @@
 //= require ./views/view_factory
 //= require_tree ./views
 //= require_tree ./routers
+//= require_tree ./morris
 // require_tree ../templates

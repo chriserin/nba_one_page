@@ -34,12 +34,19 @@ jQuery ->
         labels: [stat_without_underscores]
         lineColors: ['#C1261B']
         continuousLine: false
-        hoverLabelFormat: (label, data) ->
-          game_date = moment(data.date).format("MM/DD")
-          if(data['averaged_data'])
-            moment(data.start_date).format("MM/DD") + " - " + game_date
+        hoverCallback: (index, options) =>
+          game_date = moment(data[index].date).format("MM/DD")
+          if(data[index]['averaged_data'])
+            title = moment(data[index].start_date).format("MM/DD") + " - " + game_date
           else
-            "#{game_date} DNP"
+            title = "#{game_date} DNP"
+          content = "<div class='morris-hover-row-label'>#{title}</div>"
+          content += """
+            <div class='morris-hover-point' style='color: #C1261B'>
+              #{stat_without_underscores}:
+              #{data[index]['averaged_data']}
+            </div>
+          """
 
         dateFormat: (d) -> moment(d).format("MM/DD")
         xLabelFormat: (d) -> moment(d).format("MM/DD")
