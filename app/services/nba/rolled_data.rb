@@ -55,6 +55,9 @@ module Nba
       @data_divisor += 1
       if @formula != "game_score"
         @averaged_data = send(@formula)
+        if @averaged_data.class == String
+          @averaged_data = nil
+        end
       else
         @averaged_data = divide_by_games_played(send(@formula))
       end

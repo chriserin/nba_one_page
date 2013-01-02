@@ -44,7 +44,7 @@ jQuery ->
           content += """
             <div class='morris-hover-point' style='color: #C1261B'>
               #{stat_without_underscores}:
-              #{data[index]['averaged_data']}
+              #{data[index]['averaged_data'] || "-"}
             </div>
           """
 
