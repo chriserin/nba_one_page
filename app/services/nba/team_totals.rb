@@ -8,6 +8,10 @@ module Nba
       select { |line| line.is_total }
     end
 
+    def difference_totals
+      select { |line| line.is_difference_total }
+    end
+
     def bench_subtotal
       select { |line| line.is_subtotal && line.line_name =~ /Bench/ }
     end
@@ -21,7 +25,8 @@ module Nba
     end
 
     def outside_topfive
-      select {|line| !line.topfive && !line.is_total && !line.is_subtotal}.sort_by {|l| l.minutes }.reverse
+      select {|line| !line.topfive && !line.is_total && !line.is_subtotal && !line.is_difference_total}.sort_by {|l| l.minutes }.reverse
+
     end
   end
 end

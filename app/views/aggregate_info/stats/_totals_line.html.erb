@@ -1,7 +1,8 @@
-            <tr data-player="<%= line.line_name %>" class="<%= line.is_total || line.is_opponent_total ? "total" : "" %> <%= line.is_subtotal ? "subtotal" : "" %>">
+            <tr data-player="<%= line.line_name %>" class="<%= line.is_total || line.is_opponent_total || line.is_difference_total ? "total" : "" %> <%= line.is_subtotal ? "subtotal" : "" %>">
               <td data-stat="line_name"><%= line.line_name_or_nickname %></td>
               <td data-stat="games" class="games-started"><%= line.games_started %>/<%= line.games %></td>
               <td data-stat="games" class="games"><%= line.games %></td>
+          <% unless line.is_difference_total %>
               <td data-stat="minutes" class="last-stat-column minutes"><%= line.minutes %></td>
               <td data-stat="field_goals_made" class="field-goals"><%= line.field_goals_made %></td>
               <td data-stat="field_goals_attempted" class="field-goals last-stat-column"><%= line.field_goals_attempted %></td>
@@ -23,4 +24,28 @@
               <td data-stat="personal_fouls" class="fouls"><%= line.personal_fouls %></td>
               <td data-stat="plus_minus"><%= line.plus_minus %></td>
               <td data-stat="points"><%= line.points %></td>
+          <% else %>
+              <td data-stat="minutes" class="last-stat-column minutes"><%= highlight_difference(line.minutes) %></td>
+              <td data-stat="field_goals_made" class="field-goals"><%= highlight_difference(line.field_goals_made) %></td>
+              <td data-stat="field_goals_attempted" class="field-goals last-stat-column"><%= highlight_difference(line.field_goals_attempted) %></td>
+              <td data-stat="field_goal_percentage" class="field-goal-percentage last-stat-column percentage"><%= highlight_difference(line.field_goal_percentage, :percentage) %></td>
+              <td data-stat="threes_made" class="threes"><%= highlight_difference(line.threes_made) %></td>
+              <td data-stat="threes_attempted" class="threes last-stat-column"><%= highlight_difference(line.threes_attempted) %></td>
+              <td data-stat="threes_percentage" class="threes-percentage last-stat-column percentage"><%= highlight_difference(line.threes_percentage, :percentage) %></td>
+              <td data-stat="free_throws_made" class="free-throws"><%= highlight_difference(line.free_throws_made) %></td>
+              <td data-stat="free_throws_attempted" class="free-throws last-stat-column"><%= highlight_difference(line.free_throws_attempted) %></td>
+              <td data-stat="free_throw_percentage" class="free-throws-percentage last-stat-column percentage"><%= highlight_difference(line.free_throw_percentage, :percentage) %></td>
+              <td data-stat="offensive_rebounds" class="rebounds"><%= highlight_difference(line.offensive_rebounds) %></td>
+              <td data-stat="defensive_rebounds" class="rebounds"><%= highlight_difference(line.defensive_rebounds) %></td>
+              <td data-stat="total_rebounds" class="rebounds last-stat-column"><%= highlight_difference(line.total_rebounds) %></td>
+              <td data-stat="assists"><%= highlight_difference(line.assists) %></td>
+              <td data-stat="steals" class="steals"><%= highlight_difference(line.steals) %></td>
+              <td data-stat="blocks" class="blocks"><%= highlight_difference(line.blocks) %></td>
+              <td data-stat="turnovers"><%= highlight_difference(line.turnovers) %></td>
+              <td data-stat="game_score" class="game-score"><%= highlight_difference(line.game_score) %></td>
+              <td data-stat="personal_fouls" class="fouls"><%= highlight_difference(line.personal_fouls) %></td>
+              <td data-stat="plus_minus"><%= highlight_difference(line.plus_minus) %></td>
+              <td data-stat="points"><%= highlight_difference(line.points) %></td>
+          <% end %>
             </tr>
+

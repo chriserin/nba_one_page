@@ -14,6 +14,9 @@
   <% lines.totals.each do |line| %>
     <%= render :partial => "aggregate_info/stats/#{partial_name}", :locals => {:line => line} %>
   <% end %>
+  <% lines.difference_totals.each do |line| %>
+    <%= render :partial => "aggregate_info/stats/#{partial_name}", :locals => {:line => line} %>
+  <% end %>
 <% else %>
   <% lines.each do |line| %>
     <%= render :partial => "aggregate_info/stats/#{partial_name}", :locals => {:line => line} %>

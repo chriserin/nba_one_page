@@ -14,9 +14,11 @@ class NbaBoxscoreConverterTest < MiniTest::Unit::TestCase
   def test_convert
     converter = NbaBoxscoreConverter.new
     converter.run @boxscore_sections, "Chicago Bulls", "Milwaukee Bucks", DateTime.new(2012, 1, 27), 107, 100, 4, 10, 15
-    assert_equal 29, GameLine.all.count
-    assert_equal 4, GameLine.where(:is_total => true).count
+    assert_equal 31, GameLine.all.count
+    assert_equal 4, GameLine.where(:is_total => true, :is_difference_total => false).count
+    assert_equal 2, GameLine.where(:is_difference_total => true).count
   end
+
 
   def test_totals_plus_minus
     converter = NbaBoxscoreConverter.new
@@ -27,8 +29,8 @@ class NbaBoxscoreConverterTest < MiniTest::Unit::TestCase
   def test_opponent_stats
     converter = NbaBoxscoreConverter.new
     converter.run @boxscore_sections, "Chicago Bulls", "Milwaukee Bucks", DateTime.new(2012, 1, 27), 107, 100, 4, 10, 15
-    refute_nil(GameLine.first.opponent_field_goals_attempted)
-    assert_equal(92, GameLine.all[4].opponent_field_goals_attempted)
+    refute_nil(GameLine.where(:is_difference_total => false).first.opponent_field_goals_attempted)
+    assert_equal(92, GameLine.where(:is_difference_total => false)[4].opponent_field_goals_attempted)
   end
 
   def test_team_minutes
@@ -48,9 +50,9 @@ class NbaBoxscoreConverterTest < MiniTest::Unit::TestCase
     converter = NbaBoxscoreConverter.new
     converter.run @boxscore_sections, "Chicago Bulls", "Milwaukee Bucks", DateTime.new(2012, 1, 27), 107, 100, 4, 10, 15
     refute_nil(GameLine.first.team_field_goals)
-    assert_equal(41, GameLine.all[4].team_field_goals)
+    assert_equal(41, GameLine.where(:is_difference_total => false)[4].team_field_goals)
   end
-  
+
   def test_team_field_goals_for_totals
     converter = NbaBoxscoreConverter.new
     converter.run @boxscore_sections, "Chicago Bulls", "Milwaukee Bucks", DateTime.new(2012, 1, 27), 107, 100, 4, 10, 15
@@ -70,5 +72,12 @@ class NbaBoxscoreConverterTest < MiniTest::Unit::TestCase
     converter.run @boxscore_sections, "Chicago Bulls", "Milwaukee Bucks", DateTime.new(2012, 1, 27), 107, 100, 4, 10, 15
     refute_nil(GameLine.first.team_field_goals)
     assert_equal(10, GameLine.all[1].team_turnovers)
+  end
+
+  def test_difference_line_created
+    converter = NbaBoxscoreConverter.new
+    converter.run @boxscore_sections, "Chicago Bulls", "Milwaukee Bucks", DateTime.new(2012, 1, 27), 107, 100, 4, 10, 15
+    refute_nil(GameLine.where("is_difference_total" => true).first)
+    assert_equal(GameLine.where("is_difference_total" => true).first.line_name, "Chicago Bulls Difference")
   end
 end

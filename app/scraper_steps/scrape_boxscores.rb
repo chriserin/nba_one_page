@@ -9,8 +9,8 @@ class ScrapeBoxscores
     boxscore_scraper = NbaBoxscoreScraper.new(NbaBoxscoreConverter.new)
     boxscore_scraper.run(urls)
 
-    cache_clearer = ClearCache.new
-    cache_clearer.run()
+    #cache_clearer = ClearCache.new
+    #cache_clearer.run()
   end
 
   def self.scrape_2013()

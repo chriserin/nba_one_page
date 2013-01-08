@@ -31,10 +31,10 @@
               <% end %>
             <% end %>
             <% unless expanded and line.is_total and line.is_opponent_total %>
-              <tr class="<%= line.games_started == 1 ? "starter" : "" %> <%= line.is_total || line.is_difference_total ? "total" : "" %> <%= line.is_subtotal ? "subtotal" : "" %>">
+              <tr class="<%= line.games_started == 1 ? "starter" : "" %> <%= line.is_total ? "total" : "" %> <%= line.is_subtotal ? "subtotal" : "" %>">
                 <% unless line.is_difference_total %>
                   <td><%= line.is_opponent_total ? line.opponent : line.line_name %></td>
-                  <td class="last-stat-column"><%= line.minutes %></td>
+                  <td class="last-stat-column">yyy<%= line.minutes %></td>
                   <td class="field-goals"><%= line.field_goals_made %></td>
                   <td class="field-goals last-stat-column"><%= line.field_goals_attempted %></td>
                   <td class="field-goal-percentage last-stat-column percentage"><%= format_percentage(line.field_goal_percentage) %></td>
@@ -56,7 +56,7 @@
                   <td><%= line.points %></td>
                 <% else %>
                   <td><%= line.is_opponent_total ? line.opponent : line.line_name %></td>
-                  <td class="last-stat-column"><%= highlight_difference(line.minutes) %></td>
+                  <td class="last-stat-column">xxx<%= highlight_difference(line.minutes) %></td>
                   <td class="field-goals"><%= highlight_difference(line.field_goals_made) %></td>
                   <td class="field-goals last-stat-column"><%= highlight_difference(line.field_goals_attempted) %></td>
                   <td class="field-goal-percentage last-stat-column percentage"><%= highlight_difference(line.field_goal_percentage, :percentage) %></td>
@@ -74,7 +74,7 @@
                   <td><%= highlight_difference(line.blocks) %></td>
                   <td><%= highlight_difference(line.turnovers) %></td>
                   <td><%= highlight_difference(line.personal_fouls) %></td>
-                  <td>--</td>
+                  <td><%= highlight_difference(line.plus_minus) %></td>
                   <td><%= highlight_difference(line.points) %></td>
                 <% end %>
               </tr>

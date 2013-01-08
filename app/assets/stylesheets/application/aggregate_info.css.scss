@@ -132,12 +132,20 @@ stat-table-style {
         text-align: left;
         width: 280px;
       }
+
+      td span.positive-difference {
+        color: green;
+      }
+
+      td span.negative-difference {
+        color: red;
+      }
     }
   }
 }
 
 .content-area {
-  padding-top: 25px;
+  padding-top: 35px;
   @include outer-container;
 }
 
@@ -168,9 +176,16 @@ section {
     h1 {
       display: inline; 
       float: left; 
-      @include span-columns(2);
+      @include span-columns(4);
       margin-top: 0px;
       margin-bottom: 5px;
+
+      a {
+        &:link {color: white;}
+        &:visited {color: white;}
+        &:hover {color: white;}
+        &:active {color: white;}
+      }
     }
 
     nav.section-content {
@@ -178,12 +193,12 @@ section {
       display: inline;
       color: black;
 
-      @include span-columns(6);
+      @include span-columns(8);
       li {
         text-align: center;
         background-color: #CECECE;
         border: 1px solid lighten(black, 25%);
-        @include span-columns(1.5 of 6);
+        @include span-columns(1.5 of 8);
         @include box-shadow(inset 0 0 3px 0px hsla(0, 0%, 0%, 0.65));
         color: grey;
         @include transition-duration(.2s);
@@ -198,32 +213,6 @@ section {
         @include box-shadow(0 0 4px 0px white);
         border: 1px solid white;
         color: black;
-      }
-    }
-
-    nav.between-sections {
-
-      @include shift(2.5);
-      @include span-columns(1.5);
-      .up {
-        float: left;
-        width: 0px;
-        height: 0px;
-        border-width: 0px 16px 25px;
-        border-color: transparent transparent black;
-        border-style: solid;
-        margin-right: 10px;
-        cursor: pointer;
-      }
-
-      .down {
-        float: left;
-        width: 0px;
-        height: 0px;
-        border-width: 25px 16px 0px;
-        border-color: black transparent transparent;
-        border-style: solid;
-        cursor: pointer;
       }
     }
   }
@@ -248,12 +237,6 @@ section.boxscores {
   @extend stat-table-style;
   .boxscore {display: none;}
   .boxscore.selected {display: block;}
-  .section-header h1 {
-    @include span-columns(3);
-  }
-  nav.between-sections {
-    @include shift(1.5);
-  }
   .percentage { width: 38px;}
 }
 
@@ -273,9 +256,15 @@ section.standings {
     div.conference-standings {
       float: left;
       width: 100%;
+
+      tr:nth-child(even) {
+        background: mix(gray, white, 10%);
+      }
     }
 
     .standings-title {
+      margin-left: -4px;
+      padding-left: 4px;
       height: 25px;
       background: rgba(150, 150, 150, .2);
       font-weight: bold;
@@ -343,10 +332,6 @@ section.games {
       li.first-game { border-bottom: 1px solid black;}
     }
 
-  }
-
-  nav.between-sections {
-    @include shift(8.5);
   }
 
   span.back-to-back, span.four-in-five, span.opponent-back-to-back, span.opponent-four-in-five {
@@ -455,13 +440,17 @@ section.team-totals, section.opponent-totals {
 }
 
 section.links {
-  nav.between-sections {
-    @include shift(8.5);
-  }
   ol { list-style: none; padding: 0px; }
   ol.conference {
     li.conference, li.division {font-weight: bold;}
-    li.conference {margin-left: 4px; background: lighten($core-color, 40%);}
+    li.conference {
+      margin-left: -2px;
+      background: #F4B8B4;
+      padding-left: 7px;
+      text-transform: capitalize;
+      padding-top: 2px;
+      background: lighten($core-color, 40%);
+    }
     @include span-columns(12);
     margin: 2px;
     ol.division {

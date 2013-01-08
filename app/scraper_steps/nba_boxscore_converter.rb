@@ -11,6 +11,7 @@ class NbaBoxscoreConverter < ScraperStep
 
     AWAY_STARTERS, AWAY_BENCH, AWAY_TOTALS, HOME_STARTERS, HOME_BENCH, HOME_TOTALS = [*0..5]
     HOME_OPPONENT_TOTALS, AWAY_OPPONENT_TOTALS = HOME_TOTALS + 5, AWAY_TOTALS + 5
+    HOME_DIFFERENCE_TOTALS, AWAY_DIFFERENCE_TOTALS = HOME_OPPONENT_TOTALS + 1, AWAY_OPPONENT_TOTALS + 1
     NAME, MINUTES, FIELD_GOAL_INFO, THREES_INFO, FREE_THROWS_INFO, OFFENSIVE_REBOUNDS, DEFENSIVE_REBOUNDS, REBOUNDS, ASSISTS, STEALS, BLOCKS, TURNOVERS, PERSONAL_FOULS, PLUS_MINUS, POINTS = [*0..14]
 
     def initialize(data, home_team, away_team, game_date, home_score, away_score, periods, home_turnovers, away_turnovers)
@@ -26,10 +27,20 @@ class NbaBoxscoreConverter < ScraperStep
       @totals[HOME_OPPONENT_TOTALS].update_attributes!(assign_opponent_totals({}, AWAY_TOTALS))
       @totals[AWAY_OPPONENT_TOTALS].update_attributes!(assign_opponent_totals({}, HOME_TOTALS))
 
+      create_difference_totals
+
       process_order = [HOME_BENCH, HOME_STARTERS, AWAY_BENCH, AWAY_STARTERS]
       process_order.each do |section|
         process_boxscore_section(section)
       end
+
+    end
+
+    def create_difference_totals
+      @totals[HOME_DIFFERENCE_TOTALS] = @totals[HOME_TOTALS].create_difference(@totals[AWAY_TOTALS])
+      @totals[HOME_DIFFERENCE_TOTALS].save!
+      @totals[AWAY_DIFFERENCE_TOTALS] = @totals[AWAY_TOTALS].create_difference(@totals[HOME_TOTALS])
+      @totals[AWAY_DIFFERENCE_TOTALS].save!
     end
 
     def process_boxscore_section(section)

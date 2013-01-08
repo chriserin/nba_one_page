@@ -27,6 +27,7 @@ class GameLine
   field :is_total, type: Boolean
   field :is_subtotal, type: Boolean
   field :is_opponent_total, type: Boolean
+  field :is_difference_total, type: Boolean, default: false
   field :is_home, type: Boolean
   field :team_score, type: Integer
   field :opponent_score, type: Integer
@@ -79,14 +80,14 @@ class GameLine
   scope :team_lines,      ->(team) { where(:team => /#{team}/) }
   scope :opponent_lines,  ->(team) { where(:opponent => /#{team}/) }
   scope :game_lines,      ->(game_date) { where(:game_date => game_date) }
-  scope :totals,          where("is_total" => true, "is_opponent_total" => false)
-  scope :opponent_totals, where("is_total" => true, "is_opponent_total" => true)
+  scope :totals,          where("is_total" => true, "is_opponent_total" => false, "is_difference_total" => false)
+  scope :opponent_totals, where("is_total" => true, "is_opponent_total" => true, "is_difference_total" => false)
   scope :win_loss_totals, totals
   scope :results,         totals
   scope :team_results,    ->(team) { where(:team => /#{team}/).totals }
   scope :matchup_lines,   ->(team) { any_of({:team => /#{team}/}, {:opponent => /#{team}/}) }
   scope :boxscore_lines,  ->(team, game_date) { matchup_lines(team).game_lines(game_date).boxscore_sort }
-  scope :boxscore_sort,   order_by(:games_started => :desc, :is_total => :asc, :is_opponent_total => :asc, :is_subtotal => :asc, :minutes => :desc)
+  scope :boxscore_sort,   order_by(:games_started => :desc, :is_difference_total => :asc, :is_total => :asc, :is_opponent_total => :asc,:is_subtotal => :asc, :minutes => :desc)
   scope :season2013,      where(:game_date.gt => "2012-10-29", :game_date.lt => "2013-08-01")
 
   def self.season(year)
@@ -157,6 +158,24 @@ class GameLine
     GameLine.statistic_fields.each do |statistic|
       result[statistic] = stat(statistic) + right_side_line.stat(statistic)
     end
+
+    return result
+  end
+
+  def create_difference(right_side_line)
+    result = DifferenceLine.new
+    right_side_line = right_side_line || GameLine.new
+
+    copy_fields(result, :line_name, :team, :is_total, :is_opponent_total, :is_subtotal, :game_date, :opponent)
+
+    GameLine.statistic_fields.each do |statistic|
+      result[statistic] = [stat(statistic), right_side_line.stat(statistic)]
+    end
+
+    result[:games] = 1
+    result[:is_difference_total] = true
+    result[:is_total] = false
+    result[:line_name] += " Difference"
 
     return result
   end

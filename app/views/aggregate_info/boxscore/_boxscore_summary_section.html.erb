@@ -1,7 +1,6 @@
       <section class="boxscores-summary">
         <div class="section-header clearfix">
-          <h1><%= @boxscores.first.first.game_date %></h1>
-          <%= render :partial => 'between_sections_nav' %>
+          <h1><a href="#boxscores-summary"><%= @boxscores.first.first.game_date %></a></h1>
         </div>
         <div class="section-content">
         <% @boxscores.each do |boxscore| %>
