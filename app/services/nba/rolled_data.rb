@@ -78,9 +78,8 @@ module Nba
 
     def set_data(components, line)
       components.each do |component|
-
         component_value = line.send(component)
-        component_value = line.attributes[component.to_s] if components.count > 1
+        component_value = line.attributes[component.to_s] if components.count > 1 and component != :game_score
         instance_eval("@#{component} = #{component_value}; def #{component}_c(); @#{component}; end")
       end
     end

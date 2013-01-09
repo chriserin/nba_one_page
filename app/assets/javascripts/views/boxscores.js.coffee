@@ -8,7 +8,7 @@ jQuery ->
       'boxscores:load': 'loadBoxscore'
 
     initialize: ->
-      $(".team-boxscore").addClass("selected")
+      #$(".team-boxscore").addClass("selected")
 
     clickBoxscoreLink: (e) ->
       $currentTarget = $(e.currentTarget)

@@ -8,6 +8,6 @@
             </nav>
           <% end %>
         </div>
-        <%= render :partial => 'aggregate_info/boxscore/boxscore', :locals => {:boxscore_lines => boxscore.team_lines, :class_label => "team-boxscore", :expanded => expanded } %>
-        <%= render :partial => 'aggregate_info/boxscore/boxscore', :locals => {:boxscore_lines => boxscore.opponent_lines, :class_label => expanded ? "team-boxscore" : "opponent-boxscore", :expanded => expanded } %>
+        <%= render :partial => 'aggregate_info/boxscore/boxscore', :locals => {:boxscore_lines => boxscore.team_lines, :class_label => "team-boxscore", :expanded => expanded, :selected => true } %>
+        <%= render :partial => 'aggregate_info/boxscore/boxscore', :locals => {:boxscore_lines => boxscore.opponent_lines, :class_label => expanded ? "team-boxscore" : "opponent-boxscore", :expanded => expanded, :selected => false } %>
       </section>
