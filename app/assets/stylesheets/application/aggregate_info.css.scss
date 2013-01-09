@@ -370,7 +370,7 @@ section.games {
   }
 }
 
-section.stat-totals, section.former-players, section.team-totals, section.opponent-totals {
+section.stat-totals, section.former-players, section.team-totals, section.opponent-totals, section.difference-totals {
   @extend stat-table-style;
   .totals, .per-game, .per-36, .advanced {display: none;}
   .selected { display: table-row-group;}
@@ -408,7 +408,7 @@ section.stat-totals, section.former-players, section.team-totals, section.oppone
 
     .stat {
       text-transform: capitalize;
-      color: darken(mix(#ababab, $core-color), 20%);
+      color: darken(mix(#ababab, #c1261b), 20%);
     }
   }
 
@@ -428,7 +428,7 @@ section.stat-totals, section.former-players {
   }
 }
 
-section.team-totals, section.opponent-totals {
+section.team-totals, section.opponent-totals, section.difference-totals {
   table tbody {
     tr.total {
       background-color: transparent;
@@ -453,6 +453,12 @@ section.team-totals, section.opponent-totals {
     &.minutes {display:none;}
   }
   li.per-36 {display: none !important;}
+}
+
+section.difference-totals {
+  th, td {
+    &.plus_minus {display:none;}
+  }
 }
 
 section.links {

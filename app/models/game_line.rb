@@ -82,6 +82,7 @@ class GameLine
   scope :game_lines,      ->(game_date) { where(:game_date => game_date) }
   scope :totals,          where("is_total" => true, "is_opponent_total" => false, "is_difference_total" => false)
   scope :opponent_totals, where("is_total" => true, "is_opponent_total" => true, "is_difference_total" => false)
+  scope :difference_totals, where("is_total" => false, "is_opponent_total" => false, "is_difference_total" => true)
   scope :win_loss_totals, totals
   scope :results,         totals
   scope :team_results,    ->(team) { where(:team => /#{team}/).totals }
@@ -141,7 +142,7 @@ class GameLine
   end
 
   def line_name_or_nickname
-    (is_subtotal or is_total) ? nickname : line_name
+    (is_subtotal or is_total or is_difference_total) ? nickname : line_name
   end
 
   def nickname

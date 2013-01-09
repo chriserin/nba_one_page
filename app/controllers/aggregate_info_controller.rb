@@ -7,6 +7,7 @@ class AggregateInfoController < ApplicationController
     team_param = params[:team] || "Bulls"
     @year = params[:year] || "2013"
     @team = Nba::TEAMS.keys.find { |key| key =~ /#{team_param}/ }
+
     if @team.blank?
       raise ActionController::RoutingError.new('Not Found')
     end
@@ -28,6 +29,7 @@ class AggregateInfoController < ApplicationController
     season      = Nba::Season.new(@year)
     @standings  = season.standings
     @opponent_totals = GameLine.season(@year).opponent_totals.group_by { |line| line.team }.map { |team, lines| lines.inject(:+) }
+    @difference_totals = GameLine.season(@year).difference_totals.group_by { |line| line.team }.map { |team, lines| lines.inject(:+) }
   end
 
   def boxscore

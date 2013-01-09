@@ -13,7 +13,7 @@
 
 module Difference
   def redefine_formulas
-    (Nba::StatFormulas.instance_methods - [:true_shooting_attempts]).each do |formula|
+    (Nba::StatFormulas.instance_methods - [:true_shooting_attempts, :possessions, :team_possessions, :opponent_possessions]).each do |formula|
       formula_method = method(formula)
       next if formula_method.arity > 0
       singleton_class.class_eval do

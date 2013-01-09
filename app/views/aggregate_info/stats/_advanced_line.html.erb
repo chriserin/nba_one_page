@@ -27,7 +27,7 @@
                 <td data-stat="team_assist_percentage"><%= highlight_difference(line.team_assist_percentage, :estimate_percentage) %></td>
                 <td data-stat="team_steal_percentage"><%= highlight_difference(line.team_steal_percentage, :estimate_percentage)%></td>
                 <td data-stat="team_block_percentage"><%= highlight_difference(line.team_block_percentage, :estimate_percentage) %></td>
-                <td data-stat="turnover_percentage"><%= line.turnover_percentage %></td>
+                <td data-stat="turnover_percentage"><%= highlight_difference(line.turnover_percentage, :estimate_percentage) %></td>
                 <td data-stat="offensive_rating" class="rating"><%=  (line.is_total) ? line.offensive_rating : "--" %></td>
                 <td data-stat="defensive_rating" class="rating"><%=  (line.is_total) ? line.defensive_rating : "--" %></td>
                 <td data-stat="pace" class="pace"><%=  (line.is_total) ? line.pace : "--" %></td>

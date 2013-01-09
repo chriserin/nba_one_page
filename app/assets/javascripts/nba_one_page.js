@@ -25,17 +25,21 @@ window.NbaOnePage = {
     NbaOnePage.ViewState["graph_container_team_totals"] = factory.create(NbaOnePage.Views.GraphContainer, {'year': year, 'el': 'section.team-totals .graph-container', 'eventNameSpace': 'team_totals'})
     NbaOnePage.ViewState["opponent_totals"] = factory.create(NbaOnePage.Views.StatTotals, { 'el': 'section.opponent-totals', 'eventNameSpace': 'opponent_totals'})
     NbaOnePage.ViewState["graph_container_opponent_totals"] = factory.create(NbaOnePage.Views.GraphContainer, {'year': year, 'el': 'section.opponent-totals .graph-container', 'eventNameSpace': 'opponent_totals'})
+    NbaOnePage.ViewState["difference_totals"] = factory.create(NbaOnePage.Views.StatTotals, { 'el': 'section.difference-totals', 'eventNameSpace': 'difference_totals'})
+    NbaOnePage.ViewState["graph_container_difference_totals"] = factory.create(NbaOnePage.Views.GraphContainer, {'year': year, 'el': 'section.difference-totals .graph-container', 'eventNameSpace': 'difference_totals'})
 
     NbaOnePage.ViewState["stat_totals_former_players"].defaultClick()
     NbaOnePage.ViewState["stat_totals"].defaultClick()
     NbaOnePage.ViewState["team_totals"].defaultClick()
     NbaOnePage.ViewState["opponent_totals"].defaultClick()
+    NbaOnePage.ViewState["difference_totals"].defaultClick()
     $("li[data-breakdown='hard']").trigger('click')
 
     $(".former-players table").tablesorter()
     $(".standings table").tablesorter()
     $(".team-totals table").tablesorter()
     $(".opponent-totals table").tablesorter()
+    $(".difference-totals table").tablesorter()
 
     if (!Backbone.history.started) {
       Backbone.history.start();
