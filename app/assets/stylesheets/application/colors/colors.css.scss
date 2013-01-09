@@ -55,8 +55,10 @@ section.boxscores {
 
 section.standings {
   div.standings {
-    tr.selected-team {
-      background-color: transparentize(lighten($core-color, 20%), .8);
+    div.conference-standings {
+      tr.selected-team {
+        background-color: transparentize(lighten($core-color, 20%), .7);
+      }
     }
   }
 }
