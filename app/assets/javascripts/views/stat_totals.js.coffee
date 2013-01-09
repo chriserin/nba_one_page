@@ -27,7 +27,7 @@ jQuery ->
       NbaOnePage.router.navigate([@el.classList[0], player, stat].join("/"))
 
     updateSection: (player, stat) ->
-      $target = $(@el).find("[data-player='#{player}'] [data-stat=#{stat}]").eq(0)
+      $target = $(@el).find("[data-player='#{unescape(player)}'] [data-stat=#{stat}]").eq(0)
       sectionClass = $target.parents("section").attr("class")
       $navTarget = $("section.#{sectionClass} nav li[data-type=#{$target.parents("tbody").attr("class").split(" ")[0]}]")
       @statsGridTarget($target)
