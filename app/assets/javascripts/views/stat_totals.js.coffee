@@ -24,7 +24,7 @@ jQuery ->
       @eventBus.trigger("#{@eventNameSpace}:gridClick", player, stat)
 
       @highliteGridSelection(columnIndex, rowIndex, type)
-      NbaOnePage.router.navigate([@eventNameSpace, player, stat].join("/"))
+      NbaOnePage.router.navigate([@el.classList[0], player, stat].join("/"))
 
     updateSection: (player, stat) ->
       $target = $(@el).find("[data-player='#{player}'] [data-stat=#{stat}]").eq(0)

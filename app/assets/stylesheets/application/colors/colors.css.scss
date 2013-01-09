@@ -62,30 +62,10 @@ section.standings {
 }
 
 section.games {
-  div.games-wrapper {
-    div.team-games {
-
-      $win-color: transparentize(green, .1);
-      $loss-color: transparentize(red, .1);
-      tr:nth-child(even) {
-        $even-color: transparentize(grayscale(lighten($core-color, 30%)), .7);
-        &.W {
-          background: $even-color;
-        }
-        &.L {
-          background: $even-color;
-        }
-      }
-
-      tr.W {
-          td:nth-child(3) {
-            color: $win-color;
-          }
-      }
-      tr.L {
-          td:nth-child(3) {
-            color: $loss-color;
-          }
+  div.games-wrapper, div.games-summary {
+    ul {
+      li.selected {
+        background: rgba(27, 182, 193, 0.3);
       }
     }
   }

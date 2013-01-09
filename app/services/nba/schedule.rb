@@ -118,6 +118,13 @@ module Nba
         "2013-02-17".to_date
       end
 
+      def is_played?
+        game_date.to_date < Date.today
+      end
+
+      def is_home?; false; end
+      def is_away?; false; end
+
       def formatted_game_date
         "02/17"
       end
@@ -204,6 +211,10 @@ module Nba
       @game.game_date
     end
 
+    def is_played?
+      game_date.to_date < Date.today
+    end
+
     def formatted_game_date
       game_date.to_date.strftime("%m/%d")
     end
@@ -241,6 +252,10 @@ module Nba
       else
         @game.is_home
       end
+    end
+
+    def is_away?
+      !is_home?
     end
 
     def inspect

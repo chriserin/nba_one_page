@@ -16,3 +16,13 @@ Morris.Line::drawGrid = ->
       @r.path("M#{@left},#{y}H#{@left + @width}")
         .attr('stroke', @options.gridLineColor)
         .attr('stroke-width', @options.gridStrokeWidth)
+
+    if @ymin < 0 and @ymax > 0
+      y = @transY(0)
+      @r.text(@left - @options.padding / 2, y, @yAxisFormat(0))
+        .attr('font-size', @options.gridTextSize)
+        .attr('fill', 'black')
+        .attr('text-anchor', 'end')
+      @r.path("M#{@left},#{y}H#{@left + @width}")
+        .attr('stroke', '#000000')
+        .attr('stroke-width', @options.gridStrokeWidth)

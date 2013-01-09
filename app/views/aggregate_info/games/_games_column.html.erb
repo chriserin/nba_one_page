@@ -1,7 +1,7 @@
         <ul>
         <% @schedule.display_games[start..finish].each do |game| %>
           <% if game.game.class == GameLine %>
-            <li class="game-result <%= game == @schedule.games.first ? "first-game" : ""%>">
+            <li class="game-result <%= game == @schedule.games.first ? "first-game" : ""%> <%= breakdown_classes(game) %>">
             <span class="game-date">
               <%= game.formatted_game_date %>
             </span>
@@ -13,7 +13,7 @@
             </span>
             </li>
           <% else %>
-            <li class="<%= (game.difficulty.to_f < 5 and game.class == Nba::ScheduleGame) ? "not-difficult" : "" %> <%= game == Nba::AllStarGame ? "all-star-game" : "" %>">
+            <li class="<%= game == Nba::AllStarGame ? "all-star-game" : "" %> <%= breakdown_classes(game) %>">
             <span class="game-date">
               <%= game.formatted_game_date %>
             </span>

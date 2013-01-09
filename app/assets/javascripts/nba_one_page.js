@@ -30,6 +30,7 @@ window.NbaOnePage = {
     NbaOnePage.ViewState["stat_totals"].defaultClick()
     NbaOnePage.ViewState["team_totals"].defaultClick()
     NbaOnePage.ViewState["opponent_totals"].defaultClick()
+    $("li[data-breakdown='hard']").trigger('click')
 
     $(".former-players table").tablesorter()
     $(".standings table").tablesorter()

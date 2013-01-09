@@ -3,7 +3,7 @@ $max-width: 64em;
 @import "bourbon";
 @import "neat";
 
-$core-color: #C1261B;
+$core-color: #132F54;
 
 #navigation {
   position: fixed;
@@ -295,10 +295,20 @@ section.games {
 
       .game-summary-title {
         font-weight: bold;
+        margin-left: 5px;
       }
 
       .game-summary-count {
         float: right;
+        margin-right: 5px;
+      }
+
+      li {
+        cursor: pointer;
+      }
+
+      li.selected {
+        @include border-radius(6px);
       }
     }
   }
@@ -306,7 +316,8 @@ section.games {
   div.games-wrapper {
     ul {
       font-size: 14px;
-      line-height: 20px;
+      line-height: 19px;
+      padding-top: 1px;
       @include span-columns(4);
       padding-left: 0px;
 
@@ -320,18 +331,23 @@ section.games {
         color: $loss-color;
       }
 
-      span.result, span.game-difficulty {float: right;}
+      span.result, span.game-difficulty {
+        float: right;
+        margin-right: 5px;
+      }
+
       span.game-date {
+        margin-left: 5px;
         margin-right: 5px;
         font-weight: bold;
       }
 
-
-      li.not-difficult {background: #f3f3f3;}
       li.all-star-game {background: transparentize(blue, .85);}
       li.first-game { border-bottom: 1px solid black;}
+      li.selected {
+        @include border-radius(6px);
+      }
     }
-
   }
 
   span.back-to-back, span.four-in-five, span.opponent-back-to-back, span.opponent-four-in-five {
