@@ -4,6 +4,8 @@ require 'mechanize'
 require 'teams'
 require 'stat_formulas'
 require 'game_line'
+require 'difference'
+require 'difference_line'
 require 'scraper_steps/scraper_step'
 require 'scraper_steps/clear_cache'
 require 'scraper_steps/scrape_boxscores'
@@ -18,7 +20,5 @@ scoreboard_date = if params['env'] == "development"
                   elsif params['env'] == "production"
                     DateTime.now - 1
                   end
-p params
-p scoreboard_date
 
 ScrapeBoxscores.scrape(scoreboard_date)
