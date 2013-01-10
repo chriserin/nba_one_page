@@ -154,6 +154,11 @@ section.stat-totals, section.former-players, section.team-totals, section.oppone
 section.team-totals, section.opponent-totals, section.difference-totals {
   table tbody tr.total {background: white;}
 
+  table tbody tr.highlited {
+    $highlite-color: transparentize(lighten($core-color, 20%), .5);
+    background: $highlite-color !important;
+  }
+
   tbody {
     tr:nth-child(even) {
       background: transparentize(lighten($core-color, 40%), .8) !important;

@@ -4,6 +4,7 @@ jQuery ->
     events:
       "click tbody tr td": 'statsGridClick'
       "click nav.section-content li": 'clickStatCategory'
+      "click th": 'trackSorting'
 
     initialize: (options) ->
       @eventNameSpace = options.eventNameSpace || 'stat_totals'
@@ -57,3 +58,7 @@ jQuery ->
 
     defaultClick: () ->
       $(@el).find(".totals tr:nth-child(3) td:nth-child(16)").trigger("click")
+
+    trackSorting: (event) ->
+      $currentTarget = $(event.currentTarget)
+      $currentTarget.parents("table").addClass("sorted")

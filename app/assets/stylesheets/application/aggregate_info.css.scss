@@ -339,6 +339,7 @@ section.stat-totals, section.former-players, section.team-totals, section.oppone
     @include transition-duration(.3s);
     @include transition-timing-function(linear);
   }
+
 }
 
 section.stat-totals, section.former-players {
@@ -370,6 +371,15 @@ section.team-totals, section.opponent-totals, section.difference-totals {
     &.minutes       {display:none;}
   }
   li.per-36 {display: none !important;}
+
+  table.sorted {
+    counter-reset:stats;
+    td:first-child:before {
+      counter-increment:stats;
+      font-size: 10px;
+      content: counter(stats) "  ";
+    }
+  }
 }
 
 section.difference-totals {
