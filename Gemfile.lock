@@ -109,6 +109,7 @@ GEM
       sass (>= 3.2)
     net-http-digest_auth (1.2.1)
     net-http-persistent (2.7)
+    newrelic_rpm (3.5.5.38)
     nokogiri (1.5.5)
     ntlm-http (0.1.1)
     origin (1.0.9)
@@ -213,6 +214,7 @@ DEPENDENCIES
   minitest
   mongoid (~> 3.0.0)
   neat (~> 0.4.2)
+  newrelic_rpm
   rails (= 3.2.8)
   rails-backbone
   sass-rails (~> 3.2.3)

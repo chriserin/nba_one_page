@@ -22,6 +22,7 @@ end
 gem 'jquery-rails'
 gem 'html5-rails'
 gem 'rails-backbone'
+gem 'newrelic_rpm'
 
 gem 'sinatra'
 gem 'unicorn'
