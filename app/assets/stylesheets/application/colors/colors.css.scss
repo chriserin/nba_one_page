@@ -1,8 +1,15 @@
 
 @import "bourbon";
 
-#navigation {
-  background-color: transparentize($core-color, .2);
+
+a {
+  color: $core-color;
+  &:hover {
+    color: lighten($core-color, 20%);
+  }
+  &:visited {
+    color: grayscale($core-color);
+  }
 }
 
 stat-table-colors {
@@ -17,14 +24,21 @@ stat-table-colors {
         background: transparentize(lighten($core-color, 40%), .8);
       }
 
+      tr.subtotal {
+        border-bottom-color: $core-color;
+        background: transparentize(lighten($core-color, 30%), .8);
+      }
+
       tr.total {
         background: transparentize(lighten(grayscale($core-color), 30%), .8);
       }
 
+      td span.positive-difference {
+        color: green;
+      }
 
-      tr.subtotal {
-        border-bottom: 1px solid $core-color;
-        background: transparentize(lighten($core-color, 30%), .8);
+      td span.negative-difference {
+        color: red;
       }
     }
   }
@@ -33,16 +47,30 @@ stat-table-colors {
 
 body {background: mix(lighten($core-color, 50%), lighten(gray, 20%));}
 
+#navigation {
+  background-color: transparentize($core-color, .2);
+}
+
 section {
 
-  border: solid $core-color 8px;
+  border-color: $core-color;
+  background: white;
 
   .section-header {
+    color: white;
     background-color: $core-color;
 
     nav.section-content {
       li {
-        //background-color: lighten(grayscale($core-color), 40%);
+        color: grey;
+        background-color: #CECECE;
+        border-color: lighten(black, 25%);
+      }
+
+      li.selected {
+        color: black;
+        background: white;
+        border-color: white;
       }
     }
   }
@@ -55,15 +83,44 @@ section.boxscores {
 
 section.standings {
   div.standings {
+    div.conference-standings {
+      tr:nth-child(even) {
+        background: mix(gray, white, 10%);
+      }
+    }
+
     div.conference-standings, div.division-standings {
       tr.selected-team {
         background-color: transparentize(lighten($core-color, 20%), .7);
       }
     }
+
+    .standings-title {
+      background: rgba(150, 150, 150, .2);
+    }
   }
 }
 
 section.games {
+  div.games-summary {
+    border-bottom-color: black;
+  }
+
+  div.games-wrapper {
+    $win-color: transparentize(green, .1);
+    $loss-color: transparentize(red, .1);
+
+    span.W {color: $win-color;}
+    span.L {color: $loss-color;}
+
+    span.back-to-back          {color: maroon;}
+    span.four-in-five          {color: blue;}
+    span.opponent-back-to-back {color: green;}
+    span.opponent-four-in-five {color: orange;}
+
+    li.all-star-game {background: transparentize(blue, .85);}
+  }
+
   div.games-wrapper, div.games-summary {
     ul {
       li.selected {
@@ -71,17 +128,42 @@ section.games {
       }
     }
   }
-
-  .jspDrag {
-    background: darken($core-color, 100%);
-  }
 }
 
-section.stat-totals, section.former-players {
+section.stat-totals, section.former-players, section.team-totals, section.opponent-totals, section.difference-totals {
   @extend stat-table-colors;
+
+  .graph-container {
+    background: white;
+  }
+
+  .graph-title {
+    color: gray;
+
+    .stat {
+      color: darken(mix(#ababab, #c1261b), 20%);
+    }
+  }
 
   .highlited {
     $highlite-color: transparentize(lighten($core-color, 20%), .5);
     background: $highlite-color !important;
+  }
+}
+
+section.team-totals, section.opponent-totals, section.difference-totals {
+  table tbody tr.total {background: white;}
+
+  tbody {
+    tr:nth-child(even) {
+      background: transparentize(lighten($core-color, 40%), .8) !important;
+    }
+  }
+}
+
+section.links {
+
+  li.conference {
+    background: lighten($core-color, 40%);
   }
 }

@@ -25,7 +25,7 @@ class AggregateInfoController < ApplicationController
     date        = date.to_date if date
     @year       = params[:year] || "2013"
 
-    @title      = "index"
+    @title      = "NBA"
     season      = Nba::Season.new(@year)
     @standings  = season.standings
     @opponent_totals = GameLine.season(@year).opponent_totals.group_by { |line| line.team }.map { |team, lines| lines.inject(:+) }

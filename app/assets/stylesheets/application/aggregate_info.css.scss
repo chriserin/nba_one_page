@@ -5,30 +5,7 @@ $max-width: 64em;
 
 $core-color: #132F54;
 
-#navigation {
-  position: fixed;
-  top: 0;
-  width: 100%;
-  height: 35px;
-  text-align: left;
-  padding-top: 7px;
-  padding-bottom: 3px;
-  /* Adds shadow to the bottom of the bar */
-  -webkit-box-shadow: 0px 0px 8px 0px #000000;
-  -moz-box-shadow: 0px 0px 8px 0px #000000;
-  box-shadow: 0px 0px 8px 0px #000000;
-  /* Adds the transparent background */
-  color: white;
-  font-size: 24px;
-  font-family: 'Bowlby One', cursive;
-  z-index: 1000;
-  background-color: transparentize($core-color, .3);
-
-  .header-center {
-    width: 1024px;
-    @include outer-container;
-  }
-
+white-links {
   a {
     &:link {color: white;}
     &:visited {color: white;}
@@ -37,28 +14,21 @@ $core-color: #132F54;
   }
 }
 
+
 tr {
   font-size: 14px;
   line-height: 22px;
 }
 
-a {
-  text-decoration: none;
-  color: $core-color;
-  &:hover {
-    color: lighten($core-color, 20%);
-  }
-  &:visited {
-    color: grayscale($core-color);
-  }
-}
+a {text-decoration: none;}
 
+nav li {cursor: pointer;}
+ul li {list-style: none;}
 
 stat-table-style {
 
   table {
     width: 100%;
-    //border-style: hidden;
 
     .field-goals, .free-throws, .threes {
       text-align: right;
@@ -73,6 +43,7 @@ stat-table-style {
         margin-left: -3px;
         margin-right: 3px;
       }
+
       &.last-stat-column {
         padding-left: 0px;
         text-align: left;
@@ -80,23 +51,19 @@ stat-table-style {
       }
     }
 
-    .field-goals, .free-throws, .adv-percentage { background: transparentize(lighten(grayscale($core-color), 10%), .9); }
-    .threes, .rebounds { background: transparentize(lighten(grayscale($core-color), 30%), .9); }
-    .percentage { width: 38px;}
     .blocks, .steals, .fouls {width: 30px;}
-    .rebounds {width: 36px;}
+    .rebounds                {width: 36px;}
+    .percentage              {width: 38px;}
 
     thead {
       font-size: 14px;
       line-height: 22px;
 
-      & {
-        th { text-align: center; }
+      th {text-align: center;}
 
-        th:first-child {
-          font-size: 18px;
-          text-align: left;
-        }
+      th:first-child {
+        font-size: 18px;
+        text-align: left;
       }
     }
 
@@ -107,15 +74,6 @@ stat-table-style {
         text-align: center;
       }
 
-      tr:nth-child(even) {
-        background: transparentize(lighten($core-color, 40%), .8);
-      }
-
-      tr.total {
-        background: transparentize(lighten(grayscale($core-color), 30%), .8);
-        border-bottom: 1px solid lighten(gray, 30%);
-      }
-
       tr.total, tr.subtotal {
         font-weight: bold;
       }
@@ -123,7 +81,10 @@ stat-table-style {
       tr.subtotal {
         border-top: 1px solid black;
         border-bottom: 1px solid $core-color;
-        background: transparentize(lighten($core-color, 30%), .8);
+      }
+
+      tr.total {
+        border-bottom: 1px solid lighten(gray, 30%);
       }
 
       td:first-child {
@@ -131,14 +92,6 @@ stat-table-style {
         font-size: 14px;
         text-align: left;
         width: 280px;
-      }
-
-      td span.positive-difference {
-        color: green;
-      }
-
-      td span.negative-difference {
-        color: red;
       }
     }
   }
@@ -149,26 +102,39 @@ stat-table-style {
   @include outer-container;
 }
 
-body {background: mix(lighten($core-color, 50%), lighten(gray, 20%));}
+#navigation {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  height: 35px;
+  text-align: left;
+  padding-top: 7px;
+  padding-bottom: 3px;
+  @include box-shadow(0px 0px 8px 0px #000000);
+  color: white;
+  font-size: 24px;
+  font-family: 'Bowlby One', cursive;
+  z-index: 1000;
 
-nav li {cursor: pointer; }
-ul li {list-style: none;}
+  .header-center {
+    width: 1024px;
+    @include outer-container;
+  }
 
+  @extend white-links;
+}
 
 section {
   width: 100%;
+  padding-bottom: 6px;
+  border: solid $core-color 8px;
   margin: 10px 0;
 
-  border: solid $core-color 8px;
   @include border-radius(20px);
-  background: white;
   overflow: hidden;
-  padding-bottom: 6px;
 
   .section-header {
     @include fill-parent;
-    background-color: $core-color;
-    color: white;
     padding-top: 8px;
     padding-bottom: 5px;
     padding-left: 10px;
@@ -180,12 +146,7 @@ section {
       margin-top: 0px;
       margin-bottom: 5px;
 
-      a {
-        &:link {color: white;}
-        &:visited {color: white;}
-        &:hover {color: white;}
-        &:active {color: white;}
-      }
+      @extend white-links;
     }
 
     nav.section-content {
@@ -195,24 +156,22 @@ section {
 
       @include span-columns(8);
       li {
-        text-align: center;
-        background-color: #CECECE;
+        height: 27px;
+        padding-top: 1px;
         border: 1px solid lighten(black, 25%);
         @include span-columns(1.5 of 8);
+
         @include box-shadow(inset 0 0 3px 0px hsla(0, 0%, 0%, 0.65));
-        color: grey;
         @include transition-duration(.2s);
         @include transition-timing-function(linear);
-        padding-top: 1px;
-        height: 27px;
+
         font-weight: bold;
+        text-align: center;
       }
 
       li.selected {
-        background: white;
         @include box-shadow(0 0 4px 0px white);
         border: 1px solid white;
-        color: black;
       }
     }
   }
@@ -235,9 +194,9 @@ section.plain {
 
 section.boxscores {
   @extend stat-table-style;
-  .boxscore {display: none;}
+  .boxscore          {display: none;}
   .boxscore.selected {display: block;}
-  .percentage { width: 38px;}
+  .percentage        {width: 38px;}
 }
 
 
@@ -256,17 +215,12 @@ section.standings {
     div.conference-standings {
       float: left;
       width: 100%;
-
-      tr:nth-child(even) {
-        background: mix(gray, white, 10%);
-      }
     }
 
     .standings-title {
-      margin-left: -4px;
-      padding-left: 4px;
       height: 25px;
-      background: rgba(150, 150, 150, .2);
+      padding-left: 4px;
+      margin-left: -4px;
       font-weight: bold;
       text-transform: lowercase;
     }
@@ -274,28 +228,25 @@ section.standings {
     tr:nth-child(8) {
       border-bottom: 1px solid black;
     }
-
-    tr.selected-team {
-      background-color: transparentize(lighten($core-color, 20%), .8);
-    }
   }
 
-  div.standings { display: none; }
-  div.standings.selected { display: block;}
+  div.standings          {display: none;}
+  div.standings.selected {display: block;}
 }
 
 section.games {
   div.games-summary {
     border-bottom: 2px solid black;
+
     ul {
       @include span-columns(4);
-      font-size: 16px;
       padding: 0;
       margin-bottom: 4px;
+      font-size: 16px;
 
       .game-summary-title {
-        font-weight: bold;
         margin-left: 5px;
+        font-weight: bold;
       }
 
       .game-summary-count {
@@ -321,16 +272,6 @@ section.games {
       @include span-columns(4);
       padding-left: 0px;
 
-      $win-color: transparentize(green, .1);
-      $loss-color: transparentize(red, .1);
-
-      span.W {
-        color: $win-color;
-      }
-      span.L {
-        color: $loss-color;
-      }
-
       span.result, span.game-difficulty {
         float: right;
         margin-right: 5px;
@@ -342,8 +283,7 @@ section.games {
         font-weight: bold;
       }
 
-      li.all-star-game {background: transparentize(blue, .85);}
-      li.first-game { border-bottom: 1px solid black;}
+      li.first-game {border-bottom: 1px solid black;}
       li.selected {
         @include border-radius(6px);
       }
@@ -351,22 +291,10 @@ section.games {
   }
 
   span.back-to-back, span.four-in-five, span.opponent-back-to-back, span.opponent-four-in-five {
-    font-size: 10px;
-    color: maroon;
-    margin-left: 4px;
-    margin-right: 4px;
     float: right;
-  }
-  span.four-in-five {
-    color: blue;
-  }
-
-  span.opponent-back-to-back {
-    color: green;
-  }
-
-  span.opponent-four-in-five {
-    color: orange;
+    margin-right: 4px;
+    margin-left: 4px;
+    font-size: 10px;
   }
 }
 
@@ -379,18 +307,18 @@ section.stat-totals, section.former-players, section.team-totals, section.oppone
     width: 40px;
     cursor: pointer;
   }
-  th { cursor: pointer; }
+
+  th {cursor: pointer;}
 
   td:first-child {
+    width: 200px;
     padding-left: 4px;
     font-size: 14px;
     text-align: left;
-    width: 200px;
     cursor: default;
   }
 
   .graph-container {
-    background: white;
     height: 360px;
 
     .graph {
@@ -399,22 +327,15 @@ section.stat-totals, section.former-players, section.team-totals, section.oppone
   }
 
   .graph-title {
-    font-weight: bold;
-    color: gray;
     margin-left: 30px;
-
-    .player {
-    }
+    font-weight: bold;
 
     .stat {
       text-transform: capitalize;
-      color: darken(mix(#ababab, #c1261b), 20%);
     }
   }
 
   .highlited {
-    $highlite-color: transparentize(lighten($core-color, 20%), .5);
-    background: $highlite-color !important;
     @include transition-duration(.3s);
     @include transition-timing-function(linear);
   }
@@ -422,9 +343,9 @@ section.stat-totals, section.former-players, section.team-totals, section.oppone
 
 section.stat-totals, section.former-players {
   th, td {
-    &.games {display:none;}
+    &.games  {display:none;}
     &.rating {display:none;}
-    &.pace {display:none;}
+    &.pace   {display:none;}
   }
 }
 
@@ -440,17 +361,13 @@ section.team-totals, section.opponent-totals, section.difference-totals {
       font-size: 11px;
       line-height: 18px;
     }
-
-    tr:nth-child(even) {
-      background: transparentize(lighten($core-color, 40%), .8);
-    }
-
   }
+
   th, td {
-    &.usage {display:none;}
-    &.game-score {display:none;}
+    &.usage         {display:none;}
+    &.game-score    {display:none;}
     &.games-started {display:none;}
-    &.minutes {display:none;}
+    &.minutes       {display:none;}
   }
   li.per-36 {display: none !important;}
 }
@@ -464,17 +381,15 @@ section.difference-totals {
 section.links {
   ol { list-style: none; padding: 0px; }
   ol.conference {
+    @include span-columns(12);
+    margin: 2px;
     li.conference, li.division {font-weight: bold;}
     li.conference {
       margin-left: -2px;
-      background: #F4B8B4;
       padding-left: 7px;
       text-transform: capitalize;
       padding-top: 2px;
-      background: lighten($core-color, 40%);
     }
-    @include span-columns(12);
-    margin: 2px;
     ol.division {
       @include span-columns(4);
       margin: 4px;

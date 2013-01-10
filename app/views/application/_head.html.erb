@@ -12,9 +12,14 @@
   <meta name="viewport" content="width=1000, initial-scale=1, maximum-scale=2">
 
   <%= render "stylesheets" %>
+
   <% if @team %>
     <link href="/assets/application/colors/<%= Nba::TEAMS[@team][:abbr].downcase %>.css" rel="stylesheet" type="text/css" />
+  <% else %>
+    <%# index color page %>
+    <link href="/assets/application/colors/det.css" rel="stylesheet" type="text/css" />
   <% end %>
+
   <% if @alternate_style %>
     <link href="/assets/application/aggregate_info_alt.css" rel="stylesheet" type="text/css" />
   <% end %>
