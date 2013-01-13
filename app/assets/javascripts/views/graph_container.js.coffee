@@ -9,11 +9,11 @@ jQuery ->
     globalEvents:
       'gridClick': 'statsGridClick'
 
-    statsGridClick: (player, stat) ->
-      @getData(player, stat)
+    statsGridClick: (player, stat, team) ->
+      @getData(player, stat, team)
 
-    getData: (player = "Derrick Rose", stat = "points") ->
-      $.getJSON "/rolled_data/#{encodeURIComponent(player)}/#{stat}/#{@year}.json", (data) =>
+    getData: (player = "Derrick Rose", stat = "points", team) ->
+      $.getJSON "/rolled_data/#{encodeURIComponent(player)}/#{stat}/#{@year}.json?team=#{team}", (data) =>
         @render_graph(data, stat)
         @setTitle(player, stat)
 

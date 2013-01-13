@@ -1,15 +1,19 @@
 module Nba
   class RolledData
-    def initialize(player, year)
-      @lines = GameLine.season(year).where("line_name" => player)
-      @team_lines = GameLine.season(year).where("line_name" => @lines.first.team) if @lines.size > 0
+    def initialize(player, year, team)
+      lines = GameLine.season(year).any_of({"line_name" => player}, {"line_name" => team})
+      @lines = @team_lines = lines.select { |line| line.line_name == player }
+      @team_lines = lines.select { |line| line.line_name == team } if player != team
     end
 
-    def roll_data(statistic, days)
+    def roll_data(statistic, number_of_rolled_points)
       return [] if @lines.size == 0
-      data = @lines.map { |g| RolledDatum.new(g.game_date, g.game_text, g, statistic) }
-      results = data.each_with_index do |datum, index| 
-        data[[index - (days - 1), 0].max..index].each {|new_datum| datum.add_to_total(new_datum)}
+
+      @lines.sort_by! { |line| line.game_date }
+      data = @lines.map { |line| RolledDatum.new(line.game_date, line.game_text, line, statistic) }
+
+      results = data.each_with_index do |datum, index|
+        data[[index - (number_of_rolled_points - 1), 0].max..index].each {|new_datum| datum.add_to_total(new_datum)}
       end
 
       (results + unplayed_results(results)).sort_by {|datum| datum.date}
@@ -25,11 +29,11 @@ module Nba
     include Nba::StatFormulas
     include Difference
 
-    attr_accessor :date, :start_date, :data_for_date, :total_data, :data_divisor, :description, :averaged_data
+    attr_accessor :date, :start_date, :total_data, :data_divisor, :description, :averaged_data
     attr_accessor :formula, :components
 
     def initialize(date, description, line, formula)
-      @date, @data_for_date, @description = date, data_for_date, description
+      @date, @description = date, description
       @formula = formula
       if formula
         if formula =~ /_36/
@@ -109,6 +113,10 @@ module Nba
           end
         end
       }
+    end
+
+    def to_s
+      @date
     end
   end
 end

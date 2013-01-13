@@ -1,4 +1,4 @@
-            <tr data-player="<%= line.line_name %>" class="<%= line.is_total || line.is_opponent_total || line.is_difference_total ? "total" : "" %> <%= line.is_subtotal ? "subtotal" : "" %>">
+            <tr data-player="<%= line.line_name %>" data-team="<%= line.team %>" class="<%= line.is_total || line.is_opponent_total || line.is_difference_total ? "total" : "" %> <%= line.is_subtotal ? "subtotal" : "" %>">
               <td data-stat="line_name"><%= line.line_name_or_nickname %></td>
               <td data-stat="games" class="games-started"><%= line.games_started %>/<%= line.games %></td>
               <td data-stat="games" class="games"><%= line.games %></td>

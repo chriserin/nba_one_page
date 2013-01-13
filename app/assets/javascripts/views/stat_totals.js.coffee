@@ -22,7 +22,8 @@ jQuery ->
 
       NbaOnePage.State.stat = stat = $target.attr("data-stat")
       NbaOnePage.State.player = player = $target.parent().attr("data-player")
-      @eventBus.trigger("#{@eventNameSpace}:gridClick", player, stat)
+      NbaOnePage.State.team = team = $target.parent().data("team")
+      @eventBus.trigger("#{@eventNameSpace}:gridClick", player, stat, team)
 
       @highliteGridSelection(columnIndex, rowIndex, type)
       NbaOnePage.router.navigate([@el.classList[0], player, stat].join("/"))
