@@ -1,16 +1,3 @@
-  #   module M
-  #     def self.included(base)
-  #       base.extend ClassMethods
-  #       base.class_eval do
-  #         scope :disabled, -> { where(disabled: true) }
-  #       end
-  #     end
-  #
-  #     module ClassMethods
-  #       ...
-  #     end
-  #   end
-
 module Difference
   def redefine_formulas
     (Nba::StatFormulas.instance_methods - [:true_shooting_attempts, :possessions, :team_possessions, :opponent_possessions]).each do |formula|
