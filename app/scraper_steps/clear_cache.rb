@@ -6,12 +6,14 @@ class ClearCache < ScraperStep
     rebuild_cache
   end
 
-  def rebuild_cache
+  def rebuild_cache(wait_time = 5)
     p "rebuilding index"
     open("http://www.bballnumbers.com/")
+    sleep wait_time
     Nba::TEAMS.each do |team, info|
       p "rebuilding #{team} page"
       open(URI.escape "http://www.bballnumbers.com/#{info[:nickname]}")
+      sleep wait_time
     end
   end
 end
