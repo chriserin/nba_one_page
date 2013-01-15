@@ -41,4 +41,10 @@ class ScheduleWorker
     code = IronWorkerNG::Code::Base.new(:workerfile => 'workers/keep_alive.worker')
     code.run
   end
+
+  def self.run_rebuild_cache
+    client = IronWorkerNG::Client.new
+    code = IronWorkerNG::Code::Base.new(:workerfile => 'workers/rebuild_cache.worker')
+    code.run
+  end
 end
