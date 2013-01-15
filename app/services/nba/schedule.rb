@@ -24,10 +24,13 @@ module Nba
     def initialize(played_games, unplayed_games, team, standings, schedule)
       @played_games, @unplayed_games, @team = played_games, unplayed_games, team
 
+      @played_games.sort_by! { |g| g.game_date.to_date }
+
       @wrapped_played_games = []
       @wrapped_unplayed_games = []
       (@played_games + @unplayed_games).sort_by {|g| g.game_date.to_date }.each do |game|
         previous_schedule_game = games.last
+
         if game.class == GameLine
           @wrapped_played_games.push Nba::ScheduleGame.new(team, game, previous_schedule_game, standings, schedule)
         else
