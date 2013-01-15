@@ -22,7 +22,7 @@ class ScheduleWorker
     client = IronWorkerNG::Client.new
     code = IronWorkerNG::Code::Base.new(:workerfile => 'workers/rebuild_cache.worker')
     client.codes.create(code)
-    schedule = client.schedules.create('KeepAlive', { :env => :production }, { :start_at => Time.now + 30 })
+    schedule = client.schedules.create('RebuildCache', { :env => :production }, { :start_at => Time.now + 30 })
   end
 
   def self.schedule_all
