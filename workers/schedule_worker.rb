@@ -1,5 +1,4 @@
 
-
 class ScheduleWorker
 
   def self.schedule_scraper
@@ -15,7 +14,15 @@ class ScheduleWorker
     client = IronWorkerNG::Client.new
     code = IronWorkerNG::Code::Base.new(:workerfile => 'workers/keep_alive.worker')
     client.codes.create(code)
-    schedule = client.schedules.create('KeepAlive', { :env => :production }, {:start_at => Time.now, :run_every => 60*60 })
+    schedule = client.schedules.create('KeepAlive', { :env => :production }, { :start_at => Time.now, :run_every => 60*60 })
+  end
+
+  def self.schedule_rebuild_cache
+
+    client = IronWorkerNG::Client.new
+    code = IronWorkerNG::Code::Base.new(:workerfile => 'workers/rebuild_cache.worker')
+    client.codes.create(code)
+    schedule = client.schedules.create('KeepAlive', { :env => :production }, { :start_at => Time.now + 30 })
   end
 
   def self.schedule_all

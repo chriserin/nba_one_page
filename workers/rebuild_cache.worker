@@ -1,0 +1,7 @@
+runtime "ruby"
+exec 'rebuild_cache.rb'
+name 'RebuildCache'
+
+dir '../app/scraper_steps'
+file '../app/services/nba/teams.rb'
+
