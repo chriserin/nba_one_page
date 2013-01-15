@@ -27,13 +27,8 @@ gem 'newrelic_rpm'
 gem 'sinatra'
 gem 'unicorn'
 
-gem 'lorem'
-
-gem 'table-for'
-
 gem 'iron_worker_ng'
 gem "mechanize", "~> 2.5.1"
-gem 'dalli'
 
 group :test do
   gem 'database_cleaner'
