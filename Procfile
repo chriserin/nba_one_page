@@ -1,1 +1,1 @@
-web: bundle exec unicorn -p $PORT -c ./config/unicorn.rb REBUILD_CACHE=YES
+web: REBUILD_CACHE=YES bundle exec unicorn -p $PORT -c ./config/unicorn.rb
