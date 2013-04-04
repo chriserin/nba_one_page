@@ -1,0 +1,17 @@
+    <section class="links">
+      <div class="section-header clearfix">
+        <h1><a href="#links">Links</a></h1>
+        <nav class="section-content"></nav>
+      </div>
+        <div class="section-content clearfix">
+          <ol>
+            <li>Other Sites</li>
+            <li><a href="http://www.basketball-reference.com/teams/<%= brk_abbr_replace(Nba::TEAMS[@team][:abbr]) %>/2013.html#advanced::none" target="#">basketball reference</a></li>
+            <li><a href="http://www.82games.com/1213/1213<%= Nba::TEAMS[@team][:abbr] %>.HTM" target="#">82games</a></li>
+            <li><a href="http://hoopdata.com/teamgl.aspx?team=<%= abbr_replace(Nba::TEAMS[@team][:abbr]) %>" target="#">hoop data</a></li>
+            <li><a href="http://www.nba.com/statistics/plusminus/plusminus_sort.jsp?pcomb=5&season=22012&split=9&team=<%= Nba::TEAMS[@team][:nickname] %>" target="#">nba.com plus minus</a></li>
+            <li><a href="http://data.shamsports.com/content/pages/data/salaries/<%= Nba::TEAMS[@team][:nickname].downcase %>.jsp" target="#">sham salaries</a></li>
+          </ol>
+        </div>
+    </section>
+

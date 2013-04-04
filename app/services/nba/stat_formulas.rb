@@ -1,5 +1,16 @@
 module Nba
   module StatFormulas
+    def self.top_level_methods
+      self.instance_methods - methods_with_arguments - consolidated_methods
+    end
+
+    def self.consolidated_methods
+      [:true_shooting_attempts, :possessions, :team_possessions, :opponent_possessions]
+    end
+
+    def self.methods_with_arguments
+      self.instance_methods.map { |formula| formula if instance_method(formula).arity > 0 }
+    end
 
     def field_goal_percentage
       goal_percentage(field_goals_made, field_goals_attempted)

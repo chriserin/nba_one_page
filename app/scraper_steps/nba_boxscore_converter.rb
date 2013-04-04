@@ -36,13 +36,6 @@ class NbaBoxscoreConverter < ScraperStep
 
     end
 
-    def create_difference_totals
-      @totals[HOME_DIFFERENCE_TOTALS] = @totals[HOME_TOTALS].create_difference(@totals[AWAY_TOTALS])
-      @totals[HOME_DIFFERENCE_TOTALS].save!
-      @totals[AWAY_DIFFERENCE_TOTALS] = @totals[AWAY_TOTALS].create_difference(@totals[HOME_TOTALS])
-      @totals[AWAY_DIFFERENCE_TOTALS].save!
-    end
-
     def process_boxscore_section(section)
       if [HOME_STARTERS, HOME_BENCH, AWAY_STARTERS, AWAY_BENCH].include? section
         section_lines = data[section].map {|line| process_boxscore_line(line, section) }
@@ -52,6 +45,13 @@ class NbaBoxscoreConverter < ScraperStep
         totals_array.unshift ""
         @totals[section] = process_boxscore_line(totals_array, section)
       end
+    end
+
+    def create_difference_totals
+      @totals[HOME_DIFFERENCE_TOTALS] = @totals[HOME_TOTALS].create_difference(@totals[AWAY_TOTALS])
+      @totals[HOME_DIFFERENCE_TOTALS].save!
+      @totals[AWAY_DIFFERENCE_TOTALS] = @totals[AWAY_TOTALS].create_difference(@totals[HOME_TOTALS])
+      @totals[AWAY_DIFFERENCE_TOTALS].save!
     end
 
     def process_boxscore_line(line, section)
@@ -104,14 +104,14 @@ class NbaBoxscoreConverter < ScraperStep
           assign_opponent_totals(game_line_properties, HOME_TOTALS)
         end
 
-        result = GameLine.create!(game_line_properties)
+        result = LineTypeFactory.get_line_type("2013", :game_line).create!(game_line_properties)
         if section == HOME_TOTALS or section == AWAY_TOTALS
           game_line_properties[:line_name]         = get_name(away_team, home_team, section) + " Opponent"
           game_line_properties[:team]              = get_name(away_team, home_team, section)
           game_line_properties[:opponent]          = (is_home(section) ? home_team : away_team)
           game_line_properties[:game_result]       = get_result(section, away_score.to_i, home_score.to_i)
           game_line_properties[:is_opponent_total] = true
-          @totals[section + 5] = GameLine.create!(game_line_properties)
+          @totals[section + 5] = LineTypeFactory.get_line_type("2013", :game_line).create!(game_line_properties)
         end
 
         if section == HOME_STARTERS or section == HOME_BENCH

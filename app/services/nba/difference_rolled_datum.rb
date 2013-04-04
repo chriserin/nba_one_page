@@ -29,7 +29,7 @@ module Nba
       end
     end
 
-    (GameLine.statistic_fields - ["minutes", "games_started", "games"]).each do |stat_field|
+    Nba::BaseStatistics.minute_divisible_fields.each do |stat_field|
       define_method "#{stat_field}" do
         if @components.count > 1
           result = @aggregated_values[stat_field.to_sym][@called_count % 2]

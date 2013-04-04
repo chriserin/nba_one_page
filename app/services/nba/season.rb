@@ -7,12 +7,13 @@ module Nba
     end
 
     def initialize(year)
-      @year = year 
+      @year = year
+      @game_line_type = LineTypeFactory.get_line_type(@year, :game_line)
     end
 
     def boxscore(date, team)
       if date
-        lines = GameLine.season(@year).boxscore_lines(team, date)
+        lines = @game_line_type.boxscore_lines(team, date)
         Nba::Boxscore.new(lines, team)
       else
         nil
@@ -20,14 +21,14 @@ module Nba
     end
 
     def all_yesterdays_boxscores(date)
-      lines = GameLine.season(@year).game_lines(date || Date.yesterday).boxscore_sort
+      lines = @game_line_type.game_lines(date || Date.yesterday).boxscore_sort
       grouped_lines = lines.group_by {|line| [line.team, line.opponent].sort.join }
       grouped_lines.values.map {|lines| Nba::Boxscore.new(lines, lines.find{ |line| ! line.is_home}.team)}
     end
 
     def standings
       return @standings if @standings
-      wins_and_losses = GameLine.season(@year).win_loss_totals
+      wins_and_losses = @game_line_type.totals
       @standings = Nba::Standings.new(wins_and_losses)
     end
 
@@ -40,12 +41,20 @@ module Nba
     end
 
     def total_statistics_for_team(team)
-      lines = GameLine.season(@year).statistic_total_lines(team)
+      lines = @game_line_type.statistic_total_lines(team)
       Nba::TeamTotals.new lines
     end
 
     def total_statistics_for_former_players(team)
-      Nba::TeamTotals.new GameLine.season(@year).statistic_total_lines_former_players(team)
+      Nba::TeamTotals.new @game_line_type.statistic_total_lines_former_players(team)
+    end
+
+    def opponent_totals
+      @opponent_totals = @game_line_type.opponent_totals.group_by { |line| line.team }.map { |team, lines| lines.inject(:+) }
+    end
+
+    def difference_totals
+      @difference_totals = @game_line_type.difference_totals.group_by { |line| line.team }.map { |team, lines| lines.inject(:+) }
     end
   end
 end

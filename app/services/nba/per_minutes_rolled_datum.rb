@@ -11,7 +11,7 @@ module Nba
     end
 
     #define per 36 minutes methods
-    (GameLine.statistic_fields - ["minutes", "games_started", "games"] + %w{game_score}).each do |stat_field|
+    (Nba::BaseStatistics.minute_divisible_fields + %w{game_score}).each do |stat_field|
       define_method "#{stat_field}_36" do
         (@aggregated_values[stat_field.to_sym] * 36.0 / @aggregated_values[:minutes]).round 2
       end

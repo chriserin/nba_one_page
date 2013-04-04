@@ -31,7 +31,7 @@ module Nba
       (@played_games + @unplayed_games).sort_by {|g| g.game_date.to_date }.each do |game|
         previous_schedule_game = games.last
 
-        if game.class == GameLine
+        if game.kind_of? GameModel
           @wrapped_played_games.push Nba::ScheduleGame.new(team, game, previous_schedule_game, standings, schedule)
         else
           @wrapped_unplayed_games.push Nba::ScheduleGame.new(team, game, previous_schedule_game, standings, schedule)
@@ -40,7 +40,11 @@ module Nba
     end
 
     def display_games
-      @wrapped_played_games.reverse + (@wrapped_unplayed_games + [Nba::AllStarGame]).sort_by{|g| g.game_date}
+      @wrapped_played_games.reverse + (@wrapped_unplayed_games + [Nba::AllStarGame]).sort_by{ |g| g.game_date.to_date }
+    end
+
+    def display_games_range(start, finish)
+      display_games[start..finish] || []
     end
 
     def games
@@ -162,7 +166,7 @@ module Nba
     end
 
     def game_description
-      if game.class == GameLine
+      if game.kind_of? GameModel
         @game.game_text
       else
         @game.game_text_for team

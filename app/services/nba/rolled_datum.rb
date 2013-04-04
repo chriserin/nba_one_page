@@ -63,7 +63,7 @@ module Nba
     end
 
     #redefine the attributes to draw data from the aggregated values hash
-    (GameLine.statistic_fields - ["games_started"] + %w{offensive_rating defensive_rating pace}).each do |stat_field|
+    (Nba::BaseStatistics - ["games_started"] + %w{offensive_rating defensive_rating pace}).each do |stat_field|
       define_method "#{stat_field}" do
         @aggregated_values[stat_field.to_sym]
       end

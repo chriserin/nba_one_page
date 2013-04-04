@@ -1,6 +1,7 @@
 class AggregateInfoController < ApplicationController
   caches_page :index, :team_info
 
+
   def team_info
     @alternate_style = params[:alt] || false
 
@@ -28,40 +29,12 @@ class AggregateInfoController < ApplicationController
     @title      = "NBA"
     season      = Nba::Season.new(@year)
     @standings  = season.standings
-    @opponent_totals = GameLine.season(@year).opponent_totals.group_by { |line| line.team }.map { |team, lines| lines.inject(:+) }
-    @difference_totals = GameLine.season(@year).difference_totals.group_by { |line| line.team }.map { |team, lines| lines.inject(:+) }
-  end
-
-  def boxscore
-    team      = params[:team]
-    date      = params[:date]
-    game_date = Time.at(@date.to_i / 1000).utc().strftime("%Y-%m-%d")
-    @boxscore = season.boxscore(team, @schedule.date_of_last_game_played)
-
-    render :layout => false
-  end
-
-  def all_boxscores
-    date        = params[:date]
-    date        = date.to_date if date
-    @year       = params[:year] || "2013"
-
-    @title      = "boxscores"
-    season      = Nba::Season.new(@year)
-    @boxscores  = season.all_yesterdays_boxscores(date)
-    @standings  = season.standings
+    @opponent_totals = season.opponent_totals
+    @difference_totals = season.difference_totals
   end
 
   def clear_cache
-    count = 0
-    files = []
-    Dir.new("#{Rails.root}/public").each do |file|
-      if (Nba::TEAMS.keys.any? {|team| team =~ /#{file.gsub(".html", "")}/ } and not (file == ".." or file == ".")) or file == "index.html"
-        count += 1
-        files << file
-        File.delete("#{Rails.root}/public/#{file}")
-      end
-    end
+    files, count = PageCache::ClearCache.clear
     render :inline => "#{files.join("<br/>")}<br/>count: #{count}"
   end
 end

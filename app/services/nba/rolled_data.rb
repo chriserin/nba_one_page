@@ -2,7 +2,8 @@ module Nba
   class RolledData
     def initialize(player, year, team)
       @player = player
-      lines = GameLine.season(year).any_of({"line_name" => player}, {"line_name" => team})
+      game_line_type = LineTypeFactory.get(year, :game_line)
+      lines = game_line_type.any_of({"line_name" => player}, {"line_name" => team})
       @lines = @team_lines = lines.select { |line| line.line_name == player }
       @team_lines = lines.select { |line| line.line_name == team } if player != team
     end
