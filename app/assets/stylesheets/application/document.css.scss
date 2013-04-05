@@ -6,5 +6,11 @@
 // Document styles
 //-----------------------------------------
 
-html {}
-body {}
+body {
+  font: 1em "Helvetica Neue",Helvetica,Arial,sans-serif;
+  line-height: 1.618em;
+}
+
+section h1 {
+  font-size: 1.5em;
+}

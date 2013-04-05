@@ -5,9 +5,13 @@ name 'ScrapeBoxscores'
 dir '../app/scraper_steps'
 file '../app/services/nba/teams.rb'
 file '../app/services/nba/stat_formulas.rb'
-file '../app/models/game_line.rb'
+file '../app/services/nba/base_statistics.rb'
+
 file '../app/models/difference.rb'
-file '../app/models/difference_line.rb'
+file '../app/models/difference_model.rb'
+file '../app/models/game_model.rb'
+file '../app/models/line_type_factory.rb'
+
 file '../config/mongoid.yml'
 
 gem 'mongoid'

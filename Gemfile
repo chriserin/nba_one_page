@@ -1,34 +1,34 @@
 source 'https://rubygems.org'
 
-ruby '1.9.3'
+ruby '2.0.0'
 
-gem 'rails', '3.2.8'
-
-gem "mongoid", "~> 3.0.0"
+gem 'rails', '4.0.0.beta1'
+gem "mongoid", :github => "mongoid/mongoid"
+gem 'unicorn'
 
 group :assets do
-  gem 'sass-rails',   '~> 3.2.3'
-  gem 'coffee-rails', '~> 3.2.1'
+  gem 'sass-rails',   '~> 4.0.0.beta1'
+  gem 'coffee-rails', '~> 4.0.0.beta1'
 
   gem 'bourbon'
-  gem "neat", "~> 0.4.2"
+  gem "neat"
 
   gem 'uglifier', '>= 1.0.3'
-  gem 'compass-rails'
+  gem 'compass-rails', github: 'milgner/compass-rails', ref: '1749c06f15dc4b058427e7969810457213647fb8'
   gem 'compass-h5bp'
-
 end
 
 gem 'jquery-rails'
-gem 'html5-rails'
-gem 'rails-backbone'
+gem 'html5-rails', :github => "servebox/html5-rails"
+#gem 'rails-backbone'
 gem 'newrelic_rpm'
 
 gem 'sinatra'
-gem 'unicorn'
 
 gem 'iron_worker_ng'
 gem "mechanize", "~> 2.5.1"
+
+gem 'actionpack-page_caching'
 
 group :test do
   gem 'database_cleaner'

@@ -1,4 +1,5 @@
-rvm use d3@nba_one_page
+rvm use r2@nba_one_page --create
+
 alias tall='testdrb ./test/**/*_test.rb'
 recsub="\$(find test -name '*_test.rb' -type f -printf '%TY-%Tm-%Td %TT %p\n' | sort -r | head -1 | cut -b 32-128)"
 alias trec="testdrb ${recsub}"

@@ -47,10 +47,6 @@ class LineTypeFactory
     "2013" => {
       :game_line  => self.create_line_type("2013", :game_line),
       :difference => self.create_line_type("2013", :difference)
-    },
-    #"2012" => {
-    #  :game_line  => self.create_line_type("2012", :game_line),
-    #  :difference => self.create_line_type("2012", :difference)
-    #}
+    }
   }
 end
