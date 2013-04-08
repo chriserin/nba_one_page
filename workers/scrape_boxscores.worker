@@ -16,3 +16,5 @@ file '../config/mongoid.yml'
 
 gem 'mongoid'
 gem 'mechanize'
+
+full_remote_build true
