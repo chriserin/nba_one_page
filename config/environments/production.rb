@@ -48,7 +48,7 @@ NbaOnePage::Application.configure do
 
   # Precompile additional assets (application.js, application.css, and all non-JS/CSS are already added)
   team_colors = ["NYK", "BOS", "DAL", "MIA", "LAL", "CHI", "OKC", "ORL", "GSW", "LAC", "CLE", "TOR", "IND", "DET", "HOU", "WAS", "BKN", "CHA", "MIL", "MIN", "DEN", "SAS", "MEM", "PHX", "NOH", "POR", "PHI", "SAC", "ATL", "UTA"]
-  config.assets.precompile += %w( polyfills.js) + [/application\/colors\/.*\.css/]
+  config.assets.precompile += %w( polyfills.js) + [/application\/colors\/.{3}\.css/]
 
   # Disable delivery errors, bad email addresses will be ignored
   # config.action_mailer.raise_delivery_errors = false
