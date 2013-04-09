@@ -14,10 +14,10 @@
   <%= render "stylesheets" %>
 
   <% if @team %>
-    <link href="/assets/application/colors/<%= Nba::TEAMS[@team][:abbr].downcase %>.css" rel="stylesheet" type="text/css" />
+    <%= stylesheet_link_tag "colors/#{Nba::TEAMS[@team][:abbr].downcase}" %>
   <% else %>
     <%# index color page %>
-    <link href="/assets/application/colors/det.css" rel="stylesheet" type="text/css" />
+    <%= stylesheet_link_tag "application/colors/det" %>
   <% end %>
 
   <% if @alternate_style %>

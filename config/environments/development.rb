@@ -8,7 +8,7 @@ NbaOnePage::Application.configure do
 
   # Show full error reports and disable caching
   config.consider_all_requests_local       = true
-  config.action_controller.perform_caching = true
+  config.action_controller.perform_caching = false
   config.action_controller.page_cache_directory = "#{Rails.root.to_s}/public"
 
   # Print deprecation notices to the Rails logger
@@ -17,6 +17,8 @@ NbaOnePage::Application.configure do
   # Only use best-standards-support built into browsers
   config.action_dispatch.best_standards_support = :builtin
 
+  config.assets.digest = true
+  #config.assets.precompile += ["colors/det.css"]
   # Raise exception on mass assignment protection for Active Record models
   #config.active_record.mass_assignment_sanitizer = :strict
 
@@ -31,4 +33,8 @@ NbaOnePage::Application.configure do
   config.assets.debug = true
 
   config.eager_load = false
+
+  config.after_initialize do
+    NbaOnePage::Application.load_tasks
+  end
 end

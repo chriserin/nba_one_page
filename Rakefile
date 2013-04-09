@@ -5,6 +5,3 @@
 require File.expand_path('../config/application', __FILE__)
 
 NbaOnePage::Application.load_tasks
-
-p "Reading rakefile"
-p ARGV
