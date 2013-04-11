@@ -1,4 +1,4 @@
-class NbaBoxscoreScraper < ScraperStep
+class NbaBoxscoreScraper
 
   BOXSCORE_TABLE        = "table.mod-data > tbody"
   AWAY_ROW_FIRST_COLUMN = "table.mod-data thead:nth-child(1) tr:nth-child(1)"
@@ -8,13 +8,13 @@ class NbaBoxscoreScraper < ScraperStep
   GAME_TIME = ".game-time-location p"
 
   def initialize(next_step)
-    self.next_step = next_step
+    @next_step = next_step
   end
 
   def run(boxscore_urls)
     boxscore_urls.each do |url|
       results = scrape(url)
-      next_step.run(*results)
+      @next_step.run(*results)
     end
   end
 

@@ -33,7 +33,7 @@ gem 'actionpack-page_caching'
 group :test do
   gem 'database_cleaner'
   gem 'minitest'
-  gem 'miniskirt'
+  gem 'miniskirt' #factories
   gem 'spork-minitest', '~> 0.0.2'
   gem 'vcr'
   gem 'webmock'

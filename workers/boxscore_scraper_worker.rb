@@ -10,12 +10,11 @@ require 'difference_model'
 require 'game_model'
 require 'line_type_factory'
 
-require 'scraper_steps/scraper_step'
-require 'scraper_steps/clear_cache'
-require 'scraper_steps/scrape_boxscores'
-require 'scraper_steps/nba_scoreboard_scraper'
-require 'scraper_steps/nba_boxscore_scraper'
-require 'scraper_steps/nba_boxscore_converter'
+require 'scrape/clear_cache'
+require 'scrape/scrape_boxscores'
+require 'scrape/nba_scoreboard_scraper'
+require 'scrape/nba_boxscore_scraper'
+require 'scrape/nba_boxscore_converter'
 
 params['env'] ||= "development"
 Mongoid.load!('mongoid.yml', params['env'])

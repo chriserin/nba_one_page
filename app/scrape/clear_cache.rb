@@ -1,6 +1,6 @@
 require 'open-uri'
 
-class ClearCache < ScraperStep
+class ClearCache
   def run()
     open("http://www.bballnumbers.com/clear_cache")
     rebuild_cache

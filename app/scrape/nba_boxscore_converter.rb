@@ -1,4 +1,4 @@
-class NbaBoxscoreConverter < ScraperStep
+class NbaBoxscoreConverter
 
   def run(data, home_team, away_team, game_date, home_score, away_score, periods, home_turnovers, away_turnovers)
     converter = Converter.new(data, home_team, away_team, game_date, home_score, away_score, periods, home_turnovers, away_turnovers)

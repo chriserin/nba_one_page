@@ -43,9 +43,7 @@ Spork.prefork do
       DatabaseCleaner.clean # cleanup of the test
     end
   end
-
 end
 
 Spork.each_run do
-  require_relative './factories/factories'
 end

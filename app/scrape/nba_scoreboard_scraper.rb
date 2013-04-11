@@ -1,8 +1,5 @@
 
-class NbaScoreboardScraper < ScraperStep
-  def initialize(next_step)
-    self.next_step = next_step
-  end
+class NbaScoreboardScraper
 
   def run(scoreboard_dates)
     all_urls = []

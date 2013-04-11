@@ -1,5 +1,6 @@
-require 'test/test_helper'
+require './test/test_helper'
 
+#TODO: Remove when new converter system is written
 class NbaBoxscoreConverterTest < MiniTest::Unit::TestCase
 
 

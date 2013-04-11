@@ -1,7 +1,7 @@
 class ScrapeBoxscores
 
   def self.scrape(game_date=DateTime.now - 1, rebuild=true)
-    scoreboard_scraper = NbaScoreboardScraper.new nil
+    scoreboard_scraper = NbaScoreboardScraper.new
     urls = scoreboard_scraper.scrape_scoreboard(game_date)
 
     boxscore_scraper = NbaBoxscoreScraper.new(NbaBoxscoreConverter.new)

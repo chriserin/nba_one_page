@@ -1,5 +1,6 @@
-require 'test/test_helper.rb'
+require './test/test_helper.rb'
 
+#TODO: Rewrite with Scrape::GameInfo
 class NbaBoxscoreScraperTest < MiniTest::Unit::TestCase
   def test_boxscore_sections
     scraper = NbaBoxscoreScraper.new nil
