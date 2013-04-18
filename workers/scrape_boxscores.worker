@@ -2,7 +2,7 @@ runtime "ruby"
 exec 'boxscore_scraper_worker.rb'
 name 'ScrapeBoxscores'
 
-dir '../app/scraper_steps'
+dir '../app/scrape'
 file '../app/services/nba/teams.rb'
 file '../app/services/nba/stat_formulas.rb'
 file '../app/services/nba/base_statistics.rb'
