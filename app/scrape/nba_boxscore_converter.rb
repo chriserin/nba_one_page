@@ -42,7 +42,7 @@ class NbaBoxscoreConverter
         create_section_total(section_lines, section)
       else
         totals_array = data[section].first
-        totals_array.unshift ""
+        totals_array.unshift "" #shift at the beginning so that the total line data is in the same ordinal position as the player line data
         @totals[section] = process_boxscore_line(totals_array, section)
       end
     end

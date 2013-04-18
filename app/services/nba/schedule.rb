@@ -109,7 +109,9 @@ module Nba
 
     def avg_difficulty_left
       avg_games = filter_wrapped_games_by_today
-      (avg_games.map{|game| game.difficulty }.inject(:+) / avg_games.count.to_f).round(1)
+      p "avg_games #{avg_games}"
+      return (avg_games.map{|game| game.difficulty }.inject(:+) / avg_games.count.to_f).round(1) if avg_games.count > 0
+      return "--"
     end
   end
 

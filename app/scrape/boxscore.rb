@@ -10,62 +10,89 @@ class Scrape::Boxscore
     @game_info = game_info
     @is_home = is_home
   end
-end
 
-class Scrape::GameInfo < Struct.new(:home_team,
-                                    :away_team,
-                                    :game_date,
-                                    :home_score,
-                                    :away_score,
-                                    :periods,
-                                    :home_turnovers,
-                                    :away_turnovers)
-end
-
-class Scrape::TransformData
-  def self.into_descriptive_boxscore(data, *game_info_args)
-    game_info = Scrape::GameInfo.new(*game_info_args)
-    away_boxscore = Scrape::Boxscore.new(data[0..2], game_info, false)
-    home_boxscore = Scrape::Boxscore.new(data[3..5], game_info, true)
-
-    away_boxscore.opponent_boxscore = home_boxscore
-    home_boxscore.opponent_boxscore = away_boxscore
-
-    return away_boxscore, home_boxscore, game_info
+  def team
+    @game_info.home_team if @is_home
+    @game_info.away_team
   end
-end
 
-class Scrape::ConvertDescriptiveBoxscore
-  def self.into_model_hashes(boxscore)
-    converted_boxscore = Scrape::ConvertedBoxscore.new
-    converted_boxscore.total            = create_team_total(boxscore)
-    converted_boxscore.opponent_total   = create_opponent_total(boxscore)
-    converted_boxscore.difference_total = create_difference_total(boxscore)
-    converted_boxscore.player_lines     = create_team_lines(boxscore)
+  def game_date
+    @game_info.game_date
+  end
 
-    return converted_boxscore
+  def team_minutes
+    240 + (@game_info.periods - 4) * 25
+  end
+
+  def team_division
+    Nba::TEAMS[team][:div]
+  end
+
+  def team_conference
+    Nba::TEAMS[team][:conference]
+  end
+
+  def opponent
+    @opponent_boxscore.team
+  end
+
+  def opponent_division
+    @opponent_boxscore.team_division
+  end
+
+  def opponent_conference
+    @opponent_boxscore.team_conference
+  end
+
+  def team_score
+    @game_info.home_score if @is_home
+    @game_info.away_score
+  end
+
+  def opponent_score
+    @opponent_boxscore.team_score
+  end
+
+  def game_result
+    return "W" if team_score > opponent_score
+    return "L"
+  end
+  
+  def is_home?
+    @is_home
+  end
+
+  def team_turnovers
+    return @game_info.home_turnovers if @is_home
+    @game_info.away_turnovers
+  end
+
+  def opponent_turnovers
+    return @game_info.away_turnovers if @is_home
+    @game_info.home_turnovers
+  end
+
+  %w{team opponent}.each do |side|
+    #define team total methods
+    %w{total_rebounds defensive_rebounds offensive_rebounds threes_attempted field_goals_attempted}.each do |total_stat|
+      define_method "#{side}_#{total_stat}" do
+        if side == "team"
+          team_line.to_hash[total_stat.to_sym]
+        else
+          opponent_line.to_hash[total_stat.to_sym]
+        end
+      end
+    end
   end
 
   private
-  def self.create_team_total(boxscore)
-    {}
+  def team_line
+    return Scrape::TotalLine.new(@totals_lines[1], self) if @is_home
+    Scrape::TotalLine.new(@totals_lines[0], self)
   end
 
-  def self.create_opponent_total(boxscore)
-    {}
+  def opponent_line
+    return Scrape::TotalLine.new(@totals_lines[0], self) if @is_home
+    Scrape::TotalLine.new(@totals_lines[1], self)
   end
-
-  def self.create_difference_total(boxscore)
-    {}
-  end
-
-  def self.create_team_lines(boxscore)
-    []
-  end
-end
-
-class Scrape::ConvertedBoxscore < Struct.new(:total,
-                                             :opponent_total,
-                                             :difference_total,
-                                             :player_lines)
 end
