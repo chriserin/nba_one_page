@@ -1,5 +1,6 @@
 class Scrape::ConvertedBoxscore < Struct.new(:total,
                                              :opponent_total,
-                                             :difference_total,
-                                             :player_lines)
+                                             :player_lines,
+                                             :bench_total,
+                                             :starters_total)
 end

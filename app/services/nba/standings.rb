@@ -17,6 +17,12 @@ module Nba
       find { |standing| standing.team_name =~ /#{team}/ }
     end
 
+    def games_for_team(team)
+      team_standings = find_team(team)
+      return [] unless team_standings
+      team_standings.games
+    end
+
     def team_summaries
       map { |standing| standing.games_total }
     end

@@ -25,15 +25,6 @@ class BoxscoreTest < MiniTest::Unit::TestCase
     refute_nil game_info
   end
 
-  def test_convert_descriptive_boxscore
-    boxscore = {}
-    converted_boxscore = Scrape::ConvertDescriptiveBoxscore.into_model_hashes(boxscore)
-    assert converted_boxscore.total.is_a? Hash
-    assert converted_boxscore.opponent_total.is_a? Hash
-    assert converted_boxscore.difference_total.is_a? Hash
-    assert converted_boxscore.player_lines.is_a? Array
-  end
-
   def test_team_name
     boxscore = Scrape::Boxscore.new([[]] *3, Scrape::GameInfo.new(*game_info_args), false)
     assert boxscore.team == "away_name", "Team was #{boxscore.team}"
@@ -41,7 +32,7 @@ class BoxscoreTest < MiniTest::Unit::TestCase
 
   def test_game_date
     boxscore = Scrape::Boxscore.new([[]] *3, Scrape::GameInfo.new(*game_info_args), false)
-    assert boxscore.game_date == DateTime.new(2012, 1, 1)
+    assert boxscore.game_date == "2012-01-01", "needed something, was #{boxscore.game_date}"
   end
 
   def test_team_minutes
@@ -55,6 +46,12 @@ class BoxscoreTest < MiniTest::Unit::TestCase
     assert boxscore.opponent            == "team"
     assert boxscore.opponent_division   == "team_division"
     assert boxscore.opponent_conference == "team_conference"
+  end
+
+  def test_opponent_name
+    boxscore = Scrape::Boxscore.new([[]] *3, Scrape::GameInfo.new(*integratable_game_info_args), false)
+    boxscore.opponent_boxscore = Scrape::Boxscore.new([[]] *3, Scrape::GameInfo.new(*integratable_game_info_args), true)
+    assert boxscore.opponent            == "Chicago Bulls", "needed Chicago Bulls, was #{boxscore.opponent}"
   end
 
   def test_team_score
@@ -79,4 +76,7 @@ class BoxscoreTest < MiniTest::Unit::TestCase
     return "home_name", "away_name", DateTime.new(2012, 1, 1), 100, 101, 4, 14, 13
   end
 
+  def integratable_game_info_args
+    return "Chicago Bulls", "Brooklyn Nets", DateTime.new(2012, 1, 1), 100, 101, 4, 14, 13
+  end
 end

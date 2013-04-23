@@ -1,11 +1,11 @@
 module Nba
-
   class Schedule
     def initialize(games, standings)
       @team_schedules = {}
       Nba::TEAMS.keys.each do |team|
-        team_games = games.select {|game| game.home_team == team or game.away_team == team}
-        @team_schedules[team] = Nba::TeamSchedule.new [], team_games, team, standings, self
+        team_games            = games.select {|game| game.home_team == team or game.away_team == team}
+        results               = standings.games_for_team(team)
+        @team_schedules[team] = Nba::TeamSchedule.new results, team_games, team, standings, self
       end
     end
 
@@ -22,7 +22,7 @@ module Nba
     attr_accessor :played_games, :unplayed_games, :team
 
     def initialize(played_games, unplayed_games, team, standings, schedule)
-      @played_games, @unplayed_games, @team = played_games, unplayed_games, team
+      @played_games, @unplayed_games, @team, @schedule = played_games, unplayed_games, team, schedule
 
       @played_games.sort_by! { |g| g.game_date.to_date }
 
@@ -109,7 +109,6 @@ module Nba
 
     def avg_difficulty_left
       avg_games = filter_wrapped_games_by_today
-      p "avg_games #{avg_games}"
       return (avg_games.map{|game| game.difficulty }.inject(:+) / avg_games.count.to_f).round(1) if avg_games.count > 0
       return "--"
     end

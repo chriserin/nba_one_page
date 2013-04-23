@@ -7,8 +7,16 @@ class Scrape::Line
   def initialize(line_data, boxscore)
     @line_data = line_data
     @boxscore = boxscore
-    @model_mimic = {}
-    mimic_general_info()
+    @model_mimic = initialize_mimic()
+    mimic()
+  end
+
+  def initialize_mimic()
+    raise "abstract method"
+  end
+
+  def mimic()
+    mimic_general_info(@boxscore)
     mimic_line_info()
     mimic_statistical_info()
     mimic_team_totals()
@@ -19,28 +27,28 @@ class Scrape::Line
   end
 
   private
-  def mimic_general_info
+  def mimic_general_info(boxscore)
     #same for all lines
-    @model_mimic[:game_date]           = @boxscore.game_date
-    @model_mimic[:team_minutes]        = @boxscore.team_minutes
+    @model_mimic[:game_date]           = boxscore.game_date
+    @model_mimic[:team_minutes]        = boxscore.team_minutes
 
     #values that switch based on which team the boxscore represents
-    @model_mimic[:team]                = @boxscore.team
-    @model_mimic[:team_division]       = @boxscore.team_division
-    @model_mimic[:team_conference]     = @boxscore.team_conference
-    @model_mimic[:opponent]            = @boxscore.opponent
-    @model_mimic[:opponent_division]   = @boxscore.opponent_division
-    @model_mimic[:opponent_conference] = @boxscore.opponent_conference
-    @model_mimic[:team_score]          = @boxscore.team_score
-    @model_mimic[:opponent_score]      = @boxscore.opponent_score
-    @model_mimic[:game_result]         = @boxscore.game_result
-    @model_mimic[:is_home]             = @boxscore.is_home?
+    @model_mimic[:team]                = boxscore.team
+    @model_mimic[:team_division]       = boxscore.team_division
+    @model_mimic[:team_conference]     = boxscore.team_conference
+    @model_mimic[:opponent]            = boxscore.opponent
+    @model_mimic[:opponent_division]   = boxscore.opponent_division
+    @model_mimic[:opponent_conference] = boxscore.opponent_conference
+    @model_mimic[:game_result]         = boxscore.game_result
+    @model_mimic[:is_home]             = boxscore.is_home?
   end
 
   def mimic_line_info
     @model_mimic[:games_started]         = games_started
     @model_mimic[:line_name]             = line_name
     @model_mimic[:position]              = position
+    @model_mimic[:team_score]          = @boxscore.team_score
+    @model_mimic[:opponent_score]      = @boxscore.opponent_score
   end
 
   def mimic_statistical_info
@@ -71,7 +79,7 @@ class Scrape::Line
     @model_mimic[:team_turnovers]                 = team_turnovers
     @model_mimic[:team_free_throws_attempted]     = team_free_throws_attempted
     @model_mimic[:team_field_goals_attempted]     = team_field_goals_attempted
-    @model_mimic[:team_field_goals_made]          = team_field_goals
+    @model_mimic[:team_field_goals_made]          = team_field_goals_made
     @model_mimic[:team_defensive_rebounds]        = team_defensive_rebounds
     @model_mimic[:team_offensive_rebounds]        = team_offensive_rebounds
     @model_mimic[:team_total_rebounds]            = team_total_rebounds
@@ -85,7 +93,7 @@ class Scrape::Line
     @model_mimic[:opponent_turnovers]             = opponent_turnovers
   end
 
-  %w(opponent_turnovers opponent_total_rebounds opponent_defensive_rebounds opponent_offensive_rebounds opponent_threes_attempted opponent_field_goals_attempted opponent_field_goals_made opponent_free_throws_attempted team_total_rebounds team_offensive_rebounds team_defensive_rebounds team_field_goals team_field_goals_attempted team_free_throws_attempted team_turnovers).each do |team_method|
+  %w(opponent_turnovers opponent_total_rebounds opponent_defensive_rebounds opponent_offensive_rebounds opponent_threes_attempted opponent_field_goals_attempted opponent_field_goals_made opponent_free_throws_attempted team_total_rebounds team_offensive_rebounds team_defensive_rebounds team_field_goals_made team_field_goals_attempted team_free_throws_attempted team_turnovers).each do |team_method|
     define_method team_method do
       @boxscore.send(team_method.to_sym)
     end
@@ -137,8 +145,18 @@ class Scrape::Line
 end
 
 class Scrape::TotalLine < Scrape::Line
+  def initialize(line_data, boxscore)
+    line_data = line_data.dup rescue []
+    line_data.unshift("")
+    super
+  end
+
+  def initialize_mimic
+    {is_total: true, is_opponent_total: false, is_difference_total: false, is_subtotal: false}
+  end
+
   def games_started
-    nil
+    0
   end
 
   def line_name
@@ -150,7 +168,11 @@ class Scrape::TotalLine < Scrape::Line
   end
 
   def plus_minus
-    @boxscore.team_score - @boxscore.opponent_score
+    ((@boxscore.team_score && @boxscore.team_score.to_i) || 0) -
+      ((@boxscore.opponent_score && @boxscore.opponent_score.to_i) || 0)
+  end
+
+  def position
   end
 
   def team_free_throws_attempted
@@ -161,8 +183,12 @@ class Scrape::TotalLine < Scrape::Line
     field_goals_attempted
   end
 
-  def team_field_goals
+  def team_field_goals_made
     field_goals_made
+  end
+
+  def team_threes_attempted
+    threes_attempted
   end
 
   def team_defensive_rebounds
@@ -178,13 +204,35 @@ class Scrape::TotalLine < Scrape::Line
   end
 end
 
+class Scrape::ReferenceLine < Scrape::TotalLine
+  def mimic()
+    mimic_general_info(@boxscore)
+    mimic_line_info()
+    mimic_statistical_info()
+  end
+
+  def initialize_mimic
+    {}
+  end
+end
+
 class Scrape::PlayerLine < Scrape::Line
+  def initialize(line_data, boxscore, is_starter)
+    @is_starter = is_starter
+    super(line_data, boxscore)
+  end
+
+  def initialize_mimic
+    {is_total: false, is_opponent_total: false, is_difference_total: false, is_subtotal: false}
+  end
+
   def games_started
-    nil
+    return 1 if @is_starter
+    return 0
   end
 
   def line_name
-    @boxscore.team
+    @line_data[NAME] && @line_data[NAME].split(?,)[0]
   end
 
   def turnovers
@@ -192,9 +240,12 @@ class Scrape::PlayerLine < Scrape::Line
   end
 
   def plus_minus
-    nil
+    @line_data[PLUS_MINUS]
   end
 
+  def did_player_play?
+    @line_data.size > 4
+  end
 end
 
 class Scrape::SectionLine < Scrape::Line
@@ -203,8 +254,12 @@ class Scrape::SectionLine < Scrape::Line
     super
   end
 
+  def initialize_mimic
+    {is_total: false, is_opponent_total: false, is_difference_total: false, is_subtotal: true}
+  end
+
   def games_started
-    nil
+    0
   end
 
   def line_name
@@ -212,11 +267,11 @@ class Scrape::SectionLine < Scrape::Line
   end
 
   def turnovers
-    nil
+    @model_mimic[key] = @line_data[key]
   end
 
   def plus_minus
-    nil
+    0
   end
 
   def position
@@ -233,9 +288,9 @@ class Scrape::SectionLine < Scrape::Line
   def aggregate_lines(data, boxscore)
     result = Hash.new {0}
     data.each do |line|
-      player_line = Scrape::PlayerLine.new(line, boxscore).to_hash
+      player_line = Scrape::PlayerLine.new(line, boxscore, false).to_hash
       statistical_info_keys.each do |key|
-        result[key] += player_line[key] if player_line[key]
+        result[key] += player_line[key].to_i if player_line[key]
       end
     end
     return result
@@ -243,6 +298,10 @@ class Scrape::SectionLine < Scrape::Line
 end
 
 class Scrape::StartersLine < Scrape::SectionLine
+  def games_started
+    1
+  end
+
   def line_name
     "#{@boxscore.team} Starters"
   end
@@ -254,27 +313,32 @@ class Scrape::BenchLine < Scrape::SectionLine
   end
 end
 
-class Scrape::OpponentTotalLine < Scrape::Line
-  def games_started
-    nil
+class Scrape::OpponentTotalLine < Scrape::TotalLine
+
+  def initialize_mimic
+    {is_total: true, is_opponent_total: true, is_difference_total: false, is_subtotal: false}
+  end
+
+  def mimic()
+    mimic_general_info(@boxscore.opponent_boxscore)
+    mimic_line_info()
+    mimic_statistical_info()
+    mimic_team_totals()
   end
 
   def line_name
-    "#{@boxscore.team} Opponent"
-  end
-
-  def turnovers
-    nil
-  end
-
-  def plus_minus
-    nil
+    "#{@boxscore.opponent} Opponent"
   end
 end
 
 class Scrape::DifferenceTotalLine < Scrape::Line
+
+  def initialize_mimic
+    {is_total: false, is_opponent_total: false, is_difference_total: true, is_subtotal: false}
+  end
+
   def games_started
-    nil
+    0
   end
 
   def line_name

@@ -1,7 +1,7 @@
 module Scrape; end
 
 class Scrape::Boxscore
-  attr_writer :opponent_boxscore
+  attr_accessor :opponent_boxscore, :starter_lines, :reserve_lines, :totals_lines
 
   def initialize(data, game_info, is_home)
     @starter_lines = data[0]
@@ -12,12 +12,12 @@ class Scrape::Boxscore
   end
 
   def team
-    @game_info.home_team if @is_home
+    return @game_info.home_team if @is_home
     @game_info.away_team
   end
 
   def game_date
-    @game_info.game_date
+    @game_info.game_date.to_date.strftime("%Y-%m-%d")
   end
 
   def team_minutes
@@ -25,11 +25,11 @@ class Scrape::Boxscore
   end
 
   def team_division
-    Nba::TEAMS[team][:div]
+    Nba::TEAMS[team] && Nba::TEAMS[team][:div]
   end
 
   def team_conference
-    Nba::TEAMS[team][:conference]
+    Nba::TEAMS[team] && Nba::TEAMS[team][:conference]
   end
 
   def opponent
@@ -45,7 +45,7 @@ class Scrape::Boxscore
   end
 
   def team_score
-    @game_info.home_score if @is_home
+    return @game_info.home_score if @is_home
     @game_info.away_score
   end
 
@@ -74,7 +74,7 @@ class Scrape::Boxscore
 
   %w{team opponent}.each do |side|
     #define team total methods
-    %w{total_rebounds defensive_rebounds offensive_rebounds threes_attempted field_goals_attempted}.each do |total_stat|
+    %w{total_rebounds defensive_rebounds offensive_rebounds threes_attempted field_goals_attempted field_goals_made free_throws_attempted}.each do |total_stat|
       define_method "#{side}_#{total_stat}" do
         if side == "team"
           team_line.to_hash[total_stat.to_sym]
@@ -87,12 +87,10 @@ class Scrape::Boxscore
 
   private
   def team_line
-    return Scrape::TotalLine.new(@totals_lines[1], self) if @is_home
-    Scrape::TotalLine.new(@totals_lines[0], self)
+    return Scrape::ReferenceLine.new(@totals_lines[0], self)
   end
 
   def opponent_line
-    return Scrape::TotalLine.new(@totals_lines[0], self) if @is_home
-    Scrape::TotalLine.new(@totals_lines[1], self)
+    return Scrape::ReferenceLine.new(opponent_boxscore.totals_lines[0], opponent_boxscore)
   end
 end
