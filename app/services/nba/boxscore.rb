@@ -4,7 +4,7 @@ module Nba
 
     def initialize(lines, team)
       replace lines
-      self.team_orientation = team
+      @team_orientation = team
     end
 
     def team_lines

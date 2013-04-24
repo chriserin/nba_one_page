@@ -4,7 +4,7 @@ class DataRollerApp < Sinatra::Base
     stat = params[:stat] || "points"
     year = params[:year] || "2013"
     team = params[:team] || (raise Exception.new("Team is required"))
-    rolled_data = Nba::RolledData.new params[:name], year, team
+    rolled_data = Nba::Roll::RolledData.new params[:name], year, team
 
     obj = rolled_data.roll_data(stat, 10)
     [

@@ -13,7 +13,7 @@
             </span>
             </li>
           <% else %>
-            <li class="<%= game == Nba::AllStarGame ? "all-star-game" : "" %> <%= breakdown_classes(game) %>">
+            <li class="<%= game == Nba::Schedule::AllStarGame ? "all-star-game" : "" %> <%= breakdown_classes(game) %>">
             <span class="game-date">
               <%= game.formatted_game_date %>
             </span>
