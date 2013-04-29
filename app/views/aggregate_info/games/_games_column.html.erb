@@ -1,6 +1,6 @@
         <ul>
         <% @schedule.display_games_range(start, finish).each do |game| %>
-          <% if game.game.kind_of? GameModel %>
+          <% if game.is_played? %>
             <li class="game-result <%= game == @schedule.games.first ? "first-game" : ""%> <%= breakdown_classes(game) %>">
             <span class="game-date">
               <%= game.formatted_game_date %>

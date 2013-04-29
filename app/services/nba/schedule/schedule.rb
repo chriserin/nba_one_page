@@ -1,12 +1,15 @@
 module Nba
   module Schedule
     class Schedule
-      def initialize(games, standings)
+      attr_accessor :year
+
+      def initialize(games, standings, year)
+        @year = year
         @team_schedules = {}
         Nba::TEAMS.keys.each do |team|
           team_games            = games.select {|game| game.home_team == team or game.away_team == team}
           results               = standings.games_for_team(team)
-          @team_schedules[team] = TeamSchedule.new results, team_games, team, standings, self
+          @team_schedules[team] = TeamSchedule.new results, team_games, team, self
         end
       end
 
@@ -15,7 +18,7 @@ module Nba
       end
 
       def unplayed_games_for_team(team)
-        @team_schedules[team].filter_games_by_today
+        @team_schedules[team].games_today_and_after
       end
     end
   end

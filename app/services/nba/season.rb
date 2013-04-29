@@ -33,11 +33,11 @@ module Nba
     end
 
     def schedule(team, standings)
-      results        = standings.find_team(team).games
-      scheduled_games = ScheduledGame.all
-      schedule = Nba::Schedule::Schedule.new scheduled_games, standings
+      results             = standings.find_team(team).games
+      scheduled_games     = ScheduledGame.all
+      schedule            = Nba::Schedule::Schedule.new scheduled_games, standings, @year
       team_unplayed_games = schedule.unplayed_games_for_team(team)
-      Nba::Schedule::TeamSchedule.new results, team_unplayed_games, team, standings, schedule
+      Nba::Schedule::TeamSchedule.new results, team_unplayed_games, team, schedule
     end
 
     def total_statistics_for_team(team)
