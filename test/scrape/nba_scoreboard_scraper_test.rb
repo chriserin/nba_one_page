@@ -7,7 +7,7 @@ class NbaScoreboardScraperTest < MiniTest::Unit::TestCase
     scraper = NbaScoreboardScraper.new
 
     VCR.use_cassette('scoreboard') do
-      urls = scraper.scrape_scoreboard(DateTime.new(2012, 3, 15))
+      urls = scraper.boxscore_urls(DateTime.new(2012, 3, 15))
     end
 
     refute_nil(urls)

@@ -1,17 +1,18 @@
 
 class NbaScoreboardScraper
 
-  def run(scoreboard_dates)
+  def run(scoreboard_dates, url_type = :boxscore)
     all_urls = []
 
     scoreboard_dates.each do |date|
-      all_urls.push(*scrape_scoreboard(date))
+      all_urls.push(*boxscore_urls(date)) if url_type == :boxscore
+      all_urls.push(*playbyplay_urls(date)) if url_type == :playbyplay
     end
 
     return all_urls
   end
 
-  def scrape_scoreboard(date)
+  def boxscore_urls(date)
     agent = Mechanize.new
     boxscore_urls = []
 
@@ -20,5 +21,9 @@ class NbaScoreboardScraper
     end
 
     return boxscore_urls
+  end
+
+  def playbyplay_urls(date)
+    boxscore_urls(date).map { |url| url.sub("boxscore", "playbyplay") + "&period=0"} #period0 gets playbyplay for all periods
   end
 end

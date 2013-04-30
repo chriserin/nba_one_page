@@ -1,4 +1,7 @@
+require './lib/mechanize/page.rb'
+
 class NbaBoxscoreScraper
+  include ScraperTools
 
   BOXSCORE_TABLE        = "table.mod-data > tbody"
   AWAY_ROW_FIRST_COLUMN = "table.mod-data thead:nth-child(1) tr:nth-child(1)"
@@ -64,23 +67,5 @@ class NbaBoxscoreScraper
   def get_home_turnovers(page)
     text = page.text_of("table.mod-data tbody:nth-child(12) tr:nth-child(3) td")
     text.match(/(\d+)\s(\(\d+\))/)[1].to_i
-  end
-
-  def each_row(table)
-    table.css("tr").each do |row|
-      yield row
-    end
-  end
-
-  def each_column(row)
-    row.css("td").each do |cell|
-      yield cell
-    end
-  end
-end
-
-class Mechanize::Page
-  def text_of(selector)
-    at(selector).text
   end
 end
