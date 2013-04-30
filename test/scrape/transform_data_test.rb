@@ -1,7 +1,7 @@
 require './test/test_helper'
-require './app/scrape/transform_data'
+require './app/scrape/transform_boxscore_data'
 
-class TransformDataTest < MiniTest::Unit::TestCase
+class TransformBoxscoreDataTest < MiniTest::Unit::TestCase
   def setup_scraped_boxscore
 
     VCR.use_cassette('boxscore') do
@@ -53,7 +53,7 @@ class TransformDataTest < MiniTest::Unit::TestCase
   end
 
   def test_transform
-    away, home = Scrape::TransformData.convert_boxscores(*@args_from_scraper)
+    away, home = Scrape::TransformBoxscoreData.convert_boxscores(*@args_from_scraper)
 
     refute_nil home.total
     refute_nil home.opponent_total
@@ -69,7 +69,7 @@ class TransformDataTest < MiniTest::Unit::TestCase
   end
 
   def test_transform_home_total
-    away, home = Scrape::TransformData.convert_boxscores(*@args_from_scraper)
+    away, home = Scrape::TransformBoxscoreData.convert_boxscores(*@args_from_scraper)
     hash = home.total.to_hash
     assert hash[:field_goals_made] == "41", "needed 41, was #{hash[:field_goals_made]}"
     assert hash[:field_goals_attempted] == "90", "needed 90, was #{hash[:field_goals_attempted]}"
@@ -91,7 +91,7 @@ class TransformDataTest < MiniTest::Unit::TestCase
   end
 
   def test_transform_home_opponent_total
-    away, home = Scrape::TransformData.convert_boxscores(*@args_from_scraper)
+    away, home = Scrape::TransformBoxscoreData.convert_boxscores(*@args_from_scraper)
     hash = away.opponent_total.to_hash
     assert hash[:field_goals_made] == "41", "needed 41, was #{hash[:field_goals_made]}"
     assert hash[:field_goals_attempted] == "90", "needed 90, was #{hash[:field_goals_attempted]}"
@@ -112,7 +112,7 @@ class TransformDataTest < MiniTest::Unit::TestCase
   end
 
   def test_transform_team_total
-    away, home = Scrape::TransformData.convert_boxscores(*@args_from_scraper)
+    away, home = Scrape::TransformBoxscoreData.convert_boxscores(*@args_from_scraper)
     hash = home.total.to_hash
     assert hash[:team_field_goals_made] == "41", "needed 41, was #{hash[:field_goals_made]}"
     assert hash[:team_field_goals_attempted] == "90", "needed 90, was #{hash[:field_goals_attempted]}"
@@ -126,7 +126,7 @@ class TransformDataTest < MiniTest::Unit::TestCase
   def test_transform_away_total
     #TOTALS		FGM-A	3PM-A	FTM-A	OREB	DREB	REB	AST	STL	BLK	TO	PF	 	PTS
     #39-92	7-24	15-16	14	29	43	22	4	2	15	19	 	100
-    away, home = Scrape::TransformData.convert_boxscores(*@args_from_scraper)
+    away, home = Scrape::TransformBoxscoreData.convert_boxscores(*@args_from_scraper)
     hash = away.total.to_hash
     assert hash[:field_goals_made] == "39", "needed 39, was #{hash[:field_goals_made]}"
     assert hash[:field_goals_attempted] == "92", "needed 92, was #{hash[:field_goals_attempted]}"
@@ -148,7 +148,7 @@ class TransformDataTest < MiniTest::Unit::TestCase
   def test_transform_opponent_totals
     #TOTALS		FGM-A	3PM-A	FTM-A	OREB	DREB	REB	AST	STL	BLK	TO	PF	 	PTS
     #39-92	7-24	15-16	14	29	43	22	4	2	15	19	 	100
-    away, home = Scrape::TransformData.convert_boxscores(*@args_from_scraper)
+    away, home = Scrape::TransformBoxscoreData.convert_boxscores(*@args_from_scraper)
     hash = home.total.to_hash
     assert hash[:opponent_field_goals_made] == "39", "needed 39, was #{hash[:field_goals_made]}"
     assert hash[:opponent_field_goals_attempted] == "92", "needed 92, was #{hash[:field_goals_attempted]}"
@@ -162,7 +162,7 @@ class TransformDataTest < MiniTest::Unit::TestCase
 
   def test_transform_home_starter
 #Joakim Noah, C	34	6-10	0-0	3-6	8	8	16	4	3	3	0	3	+2	15
-    away, home = Scrape::TransformData.convert_boxscores(*@args_from_scraper)
+    away, home = Scrape::TransformBoxscoreData.convert_boxscores(*@args_from_scraper)
     hash = home.player_lines[2].to_hash
     assert hash[:line_name] == "Joakim Noah", "needed Joakim Noah, was #{hash[:line_name]}"
     assert hash[:position] == " C", "needed C, was #{hash[:position]}"
@@ -189,7 +189,7 @@ class TransformDataTest < MiniTest::Unit::TestCase
 
   def test_transform_away_reserve
 #Stephen Jackson, SF	35	4-14	1-6	1-1	0	4	4	5	0	0	2	3	+6	10
-    away, home = Scrape::TransformData.convert_boxscores(*@args_from_scraper)
+    away, home = Scrape::TransformBoxscoreData.convert_boxscores(*@args_from_scraper)
     hash = away.player_lines[5].to_hash
     assert hash[:line_name] == "Stephen Jackson", "needed Steven Jackson, was #{hash[:line_name]}"
     assert hash[:minutes] == "35", "needed 35, was #{hash[:minutes]}"
@@ -213,7 +213,7 @@ class TransformDataTest < MiniTest::Unit::TestCase
   end
 
   def test_transform_general_info
-    away, home = Scrape::TransformData.convert_boxscores(*@args_from_scraper)
+    away, home = Scrape::TransformBoxscoreData.convert_boxscores(*@args_from_scraper)
     hash = away.player_lines[5].to_hash
     assert hash[:game_date] == "2012-01-27", "needed 2012-01-27, was #{hash[:game_date]}"
     assert hash[:team_minutes] == 240, "needed 240, was #{hash[:team_minutes]}"

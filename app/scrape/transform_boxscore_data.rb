@@ -4,7 +4,7 @@ require './app/scrape/game_info'
 require './app/scrape/convert_descriptive_boxscore'
 require './app/scrape/converted_boxscore'
 
-class Scrape::TransformData
+class Scrape::TransformBoxscoreData
   def self.run(*args)
     converted_away_boxscore, converted_home_boxscore = convert_boxscores(*args)
     Scrape::CreateGameLines.act(converted_home_boxscore)

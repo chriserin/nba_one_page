@@ -3,7 +3,7 @@ require './app/scrape/boxscore'
 require './app/scrape/convert_descriptive_boxscore'
 require './app/scrape/converted_boxscore'
 require './app/scrape/game_info'
-require './app/scrape/transform_data'
+require './app/scrape/transform_boxscore_data'
 
 class BoxscoreTest < MiniTest::Unit::TestCase
 
@@ -17,9 +17,9 @@ class BoxscoreTest < MiniTest::Unit::TestCase
     refute_nil game_info
   end
 
-  def test_transform_data
+  def test_transform_boxscore_data
     data = [[]] * 6
-    away_boxscore, home_boxscore, game_info = Scrape::TransformData.into_descriptive_boxscore(data, game_info_args)
+    away_boxscore, home_boxscore, game_info = Scrape::TransformBoxscoreData.into_descriptive_boxscore(data, game_info_args)
     refute_nil away_boxscore
     refute_nil home_boxscore
     refute_nil game_info
