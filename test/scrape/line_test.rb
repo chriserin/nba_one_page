@@ -23,7 +23,7 @@ class LineTest < MiniTest::Unit::TestCase
   end
 
   def test_has_statistical_info
-    keys = %i{games_started line_name position minutes field_goals_made field_goals_attempted threes_made threes_attempted free_throws_made free_throws_attempted offensive_rebounds defensive_rebounds total_rebounds assists steals blocks turnovers personal_fouls plus_minus points}
+    keys = %i{games_started line_name position minutes made_field_goals attempted_field_goals made_threes attempted_threes made_free_throws attempted_free_throws offensive_rebounds defensive_rebounds total_rebounds assists steals blocks turnovers personal_fouls plus_minus points}
     line = Scrape::TotalLine.new [], ActiveSupport::OrderedOptions.new
     model_hash = line.to_hash
     assert (keys - model_hash.keys).empty?, "Doesn't have all statistical keys #{(keys - model_hash.keys)}"

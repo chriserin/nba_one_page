@@ -13,15 +13,15 @@ module Nba
     end
 
     def field_goal_percentage
-      goal_percentage(field_goals_made, field_goals_attempted)
+      goal_percentage(made_field_goals, attempted_field_goals)
     end
 
     def free_throw_percentage
-      goal_percentage(free_throws_made, free_throws_attempted)
+      goal_percentage(made_free_throws, attempted_free_throws)
     end
 
     def threes_percentage
-      goal_percentage(threes_made, threes_attempted)
+      goal_percentage(made_threes, attempted_threes)
     end
 
     def goal_percentage(made, attempted)
@@ -33,19 +33,19 @@ module Nba
     end
 
     def assist_percentage
-      (100 * (assists / (((minutes.to_f / (team_minutes / 5)) * team_field_goals) - field_goals_made))).round(2)
+      (100 * (assists / (((minutes.to_f / (team_minutes / 5)) * team_field_goals) - made_field_goals))).round(2)
     end
 
     def team_assist_percentage
-      (100 * (assists.to_f / field_goals_made)).round(2)
+      (100 * (assists.to_f / made_field_goals)).round(2)
     end
 
     def block_percentage
-      (100 * (blocks * (team_minutes / 5)) / (minutes.to_f * (opponent_field_goals_attempted - opponent_threes_attempted))).round(2)
+      (100 * (blocks * (team_minutes / 5)) / (minutes.to_f * (opponent_attempted_field_goals - opponent_attempted_threes))).round(2)
     end
 
     def team_block_percentage
-      (100 * (blocks.to_f / (opponent_field_goals_attempted - opponent_threes_attempted))).round 2
+      (100 * (blocks.to_f / (opponent_attempted_field_goals - opponent_attempted_threes))).round 2
     end
 
     def team_rebound_percentage(rebounds, total_rebounds)
@@ -85,11 +85,11 @@ module Nba
     end
 
     def effective_field_goal_percentage
-      ((field_goals_made + 0.5 * threes_made) / field_goals_attempted).round 3
+      ((made_field_goals + 0.5 * made_threes) / attempted_field_goals).round 3
     end
 
     def game_score
-      (points + 0.4 * field_goals_made - 0.7 * field_goals_attempted - 0.4 * (free_throws_attempted - free_throws_made) + 0.7 * offensive_rebounds + 0.3 * defensive_rebounds + steals + 0.7 * assists + 0.7 * blocks - 0.4 * personal_fouls - turnovers).round 2
+      (points + 0.4 * made_field_goals - 0.7 * attempted_field_goals - 0.4 * (attempted_free_throws - made_free_throws) + 0.7 * offensive_rebounds + 0.3 * defensive_rebounds + steals + 0.7 * assists + 0.7 * blocks - 0.4 * personal_fouls - turnovers).round 2
     end
 
     def unaveraged_possessions(fga, fta, o_rebounds, opp_d_rebounds, fg, tos)
@@ -97,11 +97,11 @@ module Nba
     end
 
     def team_possessions
-      unaveraged_possessions(team_field_goals_attempted, team_free_throws_attempted, team_offensive_rebounds, opponent_defensive_rebounds, team_field_goals, team_turnovers)
+      unaveraged_possessions(team_attempted_field_goals, team_attempted_free_throws, team_offensive_rebounds, opponent_defensive_rebounds, team_field_goals, team_turnovers)
     end
 
     def opponent_possessions
-      unaveraged_possessions(opponent_field_goals_attempted, opponent_free_throws_attempted, opponent_offensive_rebounds, team_defensive_rebounds, opponent_field_goals_made, opponent_turnovers)
+      unaveraged_possessions(opponent_attempted_field_goals, opponent_attempted_free_throws, opponent_offensive_rebounds, team_defensive_rebounds, opponent_made_field_goals, opponent_turnovers)
     end
 
     def possessions
@@ -129,7 +129,7 @@ module Nba
     end
 
     def turnover_percentage
-      (100 * turnovers / (field_goals_attempted + 0.44 * free_throws_attempted + turnovers)).round 2
+      (100 * turnovers / (attempted_field_goals + 0.44 * attempted_free_throws + turnovers)).round 2
     end
 
     def true_shooting_percentage
@@ -137,11 +137,11 @@ module Nba
     end
 
     def true_shooting_attempts
-      (field_goals_attempted + 0.44 * free_throws_attempted)
+      (attempted_field_goals + 0.44 * attempted_free_throws)
     end
 
     def usage
-      (100 * ((field_goals_attempted + 0.44 * free_throws_attempted + turnovers) * (team_minutes / 5)) / (minutes * (team_field_goals_attempted + 0.44 * team_free_throws_attempted + team_turnovers))).round 2
+      (100 * ((attempted_field_goals + 0.44 * attempted_free_throws + turnovers) * (team_minutes / 5)) / (minutes * (team_attempted_field_goals + 0.44 * team_attempted_free_throws + team_turnovers))).round 2
     end
   end
 end

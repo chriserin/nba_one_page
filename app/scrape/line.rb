@@ -53,12 +53,12 @@ class Scrape::Line
 
   def mimic_statistical_info
     @model_mimic[:minutes]               = @line_data[MINUTES]
-    @model_mimic[:field_goals_made]      = field_goals_made
-    @model_mimic[:field_goals_attempted] = field_goals_attempted
-    @model_mimic[:threes_made]           = threes_made
-    @model_mimic[:threes_attempted]      = threes_attempted
-    @model_mimic[:free_throws_made]      = free_throws_made
-    @model_mimic[:free_throws_attempted] = free_throws_attempted
+    @model_mimic[:made_field_goals]      = made_field_goals
+    @model_mimic[:attempted_field_goals] = attempted_field_goals
+    @model_mimic[:made_threes]           = made_threes
+    @model_mimic[:attempted_threes]      = attempted_threes
+    @model_mimic[:made_free_throws]      = made_free_throws
+    @model_mimic[:attempted_free_throws] = attempted_free_throws
     @model_mimic[:offensive_rebounds]    = @line_data[OFFENSIVE_REBOUNDS]
     @model_mimic[:defensive_rebounds]    = @line_data[DEFENSIVE_REBOUNDS]
     @model_mimic[:total_rebounds]        = @line_data[REBOUNDS]
@@ -72,28 +72,28 @@ class Scrape::Line
   end
 
   def statistical_info_keys
-    return [:minutes, :field_goals_made, :field_goals_attempted, :threes_made, :threes_attempted, :free_throws_made, :free_throws_attempted, :offensive_rebounds, :defensive_rebounds, :total_rebounds, :assists, :steals, :blocks, :turnovers, :personal_fouls, :plus_minus, :points]
+    return [:minutes, :made_field_goals, :attempted_field_goals, :made_threes, :attempted_threes, :made_free_throws, :attempted_free_throws, :offensive_rebounds, :defensive_rebounds, :total_rebounds, :assists, :steals, :blocks, :turnovers, :personal_fouls, :plus_minus, :points]
   end
 
   def mimic_team_totals
     @model_mimic[:team_turnovers]                 = team_turnovers
-    @model_mimic[:team_free_throws_attempted]     = team_free_throws_attempted
-    @model_mimic[:team_field_goals_attempted]     = team_field_goals_attempted
-    @model_mimic[:team_field_goals_made]          = team_field_goals_made
+    @model_mimic[:team_attempted_free_throws]     = team_attempted_free_throws
+    @model_mimic[:team_attempted_field_goals]     = team_attempted_field_goals
+    @model_mimic[:team_made_field_goals]          = team_made_field_goals
     @model_mimic[:team_defensive_rebounds]        = team_defensive_rebounds
     @model_mimic[:team_offensive_rebounds]        = team_offensive_rebounds
     @model_mimic[:team_total_rebounds]            = team_total_rebounds
-    @model_mimic[:opponent_free_throws_attempted] = opponent_free_throws_attempted
-    @model_mimic[:opponent_field_goals_made]      = opponent_field_goals_made
-    @model_mimic[:opponent_field_goals_attempted] = opponent_field_goals_attempted
-    @model_mimic[:opponent_threes_attempted]      = opponent_threes_attempted
+    @model_mimic[:opponent_attempted_free_throws] = opponent_attempted_free_throws
+    @model_mimic[:opponent_made_field_goals]      = opponent_made_field_goals
+    @model_mimic[:opponent_attempted_field_goals] = opponent_attempted_field_goals
+    @model_mimic[:opponent_attempted_threes]      = opponent_attempted_threes
     @model_mimic[:opponent_offensive_rebounds]    = opponent_offensive_rebounds
     @model_mimic[:opponent_defensive_rebounds]    = opponent_defensive_rebounds
     @model_mimic[:opponent_total_rebounds]        = opponent_total_rebounds
     @model_mimic[:opponent_turnovers]             = opponent_turnovers
   end
 
-  %w(opponent_turnovers opponent_total_rebounds opponent_defensive_rebounds opponent_offensive_rebounds opponent_threes_attempted opponent_field_goals_attempted opponent_field_goals_made opponent_free_throws_attempted team_total_rebounds team_offensive_rebounds team_defensive_rebounds team_field_goals_made team_field_goals_attempted team_free_throws_attempted team_turnovers).each do |team_method|
+  %w(opponent_turnovers opponent_total_rebounds opponent_defensive_rebounds opponent_offensive_rebounds opponent_attempted_threes opponent_attempted_field_goals opponent_made_field_goals opponent_attempted_free_throws team_total_rebounds team_offensive_rebounds team_defensive_rebounds team_made_field_goals team_attempted_field_goals team_attempted_free_throws team_turnovers).each do |team_method|
     define_method team_method do
       @boxscore.send(team_method.to_sym)
     end
@@ -119,27 +119,27 @@ class Scrape::Line
     @line_data[NAME] && @line_data[NAME].split(?,)[1]
   end
 
-  def field_goals_made
+  def made_field_goals
     @line_data[FIELD_GOAL_INFO] && @line_data[FIELD_GOAL_INFO].split(?-)[0]
   end
 
-  def field_goals_attempted
+  def attempted_field_goals
     @line_data[FIELD_GOAL_INFO] && @line_data[FIELD_GOAL_INFO].split(?-)[1]
   end
 
-  def threes_made
+  def made_threes
     @line_data[THREES_INFO] && @line_data[THREES_INFO].split(?-)[0]
   end
 
-  def threes_attempted
+  def attempted_threes
     @line_data[THREES_INFO] && @line_data[THREES_INFO].split(?-)[1]
   end
 
-  def free_throws_made
+  def made_free_throws
     @line_data[FREE_THROWS_INFO] && @line_data[FREE_THROWS_INFO].split(?-)[0]
   end
 
-  def free_throws_attempted
+  def attempted_free_throws
     @line_data[FREE_THROWS_INFO] && @line_data[FREE_THROWS_INFO].split(?-)[1]
   end
 end
@@ -175,20 +175,20 @@ class Scrape::TotalLine < Scrape::Line
   def position
   end
 
-  def team_free_throws_attempted
-    free_throws_attempted
+  def team_attempted_free_throws
+    attempted_free_throws
   end
 
-  def team_field_goals_attempted
-    field_goals_attempted
+  def team_attempted_field_goals
+    attempted_field_goals
   end
 
-  def team_field_goals_made
-    field_goals_made
+  def team_made_field_goals
+    made_field_goals
   end
 
-  def team_threes_attempted
-    threes_attempted
+  def team_attempted_threes
+    attempted_threes
   end
 
   def team_defensive_rebounds

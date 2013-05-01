@@ -74,7 +74,7 @@ class Scrape::Boxscore
 
   %w{team opponent}.each do |side|
     #define team total methods
-    %w{total_rebounds defensive_rebounds offensive_rebounds threes_attempted field_goals_attempted field_goals_made free_throws_attempted}.each do |total_stat|
+    %w{total_rebounds defensive_rebounds offensive_rebounds attempted_threes attempted_field_goals made_field_goals attempted_free_throws}.each do |total_stat|
       define_method "#{side}_#{total_stat}" do
         if side == "team"
           team_line.to_hash[total_stat.to_sym]

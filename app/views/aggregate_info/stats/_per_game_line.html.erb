@@ -5,14 +5,14 @@
               <td data-stat="games" class="games"><%= line.games %></td>
               <td data-stat="minutes" class="last-stat-column minutes"><%= line.minutes_g %></td>
               <% unless line.is_difference_total %>
-                <td data-stat="field_goals_made" class="field-goals"><%= line.field_goals_made_g %></td>
-                <td data-stat="field_goals_attempted" class="field-goals last-stat-column"><%= line.field_goals_attempted_g %></td>
+                <td data-stat="made_field_goals" class="field-goals"><%= line.made_field_goals_g %></td>
+                <td data-stat="attempted_field_goals" class="field-goals last-stat-column"><%= line.attempted_field_goals_g %></td>
                 <td data-stat="field_goal_percentage" class="field-goal-percentage last-stat-column percentage"><%= format_percentage(line.field_goal_percentage) %></td>
-                <td data-stat="threes_made" class="threes"><%= line.threes_made_g %></td>
-                <td data-stat="threes_attempted" class="threes last-stat-column"><%= line.threes_attempted_g %></td>
+                <td data-stat="made_threes" class="threes"><%= line.made_threes_g %></td>
+                <td data-stat="attempted_threes" class="threes last-stat-column"><%= line.attempted_threes_g %></td>
                 <td data-stat="threes_percentage" class="threes-percentage last-stat-column percentage"><%= format_percentage(line.threes_percentage) %></td>
-                <td data-stat="free_throws_made" class="free-throws"><%= line.free_throws_made_g %></td>
-                <td data-stat="free_throws_attempted" class="free-throws last-stat-column"><%= line.free_throws_attempted_g %></td>
+                <td data-stat="made_free_throws" class="free-throws"><%= line.made_free_throws_g %></td>
+                <td data-stat="attempted_free_throws" class="free-throws last-stat-column"><%= line.attempted_free_throws_g %></td>
                 <td data-stat="free_throw_percentage" class="free-throws-percentage last-stat-column percentage"><%= format_percentage(line.free_throw_percentage) %></td>
                 <td data-stat="offensive_rebounds" class="rebounds"><%= line.offensive_rebounds_g %></td>
                 <td data-stat="defensive_rebounds" class="rebounds"><%= line.defensive_rebounds_g %></td>
@@ -26,14 +26,14 @@
                 <td data-stat="plus_minus"><%= line.plus_minus_g %></td>
                 <td data-stat="points"><%= line.points_g %></td>
               <% else %>
-                <td data-stat="field_goals_made" class="field-goals"><%= highlight_difference(line.field_goals_made_g) %></td>
-                <td data-stat="field_goals_attempted" class="field-goals last-stat-column"><%= highlight_difference(line.field_goals_attempted_g) %></td>
+                <td data-stat="made_field_goals" class="field-goals"><%= highlight_difference(line.made_field_goals_g) %></td>
+                <td data-stat="attempted_field_goals" class="field-goals last-stat-column"><%= highlight_difference(line.attempted_field_goals_g) %></td>
                 <td data-stat="field_goal_percentage" class="field-goal-percentage last-stat-column percentage"><%= highlight_difference(line.field_goal_percentage, :percentage) %></td>
-                <td data-stat="threes_made" class="threes"><%= highlight_difference(line.threes_made_g) %></td>
-                <td data-stat="threes_attempted" class="threes last-stat-column"><%= highlight_difference(line.threes_attempted_g) %></td>
+                <td data-stat="made_threes" class="threes"><%= highlight_difference(line.made_threes_g) %></td>
+                <td data-stat="attempted_threes" class="threes last-stat-column"><%= highlight_difference(line.attempted_threes_g) %></td>
                 <td data-stat="threes_percentage" class="threes-percentage last-stat-column percentage"><%= highlight_difference(line.threes_percentage, :percentage) %></td>
-                <td data-stat="free_throws_made" class="free-throws"><%= highlight_difference(line.free_throws_made_g) %></td>
-                <td data-stat="free_throws_attempted" class="free-throws last-stat-column"><%= highlight_difference(line.free_throws_attempted_g) %></td>
+                <td data-stat="made_free_throws" class="free-throws"><%= highlight_difference(line.made_free_throws_g) %></td>
+                <td data-stat="attempted_free_throws" class="free-throws last-stat-column"><%= highlight_difference(line.attempted_free_throws_g) %></td>
                 <td data-stat="free_throw_percentage" class="free-throws-percentage last-stat-column percentage"><%= highlight_difference(line.free_throw_percentage, :percentage) %></td>
                 <td data-stat="offensive_rebounds" class="rebounds"><%= highlight_difference(line.offensive_rebounds_g) %></td>
                 <td data-stat="defensive_rebounds" class="rebounds"><%= highlight_difference(line.defensive_rebounds_g) %></td>

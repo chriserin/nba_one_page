@@ -81,12 +81,12 @@ class NbaBoxscoreConverter
         game_line_properties[:line_name]             = (line[NAME].present? ? line[NAME].split(',')[0] : get_name(home_team, away_team, section)).gsub(".", "")
         game_line_properties[:position]              = line[NAME].split(',')[1]
         game_line_properties[:minutes]               = line[MINUTES]
-        game_line_properties[:field_goals_made]      = line[FIELD_GOAL_INFO].split('-')[0]
-        game_line_properties[:field_goals_attempted] = line[FIELD_GOAL_INFO].split('-')[1]
-        game_line_properties[:threes_made]           = line[THREES_INFO].split('-')[0]
-        game_line_properties[:threes_attempted]      = line[THREES_INFO].split('-')[1]
-        game_line_properties[:free_throws_made]      = line[FREE_THROWS_INFO].split('-')[0]
-        game_line_properties[:free_throws_attempted] = line[FREE_THROWS_INFO].split('-')[1]
+        game_line_properties[:made_field_goals]      = line[FIELD_GOAL_INFO].split('-')[0]
+        game_line_properties[:attempted_field_goals] = line[FIELD_GOAL_INFO].split('-')[1]
+        game_line_properties[:made_threes]           = line[THREES_INFO].split('-')[0]
+        game_line_properties[:attempted_threes]      = line[THREES_INFO].split('-')[1]
+        game_line_properties[:made_free_throws]      = line[FREE_THROWS_INFO].split('-')[0]
+        game_line_properties[:attempted_free_throws] = line[FREE_THROWS_INFO].split('-')[1]
         game_line_properties[:offensive_rebounds]    = line[OFFENSIVE_REBOUNDS]
         game_line_properties[:defensive_rebounds]    = line[DEFENSIVE_REBOUNDS]
         game_line_properties[:total_rebounds]        = line[REBOUNDS]
@@ -139,17 +139,17 @@ class NbaBoxscoreConverter
                                       :is_home,
                                       :team_score,
                                       :team_turnovers,
-                                      :team_free_throws_attempted,
-                                      :team_field_goals_attempted,
+                                      :team_attempted_free_throws,
+                                      :team_attempted_field_goals,
                                       :team_defensive_rebounds,
                                       :team_offensive_rebounds,
                                       :team_total_rebounds,
                                       :team_field_goals,
                                       :opponent_score,
-                                      :opponent_free_throws_attempted,
-                                      :opponent_field_goals_made,
-                                      :opponent_field_goals_attempted,
-                                      :opponent_threes_attempted,
+                                      :opponent_attempted_free_throws,
+                                      :opponent_made_field_goals,
+                                      :opponent_attempted_field_goals,
+                                      :opponent_attempted_threes,
                                       :opponent_offensive_rebounds,
                                       :opponent_defensive_rebounds,
                                       :opponent_total_rebounds,
@@ -175,16 +175,16 @@ class NbaBoxscoreConverter
     def assign_opponent_totals(game_line_properties = {}, totals_section)
 
       game_line_properties[:team_turnovers]                 = opposite_section(totals_section).turnovers
-      game_line_properties[:team_free_throws_attempted]     = opposite_section(totals_section).free_throws_attempted
-      game_line_properties[:team_field_goals_attempted]     = opposite_section(totals_section).field_goals_attempted
-      game_line_properties[:team_field_goals]               = opposite_section(totals_section).field_goals_made
+      game_line_properties[:team_attempted_free_throws]     = opposite_section(totals_section).attempted_free_throws
+      game_line_properties[:team_attempted_field_goals]     = opposite_section(totals_section).attempted_field_goals
+      game_line_properties[:team_field_goals]               = opposite_section(totals_section).made_field_goals
       game_line_properties[:team_defensive_rebounds]        = opposite_section(totals_section).defensive_rebounds
       game_line_properties[:team_offensive_rebounds]        = opposite_section(totals_section).offensive_rebounds
       game_line_properties[:team_total_rebounds]            = opposite_section(totals_section).total_rebounds
-      game_line_properties[:opponent_free_throws_attempted] = @totals[totals_section].free_throws_attempted
-      game_line_properties[:opponent_field_goals_made]      = @totals[totals_section].field_goals_made
-      game_line_properties[:opponent_field_goals_attempted] = @totals[totals_section].field_goals_attempted
-      game_line_properties[:opponent_threes_attempted]      = @totals[totals_section].threes_attempted
+      game_line_properties[:opponent_attempted_free_throws] = @totals[totals_section].attempted_free_throws
+      game_line_properties[:opponent_made_field_goals]      = @totals[totals_section].made_field_goals
+      game_line_properties[:opponent_attempted_field_goals] = @totals[totals_section].attempted_field_goals
+      game_line_properties[:opponent_attempted_threes]      = @totals[totals_section].attempted_threes
       game_line_properties[:opponent_offensive_rebounds]    = @totals[totals_section].offensive_rebounds
       game_line_properties[:opponent_defensive_rebounds]    = @totals[totals_section].defensive_rebounds
       game_line_properties[:opponent_total_rebounds]        = @totals[totals_section].total_rebounds

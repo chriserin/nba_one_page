@@ -33,8 +33,8 @@ class NbaBoxscoreConverterTest < MiniTest::Unit::TestCase
   def test_opponent_stats
     converter = NbaBoxscoreConverter.new
     converter.run @boxscore_sections, "Chicago Bulls", "Milwaukee Bucks", DateTime.new(2012, 1, 27), 107, 100, 4, 10, 15
-    refute_nil(@game_line_type.where(:is_difference_total => false).first.opponent_field_goals_attempted)
-    assert_equal(92, @game_line_type.where(:is_difference_total => false)[4].opponent_field_goals_attempted)
+    refute_nil(@game_line_type.where(:is_difference_total => false).first.opponent_attempted_field_goals)
+    assert_equal(92, @game_line_type.where(:is_difference_total => false)[4].opponent_attempted_field_goals)
   end
 
   def test_team_minutes
