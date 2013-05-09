@@ -1,10 +1,5 @@
 module Nba
-
-  BaseStatistics = [
-    :team_score,
-    :opponent_score,
-    :team_minutes,
-    :minutes,
+  TalleableStatistics = [
     :made_field_goals,
     :attempted_field_goals,
     :made_threes,
@@ -18,7 +13,14 @@ module Nba
     :steals,
     :blocks,
     :turnovers,
-    :personal_fouls,
+    :personal_fouls
+  ]
+
+  BaseStatistics = TalleableStatistics + [
+    :team_score,
+    :opponent_score,
+    :team_minutes,
+    :minutes,
     :plus_minus,
     :points,
     :team_turnovers,
@@ -44,4 +46,7 @@ module Nba
     self - [:minutes, :games, :games_started]
   end
 
+  def BaseStatistics.talleable_statistics
+    TalleableStatistics
+  end
 end

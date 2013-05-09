@@ -7,7 +7,7 @@ class AggregateInfoController < ApplicationController
 
     team_param = params[:team] || "Bulls"
     @year = params[:year] || "2013"
-    @team = Nba::TEAMS.keys.find { |key| key =~ /#{team_param}/ }
+    @team = Nba::TEAMS.find(team_param)
 
     if @team.blank?
       raise ActionController::RoutingError.new('Not Found')

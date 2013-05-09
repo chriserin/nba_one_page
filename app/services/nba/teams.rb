@@ -32,4 +32,8 @@ module Nba
     "Atlanta Hawks"          => { :abbr => "ATL", :div => "southeast", :conference => "eastern", :nickname => "Hawks" },
     "Utah Jazz"              => { :abbr => "UTA", :div => "northwest", :conference => "western", :nickname => "Jazz" }
   }
+
+  def TEAMS.find(team_fragment)
+    self.keys.find { |key| key =~ /#{team_fragment}/}
+  end
 end
