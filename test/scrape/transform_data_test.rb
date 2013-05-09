@@ -1,5 +1,6 @@
 require './test/test_helper'
-require './app/scrape/transform_boxscore_data'
+require './app/scrape/boxscore/transform_boxscore_data'
+require './app/scrape/boxscore/nba_boxscore_scraper'
 
 class TransformBoxscoreDataTest < MiniTest::Unit::TestCase
   def setup_scraped_boxscore

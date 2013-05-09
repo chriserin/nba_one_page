@@ -1,6 +1,7 @@
 require './test/test_helper'
-require './app/scrape/play'
+
 require './app/scrape/game_info'
+require './app/scrape/playbyplay/play'
 
 class PlayTest < MiniTest::Unit::TestCase
 

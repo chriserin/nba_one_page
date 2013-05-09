@@ -1,4 +1,4 @@
-require './app/scrape/transform_boxscore_data'
+require './app/scrape/boxscore/transform_boxscore_data'
 
 class Scrape::BoxscoreMain
   def self.scrape(game_date=DateTime.now - 1, rebuild=true)

@@ -2,8 +2,8 @@
 module Scrape; end
 require './app/scrape/game_info'
 require './app/services/nba/base_statistics'
-require './app/scrape/play'
-require './app/scrape/convert_play'
+require './app/scrape/playbyplay/play'
+require './app/scrape/playbyplay/convert_play'
 
 class Scrape::TransformPlaybyplayData
 

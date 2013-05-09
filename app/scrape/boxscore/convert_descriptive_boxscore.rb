@@ -1,4 +1,4 @@
-require './app/scrape/line'
+require './app/scrape/boxscore/line'
 
 class Scrape::ConvertDescriptiveBoxscore
   def self.into_lines(boxscore)

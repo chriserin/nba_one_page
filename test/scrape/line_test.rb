@@ -1,5 +1,5 @@
 require './test/test_helper'
-require './app/scrape/line'
+require './app/scrape/boxscore/line'
 
 class LineTest < MiniTest::Unit::TestCase
   def test_init_line

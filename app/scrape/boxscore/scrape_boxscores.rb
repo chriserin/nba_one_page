@@ -1,3 +1,6 @@
+require './app/scrape/boxscore/nba_boxscore_scraper'
+require './app/scrape/boxscore/nba_boxscore_converter'
+
 class ScrapeBoxscores
 
   def self.scrape(game_date=DateTime.now - 1, rebuild=true)

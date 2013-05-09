@@ -1,5 +1,5 @@
 require './test/test_helper'
-require './app/scrape/transform_playbyplay_data'
+require './app/scrape/playbyplay/transform_playbyplay_data'
 
 class TransformPlaybyplayDataTest < MiniTest::Unit::TestCase
 

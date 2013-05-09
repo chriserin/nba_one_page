@@ -1,8 +1,8 @@
-require './app/scrape/boxscore'
-require './app/scrape/create_game_lines'
 require './app/scrape/game_info'
-require './app/scrape/convert_descriptive_boxscore'
-require './app/scrape/converted_boxscore'
+require './app/scrape/boxscore/boxscore'
+require './app/scrape/boxscore/create_game_lines'
+require './app/scrape/boxscore/convert_descriptive_boxscore'
+require './app/scrape/boxscore/converted_boxscore'
 
 class Scrape::TransformBoxscoreData
   def self.run(*args)

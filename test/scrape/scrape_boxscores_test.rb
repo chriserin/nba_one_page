@@ -1,4 +1,5 @@
 require './test/test_helper'
+require './app/scrape/boxscore/scrape_boxscores'
 
 #integration test
 class ScrapeBoxscoresTest < MiniTest::Unit::TestCase
