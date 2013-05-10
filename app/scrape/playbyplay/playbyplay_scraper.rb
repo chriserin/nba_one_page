@@ -1,6 +1,6 @@
 require './lib/mechanize/page'
 
-class NbaPlaybyplayScraper
+class PlaybyplayScraper
   include ScraperTools
 
   PLAYBYPLAY_SECTIONS = "table.mod-data tr"

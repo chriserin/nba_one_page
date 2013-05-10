@@ -1,9 +1,9 @@
 require './test/test_helper.rb'
 
 #TODO: Rewrite with Scrape::GameInfo
-class NbaBoxscoreScraperTest < MiniTest::Unit::TestCase
+class BoxscoreScraperTest < MiniTest::Unit::TestCase
   def test_boxscore_sections
-    scraper = NbaBoxscoreScraper.new nil
+    scraper = BoxscoreScraper.new nil
     boxscore_sections = []
 
     VCR.use_cassette('boxscore') do
@@ -23,7 +23,7 @@ class NbaBoxscoreScraperTest < MiniTest::Unit::TestCase
   end
 
   def test_gamedate
-    scraper = NbaBoxscoreScraper.new nil
+    scraper = BoxscoreScraper.new nil
     boxscore_sections = []
     game_date = nil
 
@@ -36,7 +36,7 @@ class NbaBoxscoreScraperTest < MiniTest::Unit::TestCase
   end
 
   def test_team_turnovers
-    scraper = NbaBoxscoreScraper.new nil
+    scraper = BoxscoreScraper.new nil
     boxscore_sections = []
     args = nil
 

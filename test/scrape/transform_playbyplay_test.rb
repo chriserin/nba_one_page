@@ -1,5 +1,7 @@
 require './test/test_helper'
 require './app/scrape/playbyplay/transform_playbyplay_data'
+require './app/scrape/playbyplay/convert_raw_playbyplay'
+require './app/scrape/playbyplay/verify_plays'
 
 class TransformPlaybyplayDataTest < MiniTest::Unit::TestCase
 
@@ -7,7 +9,7 @@ class TransformPlaybyplayDataTest < MiniTest::Unit::TestCase
     play_a = ["10:20", "Player A makes three point shot", "10-11", ""]
     plays = [play_a]
     args = [plays, "Chicago Bulls", "Milwaukee Bucks", DateTime.new(2012, 1, 27)]
-    converted_plays = Scrape::TransformPlaybyplayData.convert_plays(*args)
+    converted_plays = Scrape::ConvertRawPlaybyplay.convert_plays(*args)
     refute_nil converted_plays
   end
 
@@ -15,7 +17,7 @@ class TransformPlaybyplayDataTest < MiniTest::Unit::TestCase
     play_a = ["10:20", "Player A makes three point shot", "10-11", ""]
     plays = [play_a]
     args = [plays, "Chicago Bulls", "Milwaukee Bucks", DateTime.new(2012, 1, 27)]
-    converted_plays = Scrape::TransformPlaybyplayData.convert_plays(*args)
+    converted_plays = Scrape::ConvertRawPlaybyplay.convert_plays(*args)
     assert_equal 100, converted_plays.first.seconds_passed
   end
 
@@ -24,7 +26,7 @@ class TransformPlaybyplayDataTest < MiniTest::Unit::TestCase
     play_a = ["10:20", "Player A makes three point shot", "10-11", ""]
     plays = [play_eoq, play_a]
     args = [plays, "Chicago Bulls", "Milwaukee Bucks", DateTime.new(2012, 1, 27)]
-    converted_plays = Scrape::TransformPlaybyplayData.convert_plays(*args)
+    converted_plays = Scrape::ConvertRawPlaybyplay.convert_plays(*args)
     assert_equal 820, converted_plays.first.seconds_passed
   end
 
@@ -32,13 +34,13 @@ class TransformPlaybyplayDataTest < MiniTest::Unit::TestCase
     play_a = ["10:20", "Player A blocks Player B layup", "10-11", ""]
     plays = [play_a]
     args = [plays, "Chicago Bulls", "Milwaukee Bucks", DateTime.new(2012, 1, 27)]
-    converted_plays = Scrape::TransformPlaybyplayData.convert_plays(*args)
+    converted_plays = Scrape::ConvertRawPlaybyplay.convert_plays(*args)
     assert_equal converted_plays.size, 2
   end
 
   def test_verify_free_throws
     play = Scrape::Play.new("00:00", "player a makes free throw 1 of 2", "1-0", "", 1, Scrape::GameInfo.new)
-    plays = Scrape::TransformPlaybyplayData.verify_free_throws([play])
+    plays = Scrape::VerifyPlays.verify_free_throws([play])
     assert plays.count == 2
     assert_match /1 of 2/, plays[0].description
     assert_match /2 of 2/, plays[1].description
@@ -46,13 +48,13 @@ class TransformPlaybyplayDataTest < MiniTest::Unit::TestCase
 
   def test_find_missing_free_throws
     play = Scrape::Play.new("00:00", "player a makes free throw 1 of 2", "1-0", "", 1, Scrape::GameInfo.new)
-    missing_free_throw = Scrape::TransformPlaybyplayData.find_missing_free_throw([play])
+    missing_free_throw = Scrape::VerifyPlays.find_missing_free_throw([play])
     refute_nil missing_free_throw
   end
 
   def test_find_play_with_keyword
     play = OpenStruct.new(description: "player a makes free throw 1 of 2")
-    found_play = Scrape::TransformPlaybyplayData.find_play_with_keyword([play], "1 of 2")
+    found_play = Scrape::VerifyPlays.find_play_with_keyword([play], "1 of 2")
     refute_nil found_play
   end
 

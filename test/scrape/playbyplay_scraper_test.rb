@@ -1,10 +1,10 @@
 require './test/test_helper'
 require './app/scrape/playbyplay/transform_playbyplay_data'
-require './app/scrape/playbyplay/nba_playbyplay_scraper'
+require './app/scrape/playbyplay/playbyplay_scraper'
 
-class NbaPlaybyplayScraperTest < MiniTest::Unit::TestCase
+class PlaybyplayScraperTest < MiniTest::Unit::TestCase
   def test_playbyplay_scrape
-    scraper = NbaPlaybyplayScraper.new nil
+    scraper = PlaybyplayScraper.new nil
 
     VCR.use_cassette('playbyplay') do
       game_rows, home_team, away_team, game_date = scraper.scrape("http://scores.espn.go.com/nba/playbyplay?gameId=320127004&period=0")
@@ -18,7 +18,7 @@ class NbaPlaybyplayScraperTest < MiniTest::Unit::TestCase
   end
 
   def test_playbyplay_scrape_and_transform
-    scraper = NbaPlaybyplayScraper.new Scrape::TransformPlaybyplayData
+    scraper = PlaybyplayScraper.new Scrape::TransformPlaybyplayData
 
     VCR.use_cassette('playbyplay') do
       scraper.run(["http://scores.espn.go.com/nba/playbyplay?gameId=320127004&period=0"])

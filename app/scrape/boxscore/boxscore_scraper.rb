@@ -1,6 +1,6 @@
 require './lib/mechanize/page.rb'
 
-class NbaBoxscoreScraper
+class BoxscoreScraper
   include ScraperTools
 
   BOXSCORE_TABLE        = "table.mod-data > tbody"

@@ -1,12 +1,12 @@
 require './test/test_helper'
 require './app/scrape/boxscore/transform_boxscore_data'
-require './app/scrape/boxscore/nba_boxscore_scraper'
+require './app/scrape/boxscore/boxscore_scraper'
 
 class TransformBoxscoreDataTest < MiniTest::Unit::TestCase
   def setup_scraped_boxscore
 
     VCR.use_cassette('boxscore') do
-      scraper = NbaBoxscoreScraper.new nil
+      scraper = BoxscoreScraper.new nil
       @args_from_scraper = scraper.scrape("http://scores.espn.go.com/nba/boxscore?gameId=320127004")
 #STARTERS	MIN	FGM-A	3PM-A	FTM-A	OREB	DREB	REB	AST	STL	BLK	TO	PF	+/-	PTS
 #Carlos Delfino, SG	13	0-4	0-0	0-0	0	1	1	0	0	0	0	1	-13	0

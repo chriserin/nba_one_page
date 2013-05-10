@@ -1,5 +1,4 @@
-
-class NbaScoreboardScraper
+class ScoreboardScraper
 
   def run(scoreboard_dates, url_type = :boxscore)
     all_urls = []
