@@ -23,11 +23,8 @@ module Scrape
     end
 
     def seconds_passed
-      minutes, seconds = @time.split ?:
-      minutes_elapsed  = 12 - (minutes.to_i + 1)
-      seconds_elapsed  = 60 - seconds.to_i
-      quarter_seconds  = (@quarter - 1) * 12 * 60
-      return minutes_elapsed * 60 + seconds_elapsed + quarter_seconds
+      game_time = GameTime.new(@quarter, @time)
+      game_time.total_seconds
     end
 
     def description
@@ -153,17 +150,25 @@ module Scrape
     GAINS_POSSESSION = "gains possession"
     def player_name
       return "" if matchable_description.include? GAINS_POSSESSION
-      description[0...first_keyword_index].strip.split(?').first
+      strip_with_index first_keyword_index
+    end
+
+    def strip_with_index(index)
+      description[0...index].strip.split(?').first
     end
 
     def first_keyword_index
       keyword_indexes = []
 
-      ALL_KEYWORDS.each do |keyword|
+      all_keywords.each do |keyword|
         keyword_indexes << matchable_description.index(keyword.downcase)
       end
 
       keyword_indexes.compact.min
+    end
+
+    def all_keywords
+      ALL_KEYWORDS
     end
   end
 end

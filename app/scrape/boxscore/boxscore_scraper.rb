@@ -15,7 +15,7 @@ class BoxscoreScraper
   end
 
   def run(boxscore_urls)
-    boxscore_urls.each do |url|
+    boxscore_urls.map do |url|
       results = scrape(url)
       @next_step.run(*results)
     end

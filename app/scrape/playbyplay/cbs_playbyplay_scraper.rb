@@ -1,12 +1,9 @@
 require './lib/mechanize/page'
 
-class PlaybyplayScraper
+class CbsPlaybyplayScraper
   include ScraperTools
 
-  PLAYBYPLAY_SECTIONS = "table.mod-data tr"
-  AWAY_TEAM_FROM_TITLE = ".team.away .team-info a"
-  HOME_TEAM_FROM_TITLE = ".team.home .team-info a"
-  GAME_TIME = ".game-time-location p"
+  PLAYBYPLAY_ROWS = "table.condensed tr"
 
   def initialize(next_step)
     @next_step = next_step
@@ -24,14 +21,13 @@ class PlaybyplayScraper
 
     game_rows = []
     away_team, home_team, game_date = "", "", ""
+    url.match(/NBA_(\d{8})_(\w{3})@(\w{3})/)
+    game_date = DateTime.parse($1)
+    away_team = $2
+    home_team = $3
 
     agent.get(url) do |page|
-
-      away_team = page.text_of(AWAY_TEAM_FROM_TITLE) || "Hornets"
-      home_team = page.text_of(HOME_TEAM_FROM_TITLE) || "Hornets"
-      game_date = DateTime.parse(page.text_of(GAME_TIME))
-
-      table = page.search(PLAYBYPLAY_SECTIONS)
+      table = page.search(PLAYBYPLAY_ROWS)
 
       each_row(table) do |row|
         play = []
@@ -43,6 +39,6 @@ class PlaybyplayScraper
       end
     end
 
-    return game_rows, home_team, away_team, game_date, :espn
+    return game_rows, home_team, away_team, game_date, :cbs
   end
 end

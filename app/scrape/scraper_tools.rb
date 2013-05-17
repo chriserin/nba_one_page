@@ -1,4 +1,10 @@
 module ScraperTools
+  def each_table(tables)
+    tables.each do |table|
+      yield table
+    end
+  end
+
   def each_row(table)
     table.css("tr").each do |row|
       yield row

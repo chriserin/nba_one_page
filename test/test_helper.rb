@@ -12,10 +12,12 @@ Spork.prefork do
 
   require "minitest/autorun"
   require 'vcr'
+  require 'mocha/setup'
 
   VCR.configure do |vcr_config|
     vcr_config.cassette_library_dir = 'test/fixtures/vcr_cassettes'
     vcr_config.hook_into :webmock 
+    WebMock.allow_net_connect!(:net_http_connect_on_start => true)
   end
 
   require 'database_cleaner'
@@ -43,6 +45,7 @@ Spork.prefork do
       DatabaseCleaner.clean # cleanup of the test
     end
   end
+
 end
 
 Spork.each_run do

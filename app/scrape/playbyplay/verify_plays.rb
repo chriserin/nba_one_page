@@ -32,9 +32,9 @@ module Scrape
       team_total = GameLine.where(line_name: team, is_total: true, game_date: game_date.to_date).first
       return unless team_total
       Nba::TalleableStatistics.each do |statistic|
-        method_name = "is_#{statistic.to_s.singularize}" 
+        method_name = "is_#{statistic.to_s.singularize}"
         tally = PlayModel.where(team: team, game_date: game_date, "#{method_name}" => true).count
-        File.open("playbyplay_errors.txt", "a"){|f| f << "results don't match for #{method_name}. #{team} on #{game_date} #{tally} #{team_total.send(statistic)}"} unless tally == team_total.send(statistic)
+        File.open("playbyplay_errors_#{DateTime.now.strftime('%Y%m%d')}.txt", "a"){|f| f << "results match for #{method_name}. #{team} on #{game_date} #{tally} #{team_total.send(statistic)}"} # unless tally == team_total.send(statistic)
       end
     end
   end

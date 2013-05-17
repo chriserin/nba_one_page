@@ -108,10 +108,13 @@ GEM
       nokogiri (~> 1.4)
       ntlm-http (~> 0.1, >= 0.1.1)
       webrobots (~> 0.0, >= 0.0.9)
+    metaclass (0.0.1)
     mime-types (1.22)
     miniskirt (1.2.1)
       activesupport
     minitest (4.7.0)
+    mocha (0.13.3)
+      metaclass (~> 0.0.1)
     moped (1.4.5)
     multi_json (1.7.2)
     neat (1.2.1)
@@ -214,6 +217,7 @@ DEPENDENCIES
   mechanize (~> 2.5.1)
   miniskirt
   minitest
+  mocha
   mongoid!
   neat
   newrelic_rpm
