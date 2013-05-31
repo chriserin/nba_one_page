@@ -8,6 +8,7 @@ module Scrape
     include Scrape::NbcDescriptionSplitting
 
     attr_reader :original_description
+    attr_accessor :lineup
 
     def initialize(quarter, time, team, nbc_description, away_score, home_score, game_info, original_description="")
       @quarter = quarter
@@ -67,7 +68,8 @@ module Scrape
       steals
       exits
       enters
-    }
+      turnover
+    } + SHOT_MODIFIERS + SHOT_TYPES
 
     def player_name
       if is_foul?

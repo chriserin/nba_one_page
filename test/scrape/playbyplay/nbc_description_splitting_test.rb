@@ -33,8 +33,8 @@ class NbcDescriptionSplittingTest < MiniTest::Unit::TestCase
   def test_split_substitution
     desc = "Substitution: Chris Bosh in for Chris Andersen."
     first, second = TestPlay.new.split_substitution_description(desc)
-    assert_equal "Chris Andersen exits game", first
-    assert_equal "Chris Bosh enters game", second
+    assert_equal "Chris Bosh enters game", first
+    assert_equal "Chris Andersen exits game", second
   end
 
   class TestPlay 

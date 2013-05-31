@@ -35,7 +35,7 @@ module Scrape
 
     def split_substitution_description(description)
       description.match /Substitution:\s(.*)\sin\sfor\s(.*)\./
-      return "#{$2} exits game", "#{$1} enters game"
+      return "#{$1} enters game", "#{$2} exits game"
     end
 
     def split_team_by_type(description, team, game_info)

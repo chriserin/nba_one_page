@@ -63,24 +63,9 @@ class TransformPlaybyplayDataTest < MiniTest::Unit::TestCase
     assert_equal PlayModel.count, 1
   end
 
-  def test_full_integration
-    play_a = ["10:20", "Player A blocks Player B layup", "10-11", ""]
-    plays = [play_a]
-    args = [plays, "Chicago Bulls", "Milwaukee Bucks", DateTime.new(2012, 1, 27), :espn]
-    Scrape::TransformPlaybyplayData.run(*args)
-    assert_equal 2, PlayModel.count
-  end
-
-  def test_transform_cbs_plays
-    args = [[["1st Qtr"], ["2nd Qtr"], ["10:20", "10-11", "IND", "player A made Running Jumper"]], "IND", "CHA", DateTime.new(2012, 11, 3), :cbs]
-    Scrape::VerifyPlays.stubs(:verify_saved_plays).returns({})
-    Scrape::TransformPlaybyplayData.run(*args)
-    assert_equal 1, PlayModel.count
-  end
-
   def test_transform_nbc_plays
-    args = [[["1", "10:20", "Ind", "player A made Running Jumper", "home_score", "away_score"]], "IND", "CHA", DateTime.new(2012, 11, 3), :nbc]
-    Scrape::VerifyPlays.stubs(:verify_saved_plays).returns({})
+    args = [[["1", "10:20", "Ind", "player A made Running Jumper", "home_score", "away_score"]], "Indiana Pacers", "Charlotte Bobcats", DateTime.new(2012, 11, 3), :nbc]
+    Scrape::VerifyPlays.stubs(:verify_saved_plays).returns({})#don't run this method
     Scrape::TransformPlaybyplayData.run(*args)
     assert_equal 1, PlayModel.count
   end

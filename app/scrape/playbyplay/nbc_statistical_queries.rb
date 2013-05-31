@@ -19,6 +19,8 @@ module Scrape
       putback
       turnaround
       reverse
+      running
+      3-point
     }
 
     MAKES = "makes"
@@ -40,6 +42,7 @@ module Scrape
     FOUL_DUE_TO = "due to a foul"
     EXIT = "exit"
     ENTERS = "enters"
+    SUBSTITUION = "substitution"
 
     def is_attempted_field_goal?
       return shot_type.present?
@@ -104,7 +107,24 @@ module Scrape
     end
 
     def is_ignorable?
-      description =~ /Event/
+      description.include? "Event" or description.include? "Jump Ball" or is_team_play? or is_timeout? or description.include? "Starting Lineup"
+    end
+
+    def is_team_play?
+      description.include?(Nba::TEAMS[@game_info.home_team][:nickname])or 
+        description.include?(Nba::TEAMS[@game_info.away_team][:nickname])
+    end
+
+    def is_quarter_start?
+      description =~ /Start of the/
+    end
+
+    def is_timeout?
+      description.include? "timeout"
+    end
+
+    def is_quarter_end?
+      description =~ /End of the/
     end
 
     def is_foul?
@@ -116,7 +136,7 @@ module Scrape
     end
 
     def is_splittable?
-      matchable_description.include? BLOCK or matchable_description.include? ASSIST or matchable_description.include? STEAL
+      matchable_description.include? BLOCK or matchable_description.include? ASSIST or matchable_description.include? STEAL or matchable_description.include? SUBSTITUION
     end
 
     def is_illegal_defense_foul?

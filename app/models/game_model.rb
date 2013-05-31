@@ -24,6 +24,7 @@ module GameModel
       #override default of 0
       field :games, type: Integer, default: 1
 
+      #indexes
       index({ line_name: 1 })
       index({ game_date: 1 })
       index({ team: 1 })

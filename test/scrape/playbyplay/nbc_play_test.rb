@@ -87,9 +87,23 @@ class NbcPlayTest < MiniTest::Unit::TestCase
 
     assert_equal "Paul George steals the ball", first_play.description
     assert_equal "J.R. Smith turnover", second_play.description
+    assert_equal "JR Smith", second_play.player_name
     assert_equal play_desc, first_play.original_description
     assert_equal play_desc, second_play.original_description
     assert_equal "Indiana Pacers", first_play.team
+    assert_equal "New York Knicks", second_play.team
+  end
+
+  def test_split_substitution
+    play_desc = "Substitution: Andrew Nicholson in for Arron Afflalo."
+    play = Scrape::NbcPlay.new("1", "10:20", "NY", play_desc, "score", "home_score", Scrape::GameInfo.new("Indiana Pacers", "New York Knicks"))
+    first_play, second_play = play.split_description
+
+    assert_equal "Andrew Nicholson enters game", first_play.description
+    assert_equal "Arron Afflalo exits game", second_play.description
+    assert_equal play_desc, first_play.original_description
+    assert_equal play_desc, second_play.original_description
+    assert_equal "New York Knicks", first_play.team
     assert_equal "New York Knicks", second_play.team
   end
 
@@ -153,7 +167,8 @@ class NbcPlayTest < MiniTest::Unit::TestCase
       "Roy Hibbert with a traveling turnover: Traveling",
       "Roy Hibbert is charged with a turnover due to a foul.",
       "Roy Hibbert exits game",
-      "Roy Hibbert enters game"
+      "Roy Hibbert enters game",
+      "Roy Hibbert running jump shot from 4 feet out."
     ]
     player_name_plays.each do |play_desc|
       play = Scrape::NbcPlay.new("1", "10:20", "Bos", play_desc, "score", "home_score", nil)

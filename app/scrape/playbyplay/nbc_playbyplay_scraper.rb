@@ -3,7 +3,7 @@ require './lib/mechanize/page'
 class NbcPlaybyplayScraper
   include ScraperTools
 
-  PLAYBYPLAY_TABLES = "table.shsTable"
+  PLAYBYPLAY_TABLES = "table.shsTable.shsBorderTable"
 
   def initialize(next_step)
     @next_step = next_step

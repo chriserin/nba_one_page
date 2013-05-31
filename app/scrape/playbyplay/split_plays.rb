@@ -1,14 +1,15 @@
 module Scrape
   class SplitPlays
     def self.split(converted_plays)
-      #select all splittable plays
-      splittable_plays = converted_plays.select {|play| play.is_splittable?}
-      #create split plays
-      split_plays = splittable_plays.map { |play| play.split_description }.flatten
-      #remove original from plays list
-      converted_plays -= splittable_plays
-      #add split plays to plays list
-      converted_plays += split_plays
+
+      converted_plays.each_with_index do |play, index|
+        if play.is_splittable? 
+          split_plays = play.split_description
+          converted_plays[index] = split_plays
+        end
+      end
+
+      converted_plays.flatten
     end
   end
 end
