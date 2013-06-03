@@ -34,6 +34,7 @@ jQuery ->
         labels: [stat_without_underscores]
         lineColors: ['#C1261B']
         continuousLine: false
+        yLabelFormat: (y) -> Math.round(y * 10) / 10
         hoverCallback: (index, options) =>
           game_date = moment(data[index].date).format("MM/DD")
           if(data[index]['averaged_data'])
