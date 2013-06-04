@@ -1,10 +1,15 @@
 module Nba
   module Schedule
     class ScheduleGame
+      extend Forwardable
+      def_delegators :@game_descriptor, :formatted_game_date, :result_description
+      def_delegators :@game, :game_date
+
       attr_accessor :team, :game
 
       def initialize(game, team_schedule)
         @game, @team_schedule = game, team_schedule
+        @game_descriptor = Nba::GameDescriptor.new @game
       end
 
       def game_description
@@ -13,10 +18,6 @@ module Nba
         else
           @game.game_text_for @team_schedule.team
         end
-      end
-
-      def result_description
-        "#{@game.game_result}#{difference_indicator}#{@game.plus_minus.abs}"
       end
 
       def difficulty
@@ -37,23 +38,11 @@ module Nba
       def is_back_to_back?; @team_schedule.calendar.rest_days_before_date(game_date, 1) == 0 end
       def is_four_in_five?; @team_schedule.calendar.rest_days_before_date(game_date, 5) == 1 end
 
-      def formatted_game_date
-        game_date.to_date.strftime("%m/%d")
-      end
-
       def is_played?
         game_date.to_date < Date.today
       end
 
-      def game_date
-        @game.game_date
-      end
-
       private
-      def difference_indicator
-        @game.game_result == "W" ? "+" : "-"
-      end
-
       def opponent_rested_rating
         opponent_game.rested_rating
       end

@@ -101,14 +101,14 @@ section.standings {
   }
 }
 
+$win-color: transparentize(green, .1);
+$loss-color: transparentize(red, .1);
 section.games {
   div.games-summary {
     border-bottom-color: black;
   }
 
   div.games-wrapper {
-    $win-color: transparentize(green, .1);
-    $loss-color: transparentize(red, .1);
 
     span.W {color: $win-color;}
     span.L {color: $loss-color;}
@@ -135,6 +135,8 @@ section.stat-totals, section.former-players, section.team-totals, section.oppone
 
   .graph-container {
     background: white;
+    span.W {color: $win-color;}
+    span.L {color: $loss-color;}
   }
 
   .graph-title {

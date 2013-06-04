@@ -29,6 +29,7 @@ gem 'iron_worker_ng'
 gem "mechanize", "~> 2.5.1"
 
 gem 'actionpack-page_caching'
+gem 'jbuilder'
 
 group :test do
   gem 'database_cleaner'

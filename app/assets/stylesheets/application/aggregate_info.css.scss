@@ -321,8 +321,39 @@ section.stat-totals, section.former-players, section.team-totals, section.oppone
   .graph-container {
     height: 360px;
 
+    .graph-split-timeline {
+      height: 28px;
+      background-color: green;
+      width: 100%;
+    }
+
     .graph {
       height: 340px;
+    }
+
+    ul.morris-hover-games-list {
+      text-align: left;
+      margin: 0px;
+      padding: 0px;
+      width: 163px;
+
+      li {line-height: 16px;}
+
+
+      span.game-date {
+        font-weight: bold;
+      }
+
+      span.game-description{
+        margin-left: 0px;
+      }
+
+      span.game-data {
+        text-align: right;
+        color: blue;
+        font-style: bold;
+        float: right;
+      }
     }
   }
 

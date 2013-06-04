@@ -20,7 +20,7 @@ module Nba
                               end
 
         @lines.sort_by! { |line| line.game_date }
-        data = @lines.map { |line| @rolled_datum_class.new(line.game_date, line.game_text, line, statistic) }
+        data = @lines.map { |line| @rolled_datum_class.new(line.game_date, "fake description", line, statistic) }
 
         results = data.each_with_index do |datum, index|
           data[[index - (number_of_rolled_points - 1), 0].max..index].each {|new_datum| datum.add_to_total(new_datum)}
