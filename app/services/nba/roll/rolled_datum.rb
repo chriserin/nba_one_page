@@ -4,7 +4,7 @@ module Nba
       include Nba::StatFormulas
 
       attr_accessor :date, :start_date, :data_divisor, :description, :averaged_data, :line
-      attr_accessor :formula, :components
+      attr_accessor :formula, :components, :component_values
       attr_accessor :game_data
 
       def initialize(date, description, line, formula)

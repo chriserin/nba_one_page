@@ -20,10 +20,11 @@ class DataRollerApp < Sinatra::Base
     Jbuilder.encode do |json|
       json.array! rolled_data_array do |rolled_datum|
         exhibit = Nba::Roll::RolledDatumExhibit.new(rolled_datum)
-        json.date          exhibit.date
-        json.start_date    exhibit.start_date
-        json.averaged_data exhibit.averaged_data
-        json.description   exhibit.html_description
+        json.date             exhibit.date
+        json.start_date       exhibit.start_date
+        json.averaged_data    exhibit.averaged_data
+        json.description      exhibit.html_description
+        json.component_values exhibit.component_values
       end
     end
   end

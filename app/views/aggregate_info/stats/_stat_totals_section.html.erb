@@ -7,7 +7,11 @@
         <%= render :partial => 'aggregate_info/stats/stat_totals', :locals => { :lines => lines } %>
         <div>
           <div class="graph-container">
-            <div class="graph-split-timeline"></div>
+            <div class="graph-split-report">
+            </div>
+            <div class="graph-split-timeline">
+              <div class="timeline-location"></div>
+            </div>
             <div class="graph"></div>
             <div class="graph-title">
               <span class="graph-specifics">

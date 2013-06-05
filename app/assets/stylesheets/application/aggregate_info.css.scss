@@ -321,10 +321,33 @@ section.stat-totals, section.former-players, section.team-totals, section.oppone
   .graph-container {
     height: 360px;
 
+    .graph-split-report {
+      height: 28px;
+      background-color: gray;
+      width: 100%;
+      position: relative;
+    }
+
     .graph-split-timeline {
       height: 28px;
       background-color: green;
       width: 100%;
+      position: relative;
+
+      .anchor {
+        top: 0px;
+        background-color: blue;
+        width: 2px;
+        height: 100%;
+        position: absolute;
+      }
+
+      .timeline-location {
+        @include border-radius(10px);
+        height: 15px;
+        width: 15px;
+        background-color: red;
+      }
     }
 
     .graph {

@@ -21,6 +21,7 @@
 //= require jquery.mousewheel.js
 //= require jquery.jscrollpane.js
 //= require jquery.tablesorter.js
+//= require jquery-ui-1.10.3.custom.js
 //= require raphael
 //= require morris
 //

@@ -16,10 +16,10 @@ jQuery ->
       $.getJSON "/rolled_data/#{encodeURIComponent(player)}/#{stat}/#{@year}.json?team=#{team}", (data) =>
         morrisGraph = @render_graph(data, stat)
         @setTitle(player, stat)
-        #        @createSplitTimeline(morrisGraph)
-        #
-        #    createSplitTimeline: (morrisGraph) ->
-        #      @timeline = NbaOnePage.ViewFactory.create(NbaOnePage.Views.GraphSplitTimeline, {'el': "." + $(this.el).parents("section").attr('class'), 'eventNameSpace': 'team_totals', 'morrisGraph': morrisGraph})
+        @createSplitTimeline(morrisGraph)
+
+    createSplitTimeline: (morrisGraph) ->
+      @timeline = new NbaOnePage.ViewFactory().create(NbaOnePage.Views.GraphSplitTimeline, {'el': "section." + $(this.el).parents("section").attr('class') + " .graph-split-timeline", 'eventNameSpace': 'team_totals', 'morrisGraph': morrisGraph})
 
     setTitle: (player, stat) ->
       stat_without_underscores = stat.replace(/_/g, " ")
