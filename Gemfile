@@ -40,3 +40,6 @@ group :test do
   gem 'vcr'
   gem 'webmock'
 end
+
+gem 'teabag', :github => 'modeset/teabag'
+gem 'eco'

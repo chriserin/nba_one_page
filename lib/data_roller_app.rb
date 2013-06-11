@@ -25,6 +25,7 @@ class DataRollerApp < Sinatra::Base
         json.averaged_data    exhibit.averaged_data
         json.description      exhibit.html_description
         json.component_values exhibit.component_values
+        json.formula          exhibit.formula
       end
     end
   end

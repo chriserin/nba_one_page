@@ -7,6 +7,14 @@ GIT
       compass (>= 0.12.2, < 0.14)
 
 GIT
+  remote: git://github.com/modeset/teabag.git
+  revision: 2bb38de32ca1d81e114bc71591b9b81efd78e4bf
+  specs:
+    teabag (0.7.1)
+      phantomjs (>= 1.8.1.1)
+      railties (>= 3.2.5, < 5)
+
+GIT
   remote: git://github.com/mongoid/mongoid.git
   revision: 93284ce6e1f658c3f57076af9a8e5dce96082dbb
   specs:
@@ -61,6 +69,12 @@ GEM
       sass (>= 3.2.0)
       thor
     builder (3.1.4)
+    capybara (2.1.0)
+      mime-types (>= 1.16)
+      nokogiri (>= 1.3.3)
+      rack (>= 1.0.0)
+      rack-test (>= 0.5.4)
+      xpath (~> 2.0)
     chunky_png (1.2.8)
     coffee-rails (4.0.0.beta1)
       coffee-script (>= 2.2.0)
@@ -79,11 +93,20 @@ GEM
     database_cleaner (0.9.1)
     domain_name (0.5.10)
       unf (>= 0.0.5, < 1.0.0)
+    eco (1.0.0)
+      coffee-script
+      eco-source
+      execjs
+    eco-source (1.1.0.rc.1)
     erubis (2.7.0)
+    eventmachine (1.0.3)
     execjs (1.4.0)
       multi_json (~> 1.0)
+    faye-websocket (0.4.7)
+      eventmachine (>= 0.12.0)
     fssm (0.2.10)
     hike (1.2.1)
+    http_parser.rb (0.5.3)
     i18n (0.6.4)
     iron_core (0.5.2)
       rest (>= 2.2.0)
@@ -129,6 +152,12 @@ GEM
     nokogiri (1.5.9)
     ntlm-http (0.1.1)
     origin (1.0.11)
+    phantomjs (1.8.1.1)
+      poltergeist
+    poltergeist (1.3.0)
+      capybara (~> 2.1.0)
+      faye-websocket (>= 0.4.4, < 0.5.0)
+      http_parser.rb (~> 0.5.3)
     polyglot (0.3.3)
     rack (1.5.2)
     rack-protection (1.5.0)
@@ -203,6 +232,8 @@ GEM
       addressable (>= 2.2.7)
       crack (>= 0.3.2)
     webrobots (0.1.1)
+    xpath (2.0.0)
+      nokogiri (~> 1.3)
 
 PLATFORMS
   ruby
@@ -214,6 +245,7 @@ DEPENDENCIES
   compass-h5bp
   compass-rails!
   database_cleaner
+  eco
   html5-rails!
   iron_worker_ng
   jbuilder
@@ -229,6 +261,7 @@ DEPENDENCIES
   sass-rails (~> 4.0.0.beta1)
   sinatra
   spork-minitest (~> 0.0.2)
+  teabag!
   uglifier (>= 1.0.3)
   unicorn
   vcr

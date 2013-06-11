@@ -19,7 +19,8 @@ jQuery ->
         @createSplitTimeline(morrisGraph)
 
     createSplitTimeline: (morrisGraph) ->
-      @timeline = new NbaOnePage.ViewFactory().create(NbaOnePage.Views.GraphSplitTimeline, {'el': "section." + $(this.el).parents("section").attr('class') + " .graph-split-timeline", 'eventNameSpace': 'team_totals', 'morrisGraph': morrisGraph})
+      $(@el).find(".graph-split-timeline").empty()
+      @timeline = new NbaOnePage.ViewFactory().create(NbaOnePage.Views.GraphSplitTimeline, {'el': "section." + $(this.el).parents("section").attr('class') + " .graph-split-timeline", 'eventNameSpace': $(this.el).parents("section").attr('class'), 'morrisGraph': morrisGraph})
 
     setTitle: (player, stat) ->
       stat_without_underscores = stat.replace(/_/g, " ")

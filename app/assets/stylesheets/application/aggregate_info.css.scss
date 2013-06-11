@@ -319,34 +319,66 @@ section.stat-totals, section.former-players, section.team-totals, section.oppone
   }
 
   .graph-container {
-    height: 360px;
+    height: 390px;
 
     .graph-split-report {
       height: 28px;
-      background-color: gray;
+      background-color: white;
       width: 100%;
       position: relative;
+      .split-report {
+        font-size: 14px;
+        font-weight: normal;
+        color: black;
+        .start-date, .end-date {
+          font-weight: bold;
+        }
+        .start-date:after {content: ' - '}
+        .split-value {color: blue;}
+      }
     }
 
     .graph-split-timeline {
-      height: 28px;
-      background-color: green;
+      height: 20px;
       width: 100%;
       position: relative;
 
       .anchor {
         top: 0px;
         background-color: blue;
-        width: 2px;
+        width: 0px;
         height: 100%;
         position: absolute;
       }
 
+      .timeline-highlight {
+        background: rgba(27, 182, 193, 0.3);
+        position: relative;
+        height: 20px;
+        display: block;
+        margin-top: -20px;
+      }
+
       .timeline-location {
-        @include border-radius(10px);
-        height: 15px;
-        width: 15px;
-        background-color: red;
+        height:20px;
+        width:20px;
+        position: relative;
+        z-index: 10;
+
+        .tri-indicator {
+          margin-left: -10px;
+          border-top: 18px solid black;
+          border-left: 11px solid transparent;
+          border-right: 11px solid transparent;
+          width: 0px;
+        }
+
+        .stem-indicator {
+          height: 320px;
+          margin-top: -5px;
+          background-color: black;
+          width: 1px;
+        }
       }
     }
 
