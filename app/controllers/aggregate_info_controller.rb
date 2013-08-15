@@ -33,6 +33,28 @@ class AggregateInfoController < ApplicationController
     @difference_totals = season.difference_totals
   end
 
+  def stats
+    team_param = params[:team] || "Bulls"
+    @year = params[:year] || "2013"
+    @team = Nba::TEAMS.find(team_param)
+    @split_type = params[:split_type] || :all
+
+    season = Nba::Season.new(@year)
+    @lines = season.total_statistics_for_team(@team, @split_type.to_sym)
+    render :layout => false
+  end
+
+  def boxscore
+    team_param = params[:team] || "Bulls"
+    @year = params[:year] || "2013"
+    @team = Nba::TEAMS.find(team_param.strip)
+    date  = DateTime.parse(params[:date] || "20130101").strftime("%Y-%m-%d")
+
+    season = Nba::Season.new(@year)
+    @boxscore = season.boxscore(date || @schedule.last_game_played, @team)
+    render :layout => false
+  end
+
   def clear_cache
     files, count = PageCache::ClearCache.clear
     render :inline => "#{files.join("<br/>")}<br/>count: #{count}"

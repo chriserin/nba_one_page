@@ -21,6 +21,10 @@ module Nba
       game_date.to_date.strftime("%m/%d")
     end
 
+    def team
+      "XXXX"
+    end
+
     def to_s
       "#{formatted_game_date} #{game_text}"
     end

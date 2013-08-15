@@ -13,4 +13,5 @@ jQuery ->
       passedOptions = _.extend options, @registry, eventBus: @eventBus
       klass = ViewClass
       klass.prototype.eventBus = @eventBus
+      klass.prototype.factory  = this
       new klass(passedOptions)

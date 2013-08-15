@@ -10,6 +10,7 @@ module Nba
       def initialize(game, team_schedule)
         @game, @team_schedule = game, team_schedule
         @game_descriptor = Nba::GameDescriptor.new @game
+        @team = @team_schedule.team
       end
 
       def game_description

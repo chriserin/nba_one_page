@@ -5,10 +5,9 @@ jQuery ->
       'click nav.section-content li'           : 'clickBoxscoreNav'
 
     globalEvents:
-      'boxscores:load': 'loadBoxscore'
+      'boxscores:gameClick': 'gameClick'
 
     initialize: ->
-      #$(".team-boxscore").addClass("selected")
 
     clickBoxscoreLink: (e) ->
       $currentTarget = $(e.currentTarget)
@@ -17,17 +16,28 @@ jQuery ->
       $(".boxscore").removeClass("selected")
       $(".#{boxscore_to_display}").addClass("selected")
 
-
-    loadBoxscore: (event) ->
+    gameClick: (event) ->
       $currentTarget = $(event.currentTarget)
-      url = "boxscore/#{encodeURIComponent($currentTarget.data('team'))}/#{$currentTarget.data('time')}"
-      $(".boxscores").load url, ->
-        $(".game-score").text($(".game-text").data("game-text"))
+      gameDate = $currentTarget.data('time')
+      NbaOnePage.router.navigate("boxscores/#{gameDate}", {trigger: true})
+
+    loadBoxscore: (team, gameDate) ->
+      url = "#{encodeURIComponent(team)}/boxscore/#{gameDate}"
+      $.get url, (data) ->
+        $(".boxscore-content").html(data)
+        $(".boxscores .section-header").html($(".boxscore-content .section-header").contents())
+        $(".boxscore-content .section-header").remove()
+        NbaOnePage.ViewState["boxscores"] = new NbaOnePage.ViewFactory().create(NbaOnePage.Views.Boxscores)
 
     clickBoxscoreNav: (event) ->
-
       $(@el).find("nav.section-content li").removeClass("selected")
       $currentTarget = $(event.currentTarget)
       $currentTarget.addClass("selected")
 
       @clickBoxscoreLink(event)
+
+    updateSection: (gameDate) ->
+      if gameDate
+        team = $(".team-name").text()
+        @loadBoxscore(team, gameDate)
+        section = NbaOnePage.ViewState["section_navigation"].navigateTo("boxscores")

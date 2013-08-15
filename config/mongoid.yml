@@ -1,11 +1,13 @@
 development:
   sessions:
     default:
-      uri: <%= "mongodb://localhost:27017/main" %>
+      uri: <%= "mongodb://localhost:27017/development" %>
 test:
   sessions:
     default:
       uri: mongodb://localhost:27017/test
+    with_data:
+      uri: mongodb://localhost:27017/test_with_data
 production:
   sessions:
     default:

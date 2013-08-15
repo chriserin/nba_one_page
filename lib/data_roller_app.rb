@@ -30,3 +30,29 @@ class DataRollerApp < Sinatra::Base
     end
   end
 end
+
+class PlaybyplayApp < Sinatra::Base
+  get "/playbyplay/:date/:name/:stat.json" do
+    date = params[:date] || "2013-01-01"
+    name = params[:name] || "Chicago Bulls"
+    stat = params[:stat] || "made_field_goals"
+    
+    date_query = DateTime.parse(date).strftime("%Y-%m-%d")
+    plays = PlayModel.where("player_name" => name, "game_date" => date_query, "is_#{stat.singularize}" => true)
+    
+    [
+      200,
+      {"Content-Type" => 'application/json'},
+      render_json(plays)
+    ]
+  end
+
+  def render_json(plays)
+    Jbuilder.encode do |json|
+      json.array! plays do |p|
+        json.time = p.play_time
+        json.description = p.description
+      end
+    end
+  end
+end

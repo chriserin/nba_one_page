@@ -36,7 +36,6 @@ module Scrape
     end
 
     def determine_lineup(play)
-      p play.description
       if play.is_exit?
         other_team = (@lineups.keys - [play.team]).pop
         lineups = {

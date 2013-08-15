@@ -21,6 +21,15 @@ module Scrape
       @original_description = original_description
     end
 
+    def to_s
+      if @original_description.present?
+        desc = @original_description
+      else
+        desc = @description
+      end
+      "#{@team} #{@time} #{desc}"
+    end
+
     def team_score
       0
     end
@@ -42,7 +51,7 @@ module Scrape
     end
 
     def game_date
-      @game_info.game_date
+      @game_info.game_date.strftime("%Y-%m-%d")
     end
 
     def description
