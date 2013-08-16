@@ -37,6 +37,7 @@ class PlaybyplayApp < Sinatra::Base
     name = params[:name] || "Chicago Bulls"
     stat = params[:stat] || "made_field_goals"
     
+    Rails.logger.info("playbyplay date is #{date}")
     date_query = DateTime.parse(date).strftime("%Y-%m-%d")
     plays = PlayModel.where("player_name" => name, "game_date" => date_query, "is_#{stat.singularize}" => true)
     
@@ -50,8 +51,8 @@ class PlaybyplayApp < Sinatra::Base
   def render_json(plays)
     Jbuilder.encode do |json|
       json.array! plays do |p|
-        json.time = p.play_time
-        json.description = p.description
+        json.time p.play_time
+        json.description p.description
       end
     end
   end

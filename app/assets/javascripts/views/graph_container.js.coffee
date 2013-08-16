@@ -19,19 +19,20 @@ jQuery ->
         @createSplitTimeline(morrisGraph)
 
     createSplitTimeline: (morrisGraph) ->
-      $(@el).find(".graph-split-timeline").empty()
-      @timeline = new NbaOnePage.ViewFactory().create(NbaOnePage.Views.GraphSplitTimeline, {'el': "section." + $(this.el).parents("section").attr('class') + " .graph-split-timeline", 'eventNameSpace': $(this.el).parents("section").attr('class'), 'morrisGraph': morrisGraph})
+      @find(".graph-split-timeline").empty()
+      options = {'el': "section.#{@sectionClass()} .graph-split-timeline", 'eventNameSpace': @sectionClass(), 'morrisGraph': morrisGraph}
+      @timeline = new NbaOnePage.ViewFactory().create(NbaOnePage.Views.GraphSplitTimeline, options)
 
     setTitle: (player, stat) ->
       stat_without_underscores = stat.replace(/_/g, " ")
-      $(@el).find(".graph-specifics .player").text("#{player}")
-      $(@el).find(".graph-specifics .stat").text("#{stat_without_underscores}")
+      @find(".graph-specifics .player").text("#{player}")
+      @find(".graph-specifics .stat").text("#{stat_without_underscores}")
 
     render_graph: (data, stat) ->
-      $(@el).find(".graph").empty()
+      @find(".graph").empty()
       stat_without_underscores = stat.replace(/_/g, " ")
       Morris.Line
-        element: $(@el).find(".graph").get(0)
+        element: @find(".graph").get(0)
         data: data
         xkey: 'date'
         ykeys: ['averaged_data']
@@ -63,3 +64,9 @@ jQuery ->
 
         dateFormat: (d) -> moment(d).format("MM/DD")
         xLabelFormat: (d) -> moment(d).format("MM/DD")
+
+    find: (selector) ->
+      $(@el).find(selector)
+
+    sectionClass: ->
+      $(@el).parents("section").attr('class')

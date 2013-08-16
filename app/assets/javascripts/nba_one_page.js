@@ -12,6 +12,7 @@ window.NbaOnePage = {
     var factory = new NbaOnePage.ViewFactory()
     NbaOnePage.ViewState["standings"] = factory.create(NbaOnePage.Views.StandingsView)
     NbaOnePage.ViewState["boxscores"] = factory.create(NbaOnePage.Views.Boxscores)
+    NbaOnePage.ViewState["timeline"] = factory.create(NbaOnePage.Views.EventTimelineContainer)
     NbaOnePage.ViewState["games"] = factory.create(NbaOnePage.Views.Games)
     NbaOnePage.ViewState["section_navigation"] = factory.create(NbaOnePage.Views.SectionNavigation)
 

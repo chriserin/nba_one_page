@@ -4,7 +4,7 @@
           <%= render :partial => 'aggregate_info/boxscore/boxscore', :locals => {:boxscore_lines => boxscore.team_lines, :class_label => "team-boxscore", :expanded => expanded, :selected => true } %>
           <%= render :partial => 'aggregate_info/boxscore/boxscore', :locals => {:boxscore_lines => boxscore.opponent_lines, :class_label => expanded ? "team-boxscore" : "opponent-boxscore", :expanded => expanded, :selected => false } %>
         </div>
-        <div class="graph-container">
-          <div class="graph"></div>
+        <div class="event-timeline-container">
+          <div class="event-timeline"></div>
         </div>
       </section>

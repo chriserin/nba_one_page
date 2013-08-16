@@ -11,7 +11,8 @@ jQuery ->
 
     initialize: (options) ->
       @eventNameSpace = options.eventNameSpace || 'stat_totals'
-      @dropDown = @factory.create(NbaOnePage.Views.SplitTypeView, {'el': "section." + $(@el).attr('class') + " span.split-type", 'eventNameSpace': @eventNameSpace})
+      options = {'el': "section.#{@sectionClass()} span.split-type", 'eventNameSpace': @eventNameSpace}
+      @dropDown = @factory.create(NbaOnePage.Views.SplitTypeView, options)
 
     statsGridClick: (e) ->
       $currentTarget = $(e.currentTarget)
@@ -79,3 +80,6 @@ jQuery ->
 
     find: (selector) ->
       $(@el).find(selector)
+
+    sectionClass: ->
+      $(@el).attr("class")

@@ -20,7 +20,16 @@ module Nba
       end
 
       def output
-        @output = "<table>#{head()}#{body()}</table>"
+        @output = "<table #{table_data_attributes()}>#{head()}#{body()}</table>"
+      end
+
+      def table_data_attributes
+        if @table_type == :boxscore
+          formatted_game_date = @lines.first.game_date.to_date.strftime("%Y%m%d")
+          "data-game-date='#{formatted_game_date}'"
+        else
+          ""
+        end
       end
 
       def head

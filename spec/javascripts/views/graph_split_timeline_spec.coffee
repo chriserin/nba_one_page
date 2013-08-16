@@ -19,6 +19,7 @@ describe 'NbaOnePage.Views.GraphSplitTimeline', ->
       $("body").empty()
 
     it 'should init', ->
+      $("<section class='test'><div class='graph-split-timeline'></div></section>").appendTo("body")
       timeline = new NbaOnePage.ViewFactory().create(
         NbaOnePage.Views.GraphSplitTimeline, {'el': "section.test .graph-split-timeline", 'eventNameSpace': 'test', 'morrisGraph': morrisGraph}
       )
