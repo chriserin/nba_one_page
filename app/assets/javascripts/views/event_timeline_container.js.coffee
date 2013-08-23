@@ -29,21 +29,30 @@ jQuery ->
 
     getData: (player, gameDate, stat) ->
       $.getJSON "/playbyplay/#{gameDate}/#{encodeURIComponent(player)}/#{stat}.json", (data) =>
-        @addZero(data)
-        timeline = @renderTimeline(data)
+        @addZero(data.plays)
+        @plays = data.plays
+        timeline = @renderTimeline(data.plays)
+        stintsView = @renderStintsView(data.stints)
 
     addZero: (data) ->
       for datum in data
         datum.zero = 0
 
-    renderTimeline: (data) ->
-      return if data.length is 0
+    renderStintsView: (stints) ->
+      for stint in stints
+        @find(".stint-view").append("<div class='stint' style='left: #{@line.transX(stint.start)}px; width: #{@stintWidth(stint)}px;'>#{stint.end - stint.start}</div>")
+
+    stintWidth: (stint) ->
+      @line.transX(stint.end) - @line.transX(stint.start)
+
+    renderTimeline: (plays) ->
+      return if plays.length is 0
       @find(".event-timeline").empty()
 
-      Morris.Line
+      @line = Morris.Line
         lineType: 'event-timeline'
         element: @find(".event-timeline").get(0)
-        data: data.reverse()
+        data: plays.reverse()
         numLines: 1
         xkey: 'time'
         ykeys: ['zero']
@@ -51,12 +60,14 @@ jQuery ->
         ymax: '0'
         labels: ['label']
         lineColors: ['#000066']
+        eventLineColors: ['#aaa']
+        eventStrokeWidth: 2
         parseTime: false
         lineWidth: 0
         continuousLine: false
         hideHover: 'false'
         hoverCallback: (index) =>
-          data[index].description
+          plays[index].description
         yLabelFormat: -> ""
 
     find: (selector) ->

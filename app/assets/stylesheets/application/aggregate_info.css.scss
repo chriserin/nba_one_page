@@ -210,10 +210,25 @@ section.boxscores {
   .boxscore          {display: none;}
   .boxscore.selected {display: block;}
   .percentage        {width: 38px;}
-  .event-timeline-container {width: 100%; height: 60px;}
-  .event-timeline {width: 100%; height: 60px;}
-}
+  .event-timeline-container {
+    width: 100%; height: 60px;
 
+    .event-timeline {width: 100%; height: 60px;}
+    .stint-view {
+
+      position: relative;
+      width: 100%;
+      height: 24px;
+
+      .stint {
+        display: inline;
+        position: relative;
+        height: 100%;
+        background-color: #ddd;
+      }
+    }
+  }
+}
 
 section.standings {
 
