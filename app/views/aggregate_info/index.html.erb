@@ -4,7 +4,6 @@
     <%= render :partial => 'aggregate_info/team_index' %>
     <%= render :partial => 'aggregate_info/stats/stat_totals_section', :locals => {:title => "Team Totals", :lines => @standings.team_summaries } %>
     <%= render :partial => 'aggregate_info/stats/stat_totals_section', :locals => {:title => "Opponent Totals", :lines => @opponent_totals} %>
-    <%= render :partial => 'aggregate_info/stats/stat_totals_section', :locals => {:title => "Difference Totals", :lines => @difference_totals} %>
   </div>
 </div>
 

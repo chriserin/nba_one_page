@@ -30,7 +30,6 @@ class AggregateInfoController < ApplicationController
     season      = Nba::Season.new(@year)
     @standings  = season.standings
     @opponent_totals = season.opponent_totals
-    @difference_totals = season.difference_totals
   end
 
   def clear_cache
