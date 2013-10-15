@@ -27,7 +27,8 @@ module Nba
       end
 
       def last_game_played
-        games.select { |game| game.is_played? }.last.game_date
+        last_game = games.select { |game| game.is_played? }.last
+        (last_game && last_game.game_date) || @calendar.season_start
       end
 
       def find_game(game_date)

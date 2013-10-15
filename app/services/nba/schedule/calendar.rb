@@ -8,12 +8,30 @@ module Nba
           start: Date.new(2012, 10, 30),
           end: Date.new(2013, 4, 20),
           all_star_game: Date.new(2013, 2, 13)
+        },
+        "2014" => {
+          start: Date.new(2013, 10, 29),
+          end: Date.new(2014, 4, 16),
+          all_star_game: Date.new(2014, 2, 16)
         }
       }
 
       def initialize(year)
         @year = year
         @days = create_days(year)
+      end
+
+      def self.get_current_year
+        year = YEARS.keys.find do |year|
+           Date.today > YEARS[year][:start] && Date.today <= YEARS[year][:end]
+        end
+        return year || YEARS.keys.find do |year|
+          YEARS[year.next] && YEARS[year.next][:start] > Date.today
+        end
+      end
+
+      def season_start
+        YEARS[@year][:start]
       end
 
       def create_days(year)

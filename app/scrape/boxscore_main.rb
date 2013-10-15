@@ -19,5 +19,15 @@ module Scrape
         sleep(2)
       end
     end
+
+    def self.scrape_year(year="2013")
+      game_line_type = ::LineTypeFactory.get(year, :game_line)
+      game_line_type.delete_all
+
+      (Nba::Schedule::Calendar::YEARS[year][:start]..[Nba::Schedule::Calendar::YEARS[year][:end], Date.today - 1].min).each do |date|
+        self.scrape(date, false)
+        sleep(2)
+      end
+    end
   end
 end

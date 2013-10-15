@@ -6,7 +6,7 @@ class AggregateInfoController < ApplicationController
     @alternate_style = params[:alt] || false
 
     team_param = params[:team] || "Bulls"
-    @year = params[:year] || "2013"
+    @year = params[:year] || (Nba::Schedule::Calendar.get_current_year)
     @team = Nba::TEAMS.find(team_param)
 
     if @team.blank?
@@ -18,7 +18,6 @@ class AggregateInfoController < ApplicationController
     @standings           = season.standings
     @schedule            = season.schedule(@team, @standings)
     @boxscore            = season.boxscore(@schedule.last_game_played, @team)
-    @former_player_lines = season.total_statistics_for_former_players(@boxscore.team_lines.first.team)
   end
 
   def index

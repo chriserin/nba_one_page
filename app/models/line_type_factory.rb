@@ -46,6 +46,11 @@ class LineTypeFactory
   end
 
   @line_types = {
+     "2014" => {
+      :game_line  => self.create_line_type("2014", :game_line),
+      :difference => self.create_line_type("2014", :difference),
+      :on_court_stretch => self.create_line_type("2014", :on_court_stretch)
+    },
     "2013" => {
       :game_line  => self.create_line_type("2013", :game_line),
       :difference => self.create_line_type("2013", :difference),

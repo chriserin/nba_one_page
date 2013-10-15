@@ -39,7 +39,10 @@ module DifferenceModel
 
     copy_fields(result, :line_name, :team, :is_total, :is_opponent_total, :is_subtotal, :is_difference_total)
 
+    puts line_name, right_side_line.line_name, game_date, right_side_line.game_date
     Nba::BaseStatistics.minute_divisible_fields.map(&:to_s).each do |statistic|
+      puts statistic
+      puts right_side_line.stat(statistic)
       result[statistic] = stat(statistic).first + right_side_line.stat(statistic).first, stat(statistic).second + right_side_line.stat(statistic).second
     end
 

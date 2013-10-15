@@ -1,7 +1,7 @@
 development:
   sessions:
     default:
-      uri: <%= "mongodb://localhost:27017/main" %>
+      uri: <%= "mongodb://localhost:27017/prod" %>
 test:
   sessions:
     default:

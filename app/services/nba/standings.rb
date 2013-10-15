@@ -14,7 +14,7 @@ module Nba
     end
 
     def find_team(team)
-      find { |standing| standing.team_name =~ /#{team}/ }
+      find { |standing| standing.team_name =~ /#{team}/ } || OpenStruct.new(:games => [])
     end
 
     def games_for_team(team)
