@@ -25,7 +25,7 @@ module Scrape
       #verify plays!
       Scrape::VerifyPlays.verify_saved_plays(saved_plays)
       #determine on court stretches
-      stretches = Scrape::DetermineStretches.run_plays(non_ignored_plays.reverse)
+      stretches = Scrape::DetermineStretches.run_plays(non_ignored_plays)
       #save on court stretches
       save_stretches(stretches)
     rescue Scrape::Error => scrape_error

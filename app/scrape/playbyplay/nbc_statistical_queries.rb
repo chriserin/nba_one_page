@@ -38,6 +38,7 @@ module Scrape
     TECHNICAL_FOUL = "technical foul"
     FLAGRANT_1_FOUL = "flagrant type 1 foul"
     FLAGRANT_2_FOUL = "flagrant type 2 foul"
+    EJECTION = "ejected"
     ILLEGAL_DEFENSE_FOUL = "illegal defense foul"
     FOUL_DUE_TO = "due to a foul"
     EXIT = "exit"
@@ -149,6 +150,10 @@ module Scrape
 
     def is_technical_foul?
       matchable_description.include? TECHNICAL_FOUL
+    end
+
+    def is_ejection?
+      matchable_description.include? EJECTION
     end
 
     def is_entrance?

@@ -17,7 +17,8 @@ class ScoreboardScraper
     agent = Mechanize.new
     boxscore_urls = []
 
-    agent.get("http://espn.go.com/nba/scoreboard?date=#{date.strftime('%Y%m%d')}") do |page|
+    url = "http://espn.go.com/nba/scoreboard?date=#{date.strftime('%Y%m%d')}"
+    agent.get(url) do |page|
       boxscore_urls = page.links_with(:href => %r{boxscore}).map {|link| "http://espn.go.com" + link.href}.uniq
     end
 

@@ -10,6 +10,10 @@ module Scrape
         current_stretch = current_stretch.process_play(play)
       end
 
+      stretches.each do |stretch|
+        stretch.verify_full_lineups
+      end
+
       stretches.uniq
     end
   end

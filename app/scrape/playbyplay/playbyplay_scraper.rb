@@ -27,8 +27,8 @@ class PlaybyplayScraper
 
     agent.get(url) do |page|
 
-      away_team = page.text_of(AWAY_TEAM_FROM_TITLE) || "Hornets"
-      home_team = page.text_of(HOME_TEAM_FROM_TITLE) || "Hornets"
+      away_team = page.text_of(AWAY_TEAM_FROM_TITLE) || "Pelicans"
+      home_team = page.text_of(HOME_TEAM_FROM_TITLE) || "Pelicans"
       game_date = DateTime.parse(page.text_of(GAME_TIME))
 
       table = page.search(PLAYBYPLAY_SECTIONS)

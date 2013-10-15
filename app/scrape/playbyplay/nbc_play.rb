@@ -78,10 +78,11 @@ module Scrape
       exits
       enters
       turnover
+      ejected
     } + SHOT_MODIFIERS + SHOT_TYPES
 
     def player_name
-      if is_foul?
+      if is_foul? and not is_ejection?
         keyword = "committed by"
         index = description.index keyword
         last_position = index + keyword.size
