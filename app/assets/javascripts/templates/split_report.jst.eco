@@ -1,0 +1,6 @@
+<span class="split-report i<%= @split.fromIndex %>">
+<span class="start-date"><%- @split.startDate() %></span>
+<span class="end-date"><%- @split.endDate() %></span>
+<span class="games-count"><%- @split.gamesCount() %>g</span>
+<span class="split-value"><%- @split.calculate() %></span>
+</span>

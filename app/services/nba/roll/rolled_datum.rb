@@ -3,11 +3,14 @@ module Nba
     class RolledDatum
       include Nba::StatFormulas
 
-      attr_accessor :date, :start_date, :data_divisor, :description, :averaged_data
-      attr_accessor :formula, :components
+      attr_accessor :date, :start_date, :data_divisor, :description, :averaged_data, :line
+      attr_accessor :formula, :components, :component_values
+      attr_accessor :game_data
 
       def initialize(date, description, line, formula)
         @date, @start_date, @description, @formula = date, date, description, formula
+        @line = line
+        @game_data = calc_game_data(line, formula) if formula.present?
 
         if formula
           @components = Nba::FORMULA_PARTS[formula.to_sym]
@@ -22,6 +25,10 @@ module Nba
           @averaged_data = nil
         end
 
+      end
+
+      def calc_game_data(line, formula)
+        line.send(formula.to_s)
       end
 
       def add_to_total(new_datum)
@@ -72,3 +79,5 @@ module Nba
     end
   end
 end
+
+

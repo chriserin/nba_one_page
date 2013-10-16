@@ -3,9 +3,13 @@ jQuery ->
     el: 'section.games'
     events:
       "click div.games-summary li": "highlightGames"
+      "click div.games-wrapper li.game-result": "clickGame"
 
     initialize: () ->
       $("section.games .scroll-pane").jScrollPane()
+
+    clickGame: (event) ->
+      @eventBus.trigger("boxscores:gameClick", event)
 
     highlightGames: (event) ->
       $currentTarget = $(event.currentTarget)

@@ -14,15 +14,6 @@ class ScoreboardScraperTest < MiniTest::Unit::TestCase
     assert urls.size == 5
   end
 
-  def test_cbs_playbyplay_urls
-    urls = []
-    scraper = ScoreboardScraper.new
-    VCR.use_cassette('cbs_playbyplay_urls') do 
-      urls = scraper.cbs_playbyplay_urls(DateTime.new(2012, 11, 2))
-    end
-    assert_includes urls, "http://www.cbssports.com/nba/gametracker/playbyplay/NBA_20121102_IND@CHA"
-  end
-
   def test_nbc_playbyplay_urls
     urls = []
     scraper = ScoreboardScraper.new

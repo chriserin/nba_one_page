@@ -7,6 +7,12 @@ module Nba
         "2013" => {
           start: Date.new(2012, 10, 30),
           end: Date.new(2013, 4, 20),
+          january: [Date.new(2013, 1, 1), Date.new(2013, 1, 31)],
+          november: [Date.new(2012, 10, 30), Date.new(2012, 11, 30)],
+          december: [Date.new(2012, 12, 1), Date.new(2012, 12, 31)],
+          february: [Date.new(2013, 2, 1), Date.new(2013, 2, 28)],
+          march: [Date.new(2013, 3, 1), Date.new(2013, 3, 31)],
+          april: [Date.new(2013, 4, 1), Date.new(2013, 4, 15)],
           all_star_game: Date.new(2013, 2, 13)
         },
         "2014" => {
@@ -60,6 +66,10 @@ module Nba
           rest_counter += 1 if @days[target_date.to_date - (n + 1)] == RestDay
         end
         return rest_counter
+      end
+
+      def month(month_type)
+        return YEARS[@year][month_type]
       end
     end
   end

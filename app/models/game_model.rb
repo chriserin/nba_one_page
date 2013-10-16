@@ -29,11 +29,12 @@ module GameModel
       index({ game_date: 1 })
       index({ team: 1 })
 
-      scope :team_lines,      ->(team)      { where(:team => /#{team}/) }
-      scope :opponent_lines,  ->(team)      { where(:opponent => /#{team}/) }
-      scope :game_lines,      ->(game_date) { where(:game_date => game_date) }
-      scope :matchup_lines,   ->(team)      { any_of({:team => /#{team}/}, {:opponent => /#{team}/}) }
-      scope :boxscore_lines,  ->(team, game_date) { matchup_lines(team).game_lines(game_date).boxscore_sort }
+      scope :team_lines,     ->(team)      { where(:team => /#{team}/) }
+      scope :opponent_lines, ->(team)      { where(:opponent => /#{team}/) }
+      scope :game_lines,     ->(game_date) { where(:game_date => game_date) }
+      scope :matchup_lines,  ->(team)      { any_of({:team => /#{team}/}, {:opponent => /#{team}/}) }
+      scope :boxscore_lines, ->(team, game_date) { matchup_lines(team).game_lines(game_date).boxscore_sort }
+      scope :date_range,     ->(first_date, last_date) { where(:game_date.gte => first_date, :game_date.lte => last_date)}
 
       # totals
       scope :totals,            where("is_total" => true,  "is_opponent_total" => false, "is_difference_total" => false)
@@ -42,6 +43,10 @@ module GameModel
 
       # sorts
       scope :boxscore_sort,     order_by(:games_started => :desc, :is_difference_total => :asc, :is_total => :asc, :is_opponent_total => :asc, :is_subtotal => :asc, :minutes => :desc)
+
+      # splits
+      scope :is_home, where("is_home" => true)
+      scope :is_road, where("is_home" => false)
 
       (Nba::BaseStatistics + [:game_score]).each do |stat_field|
         define_method "#{stat_field}_g" do
@@ -68,7 +73,11 @@ module GameModel
     end
 
     def statistic_total_lines(team)
-      @total_lines = team_lines(team).group_by{ |line| line.line_name }.values.map{ |lines_array| lines_array.inject(:+) }
+      group_starters_together(team_lines(team))
+    end
+
+    def group_starters_together(lines)
+      @total_lines = lines.group_by{ |line| line.line_name }.values.map{ |lines_array| lines_array.inject(:+) }
       @total_lines = @total_lines.sort_by { |line| line.games_started }.reverse
       @total_lines[0..5].each do |line|
         line.topfive = true unless line.is_subtotal

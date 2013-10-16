@@ -1,0 +1,9 @@
+        <div class="section-header clearfix">
+          <h1><a href="#boxscores"><%= boxscore.title %></a></h1>
+          <% unless expanded %>
+            <nav class="section-content">
+              <li class="selected" data-boxscore="team-boxscore"><%= boxscore.team %></li>
+              <li data-boxscore="opponent-boxscore"><%= boxscore.opponent %></li>
+            </nav>
+          <% end %>
+        </div>

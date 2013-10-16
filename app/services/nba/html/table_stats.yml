@@ -1,0 +1,350 @@
+games_started: 
+  table_types: 
+    - !ruby/sym adv
+    - !ruby/sym totals
+    - !ruby/sym per_36
+    - !ruby/sym per_game
+  class: "games-started"
+  label: "gs/g"
+  header_class: "games-started"
+
+
+games: 
+  table_types: 
+    - !ruby/sym adv
+    - !ruby/sym totals
+    - !ruby/sym per_36
+    - !ruby/sym per_game
+  class: "games"
+  label: "g"
+  header_class: "games"
+
+
+minutes: 
+  table_types: 
+    - !ruby/sym boxscore
+    - !ruby/sym adv
+    - !ruby/sym totals
+    - !ruby/sym per_36
+    - !ruby/sym per_game
+  class: "last-stat-column"
+  label: "min"
+  header_class: "minutes"
+
+
+made_field_goals: 
+  table_types: 
+    - !ruby/sym boxscore
+    - !ruby/sym totals
+    - !ruby/sym per_36
+    - !ruby/sym per_game
+  class: "field-goals"
+  label: "fg"
+
+
+attempted_field_goals: 
+  table_types: 
+    - !ruby/sym boxscore
+    - !ruby/sym totals
+    - !ruby/sym per_36
+    - !ruby/sym per_game
+  class: "field-goals last-stat-column"
+  label: "fga"
+
+
+field_goal_percentage: 
+  table_types: 
+    - !ruby/sym boxscore
+    - !ruby/sym totals
+    - !ruby/sym per_36
+    - !ruby/sym per_game
+  class: "field-goal-percentage last-stat-column percentage"
+  display_type: !ruby/sym percentage
+  label: "fg%"
+
+
+made_threes: 
+  table_types: 
+    - !ruby/sym boxscore
+    - !ruby/sym totals
+    - !ruby/sym per_36
+    - !ruby/sym per_game
+  class: "threes"
+  label: "3p"
+
+
+attempted_threes: 
+  table_types: 
+    - !ruby/sym boxscore
+    - !ruby/sym totals
+    - !ruby/sym per_36
+    - !ruby/sym per_game
+  class: "threes last-stat-column"
+  label: "3pa"
+
+
+threes_percentage: 
+  table_types: 
+    - !ruby/sym boxscore
+    - !ruby/sym totals
+    - !ruby/sym per_36
+    - !ruby/sym per_game
+  class: "threes-percentage last-stat-column percentage"
+  display_type: !ruby/sym percentage
+  label: "3p%"
+
+
+made_free_throws: 
+  table_types: 
+    - !ruby/sym boxscore
+    - !ruby/sym totals
+    - !ruby/sym per_36
+    - !ruby/sym per_game
+  class: "free-throws"
+  label: "ft"
+
+
+attempted_free_throws: 
+  table_types: 
+    - !ruby/sym boxscore
+    - !ruby/sym totals
+    - !ruby/sym per_36
+    - !ruby/sym per_game
+  class: "free-throws last-stat-column"
+  label: "fta"
+
+
+free_throw_percentage: 
+  table_types: 
+    - !ruby/sym boxscore
+    - !ruby/sym totals
+    - !ruby/sym per_36
+    - !ruby/sym per_game
+  class: "free-throws-percentage last-stat-column percentage"
+  display_type: !ruby/sym percentage
+  label: "ft%"
+
+
+offensive_rebounds: 
+  table_types: 
+    - !ruby/sym boxscore
+    - !ruby/sym totals
+    - !ruby/sym per_36
+    - !ruby/sym per_game
+  class: "rebounds"
+  label: "orb"
+
+
+defensive_rebounds: 
+  table_types: 
+    - !ruby/sym boxscore
+    - !ruby/sym totals
+    - !ruby/sym per_36
+    - !ruby/sym per_game
+  class: "rebounds"
+  label: "drb"
+
+
+total_rebounds: 
+  table_types: 
+    - !ruby/sym boxscore
+    - !ruby/sym totals
+    - !ruby/sym per_36
+    - !ruby/sym per_game
+  class: "rebounds last-stat-column"
+  label: "trb"
+
+
+assists: 
+  table_types: 
+    - !ruby/sym boxscore
+    - !ruby/sym totals
+    - !ruby/sym per_36
+    - !ruby/sym per_game
+  label: "ast"
+
+
+steals: 
+  table_types: 
+    - !ruby/sym boxscore
+    - !ruby/sym totals
+    - !ruby/sym per_36
+    - !ruby/sym per_game
+  label: "stl"
+
+
+blocks: 
+  table_types: 
+    - !ruby/sym boxscore
+    - !ruby/sym totals
+    - !ruby/sym per_36
+    - !ruby/sym per_game
+  label: "blk"
+
+
+turnovers: 
+  table_types: 
+    - !ruby/sym boxscore
+    - !ruby/sym totals
+    - !ruby/sym per_36
+    - !ruby/sym per_game
+  label: "to"
+
+
+game_score: 
+  table_types: 
+    - !ruby/sym boxscore
+    - !ruby/sym totals
+    - !ruby/sym per_36
+    - !ruby/sym per_game
+  label: "gsc"
+  header_class: "game-score"
+
+
+personal_fouls: 
+  table_types: 
+    - !ruby/sym boxscore
+    - !ruby/sym totals
+    - !ruby/sym per_36
+    - !ruby/sym per_game
+  label: "pf"
+
+
+plus_minus: 
+  table_types: 
+    - !ruby/sym boxscore
+    - !ruby/sym totals
+    - !ruby/sym per_36
+    - !ruby/sym per_game
+  label: "pm"
+  blank_on_difference: true
+  header_class: "plus-minus"
+
+
+points: 
+  table_types: 
+    - !ruby/sym boxscore
+    - !ruby/sym totals
+    - !ruby/sym per_36
+    - !ruby/sym per_game
+  label: "pts"
+
+
+true_shooting_percentage: 
+  table_types: 
+    - !ruby/sym adv
+    - !ruby/sym team_adv
+  label: "ts%"
+  display_types: !ruby/sym estimate_percentage
+  class: "true_shooting_percentage"
+
+
+effective_field_goal_percentage: 
+  table_types: 
+    - !ruby/sym adv
+    - !ruby/sym team_adv
+  label: "efg%"
+  display_types: !ruby/sym estimate_percentage
+  class: "effective_field_goal_percentage"
+
+
+usage: 
+  table_types: 
+    - !ruby/sym adv
+  label: "usg%"
+  display_types: !ruby/sym estimate_percentage
+  class: "usage"
+  header_class: "usage"
+
+
+offensive_rebound_percentage: 
+  table_types: 
+    - !ruby/sym adv
+    - !ruby/sym team_adv
+  label: "orb%"
+  display_types: !ruby/sym estimate_percentage
+  class: "rebounds"
+
+
+defensive_rebound_percentage: 
+  table_types: 
+    - !ruby/sym adv
+    - !ruby/sym team_adv
+  label: "drb%"
+  display_types: !ruby/sym estimate_percentage
+  class: "rebounds"
+
+
+total_rebound_percentage: 
+  table_types: 
+    - !ruby/sym adv
+    - !ruby/sym team_adv
+  label: "trb%"
+  display_types: !ruby/sym estimate_percentage
+  class: "rebounds"
+
+
+assist_percentage: 
+  table_types: 
+    - !ruby/sym adv
+    - !ruby/sym team_adv
+  label: "ast%"
+  display_types: !ruby/sym estimate_percentage
+  class: ""
+
+
+steal_percentage: 
+  table_types: 
+    - !ruby/sym adv
+    - !ruby/sym team_adv
+  label: "stl%"
+  display_types: !ruby/sym estimate_percentage
+  class: ""
+
+
+block_percentage: 
+  table_types: 
+    - !ruby/sym adv
+    - !ruby/sym team_adv
+  label: "blk%"
+  display_types: !ruby/sym estimate_percentage
+  class: ""
+
+
+turnover_percentage: 
+  table_types: 
+    - !ruby/sym adv
+    - !ruby/sym team_adv
+  label: "tov%"
+  display_types: !ruby/sym estimate_percentage
+  class: ""
+
+
+offensive_rating: 
+  table_types: 
+    - !ruby/sym adv
+    - !ruby/sym team_adv
+  label: "ort"
+  display_types: !ruby/sym estimate_percentage
+  class: "rating"
+  header_class: "rating"
+
+
+defensive_rating: 
+  table_types: 
+    - !ruby/sym team_adv
+    - !ruby/sym adv
+  label: "drt"
+  class: "rating"
+  header_class: "rating"
+
+
+pace: 
+  table_types: 
+    - !ruby/sym team_adv
+    - !ruby/sym adv
+  label: "pace"
+  class: "pace"
+  header_class: "pace"
+
+

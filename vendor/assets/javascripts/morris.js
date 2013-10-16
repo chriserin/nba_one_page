@@ -21,7 +21,8 @@
       if (this.handlers[name] == null) {
         this.handlers[name] = [];
       }
-      return this.handlers[name].push(handler);
+      this.handlers[name].push(handler);
+      return this;
     };
 
     EventEmitter.prototype.fire = function() {
@@ -81,13 +82,10 @@
         this.el.css('position', 'relative');
       }
       this.options = $.extend({}, this.gridDefaults, this.defaults || {}, options);
-      if (this.options.data === void 0 || this.options.data.length === 0) {
-        return;
-      }
       if (typeof this.options.units === 'string') {
         this.options.postUnits = options.units;
       }
-      this.r = new Raphael(this.el[0]);
+      this.raphael = new Raphael(this.el[0]);
       this.elementWidth = null;
       this.elementHeight = null;
       this.dirty = false;
@@ -110,6 +108,11 @@
         _this.fire('hover', touch.pageX - offset.left, touch.pageY - offset.top);
         return touch;
       });
+      this.el.bind('click', function(evt) {
+        var offset;
+        offset = _this.el.offset();
+        return _this.fire('gridclick', evt.pageX - offset.left, evt.pageY - offset.top);
+      });
       if (this.postInit) {
         this.postInit();
       }
@@ -123,8 +126,11 @@
       gridStrokeWidth: 0.5,
       gridTextColor: '#888',
       gridTextSize: 12,
+      gridTextFamily: 'sans-serif',
+      gridTextWeight: 'normal',
       hideHover: false,
       yLabelFormat: null,
+      xLabelAngle: 0,
       numLines: 5,
       padding: 25,
       parseTime: true,
@@ -141,9 +147,18 @@
     };
 
     Grid.prototype.setData = function(data, redraw) {
-      var e, idx, index, maxGoal, minGoal, ret, row, total, ykey, ymax, ymin, yval;
+      var e, idx, index, maxGoal, minGoal, ret, row, step, total, y, ykey, ymax, ymin, yval;
       if (redraw == null) {
         redraw = true;
+      }
+      this.options.data = data;
+      if (!(data != null) || data.length === 0) {
+        this.data = [];
+        this.raphael.clear();
+        if (this.hover != null) {
+          this.hover.hide();
+        }
+        return;
       }
       ymax = this.cumulative ? 0 : null;
       ymin = this.cumulative ? 0 : null;
@@ -169,6 +184,9 @@
             }
           } else {
             ret.x = index;
+            if (this.options.xLabelFormat) {
+              ret.label = this.options.xLabelFormat(ret);
+            }
           }
           total = 0;
           ret.y = (function() {
@@ -234,49 +252,30 @@
         this.xmin -= 1;
         this.xmax += 1;
       }
-      if (typeof this.options.ymax === 'string') {
-        if (this.options.ymax.slice(0, 4) === 'auto') {
-          if (this.options.ymax.length > 5) {
-            this.ymax = parseInt(this.options.ymax.slice(5), 10);
-            if (ymax != null) {
-              this.ymax = Math.max(ymax, this.ymax);
-            }
-          } else {
-            this.ymax = ymax != null ? ymax : 0;
-          }
-        } else {
-          this.ymax = parseInt(this.options.ymax, 10);
-        }
-      } else {
-        this.ymax = this.options.ymax;
-      }
-      if (typeof this.options.ymin === 'string') {
-        if (this.options.ymin.slice(0, 4) === 'auto') {
-          if (this.options.ymin.length > 5) {
-            this.ymin = parseInt(this.options.ymin.slice(5), 10);
-            if (ymin != null) {
-              this.ymin = Math.min(ymin, this.ymin);
-            }
-          } else {
-            this.ymin = ymin !== null ? ymin : 0;
-          }
-        } else {
-          this.ymin = parseInt(this.options.ymin, 10);
-        }
-      } else {
-        this.ymin = this.options.ymin;
-      }
+      this.ymin = this.yboundary('min', ymin);
+      this.ymax = this.yboundary('max', ymax);
       if (this.ymin === this.ymax) {
         if (ymin) {
           this.ymin -= 1;
         }
         this.ymax += 1;
       }
-      this.yInterval = (this.ymax - this.ymin) / (this.options.numLines - 1);
-      if (this.yInterval > 0 && this.yInterval < 1) {
-        this.precision = -Math.floor(Math.log(this.yInterval) / Math.log(10));
-      } else {
-        this.precision = 0;
+      if (this.options.axes === true || this.options.grid === true) {
+        if (this.options.ymax === this.gridDefaults.ymax && this.options.ymin === this.gridDefaults.ymin) {
+          this.grid = this.autoGridLines(this.ymin, this.ymax, this.options.numLines);
+          this.ymin = Math.min(this.ymin, this.grid[0]);
+          this.ymax = Math.max(this.ymax, this.grid[this.grid.length - 1]);
+        } else {
+          step = (this.ymax - this.ymin) / (this.options.numLines - 1);
+          this.grid = (function() {
+            var _i, _ref, _ref1, _results;
+            _results = [];
+            for (y = _i = _ref = this.ymin, _ref1 = this.ymax; _ref <= _ref1 ? _i <= _ref1 : _i >= _ref1; y = _i += step) {
+              _results.push(y);
+            }
+            return _results;
+          }).call(this);
+        }
       }
       this.dirty = true;
       if (redraw) {
@@ -284,8 +283,73 @@
       }
     };
 
+    Grid.prototype.yboundary = function(boundaryType, currentValue) {
+      var boundaryOption, suggestedValue;
+      boundaryOption = this.options["y" + boundaryType];
+      if (typeof boundaryOption === 'string') {
+        if (boundaryOption.slice(0, 4) === 'auto') {
+          if (boundaryOption.length > 5) {
+            suggestedValue = parseInt(boundaryOption.slice(5), 10);
+            if (currentValue == null) {
+              return suggestedValue;
+            }
+            return Math[boundaryType](currentValue, suggestedValue);
+          } else {
+            if (currentValue != null) {
+              return currentValue;
+            } else {
+              return 0;
+            }
+          }
+        } else {
+          return parseInt(boundaryOption, 10);
+        }
+      } else {
+        return boundaryOption;
+      }
+    };
+
+    Grid.prototype.autoGridLines = function(ymin, ymax, nlines) {
+      var gmax, gmin, grid, smag, span, step, unit, y, ymag;
+      span = ymax - ymin;
+      ymag = Math.floor(Math.log(span) / Math.log(10));
+      unit = Math.pow(10, ymag);
+      gmin = Math.floor(ymin / unit) * unit;
+      gmax = Math.ceil(ymax / unit) * unit;
+      step = (gmax - gmin) / (nlines - 1);
+      if (unit === 1 && step > 1 && Math.ceil(step) !== step) {
+        step = Math.ceil(step);
+        gmax = gmin + step * (nlines - 1);
+      }
+      if (gmin < 0 && gmax > 0) {
+        gmin = Math.floor(ymin / step) * step;
+        gmax = Math.ceil(ymax / step) * step;
+      }
+      if (step < 1) {
+        smag = Math.floor(Math.log(step) / Math.log(10));
+        grid = (function() {
+          var _i, _results;
+          _results = [];
+          for (y = _i = gmin; gmin <= gmax ? _i <= gmax : _i >= gmax; y = _i += step) {
+            _results.push(parseFloat(y.toFixed(1 - smag)));
+          }
+          return _results;
+        })();
+      } else {
+        grid = (function() {
+          var _i, _results;
+          _results = [];
+          for (y = _i = gmin; gmin <= gmax ? _i <= gmax : _i >= gmax; y = _i += step) {
+            _results.push(y);
+          }
+          return _results;
+        })();
+      }
+      return grid;
+    };
+
     Grid.prototype._calc = function() {
-      var h, maxYLabelWidth, w;
+      var bottomOffsets, gridLine, h, i, w, yLabelWidths;
       w = this.el.width();
       h = this.el.height();
       if (this.elementWidth !== w || this.elementHeight !== h || this.dirty) {
@@ -297,12 +361,29 @@
         this.top = this.options.padding;
         this.bottom = this.elementHeight - this.options.padding;
         if (this.options.axes) {
-          maxYLabelWidth = Math.max(this.measureText(this.yAxisFormat(this.ymin), this.options.gridTextSize).width, this.measureText(this.yAxisFormat(this.ymax), this.options.gridTextSize).width);
-          this.left += maxYLabelWidth;
-          this.bottom -= 1.5 * this.options.gridTextSize;
+          yLabelWidths = (function() {
+            var _i, _len, _ref, _results;
+            _ref = this.grid;
+            _results = [];
+            for (_i = 0, _len = _ref.length; _i < _len; _i++) {
+              gridLine = _ref[_i];
+              _results.push(this.measureText(this.yAxisFormat(gridLine)).width);
+            }
+            return _results;
+          }).call(this);
+          this.left += Math.max.apply(Math, yLabelWidths);
+          bottomOffsets = (function() {
+            var _i, _ref, _results;
+            _results = [];
+            for (i = _i = 0, _ref = this.data.length; 0 <= _ref ? _i < _ref : _i > _ref; i = 0 <= _ref ? ++_i : --_i) {
+              _results.push(this.measureText(this.data[i].text, -this.options.xLabelAngle).height);
+            }
+            return _results;
+          }).call(this);
+          this.bottom -= Math.max.apply(Math, bottomOffsets);
         }
-        this.width = this.right - this.left;
-        this.height = this.bottom - this.top;
+        this.width = Math.max(1, this.right - this.left);
+        this.height = Math.max(1, this.bottom - this.top);
         this.dx = this.width / (this.xmax - this.xmin);
         this.dy = this.height / (this.ymax - this.ymin);
         if (this.calc) {
@@ -324,7 +405,7 @@
     };
 
     Grid.prototype.redraw = function() {
-      this.r.clear();
+      this.raphael.clear();
       this._calc();
       this.drawGrid();
       this.drawGoals();
@@ -334,62 +415,12 @@
       }
     };
 
-    Grid.prototype.drawGoals = function() {
-      var goal, i, _i, _len, _ref, _results;
-      _ref = this.options.goals;
-      _results = [];
-      for (i = _i = 0, _len = _ref.length; _i < _len; i = ++_i) {
-        goal = _ref[i];
-        _results.push(this.r.path("M" + this.left + "," + (this.transY(goal)) + "H" + (this.left + this.width)).attr('stroke', this.options.goalLineColors[i % this.options.goalLineColors.length]).attr('stroke-width', this.options.goalStrokeWidth));
-      }
-      return _results;
-    };
-
-    Grid.prototype.drawEvents = function() {
-      var event, i, _i, _len, _ref, _results;
-      _ref = this.events;
-      _results = [];
-      for (i = _i = 0, _len = _ref.length; _i < _len; i = ++_i) {
-        event = _ref[i];
-        _results.push(this.r.path("M" + (this.transX(event)) + "," + this.bottom + "V" + this.top).attr('stroke', this.options.eventLineColors[i % this.options.eventLineColors.length]).attr('stroke-width', this.options.eventStrokeWidth));
-      }
-      return _results;
-    };
-
-    Grid.prototype.drawGrid = function() {
-      var count, firstY, lastY, lineY, v, y, _i, _ref, _results;
-      if (this.options.grid === false && this.options.axes === false) {
-        return;
-      }
-      firstY = this.ymin;
-      lastY = this.ymax;
-      count = 0;
-      _results = [];
-      for (lineY = _i = firstY, _ref = this.yInterval; firstY <= lastY ? _i <= lastY : _i >= lastY; lineY = _i += _ref) {
-        v = lineY;
-        if (count !== 0) {
-          v = parseFloat(lineY.toFixed(2));
-        }
-        count++;
-        y = this.transY(v);
-        if (this.options.axes) {
-          this.r.text(this.left - this.options.padding / 2, y, this.yAxisFormat(v)).attr('font-size', this.options.gridTextSize).attr('fill', this.options.gridTextColor).attr('text-anchor', 'end');
-        }
-        if (this.options.grid) {
-          _results.push(this.r.path("M" + this.left + "," + y + "H" + (this.left + this.width)).attr('stroke', this.options.gridLineColor).attr('stroke-width', this.options.gridStrokeWidth));
-        } else {
-          _results.push(void 0);
-        }
-      }
-      return _results;
-    };
-
-    Grid.prototype.measureText = function(text, fontSize) {
+    Grid.prototype.measureText = function(text, angle) {
       var ret, tt;
-      if (fontSize == null) {
-        fontSize = 12;
+      if (angle == null) {
+        angle = 0;
       }
-      tt = this.r.text(100, 100, text).attr('font-size', fontSize);
+      tt = this.raphael.text(100, 100, text).attr('font-size', this.options.gridTextSize).attr('font-family', this.options.gridTextFamily).attr('font-weight', this.options.gridTextWeight).rotate(angle);
       ret = tt.getBBox();
       tt.remove();
       return ret;
@@ -413,6 +444,68 @@
       if (hit != null) {
         return (_ref = this.hover).update.apply(_ref, hit);
       }
+    };
+
+    Grid.prototype.drawGrid = function() {
+      var lineY, y, _i, _len, _ref, _results;
+      if (this.options.grid === false && this.options.axes === false) {
+        return;
+      }
+      _ref = this.grid;
+      _results = [];
+      for (_i = 0, _len = _ref.length; _i < _len; _i++) {
+        lineY = _ref[_i];
+        y = this.transY(lineY);
+        if (this.options.axes) {
+          this.drawYAxisLabel(this.left - this.options.padding / 2, y, this.yAxisFormat(lineY));
+        }
+        if (this.options.grid) {
+          _results.push(this.drawGridLine("M" + this.left + "," + y + "H" + (this.left + this.width)));
+        } else {
+          _results.push(void 0);
+        }
+      }
+      return _results;
+    };
+
+    Grid.prototype.drawGoals = function() {
+      var color, goal, i, _i, _len, _ref, _results;
+      _ref = this.options.goals;
+      _results = [];
+      for (i = _i = 0, _len = _ref.length; _i < _len; i = ++_i) {
+        goal = _ref[i];
+        color = this.options.goalLineColors[i % this.options.goalLineColors.length];
+        _results.push(this.drawGoal(goal, color));
+      }
+      return _results;
+    };
+
+    Grid.prototype.drawEvents = function() {
+      var color, event, i, _i, _len, _ref, _results;
+      _ref = this.events;
+      _results = [];
+      for (i = _i = 0, _len = _ref.length; _i < _len; i = ++_i) {
+        event = _ref[i];
+        color = this.options.eventLineColors[i % this.options.eventLineColors.length];
+        _results.push(this.drawEvent(event, color));
+      }
+      return _results;
+    };
+
+    Grid.prototype.drawGoal = function(goal, color) {
+      return this.raphael.path("M" + this.left + "," + (this.transY(goal)) + "H" + this.right).attr('stroke', color).attr('stroke-width', this.options.goalStrokeWidth);
+    };
+
+    Grid.prototype.drawEvent = function(event, color) {
+      return this.raphael.path("M" + (this.transX(event)) + "," + this.bottom + "V" + this.top).attr('stroke', color).attr('stroke-width', this.options.eventStrokeWidth);
+    };
+
+    Grid.prototype.drawYAxisLabel = function(xPos, yPos, text) {
+      return this.raphael.text(xPos, yPos, text).attr('font-size', this.options.gridTextSize).attr('font-family', this.options.gridTextFamily).attr('font-weight', this.options.gridTextWeight).attr('fill', this.options.gridTextColor).attr('text-anchor', 'end');
+    };
+
+    Grid.prototype.drawGridLine = function(path) {
+      return this.raphael.path(path).attr('stroke', this.options.gridLineColor).attr('stroke-width', this.options.gridStrokeWidth);
     };
 
     return Grid;
@@ -522,7 +615,7 @@
       }
       return this.el.css({
         left: left + "px",
-        top: top + "px"
+        top: parseInt(top) + "px"
       });
     };
 
@@ -548,6 +641,8 @@
       this.onHoverOut = __bind(this.onHoverOut, this);
 
       this.onHoverMove = __bind(this.onHoverMove, this);
+
+      this.onGridClick = __bind(this.onGridClick, this);
       if (!(this instanceof Morris.Line)) {
         return new Morris.Line(options);
       }
@@ -566,7 +661,8 @@
           parent: this.el
         });
         this.on('hovermove', this.onHoverMove);
-        return this.on('hoverout', this.onHoverOut);
+        this.on('hoverout', this.onHoverOut);
+        return this.on('gridclick', this.onGridClick);
       }
     };
 
@@ -580,7 +676,7 @@
       smooth: true,
       xLabels: 'auto',
       xLabelFormat: null,
-      xLabelMargin: 50,
+      xLabelMargin: 24,
       continuousLine: true,
       hideHover: false
     };
@@ -629,6 +725,9 @@
 
     Line.prototype.hitTest = function(x, y) {
       var index, r, _i, _len, _ref;
+      if (this.data.length === 0) {
+        return null;
+      }
       _ref = this.data.slice(1);
       for (index = _i = 0, _len = _ref.length; _i < _len; index = ++_i) {
         r = _ref[index];
@@ -639,6 +738,12 @@
       return index;
     };
 
+    Line.prototype.onGridClick = function(x, y) {
+      var index;
+      index = this.hitTest(x, y);
+      return this.fire('click', index, this.options.data[index], x, y);
+    };
+
     Line.prototype.onHoverMove = function(x, y) {
       var index;
       index = this.hitTest(x, y);
@@ -646,8 +751,8 @@
     };
 
     Line.prototype.onHoverOut = function() {
-      if (this.options.hideHover === 'auto') {
-        return this.displayHoverForIndex(null);
+      if (this.options.hideHover !== false) {
+        return this.displayHoverForRow(null);
       }
     };
 
@@ -665,15 +770,14 @@
     Line.prototype.hoverContentForRow = function(index) {
       var content, j, row, y, _i, _len, _ref;
       row = this.data[index];
+      content = "<div class='morris-hover-row-label'>" + row.label + "</div>";
+      _ref = row.y;
+      for (j = _i = 0, _len = _ref.length; _i < _len; j = ++_i) {
+        y = _ref[j];
+        content += "<div class='morris-hover-point' style='color: " + (this.colorFor(row, j, 'label')) + "'>\n  " + this.options.labels[j] + ":\n  " + (this.yLabelFormat(y)) + "\n</div>";
+      }
       if (typeof this.options.hoverCallback === 'function') {
-        content = this.options.hoverCallback(index, this.options);
-      } else {
-        content = "<div class='morris-hover-row-label'>" + row.label + "</div>";
-        _ref = row.y;
-        for (j = _i = 0, _len = _ref.length; _i < _len; j = ++_i) {
-          y = _ref[j];
-          content += "<div class='morris-hover-point' style='color: " + (this.colorFor(row, j, 'label')) + "'>\n  " + this.options.labels[j] + ":\n  " + (this.yLabelFormat(y)) + "\n</div>";
-        }
+        content = this.options.hoverCallback(index, this.options, content);
       }
       return [content, row._x, row._ymax];
     };
@@ -734,15 +838,28 @@
     };
 
     Line.prototype.drawXAxis = function() {
-      var drawLabel, l, labels, prevLabelMargin, row, ypos, _i, _len, _results,
+      var drawLabel, l, labels, prevAngleMargin, prevLabelMargin, row, ypos, _i, _len, _results,
         _this = this;
-      ypos = this.bottom + this.options.gridTextSize * 1.25;
+      ypos = this.bottom + this.options.padding / 2;
       prevLabelMargin = null;
+      prevAngleMargin = null;
       drawLabel = function(labelText, xpos) {
-        var label, labelBox;
-        label = _this.r.text(_this.transX(xpos), ypos, labelText).attr('font-size', _this.options.gridTextSize).attr('fill', _this.options.gridTextColor);
+        var label, labelBox, margin, offset, textBox;
+        label = _this.drawXAxisLabel(_this.transX(xpos), ypos, labelText);
+        textBox = label.getBBox();
+        label.transform("r" + (-_this.options.xLabelAngle));
         labelBox = label.getBBox();
-        if ((!(prevLabelMargin != null) || prevLabelMargin >= labelBox.x + labelBox.width) && labelBox.x >= 0 && (labelBox.x + labelBox.width) < _this.el.width()) {
+        label.transform("t0," + (labelBox.height / 2) + "...");
+        if (_this.options.xLabelAngle !== 0) {
+          offset = -0.5 * textBox.width * Math.cos(_this.options.xLabelAngle * Math.PI / 180.0);
+          label.transform("t" + offset + ",0...");
+        }
+        labelBox = label.getBBox();
+        if ((!(prevLabelMargin != null) || prevLabelMargin >= labelBox.x + labelBox.width || (prevAngleMargin != null) && prevAngleMargin >= labelBox.x) && labelBox.x >= 0 && (labelBox.x + labelBox.width) < _this.el.width()) {
+          if (_this.options.xLabelAngle !== 0) {
+            margin = 1.25 * _this.options.gridTextSize / Math.sin(_this.options.xLabelAngle * Math.PI / 180.0);
+            prevAngleMargin = labelBox.x - margin;
+          }
           return prevLabelMargin = labelBox.x - _this.options.xLabelMargin;
         } else {
           return label.remove();
@@ -776,40 +893,40 @@
     };
 
     Line.prototype.drawSeries = function() {
-      var circle, i, path, row, _i, _j, _ref, _ref1, _results;
+      var i, _i, _j, _ref, _ref1, _results;
+      this.seriesPoints = [];
       for (i = _i = _ref = this.options.ykeys.length - 1; _ref <= 0 ? _i <= 0 : _i >= 0; i = _ref <= 0 ? ++_i : --_i) {
-        path = this.paths[i];
-        if (path !== null) {
-          this.r.path(path).attr('stroke', this.colorFor(row, i, 'line')).attr('stroke-width', this.options.lineWidth);
-        }
+        this._drawLineFor(i);
       }
-      this.seriesPoints = (function() {
-        var _j, _ref1, _results;
-        _results = [];
-        for (i = _j = 0, _ref1 = this.options.ykeys.length; 0 <= _ref1 ? _j < _ref1 : _j > _ref1; i = 0 <= _ref1 ? ++_j : --_j) {
-          _results.push([]);
-        }
-        return _results;
-      }).call(this);
       _results = [];
       for (i = _j = _ref1 = this.options.ykeys.length - 1; _ref1 <= 0 ? _j <= 0 : _j >= 0; i = _ref1 <= 0 ? ++_j : --_j) {
-        _results.push((function() {
-          var _k, _len, _ref2, _results1;
-          _ref2 = this.data;
-          _results1 = [];
-          for (_k = 0, _len = _ref2.length; _k < _len; _k++) {
-            row = _ref2[_k];
-            if (row._y[i] != null) {
-              circle = this.r.circle(row._x, row._y[i], this.options.pointSize).attr('fill', this.colorFor(row, i, 'point')).attr('stroke-width', this.strokeWidthForSeries(i)).attr('stroke', this.strokeForSeries(i));
-            } else {
-              circle = null;
-            }
-            _results1.push(this.seriesPoints[i].push(circle));
-          }
-          return _results1;
-        }).call(this));
+        _results.push(this._drawPointFor(i));
       }
       return _results;
+    };
+
+    Line.prototype._drawPointFor = function(index) {
+      var circle, row, _i, _len, _ref, _results;
+      this.seriesPoints[index] = [];
+      _ref = this.data;
+      _results = [];
+      for (_i = 0, _len = _ref.length; _i < _len; _i++) {
+        row = _ref[_i];
+        circle = null;
+        if (row._y[index] != null) {
+          circle = this.drawLinePoint(row._x, row._y[index], this.options.pointSize, this.colorFor(row, index, 'point'), index);
+        }
+        _results.push(this.seriesPoints[index].push(circle));
+      }
+      return _results;
+    };
+
+    Line.prototype._drawLineFor = function(index) {
+      var path;
+      path = this.paths[index];
+      if (path !== null) {
+        return this.drawLinePath(path, this.colorFor(null, index, 'line'));
+      }
     };
 
     Line.createPath = function(coords, smooth, bottom) {
@@ -898,14 +1015,6 @@
       return this.prevHilight = index;
     };
 
-    Line.prototype.strokeWidthForSeries = function(index) {
-      return this.options.pointWidths[index % this.options.pointWidths.length];
-    };
-
-    Line.prototype.strokeForSeries = function(index) {
-      return this.options.pointStrokeColors[index % this.options.pointStrokeColors.length];
-    };
-
     Line.prototype.colorFor = function(row, sidx, type) {
       if (typeof this.options.lineColors === 'function') {
         return this.options.lineColors.call(this, row, sidx, type);
@@ -914,6 +1023,26 @@
       } else {
         return this.options.lineColors[sidx % this.options.lineColors.length];
       }
+    };
+
+    Line.prototype.drawXAxisLabel = function(xPos, yPos, text) {
+      return this.raphael.text(xPos, yPos, text).attr('font-size', this.options.gridTextSize).attr('font-family', this.options.gridTextFamily).attr('font-weight', this.options.gridTextWeight).attr('fill', this.options.gridTextColor);
+    };
+
+    Line.prototype.drawLinePath = function(path, lineColor) {
+      return this.raphael.path(path).attr('stroke', lineColor).attr('stroke-width', this.options.lineWidth);
+    };
+
+    Line.prototype.drawLinePoint = function(xPos, yPos, size, pointColor, lineIndex) {
+      return this.raphael.circle(xPos, yPos, size).attr('fill', pointColor).attr('stroke-width', this.strokeWidthForSeries(lineIndex)).attr('stroke', this.strokeForSeries(lineIndex));
+    };
+
+    Line.prototype.strokeWidthForSeries = function(index) {
+      return this.options.pointWidths[index % this.options.pointWidths.length];
+    };
+
+    Line.prototype.strokeForSeries = function(index) {
+      return this.options.pointStrokeColors[index % this.options.pointStrokeColors.length];
     };
 
     return Line;
@@ -965,7 +1094,7 @@
         return "" + (Morris.pad2(d.getHours())) + ":" + (Morris.pad2(d.getMinutes()));
       },
       incr: function(d) {
-        return d.setMinutes(d.getMinutes() + interval);
+        return d.setUTCMinutes(d.getUTCMinutes() + interval);
       }
     };
   };
@@ -980,7 +1109,7 @@
         return "" + (Morris.pad2(d.getHours())) + ":" + (Morris.pad2(d.getMinutes())) + ":" + (Morris.pad2(d.getSeconds()));
       },
       incr: function(d) {
-        return d.setSeconds(d.getSeconds() + interval);
+        return d.setUTCSeconds(d.getUTCSeconds() + interval);
       }
     };
   };
@@ -1050,15 +1179,26 @@
   Morris.AUTO_LABEL_ORDER = ["decade", "year", "month", "day", "hour", "30min", "15min", "10min", "5min", "minute", "30sec", "15sec", "10sec", "5sec", "second"];
 
   Morris.Area = (function(_super) {
+    var areaDefaults;
 
     __extends(Area, _super);
 
+    areaDefaults = {
+      fillOpacity: 'auto',
+      behaveLikeLine: false
+    };
+
     function Area(options) {
+      var areaOptions;
       if (!(this instanceof Morris.Area)) {
         return new Morris.Area(options);
       }
-      this.cumulative = true;
-      Area.__super__.constructor.call(this, options);
+      areaOptions = $.extend({}, areaDefaults, options);
+      this.cumulative = !areaOptions.behaveLikeLine;
+      if (areaOptions.fillOpacity === 'auto') {
+        areaOptions.fillOpacity = areaOptions.behaveLikeLine ? .8 : 1;
+      }
+      Area.__super__.constructor.call(this, areaOptions);
     }
 
     Area.prototype.calcPoints = function() {
@@ -1075,32 +1215,63 @@
           _results1 = [];
           for (_j = 0, _len1 = _ref1.length; _j < _len1; _j++) {
             y = _ref1[_j];
-            total += y || 0;
-            _results1.push(this.transY(total));
+            if (this.options.behaveLikeLine) {
+              _results1.push(this.transY(y));
+            } else {
+              total += y || 0;
+              _results1.push(this.transY(total));
+            }
           }
           return _results1;
         }).call(this);
-        _results.push(row._ymax = row._y[row._y.length - 1]);
+        _results.push(row._ymax = Math.max.apply(Math, row._y));
       }
       return _results;
     };
 
     Area.prototype.drawSeries = function() {
-      var i, path, _i, _ref;
-      for (i = _i = _ref = this.options.ykeys.length - 1; _ref <= 0 ? _i <= 0 : _i >= 0; i = _ref <= 0 ? ++_i : --_i) {
-        path = this.paths[i];
-        if (path !== null) {
-          path = path + ("L" + (this.transX(this.xmax)) + "," + this.bottom + "L" + (this.transX(this.xmin)) + "," + this.bottom + "Z");
-          this.r.path(path).attr('fill', this.fillForSeries(i)).attr('stroke-width', 0);
-        }
+      var i, range, _i, _j, _k, _len, _ref, _ref1, _results, _results1, _results2;
+      this.seriesPoints = [];
+      if (this.options.behaveLikeLine) {
+        range = (function() {
+          _results = [];
+          for (var _i = 0, _ref = this.options.ykeys.length - 1; 0 <= _ref ? _i <= _ref : _i >= _ref; 0 <= _ref ? _i++ : _i--){ _results.push(_i); }
+          return _results;
+        }).apply(this);
+      } else {
+        range = (function() {
+          _results1 = [];
+          for (var _j = _ref1 = this.options.ykeys.length - 1; _ref1 <= 0 ? _j <= 0 : _j >= 0; _ref1 <= 0 ? _j++ : _j--){ _results1.push(_j); }
+          return _results1;
+        }).apply(this);
       }
-      return Area.__super__.drawSeries.call(this);
+      _results2 = [];
+      for (_k = 0, _len = range.length; _k < _len; _k++) {
+        i = range[_k];
+        this._drawFillFor(i);
+        this._drawLineFor(i);
+        _results2.push(this._drawPointFor(i));
+      }
+      return _results2;
+    };
+
+    Area.prototype._drawFillFor = function(index) {
+      var path;
+      path = this.paths[index];
+      if (path !== null) {
+        path = path + ("L" + (this.transX(this.xmax)) + "," + this.bottom + "L" + (this.transX(this.xmin)) + "," + this.bottom + "Z");
+        return this.drawFilledPath(path, this.fillForSeries(index));
+      }
     };
 
     Area.prototype.fillForSeries = function(i) {
       var color;
       color = Raphael.rgb2hsl(this.colorFor(this.data[i], i, 'line'));
-      return Raphael.hsl(color.h, Math.min(255, color.s * 0.75), Math.min(255, color.l * 1.25));
+      return Raphael.hsl(color.h, this.options.behaveLikeLine ? color.s * 0.9 : color.s * 0.75, Math.min(0.98, this.options.behaveLikeLine ? color.l * 1.2 : color.l * 1.25));
+    };
+
+    Area.prototype.drawFilledPath = function(path, fill) {
+      return this.raphael.path(path).attr('fill', fill).attr('fill-opacity', this.options.fillOpacity).attr('stroke-width', 0);
     };
 
     return Area;
@@ -1115,6 +1286,8 @@
       this.onHoverOut = __bind(this.onHoverOut, this);
 
       this.onHoverMove = __bind(this.onHoverMove, this);
+
+      this.onGridClick = __bind(this.onGridClick, this);
       if (!(this instanceof Morris.Bar)) {
         return new Morris.Bar(options);
       }
@@ -1130,7 +1303,8 @@
           parent: this.el
         });
         this.on('hovermove', this.onHoverMove);
-        return this.on('hoverout', this.onHoverOut);
+        this.on('hoverout', this.onHoverOut);
+        return this.on('gridclick', this.onGridClick);
       }
     };
 
@@ -1182,15 +1356,27 @@
     };
 
     Bar.prototype.drawXAxis = function() {
-      var i, label, labelBox, prevLabelMargin, row, ypos, _i, _ref, _results;
-      ypos = this.bottom + this.options.gridTextSize * 1.25;
+      var i, label, labelBox, margin, offset, prevAngleMargin, prevLabelMargin, row, textBox, ypos, _i, _ref, _results;
+      ypos = this.bottom + this.options.padding / 2;
       prevLabelMargin = null;
+      prevAngleMargin = null;
       _results = [];
       for (i = _i = 0, _ref = this.data.length; 0 <= _ref ? _i < _ref : _i > _ref; i = 0 <= _ref ? ++_i : --_i) {
         row = this.data[this.data.length - 1 - i];
-        label = this.r.text(row._x, ypos, row.label).attr('font-size', this.options.gridTextSize).attr('fill', this.options.gridTextColor);
+        label = this.drawXAxisLabel(row._x, ypos, row.label);
+        textBox = label.getBBox();
+        label.transform("r" + (-this.options.xLabelAngle));
         labelBox = label.getBBox();
-        if ((!(prevLabelMargin != null) || prevLabelMargin >= labelBox.x + labelBox.width) && labelBox.x >= 0 && (labelBox.x + labelBox.width) < this.el.width()) {
+        label.transform("t0," + (labelBox.height / 2) + "...");
+        if (this.options.xLabelAngle !== 0) {
+          offset = -0.5 * textBox.width * Math.cos(this.options.xLabelAngle * Math.PI / 180.0);
+          label.transform("t" + offset + ",0...");
+        }
+        if ((!(prevLabelMargin != null) || prevLabelMargin >= labelBox.x + labelBox.width || (prevAngleMargin != null) && prevAngleMargin >= labelBox.x) && labelBox.x >= 0 && (labelBox.x + labelBox.width) < this.el.width()) {
+          if (this.options.xLabelAngle !== 0) {
+            margin = 1.25 * this.options.gridTextSize / Math.sin(this.options.xLabelAngle * Math.PI / 180.0);
+            prevAngleMargin = labelBox.x - margin;
+          }
           _results.push(prevLabelMargin = labelBox.x - this.options.xLabelMargin);
         } else {
           _results.push(label.remove());
@@ -1235,7 +1421,7 @@
                 if (this.options.stacked) {
                   top -= lastTop;
                 }
-                this.r.rect(left, top, barWidth, size).attr('fill', this.colorFor(row, sidx, 'bar')).attr('stroke-width', 0);
+                this.drawBar(left, top, barWidth, size, this.colorFor(row, sidx, 'bar'));
                 _results1.push(lastTop += size);
               } else {
                 _results1.push(null);
@@ -1268,8 +1454,17 @@
     };
 
     Bar.prototype.hitTest = function(x, y) {
+      if (this.data.length === 0) {
+        return null;
+      }
       x = Math.max(Math.min(x, this.right), this.left);
       return Math.min(this.data.length - 1, Math.floor((x - this.left) / (this.width / this.data.length)));
+    };
+
+    Bar.prototype.onGridClick = function(x, y) {
+      var index;
+      index = this.hitTest(x, y);
+      return this.fire('click', index, this.options.data[index], x, y);
     };
 
     Bar.prototype.onHoverMove = function(x, y) {
@@ -1279,41 +1474,57 @@
     };
 
     Bar.prototype.onHoverOut = function() {
-      if (this.options.hideHover === 'auto') {
+      if (this.options.hideHover !== false) {
         return this.hover.hide();
       }
     };
 
     Bar.prototype.hoverContentForRow = function(index) {
       var content, j, row, x, y, _i, _len, _ref;
+      row = this.data[index];
+      content = "<div class='morris-hover-row-label'>" + row.label + "</div>";
+      _ref = row.y;
+      for (j = _i = 0, _len = _ref.length; _i < _len; j = ++_i) {
+        y = _ref[j];
+        content += "<div class='morris-hover-point' style='color: " + (this.colorFor(row, j, 'label')) + "'>\n  " + this.options.labels[j] + ":\n  " + (this.yLabelFormat(y)) + "\n</div>";
+      }
       if (typeof this.options.hoverCallback === 'function') {
-        content = this.options.hoverCallback(index, this.options);
-      } else {
-        row = this.data[index];
-        content = "<div class='morris-hover-row-label'>" + row.label + "</div>";
-        _ref = row.y;
-        for (j = _i = 0, _len = _ref.length; _i < _len; j = ++_i) {
-          y = _ref[j];
-          content += "<div class='morris-hover-point' style='color: " + (this.colorFor(row, j, 'label')) + "'>\n  " + this.options.labels[j] + ":\n  " + (this.yLabelFormat(y)) + "\n</div>";
-        }
+        content = this.options.hoverCallback(index, this.options, content);
       }
       x = this.left + (index + 0.5) * this.width / this.data.length;
       return [content, x];
+    };
+
+    Bar.prototype.drawXAxisLabel = function(xPos, yPos, text) {
+      var label;
+      return label = this.raphael.text(xPos, yPos, text).attr('font-size', this.options.gridTextSize).attr('font-family', this.options.gridTextFamily).attr('font-weight', this.options.gridTextWeight).attr('fill', this.options.gridTextColor);
+    };
+
+    Bar.prototype.drawBar = function(xPos, yPos, width, height, barColor) {
+      return this.raphael.rect(xPos, yPos, width, height).attr('fill', barColor).attr('stroke-width', 0);
     };
 
     return Bar;
 
   })(Morris.Grid);
 
-  Morris.Donut = (function() {
+  Morris.Donut = (function(_super) {
+
+    __extends(Donut, _super);
 
     Donut.prototype.defaults = {
       colors: ['#0B62A4', '#3980B5', '#679DC6', '#95BBD7', '#B0CCE1', '#095791', '#095085', '#083E67', '#052C48', '#042135'],
+      backgroundColor: '#FFFFFF',
+      labelColor: '#000000',
       formatter: Morris.commas
     };
 
     function Donut(options) {
       this.select = __bind(this.select, this);
+
+      this.click = __bind(this.click, this);
+
+      var row;
       if (!(this instanceof Morris.Donut)) {
         return new Morris.Donut(options);
       }
@@ -1330,61 +1541,67 @@
         return;
       }
       this.data = options.data;
+      this.values = (function() {
+        var _i, _len, _ref, _results;
+        _ref = this.data;
+        _results = [];
+        for (_i = 0, _len = _ref.length; _i < _len; _i++) {
+          row = _ref[_i];
+          _results.push(parseFloat(row.value));
+        }
+        return _results;
+      }).call(this);
       this.redraw();
     }
 
     Donut.prototype.redraw = function() {
-      var C, cx, cy, d, idx, last, max_value, min, next, seg, total, w, x, _i, _j, _k, _len, _len1, _len2, _ref, _ref1, _ref2, _results;
+      var C, cx, cy, i, idx, last, max_value, min, next, seg, total, value, w, _i, _j, _k, _len, _len1, _len2, _ref, _ref1, _ref2, _results;
       this.el.empty();
-      this.r = new Raphael(this.el[0]);
+      this.raphael = new Raphael(this.el[0]);
       cx = this.el.width() / 2;
       cy = this.el.height() / 2;
       w = (Math.min(cx, cy) - 10) / 3;
       total = 0;
-      _ref = this.data;
+      _ref = this.values;
       for (_i = 0, _len = _ref.length; _i < _len; _i++) {
-        x = _ref[_i];
-        total += x.value;
+        value = _ref[_i];
+        total += value;
       }
       min = 5 / (2 * w);
       C = 1.9999 * Math.PI - min * this.data.length;
       last = 0;
       idx = 0;
       this.segments = [];
-      _ref1 = this.data;
-      for (_j = 0, _len1 = _ref1.length; _j < _len1; _j++) {
-        d = _ref1[_j];
-        next = last + min + C * (d.value / total);
-        seg = new Morris.DonutSegment(cx, cy, w * 2, w, last, next, this.options.colors[idx % this.options.colors.length], d);
-        seg.render(this.r);
+      _ref1 = this.values;
+      for (i = _j = 0, _len1 = _ref1.length; _j < _len1; i = ++_j) {
+        value = _ref1[i];
+        next = last + min + C * (value / total);
+        seg = new Morris.DonutSegment(cx, cy, w * 2, w, last, next, this.options.colors[idx % this.options.colors.length], this.options.backgroundColor, idx, this.raphael);
+        seg.render();
         this.segments.push(seg);
         seg.on('hover', this.select);
+        seg.on('click', this.click);
         last = next;
         idx += 1;
       }
-      this.text1 = this.r.text(cx, cy - 10, '').attr({
-        'font-size': 15,
-        'font-weight': 800
-      });
-      this.text2 = this.r.text(cx, cy + 10, '').attr({
-        'font-size': 14
-      });
+      this.text1 = this.drawEmptyDonutLabel(cx, cy - 10, this.options.labelColor, 15, 800);
+      this.text2 = this.drawEmptyDonutLabel(cx, cy + 10, this.options.labelColor, 14);
       max_value = Math.max.apply(null, (function() {
         var _k, _len2, _ref2, _results;
-        _ref2 = this.data;
+        _ref2 = this.values;
         _results = [];
         for (_k = 0, _len2 = _ref2.length; _k < _len2; _k++) {
-          d = _ref2[_k];
-          _results.push(d.value);
+          value = _ref2[_k];
+          _results.push(value);
         }
         return _results;
       }).call(this));
       idx = 0;
-      _ref2 = this.data;
+      _ref2 = this.values;
       _results = [];
       for (_k = 0, _len2 = _ref2.length; _k < _len2; _k++) {
-        d = _ref2[_k];
-        if (d.value === max_value) {
+        value = _ref2[_k];
+        if (value === max_value) {
           this.select(idx);
           break;
         }
@@ -1393,20 +1610,21 @@
       return _results;
     };
 
+    Donut.prototype.click = function(idx) {
+      return this.fire('click', idx, this.data[idx]);
+    };
+
     Donut.prototype.select = function(idx) {
-      var s, segment, _i, _len, _ref;
+      var row, s, segment, _i, _len, _ref;
       _ref = this.segments;
       for (_i = 0, _len = _ref.length; _i < _len; _i++) {
         s = _ref[_i];
         s.deselect();
       }
-      if (typeof idx === 'number') {
-        segment = this.segments[idx];
-      } else {
-        segment = idx;
-      }
+      segment = this.segments[idx];
       segment.select();
-      return this.setLabels(segment.data.label, this.options.formatter(segment.data.value, segment.data));
+      row = this.data[idx];
+      return this.setLabels(row.label, this.options.formatter(row.value, row));
     };
 
     Donut.prototype.setLabels = function(label1, label2) {
@@ -1435,21 +1653,32 @@
       });
     };
 
+    Donut.prototype.drawEmptyDonutLabel = function(xPos, yPos, color, fontSize, fontWeight) {
+      var text;
+      text = this.raphael.text(xPos, yPos, '').attr('font-size', fontSize).attr('fill', color);
+      if (fontWeight != null) {
+        text.attr('font-weight', fontWeight);
+      }
+      return text;
+    };
+
     return Donut;
 
-  })();
+  })(Morris.EventEmitter);
 
   Morris.DonutSegment = (function(_super) {
 
     __extends(DonutSegment, _super);
 
-    function DonutSegment(cx, cy, inner, outer, p0, p1, color, data) {
+    function DonutSegment(cx, cy, inner, outer, p0, p1, color, backgroundColor, index, raphael) {
       this.cx = cx;
       this.cy = cy;
       this.inner = inner;
       this.outer = outer;
       this.color = color;
-      this.data = data;
+      this.backgroundColor = backgroundColor;
+      this.index = index;
+      this.raphael = raphael;
       this.deselect = __bind(this.deselect, this);
 
       this.select = __bind(this.select, this);
@@ -1458,7 +1687,7 @@
       this.cos_p0 = Math.cos(p0);
       this.sin_p1 = Math.sin(p1);
       this.cos_p1 = Math.cos(p1);
-      this.long = (p1 - p0) > Math.PI ? 1 : 0;
+      this.is_long = (p1 - p0) > Math.PI ? 1 : 0;
       this.path = this.calcSegment(this.inner + 3, this.inner + this.outer - 5);
       this.selectedPath = this.calcSegment(this.inner + 3, this.inner + this.outer);
       this.hilight = this.calcArc(this.inner);
@@ -1472,29 +1701,39 @@
       var ix0, ix1, iy0, iy1, ox0, ox1, oy0, oy1, _ref, _ref1;
       _ref = this.calcArcPoints(r1), ix0 = _ref[0], iy0 = _ref[1], ix1 = _ref[2], iy1 = _ref[3];
       _ref1 = this.calcArcPoints(r2), ox0 = _ref1[0], oy0 = _ref1[1], ox1 = _ref1[2], oy1 = _ref1[3];
-      return ("M" + ix0 + "," + iy0) + ("A" + r1 + "," + r1 + ",0," + this.long + ",0," + ix1 + "," + iy1) + ("L" + ox1 + "," + oy1) + ("A" + r2 + "," + r2 + ",0," + this.long + ",1," + ox0 + "," + oy0) + "Z";
+      return ("M" + ix0 + "," + iy0) + ("A" + r1 + "," + r1 + ",0," + this.is_long + ",0," + ix1 + "," + iy1) + ("L" + ox1 + "," + oy1) + ("A" + r2 + "," + r2 + ",0," + this.is_long + ",1," + ox0 + "," + oy0) + "Z";
     };
 
     DonutSegment.prototype.calcArc = function(r) {
       var ix0, ix1, iy0, iy1, _ref;
       _ref = this.calcArcPoints(r), ix0 = _ref[0], iy0 = _ref[1], ix1 = _ref[2], iy1 = _ref[3];
-      return ("M" + ix0 + "," + iy0) + ("A" + r + "," + r + ",0," + this.long + ",0," + ix1 + "," + iy1);
+      return ("M" + ix0 + "," + iy0) + ("A" + r + "," + r + ",0," + this.is_long + ",0," + ix1 + "," + iy1);
     };
 
-    DonutSegment.prototype.render = function(r) {
+    DonutSegment.prototype.render = function() {
       var _this = this;
-      this.arc = r.path(this.hilight).attr({
-        stroke: this.color,
+      this.arc = this.drawDonutArc(this.hilight, this.color);
+      return this.seg = this.drawDonutSegment(this.path, this.color, this.backgroundColor, function() {
+        return _this.fire('hover', _this.index);
+      }, function() {
+        return _this.fire('click', _this.index);
+      });
+    };
+
+    DonutSegment.prototype.drawDonutArc = function(path, color) {
+      return this.raphael.path(path).attr({
+        stroke: color,
         'stroke-width': 2,
         opacity: 0
       });
-      return this.seg = r.path(this.path).attr({
-        fill: this.color,
-        stroke: 'white',
+    };
+
+    DonutSegment.prototype.drawDonutSegment = function(path, fillColor, strokeColor, hoverFunction, clickFunction) {
+      return this.raphael.path(path).attr({
+        fill: fillColor,
+        stroke: strokeColor,
         'stroke-width': 3
-      }).hover(function() {
-        return _this.fire('hover', _this);
-      });
+      }).hover(hoverFunction).click(clickFunction);
     };
 
     DonutSegment.prototype.select = function() {

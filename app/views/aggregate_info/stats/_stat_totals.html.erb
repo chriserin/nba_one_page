@@ -1,18 +1,27 @@
-      <table>
-        <thead class="totals per-game per-36 selected"> <tr> <th> player </th> <th class="games-started"> gs/g </th><th class="games">g</th><th class="minutes"> min </th> <th> fg </th> <th> fga </th> <th> fg% </th>  <th> 3p </th> <th> 3pa </th> <th> 3p% </th> <th> ft </th> <th> fta </th> <th> ft% </th> <th> orb </th> <th> drb </th> <th> trb </th><th> ast </th> <th> stl </th> <th> blk </th> <th> to </th><th class="game-score"> gsc </th> <th> pf </th> <th class="plus_minus"> pm </th> <th> pts </th> </tr> </thead>
-        <tbody class="totals selected" data-type="totals">
+      <table class="totals selected" data-type="totals">
+        <thead><tr><%= Nba::Html::StatTable.render_headers(:totals) %></tr></thead>
+        <tbody>
           <%= render :partial => 'aggregate_info/stats/lines_order', :locals => {:lines => lines, :partial_name => "totals_line"} %>
         </tbody>
-        <tbody class="per-game" data-type="per-game">
+      </table>
+
+      <table class="per-game" data-type="per-game">
+        <thead><tr><%= Nba::Html::StatTable.render_headers(:per_game) %></tr></thead>
+        <tbody>
           <%= render :partial => 'aggregate_info/stats/lines_order', :locals => {:lines => lines, :partial_name => "per_game_line"} %>
         </tbody>
-        <tbody class="per-36" data-type="per-36">
+      </table>
+
+      <table class="per-36" data-type="per-36">
+        <thead><tr><%= Nba::Html::StatTable.render_headers(:per_36) %></tr></thead>
+        <tbody>
           <%= render :partial => 'aggregate_info/stats/lines_order', :locals => {:lines => lines, :partial_name => "per_36_line"} %>
         </tbody>
       </table>
-      <table>
-        <thead class="advanced"> <tr> <th> player </th> <th class="games-started"> gs/g </th><th class="games">g</th><th class="minutes"> min </th> <th> ts% </th> <th> efg% </th> <th class="usage"> usg% </th><th> orb% </th> <th> drb% </th> <th> trb% </th> <th> ast% </th> <th> stl% </th> <th> blk% </th> <th> tov% </th><th class="rating">ortg</th><th class="rating">drtg</th><th class="pace"> pace </th></tr> </thead>
-        <tbody class="advanced" data-type="advanced">
+
+      <table class="advanced" data-type="advanced">
+        <thead><tr><%= Nba::Html::StatTable.render_headers(:adv) %></tr></thead>
+        <tbody>
           <%= render :partial => 'aggregate_info/stats/lines_order', :locals => {:lines => lines, :partial_name => "advanced_line"} %>
         </tbody>
       </table>

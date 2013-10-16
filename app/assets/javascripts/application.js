@@ -21,6 +21,7 @@
 //= require jquery.mousewheel.js
 //= require jquery.jscrollpane.js
 //= require jquery.tablesorter.js
+//= require jquery-ui-1.10.3.custom.js
 //= require raphael
 //= require morris
 //
@@ -29,11 +30,10 @@
 //= require nba_one_page
 //
 //= require_tree ./data
-// require_tree ./models
+//= require_tree ./models
 // require_tree ./collections
+//= require_tree ./templates
 //= require ./views/modular_view
 //= require ./views/view_factory
 //= require_tree ./views
 //= require_tree ./routers
-//= require_tree ./morris
-// require_tree ../templates

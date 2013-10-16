@@ -14,19 +14,25 @@ jQuery ->
 
     getData: (player = "Derrick Rose", stat = "points", team) ->
       $.getJSON "/rolled_data/#{encodeURIComponent(player)}/#{stat}/#{@year}.json?team=#{team}", (data) =>
-        @render_graph(data, stat)
+        morrisGraph = @render_graph(data, stat)
         @setTitle(player, stat)
+        @createSplitTimeline(morrisGraph)
+
+    createSplitTimeline: (morrisGraph) ->
+      @find(".graph-split-timeline").empty()
+      options = {'el': "section.#{@sectionClass()} .graph-split-timeline", 'eventNameSpace': @sectionClass(), 'morrisGraph': morrisGraph}
+      @timeline = new NbaOnePage.ViewFactory().create(NbaOnePage.Views.GraphSplitTimeline, options)
 
     setTitle: (player, stat) ->
       stat_without_underscores = stat.replace(/_/g, " ")
-      $(@el).find(".graph-specifics .player").text("#{player}")
-      $(@el).find(".graph-specifics .stat").text("#{stat_without_underscores}")
+      @find(".graph-specifics .player").text("#{player}")
+      @find(".graph-specifics .stat").text("#{stat_without_underscores}")
 
     render_graph: (data, stat) ->
-      $(@el).find(".graph").empty()
+      @find(".graph").empty()
       stat_without_underscores = stat.replace(/_/g, " ")
       Morris.Line
-        element: $(@el).find(".graph").get(0)
+        element: @find(".graph").get(0)
         data: data
         xkey: 'date'
         ykeys: ['averaged_data']
@@ -34,13 +40,21 @@ jQuery ->
         labels: [stat_without_underscores]
         lineColors: ['#C1261B']
         continuousLine: false
+        hideHover: 'auto'
+        yLabelFormat: (y) -> Math.round(y * 10) / 10
         hoverCallback: (index, options) =>
           game_date = moment(data[index].date).format("MM/DD")
           if(data[index]['averaged_data'])
-            title = moment(data[index].start_date).format("MM/DD") + " - " + game_date
+            title = "#{moment(data[index].start_date).format("MM/DD")} - #{game_date}"
           else
             title = "#{game_date} DNP"
           content = "<div class='morris-hover-row-label'>#{title}</div>"
+          content += "<ul class='morris-hover-games-list'>"
+          for data_index in [index..(Math.max(0, index-10))]
+            content += """
+            <li>#{data[data_index]['description']}</li>
+          """
+          content += "</ul>"
           content += """
             <div class='morris-hover-point' style='color: #C1261B'>
               #{stat_without_underscores}:
@@ -50,3 +64,9 @@ jQuery ->
 
         dateFormat: (d) -> moment(d).format("MM/DD")
         xLabelFormat: (d) -> moment(d).format("MM/DD")
+
+    find: (selector) ->
+      $(@el).find(selector)
+
+    sectionClass: ->
+      $(@el).parents("section").attr('class')

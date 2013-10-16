@@ -1,0 +1,3 @@
+          <%= render :partial => 'aggregate_info/boxscore/section_header', :locals => {:boxscore => @boxscore, :expanded => false } %>
+          <%= render :partial => 'aggregate_info/boxscore/boxscore', :locals => {:boxscore_lines => @boxscore.team_lines, :class_label => "team-boxscore", :expanded => false, :selected => true } %>
+          <%= render :partial => 'aggregate_info/boxscore/boxscore', :locals => {:boxscore_lines => @boxscore.opponent_lines, :class_label => "opponent-boxscore", :expanded => false, :selected => false } %>

@@ -68,4 +68,18 @@ class CalendarTest < MiniTest::Unit::TestCase
     date_of_last_game = calendar.games.last.wrapped_game.game_date.to_date
     assert date_of_last_game == Date.new(2013, 1, 5), "should be 2013/1/1 but was #{date_of_last_game}"
   end
+
+  def test_month_january
+    calendar = Nba::Schedule::Calendar.new("2013")
+    first_day, last_day = calendar.month(:january)
+    assert_equal Date.new(2013, 1, 1), first_day
+    assert_equal Date.new(2013, 1, 31), last_day
+  end
+
+  def test_month_november
+    calendar = Nba::Schedule::Calendar.new("2013")
+    first_day, last_day = calendar.month(:november)
+    assert_equal Date.new(2012, 10, 30), first_day
+    assert_equal Date.new(2012, 11, 30), last_day
+  end
 end

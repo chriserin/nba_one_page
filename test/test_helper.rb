@@ -9,10 +9,10 @@ Spork.prefork do
   # need to restart spork for it take effect.
   ENV["RAILS_ENV"] = "test"
   require File.expand_path('../../config/environment', __FILE__)
-
-  require "minitest/autorun"
-  require 'vcr'
+  require 'rails/test_help'
   require 'mocha/setup'
+
+  require 'vcr'
 
   VCR.configure do |vcr_config|
     vcr_config.cassette_library_dir = 'test/fixtures/vcr_cassettes'
@@ -21,14 +21,27 @@ Spork.prefork do
   end
 
   require 'database_cleaner'
-  DatabaseCleaner.strategy = :truncation
+  DatabaseCleaner.strategy = :stump
+
+  class ActionController::TestCase
+    include Blind
+    setup do 
+      Mongoid.override_session :with_data
+    end
+
+    teardown do
+      Mongoid.override_session nil
+    end
+  end
 
   class MiniTest::Unit::TestCase
+
     def setup
       #pattern dispath
       self.methods.each do |m|
         self.send(m) if m.to_s =~ /^setup_/
       end
+
     end
 
     def teardown

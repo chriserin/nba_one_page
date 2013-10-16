@@ -24,7 +24,7 @@ module Nba
     "Denver Nuggets"         => { :abbr => "DEN", :div => "northwest", :conference => "western", :nickname => "Nuggets", :home_id => "07"},
     "San Antonio Spurs"      => { :abbr => "SAS", :div => "southwest", :conference => "western", :nickname => "Spurs", :home_id => "24", :alt_abbr => "SA"},
     "Memphis Grizzlies"      => { :abbr => "MEM", :div => "southwest", :conference => "western", :nickname => "Grizzlies", :home_id => "29"},
-    "Phoenix Suns"           => { :abbr => "PHX", :div => "pacific",   :conference => "western", :nickname => "Suns", :home_id => "21"},
+    "Phoenix Suns"           => { :abbr => "PHX", :div => "pacific",   :conference => "western", :nickname => "Suns", :home_id => "21", :alt_abbr => "Pho"},
     "New Orleans Hornets"    => { :abbr => "NOH", :div => "southwest", :conference => "western", :nickname => "Hornets", :home_id => "03", :alt_abbr => "NO"},
     "Portland Trail Blazers" => { :abbr => "POR", :div => "northwest", :conference => "western", :nickname => "Trail Blazers", :home_id => "22"},
     "Philadelphia 76ers"     => { :abbr => "PHI", :div => "atlantic",  :conference => "eastern", :nickname => "76ers", :home_id => "20"},

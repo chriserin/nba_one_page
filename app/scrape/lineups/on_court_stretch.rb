@@ -6,7 +6,9 @@ module Scrape
     attr_accessor :start, :end, :lineups
     def initialize(lineups=nil, options = {})
       options = {:start => nil, :end => nil}.merge(options)
-      @lineups = lineups || Hash.new { |hash, team| hash[team] = Scrape::Lineup.new([])}
+      @lineups = lineups || Hash.new
+      empty_lineup = @lineups.delete(nil) if @lineups.keys.include? nil
+      @lineups.default_proc = proc { |hash, team| hash[team] = empty_lineup || Scrape::Lineup.new([])}
       @stats = Hash.new {|hash, team| hash[team] = Hash.new(0)}
       @start = options[:start]
       @end = options[:end]
@@ -36,7 +38,6 @@ module Scrape
     end
 
     def determine_lineup(play)
-      p play.description
       if play.is_exit?
         other_team = (@lineups.keys - [play.team]).pop
         lineups = {
@@ -60,8 +61,9 @@ module Scrape
     end
 
     def verify_full_lineups
-      @lineups.values.each do |lineup|
-        raise "lineup #{lineup} not full" unless lineup.is_full?
+      raise "too many teams" if @lineups.keys.count > 2
+      @lineups.each do |team, lineup|
+        raise "#@start #@end lineup #{team.to_s} #{lineup} not full" unless lineup.is_full?
       end
     end
 

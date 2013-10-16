@@ -187,4 +187,10 @@ class NbcPlayTest < MiniTest::Unit::TestCase
     play = Scrape::NbcPlay.new("1", "10:20", "Bos", play_desc, "score", "home_score", nil)
     assert play.is_entrance?
   end
+
+  def test_game_date
+    play_desc = "Roy Hibbert enters game"
+    play = Scrape::NbcPlay.new("1", "10:20", "Bos", play_desc, "score", "home_score", Scrape::GameInfo.new("Indiana Pacers", "New York Knicks", DateTime.new(2012, 12, 25)))
+    assert_equal DateTime.new(2012, 12, 25), play.game_date 
+  end
 end

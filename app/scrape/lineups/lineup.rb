@@ -1,3 +1,4 @@
+
 module Scrape
   class Lineup
     attr_accessor :piggy_back_lineup
@@ -7,11 +8,15 @@ module Scrape
       @blacklist = []
     end
 
+    def to_s
+      @lineup_array.to_s
+    end
+
     def add_player(player)
       @lineup_array << player unless is_blacklisted?(player)
       @lineup_array.uniq!
       update_piggy_backed_lineup(player)
-      raise "lineup has too many players" if @lineup_array.size > 5
+      raise Scrape::Error.new "lineup has too many players" if @lineup_array.size > 5
     end
 
     def add_substituted_player(player)
