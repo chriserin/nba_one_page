@@ -4,7 +4,12 @@ module Nba
       include Nba::Schedule::GameCounters
       include Nba::OpponentRecords
 
-      attr_accessor :played_games, :scheduled_games, :team, :calendar, :wins, :losses
+      attr_accessor :played_games,
+                    :scheduled_games,
+                    :team,
+                    :calendar,
+                    :wins,
+                    :losses
 
       def initialize(played_games, scheduled_games, team, schedule)
         @team     = team

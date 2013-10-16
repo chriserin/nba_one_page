@@ -7,16 +7,16 @@ require './app/scrape/boxscore/converted_boxscore'
 module Scrape
   class TransformBoxscoreData
     def self.run(*args)
-      converted_away_boxscore, converted_home_boxscore = convert_boxscores(*args)
-      Scrape::CreateGameLines.act(converted_home_boxscore)
-      Scrape::CreateGameLines.act(converted_away_boxscore)
+      converted_away_boxscore, converted_home_boxscore, game_info = convert_boxscores(*args)
+      Scrape::CreateGameLines.act(converted_home_boxscore, game_info)
+      Scrape::CreateGameLines.act(converted_away_boxscore, game_info)
     end
 
     def self.convert_boxscores(*args)
       away_boxscore, home_boxscore, game_info = into_descriptive_boxscore(args.shift, *args)
       converted_away_boxscore = Scrape::ConvertDescriptiveBoxscore.into_lines(away_boxscore)
       converted_home_boxscore = Scrape::ConvertDescriptiveBoxscore.into_lines(home_boxscore)
-      return converted_away_boxscore, converted_home_boxscore
+      return converted_away_boxscore, converted_home_boxscore, game_info
     end
 
     def self.into_descriptive_boxscore(data, *game_info_args)

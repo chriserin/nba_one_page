@@ -12,5 +12,9 @@ module Scrape
       return away_team if team == home_team
       return home_team if team == away_team
     end
+
+    def season
+      
+    end
   end
 end

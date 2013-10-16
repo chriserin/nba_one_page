@@ -24,21 +24,23 @@ class LineTypeFactory
 
       line_type.class_eval(year_getter)
 
-      case type
-      when :game_line
-        line_type.store_in :collection => "game_lines.#{year}"
-        line_type.send(:include, GameModel)
-        Object.const_set(:GameLine, line_type)
-      when :difference
-        line_type.store_in :collection => "game_lines.#{year}"
-        line_type = Class.new line_type
-        line_type.send(:include, GameModel)
-        line_type.send(:include, DifferenceModel)
-        Object.const_set(:DifferenceLine, line_type)
-      when :on_court_stretch
-        line_type.store_in :collection => "stretches.#{year}"
-        line_type.send(:include, StretchModel)
-        Object.const_set(:StretchLine, line_type)
+      silence_warnings do #this block warns of const_set already having set consts
+        case type
+        when :game_line
+          line_type.store_in :collection => "game_lines.#{year}"
+          line_type.send(:include, GameModel)
+          Object.const_set(:GameLine, line_type)
+        when :difference
+          line_type.store_in :collection => "game_lines.#{year}"
+          line_type = Class.new line_type
+          line_type.send(:include, GameModel)
+          line_type.send(:include, DifferenceModel)
+          Object.const_set(:DifferenceLine, line_type)
+        when :on_court_stretch
+          line_type.store_in :collection => "stretches.#{year}"
+          line_type.send(:include, StretchModel)
+          Object.const_set(:StretchLine, line_type)
+        end
       end
 
       return line_type

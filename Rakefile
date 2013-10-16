@@ -30,6 +30,11 @@ namespace :scrape do
     task :yesterday => :environment do
       Scrape::BoxscoreMain.scrape
     end
+
+    task :day, [:game_date] => :environment do |t, arguments|
+      game_date = arguments[:game_date]
+      Scrape::BoxscoreMain.scrape(DateTime.parse(game_date))
+    end
   end
 end
 
