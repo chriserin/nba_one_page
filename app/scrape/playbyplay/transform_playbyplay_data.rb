@@ -19,13 +19,11 @@ module Scrape
       #reject ignorable plays; convert plays to hash.
       non_ignored_plays = plays.reject {|play| play.is_ignorable?}
       play_hashes = non_ignored_plays.map {|play| Scrape::ConvertPlay.to_hash(play)}
-      #save plays!
+
       saved_plays = save_plays(play_hashes)
-      #verify plays!
       Scrape::VerifyPlays.verify_saved_plays(saved_plays)
-      #determine on court stretches
+
       stretches = Scrape::DetermineStretches.run_plays(non_ignored_plays)
-      #save on court stretches
       save_stretches(stretches)
     rescue Scrape::Error => scrape_error
       Rails.logger.error(scrape_error.message + args[1..-1].inspect)

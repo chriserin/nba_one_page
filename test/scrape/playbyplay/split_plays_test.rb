@@ -1,14 +1,8 @@
 require './test/test_helper'
 require './app/scrape/playbyplay/split_plays'
-require './app/scrape/playbyplay/play'
 require './app/scrape/playbyplay/nbc_play'
 
 class SplitPlaysTest < MiniTest::Unit::TestCase
-  def test_split
-    play_a = Scrape::Play.new("10:20", "Player A blocks Player B layup", "10-11", "", 2, nil)
-    plays = Scrape::SplitPlays.split([play_a])
-    assert_equal 2, plays.size
-  end
 
   def test_nbc_split
     play_desc = "Brandon Bass makes a jump shot from 16 feet out. Rajon Rondo with the assist."
