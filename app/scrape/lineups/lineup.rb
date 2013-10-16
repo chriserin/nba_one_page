@@ -8,6 +8,10 @@ module Scrape
       @blacklist = []
     end
 
+    def to_s
+      @lineup_array.to_s
+    end
+
     def add_player(player)
       @lineup_array << player unless is_blacklisted?(player)
       @lineup_array.uniq!

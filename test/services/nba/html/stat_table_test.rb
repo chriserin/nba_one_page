@@ -109,6 +109,7 @@ class StatTableTest < MiniTest::Unit::TestCase
     end
     def is_difference_total; (@values[:is_difference_total] == true) || false; end
     def is_opponent_total; (@values[:is_opponent_total] == true) || false; end
+    def game_date; Date.today; end
 
     def method_missing(meth, *args, &block)
       @values[meth]

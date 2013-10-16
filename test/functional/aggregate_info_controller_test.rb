@@ -18,7 +18,7 @@ class AggregateInfoControllerTest < ActionController::TestCase
   end
 
   def test_team
-    get :team_infox, :team => "Bulls"
+    get :team_info, :team => "Bulls"
     assert_response :success
   end
 end

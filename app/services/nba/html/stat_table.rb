@@ -24,7 +24,7 @@ module Nba
       end
 
       def table_data_attributes
-        if @table_type == :boxscore
+        if @table_type == :boxscore && @lines.count > 0
           formatted_game_date = @lines.first.game_date.to_date.strftime("%Y%m%d")
           "data-game-date='#{formatted_game_date}'"
         else

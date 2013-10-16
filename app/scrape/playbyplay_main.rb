@@ -1,6 +1,5 @@
 require './app/scrape/playbyplay/transform_playbyplay_data'
 require './app/scrape/playbyplay/playbyplay_scraper'
-require './app/scrape/playbyplay/cbs_playbyplay_scraper'
 require './app/scrape/playbyplay/nbc_playbyplay_scraper'
 
 module Scrape
