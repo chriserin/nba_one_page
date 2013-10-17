@@ -62,6 +62,8 @@ module GameModel
           end
         end
       end
+
+
     end
 
     def team_boxscore_lines_sorted(team, game_date)
@@ -118,6 +120,14 @@ module GameModel
 
   def line_name_or_nickname
     (is_subtotal or is_total or is_difference_total) ? nickname : line_name
+  end
+
+  def result
+    if team_score > opponent_score
+      "W"
+    else
+      "L"
+    end
   end
 
   def nickname

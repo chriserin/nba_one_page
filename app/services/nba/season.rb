@@ -12,6 +12,7 @@ module Nba
       @year = year
       @game_line_type = LineTypeFactory.get_line_type(@year, :game_line)
       @game_register = GameRegister.new(ScheduledGame.all, @game_line_type.totals)
+      Team.set_register(@game_register)
     end
 
     def boxscore(date, team)

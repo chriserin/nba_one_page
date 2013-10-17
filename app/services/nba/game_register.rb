@@ -1,5 +1,11 @@
 require 'delegate'
 
+class DateHash < Hash
+  def from(a, b)
+    self.select {|k, v| k.to_date >= a.to_date && k.to_date <= b.to_date}
+  end
+end
+
 module Nba
   class GameRegister
     attr_reader :register
@@ -8,7 +14,7 @@ module Nba
       @register = reduce_to_hash(scheduleds, :away_team)
       @register = @register.deep_merge(reduce_to_hash(scheduleds, :home_team))
       @register = @register.reduce({}) do |h, (team, dated_games)|
-        h[team] = Hash[dated_games.sort]
+        h[team] = DateHash[dated_games.sort]
         h[team].default_proc = proc { RestDay }
         h
       end
@@ -51,8 +57,8 @@ module Nba
       __setobj__(line)
     end
 
-    def isPlayed?
-      not __getobj__.nil?
+    def played?
+       GameModel === __getobj__
     end
   end
 

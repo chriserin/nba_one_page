@@ -17,7 +17,7 @@ module Nba
     "Houston Rockets"        => { :abbr => "HOU", :div => "southwest", :conference => "western", :nickname => "Rockets", :home_id => "10"},
     "Washington Wizards"     => { :abbr => "WAS", :div => "southeast", :conference => "eastern", :nickname => "Wizards", :home_id => "27"},
     "Brooklyn Nets"          => { :abbr => "BKN", :div => "atlantic",  :conference => "eastern", :nickname => "Nets", :home_id => "17"},
-    "New Jersey Nets"        => { :abbr => "NJN", :div => "atlantic",  :conference => "eastern", :nickname => "Nets", :home_id => "17"},
+    #"New Jersey Nets"        => { :abbr => "NJN", :div => "atlantic",  :conference => "eastern", :nickname => "Nets", :home_id => "17"},
     "Charlotte Bobcats"      => { :abbr => "CHA", :div => "southeast", :conference => "eastern", :nickname => "Bobcats", :home_id => "30"},
     "Milwaukee Bucks"        => { :abbr => "MIL", :div => "central",   :conference => "eastern", :nickname => "Bucks", :home_id => "15"},
     "Minnesota Timberwolves" => { :abbr => "MIN", :div => "northwest", :conference => "western", :nickname => "Timberwolves", :home_id => "16"},
@@ -32,6 +32,14 @@ module Nba
     "Atlanta Hawks"          => { :abbr => "ATL", :div => "southeast", :conference => "eastern", :nickname => "Hawks", :home_id => "01"},
     "Utah Jazz"              => { :abbr => "UTA", :div => "northwest", :conference => "western", :nickname => "Jazz", :home_id => "26"}
   }
+
+  def TEAMS.division(div_name)
+    TEAMS.map {|team, attrs| team if attrs[:div] == div_name }.compact
+  end
+
+  def TEAMS.conference(con_name)
+    TEAMS.map {|team, attrs| team if attrs[:conference] == con_name }.compact
+  end
 
   def TEAMS.find(team_fragment)
     self.keys.find { |key| key =~ /#{team_fragment}/}
