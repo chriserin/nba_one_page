@@ -3,6 +3,8 @@ module Nba
     include Record
     include Place
     include Nba::Rest
+    include Opponents
+    include Strength
 
     class << self
       def set_register(register)
@@ -18,6 +20,14 @@ module Nba
     attr_reader :name
     def games
       @@register.group(name).values
+    end
+
+    def played_games
+      @@register.group(name).values.select {|g| g.played? }
+    end
+
+    def unplayed_games
+      @@register.group(name).values.filter {|g| g.played? }
     end
 
     def days_register
