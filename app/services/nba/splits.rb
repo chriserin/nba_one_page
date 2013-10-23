@@ -4,7 +4,7 @@ module Nba
 
     def data(splits)
       splits = [splits].flatten
-      splits &= SPLIT_TYPES
+      splits &= SPLIT_TYPES #check that its a permitted split type.  gracefully return all if not.
       query = gtype.team_lines(name)
       splits.each do |split|
         query.send(split)

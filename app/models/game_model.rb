@@ -94,11 +94,6 @@ module GameModel
     def team_totals
       totals.group_by { |line| line.line_name }.values.map { |lines_array| lines_array.inject(:+) }
     end
-
-    def statistic_total_lines_former_players(team)
-      former_players = Nba::FORMER_PLAYERS[team]
-      @total_lines = self.in("line_name" => former_players).group_by{ |line| line.line_name }.values.map{ |lines_array| lines_array.inject(:+) }.sort_by { |total_line| total_line.minutes }.reverse
-    end
   end
 
   def self.included(base)

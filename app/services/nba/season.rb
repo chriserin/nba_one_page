@@ -43,10 +43,6 @@ module Nba
       return Nba::Team.get(team).stats(split_type)
     end
 
-    def total_statistics_for_former_players(team)
-      Nba::TeamTotals.new @game_line_type.statistic_total_lines_former_players(team)
-    end
-
     def opponent_totals
       @opponent_totals = @game_line_type.opponent_totals.group_by { |line| line.team }.map { |team, lines| lines.inject(:+) }
     end

@@ -18,8 +18,6 @@ window.NbaOnePage = {
 
     NbaOnePage.ViewState["stat_totals"] = factory.create(NbaOnePage.Views.StatTotals)
     NbaOnePage.ViewState["graph_container"] = factory.create(NbaOnePage.Views.GraphContainer, {'year': year})
-    NbaOnePage.ViewState["stat_totals_former_players"] = factory.create(NbaOnePage.Views.StatTotals, { 'el': 'section.former-players', 'eventNameSpace': 'stat_totals_former_players'})
-    NbaOnePage.ViewState["graph_container_former_players"] = factory.create(NbaOnePage.Views.GraphContainer, {'year': year, 'el': 'section.former-players .graph-container', 'eventNameSpace': 'stat_totals_former_players'})
 
     NbaOnePage.ViewState["team_totals"] = factory.create(NbaOnePage.Views.StatTotals, { 'el': 'section.team-totals', 'eventNameSpace': 'team_totals'})
     NbaOnePage.ViewState["graph_container_team_totals"] = factory.create(NbaOnePage.Views.GraphContainer, {'year': year, 'el': 'section.team-totals .graph-container', 'eventNameSpace': 'team_totals'})
@@ -28,14 +26,12 @@ window.NbaOnePage = {
     NbaOnePage.ViewState["difference_totals"] = factory.create(NbaOnePage.Views.StatTotals, { 'el': 'section.difference-totals', 'eventNameSpace': 'difference_totals'})
     NbaOnePage.ViewState["graph_container_difference_totals"] = factory.create(NbaOnePage.Views.GraphContainer, {'year': year, 'el': 'section.difference-totals .graph-container', 'eventNameSpace': 'difference_totals'})
 
-    NbaOnePage.ViewState["stat_totals_former_players"].defaultClick()
     NbaOnePage.ViewState["stat_totals"].defaultClick()
     NbaOnePage.ViewState["team_totals"].defaultClick()
     NbaOnePage.ViewState["opponent_totals"].defaultClick()
     NbaOnePage.ViewState["difference_totals"].defaultClick()
     $("li[data-breakdown='hard']").trigger('click')
 
-    $(".former-players table").tablesorter()
     $(".standings table").tablesorter()
     $(".team-totals table").tablesorter()
     $(".opponent-totals table").tablesorter()

@@ -1,6 +1,5 @@
 module Nba
   module Stats
-    include ActiveSupport::Concern
     include Splits
 
     def stats(split_type=:all)
@@ -9,7 +8,7 @@ module Nba
 
     def add_lines(lines)
       grouped = lines.group_by { |line| line.line_name }
-      added   = grouped.values.map   { |lines| lines.inject(:+) }
+      grouped.values.map { |lines| lines.inject(:+) }
     end
   end
 end
