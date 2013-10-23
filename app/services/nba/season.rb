@@ -40,20 +40,7 @@ module Nba
     end
 
     def total_statistics_for_team(team, split_type = :all)
-      lines = []
-      case split_type
-      when :all
-        return Nba::Team.get(team).stats(split_type)
-      when :november, :december, :january, :february, :march, :april
-        calendar = Nba::Schedule::Calendar.new(@year)
-        first_date, last_date = calendar.month(split_type)
-        lines = @game_line_type.group_starters_together(@game_line_type.team_lines(team).date_range(first_date, last_date))
-      when :home
-        lines = @game_line_type.group_starters_together(@game_line_type.team_lines(team).is_home)
-      when :road
-        lines = @game_line_type.group_starters_together(@game_line_type.team_lines(team).is_road)
-      end
-      Nba::TeamTotals.new lines
+      return Nba::Team.get(team).stats(split_type)
     end
 
     def total_statistics_for_former_players(team)

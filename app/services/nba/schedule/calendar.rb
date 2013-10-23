@@ -28,12 +28,12 @@ module Nba
       end
 
       def months
-        YEARS[@year].select{|key, _| month_syms.include? key}.map {|month, (start, mend)|
+        YEARS[@year].select{|key, _| self.class.month_syms.include? key}.map {|month, (start, mend)|
           OpenStruct.new(name: month, start: start, end: mend)
         }
       end
 
-      def month_syms
+      def self.month_syms
         (Date::MONTHNAMES[1..4] + Date::MONTHNAMES[10..12]).map {|month| month.downcase.to_sym}
       end
 
