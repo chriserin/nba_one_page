@@ -40,11 +40,11 @@ module Nba
     end
 
     def total_statistics_for_team(team, split_type = :all)
-      return Nba::Team.get(team).stats(split_type)
+      return TeamTotals.new(Nba::Team.get(team).stats(split_type))
     end
 
     def opponent_totals
-      @opponent_totals = @game_line_type.opponent_totals.group_by { |line| line.team }.map { |team, lines| lines.inject(:+) }
+      Nba::DefensiveTotals.new.stats([:all])
     end
 
     def difference_totals

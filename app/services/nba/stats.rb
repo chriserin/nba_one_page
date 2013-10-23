@@ -3,7 +3,7 @@ module Nba
     include Splits
 
     def stats(split_type=:all)
-      TeamTotals.new(add_lines(data(split_type)))
+      add_lines(filtered_data(split_type))
     end
 
     def add_lines(lines)

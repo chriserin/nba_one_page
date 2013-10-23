@@ -10,7 +10,7 @@ class AggregateInfoController < ApplicationController
     @team = Nba::TEAMS.find(team_param)
 
     if @team.blank?
-      raise ActionController::RoutingError.new('Not Found')
+      raise ActionController::RoutingError.new("#{team_param} Not Found")
     end
 
     season               = Nba::Season.new(@year)

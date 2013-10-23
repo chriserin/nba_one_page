@@ -6,15 +6,11 @@ module Nba
     include Opponents
     include Strength
     include Stats
+    include LineType
 
     class << self
       def set_register(register)
         @@register = register
-      end
-
-      def set_year(year)
-        @@year = year
-        @@game_line_type = LineTypeFactory.get_line_type(@@year, :game_line)
       end
 
       def get(name)
@@ -24,9 +20,6 @@ module Nba
     end
 
     attr_reader :name
-    def gtype
-      @@game_line_type
-    end
 
     def games
       @@register.group(name).values
@@ -42,6 +35,10 @@ module Nba
 
     def days_register
       @@register.group(name)
+    end
+
+    def data
+      gtype.team_lines(name)
     end
 
     private
