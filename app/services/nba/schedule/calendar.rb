@@ -27,6 +27,16 @@ module Nba
         @days = create_days(year)
       end
 
+      def months
+        YEARS[@year].select{|key, _| month_syms.include? key}.map {|month, (start, mend)|
+          OpenStruct.new(name: month, start: start, end: mend)
+        }
+      end
+
+      def month_syms
+        (Date::MONTHNAMES[1..4] + Date::MONTHNAMES[10..12]).map {|month| month.downcase.to_sym}
+      end
+
       def self.get_current_year
         year = YEARS.keys.find do |year|
            Date.today > YEARS[year][:start] && Date.today <= YEARS[year][:end]

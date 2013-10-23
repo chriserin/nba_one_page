@@ -48,6 +48,10 @@ module GameModel
       scope :is_home, where("is_home" => true)
       scope :is_road, where("is_home" => false)
 
+      Nba::Calendar(year).months.each do |month|
+        scope month.name, ->() { date_range(month.start, month.end) }
+      end
+
       (Nba::BaseStatistics + [:game_score]).each do |stat_field|
         define_method "#{stat_field}_g" do
           (send(stat_field) / (attributes["games"] * 1.0)).round 2
@@ -101,9 +105,6 @@ module GameModel
     base.extend(ClassMethods)
     base.define_line
   end
-
-  attr_writer :topfive
-  def topfive; @topfive || false; end
 
   def opponent_abbr
     Nba::TEAMS[opponent][:abbr]
