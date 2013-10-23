@@ -13,6 +13,7 @@ module Nba
       @game_line_type = LineTypeFactory.get_line_type(@year, :game_line)
       @game_register = GameRegister.new(ScheduledGame.all, @game_line_type.totals)
       Team.set_register(@game_register)
+      Team.set_year(year)
     end
 
     def boxscore(date, team)
@@ -42,7 +43,7 @@ module Nba
       lines = []
       case split_type
       when :all
-        lines = @game_line_type.statistic_total_lines(team)
+        return Nba::Team.get(team).stats(split_type)
       when :november, :december, :january, :february, :march, :april
         calendar = Nba::Schedule::Calendar.new(@year)
         first_date, last_date = calendar.month(split_type)

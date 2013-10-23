@@ -6,15 +6,9 @@
       <%= render :partial => 'aggregate_info/boxscore/boxscore_section', :locals => {:boxscore => @boxscore, :expanded => false } %>
     <% end %>
 
-    <%= render :partial => 'aggregate_info/standings/standings_section' %>
-
     <%= render :partial => 'aggregate_info/games/games_section' %>
 
     <%= render :partial => 'aggregate_info/stats/stat_totals_section', :locals => {:title => "Stat Totals", :lines => @total_lines } %>
-
-    <% if @former_player_lines.present? %>
-      <%= render :partial => 'aggregate_info/stats/stat_totals_section', :locals => {:title => "Former Players", :lines => @former_player_lines } %>
-    <% end %>
 
     <%= render :partial => 'aggregate_info/links/team_links_section' %>
   </div>

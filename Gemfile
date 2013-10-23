@@ -48,3 +48,4 @@ end
 
 gem 'teabag', :github => 'modeset/teabag'
 gem 'eco'
+gem 'req', :path => '~/open_source/req'

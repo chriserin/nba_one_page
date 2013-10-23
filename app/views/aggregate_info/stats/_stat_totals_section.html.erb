@@ -1,4 +1,4 @@
-<section class="<%= title.split.join("-").downcase %>">
+    <section class="<%= title.split.join("-").downcase %>">
       <div class="section-header clearfix">
         <h1><a href="#<%= title.split.join("-").downcase %>"><%= title %></a></h1>
         <nav class="section-content"><li class="selected" data-type="totals">Totals</li><li data-type="per-game">Per Game</li><li data-type="per-36" class="per-36">Per 36 Mins</li><li data-type="advanced">Advanced</li></nav>
@@ -11,18 +11,7 @@
           <%= render :partial => 'aggregate_info/stats/stat_totals', :locals => { :lines => lines } %>
         </div>
         <div>
-          <div class="graph-container">
-            <div class="graph-split-timeline"><span class="timeline-highlight"></span></div>
-            <div class="graph"></div>
-            <div class="graph-title">
-              <span class="graph-specifics">
-                <span class="player"></span>
-                <span class="stat"></span>
-              </span>
-              <span> 10 Game Rolling Average</span>
-              <span class="graph-split-report"> </span>
-            </div>
-          </div>
+          <%= render :partial => 'aggregate_info/stats/graph_container' %>
         </div>
       </div>
     </section>

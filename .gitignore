@@ -28,3 +28,6 @@ pickle-email-*.html
 
 #ignore local ironworker credentials
 iron.jron
+
+#ignore req files
+/.req

@@ -40,6 +40,14 @@ GIT
       railties (>= 3.2)
       thor (~> 0.14)
 
+PATH
+  remote: ~/open_source/req
+  specs:
+    req (0.0.1)
+      diffy
+      nokogiri
+      thor
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -101,6 +109,7 @@ GEM
     compass-h5bp (0.1.1)
       compass
     crack (0.3.2)
+    diffy (3.0.1)
     domain_name (0.5.10)
       unf (>= 0.0.5, < 1.0.0)
     eco (1.0.0)
@@ -277,6 +286,7 @@ DEPENDENCIES
   pry
   pry-rails
   rails (= 4.0.0)
+  req!
   sass-rails (~> 4.0.0)
   sinatra
   spork-minitest (~> 0.0.2)
