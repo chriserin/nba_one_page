@@ -5,10 +5,10 @@
       <div class="section-content clearfix">
         <div class="games-summary clearfix">
           <ul class="data-breakdown">
-            <li data-breakdown="b2b"><span class="game-summary-title">Back 2 Backs: </span><span class="game-summary-count"> <%= @schedule.back_to_back_count %></span><span class="back-to-back">b2b</span></li>
-            <li data-breakdown="4i5"><span class="game-summary-title">Four in Fives: </span><span class="game-summary-count"><%= @schedule.four_in_five_count %></span><span class="four-in-five">4i5</span></li>
-            <li data-breakdown="ob2b"><span class="game-summary-title">Opponent Back 2 Backs: </span><span class="game-summary-count"><%= @schedule.opponent_back_to_back_count %></span><span class="opponent-back-to-back">ob2b</span></li>
-            <li data-breakdown="o4i5"><span class="game-summary-title">Opponent Four in Fives:</span><span class="game-summary-count"> <%= @schedule.opponent_four_in_five_count %></span><span class="opponent-four-in-five">o4i5</span></li>
+            <li data-breakdown="b2b"><span class="game-summary-title">Back 2 Backs: </span><span class="game-summary-count"> <%= @team_rep.tally(2, 2) %></span><span class="back-to-back">b2b</span></li>
+            <li data-breakdown="4i5"><span class="game-summary-title">Four in Fives: </span><span class="game-summary-count"><%= @team_rep.tally(4, 5) %></span><span class="four-in-five">4i5</span></li>
+            <li data-breakdown="ob2b"><span class="game-summary-title">Opponent Back 2 Backs: </span><span class="game-summary-count"><%= @team_rep.opponent_tally(2, 2) %></span><span class="opponent-back-to-back">ob2b</span></li>
+            <li data-breakdown="o4i5"><span class="game-summary-title">Opponent Four in Fives:</span><span class="game-summary-count"> <%= @team_rep.opponent_tally(4, 5) %></span><span class="opponent-four-in-five">o4i5</span></li>
           </ul>
           <ul>
             <li data-breakdown="home-games-left"><span class="game-summary-title">Home Games Left:</span><span class="game-summary-count"> <%= @schedule.home_games_left %></span></li>

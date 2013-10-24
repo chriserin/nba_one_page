@@ -6,13 +6,12 @@ module Nba
       end
     end
 
-    attr_reader :game_register
 
     def initialize(year)
       @year = year
       @game_line_type = LineTypeFactory.get_line_type(@year, :game_line)
-      @game_register = GameRegister.new(ScheduledGame.all, @game_line_type.totals)
-      Team.set_register(@game_register)
+      game_register = GameRegister.new(ScheduledGame.all, @game_line_type.totals)
+      Team.set_register(game_register)
       Team.set_year(year)
     end
 
@@ -48,7 +47,7 @@ module Nba
     end
 
     def difference_totals
-      @difference_totals = @game_line_type.difference_totals.group_by { |line| line.team }.map { |team, lines| lines.inject(:+) }
+      Nba::DifferenceTotals.new.stats([:all])
     end
   end
 end

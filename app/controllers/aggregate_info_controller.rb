@@ -18,6 +18,7 @@ class AggregateInfoController < ApplicationController
     @standings           = season.standings
     @schedule            = season.schedule(@team, @standings)
     @boxscore            = season.boxscore(@schedule.last_game_played, @team)
+    @team_rep            = Nba::Team.get(@team)
   end
 
   def index
