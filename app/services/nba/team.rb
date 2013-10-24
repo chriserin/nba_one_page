@@ -7,6 +7,7 @@ module Nba
     include Strength
     include Stats
     include LineType
+    include PlayedWhereCounts
 
     class << self
       def set_register(register)
@@ -30,7 +31,7 @@ module Nba
     end
 
     def unplayed_games
-      @@register.group(name).values.filter {|g| g.played? }
+      @@register.group(name).values.reject {|g| g.played? }
     end
 
     def days_register

@@ -11,10 +11,10 @@
             <li data-breakdown="o4i5"><span class="game-summary-title">Opponent Four in Fives:</span><span class="game-summary-count"> <%= @team_rep.opponent_tally(4, 5) %></span><span class="opponent-four-in-five">o4i5</span></li>
           </ul>
           <ul>
-            <li data-breakdown="home-games-left"><span class="game-summary-title">Home Games Left:</span><span class="game-summary-count"> <%= @schedule.home_games_left %></span></li>
-            <li data-breakdown="away-games-left"><span class="game-summary-title">Away Games Left:</span><span class="game-summary-count"> <%= @schedule.away_games_left %></span></li>
-            <li data-breakdown="b2b-left"><span class="game-summary-title">Back 2 Backs Left:</span><span class="game-summary-count"> <%= @schedule.back_to_back_count_left %></span></li>
-            <li data-breakdown="ob2b-left"><span class="game-summary-title">Opponent Back 2 Backs Left:</span><span class="game-summary-count"> <%= @schedule.opponent_back_to_back_count_left %></span></li>
+            <li data-breakdown="home-games-left"><span class="game-summary-title">Home Games Left:</span><span class="game-summary-count"> <%= @team_rep.home_games_remaining %></span></li>
+            <li data-breakdown="away-games-left"><span class="game-summary-title">Away Games Left:</span><span class="game-summary-count"> <%= @team_rep.away_games_remaining %></span></li>
+            <li data-breakdown="b2b-left"><span class="game-summary-title">Back 2 Backs Left:</span><span class="game-summary-count"> <%= @team_rep.tally(2, 2, true) %></span></li>
+            <li data-breakdown="ob2b-left"><span class="game-summary-title">Opponent Back 2 Backs Left:</span><span class="game-summary-count"> <%= @team_rep.opponent_tally(4, 5, true) %></span></li>
           </ul>
           <ul>
             <li data-breakdown="easy"><span class="game-summary-title">Difficulty 0 - 5 Left:</span><span class="game-summary-count"> <%= @schedule.easy_games_left %></span></li>
