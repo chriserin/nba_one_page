@@ -17,10 +17,10 @@
             <li data-breakdown="ob2b-left"><span class="game-summary-title">Opponent Back 2 Backs Left:</span><span class="game-summary-count"> <%= @team_rep.opponent_tally(4, 5, true) %></span></li>
           </ul>
           <ul>
-            <li data-breakdown="easy"><span class="game-summary-title">Difficulty 0 - 5 Left:</span><span class="game-summary-count"> <%= @schedule.easy_games_left %></span></li>
-            <li data-breakdown="medium"><span class="game-summary-title">Difficulty 5 - 7 Left:</span><span class="game-summary-count"> <%= @schedule.medium_games_left %></span></li>
-            <li data-breakdown="hard"><span class="game-summary-title">Difficulty 7 and up Left:</span><span class="game-summary-count"> <%= @schedule.hard_games_left %></span></li>
-            <li><span class="game-summary-title">Avg Difficulty Left:</span><span class="game-summary-count"> <%= @schedule.avg_difficulty_left %></span></li>
+            <li data-breakdown="easy"><span class="game-summary-title">Difficulty 0 - 5 Left:</span><span class="game-summary-count"> <%= @team_rep.easy_games_remaining %></span></li>
+            <li data-breakdown="medium"><span class="game-summary-title">Difficulty 5 - 7 Left:</span><span class="game-summary-count"> <%= @team_rep.medium_games_remaining %></span></li>
+            <li data-breakdown="hard"><span class="game-summary-title">Difficulty 7 and up Left:</span><span class="game-summary-count"> <%= @team_rep.hard_games_remaining %></span></li>
+            <li><span class="game-summary-title">Avg Difficulty Left:</span><span class="game-summary-count"> <%= @team_rep.avg_difficulty_left %></span></li>
           </ul>
         </div>
         <div class="games-wrapper">

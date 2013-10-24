@@ -9,6 +9,13 @@ module Nba
       result.round(1)
     end
 
+    def avg_difficulty_left
+      difficulty_sum = unplayed_games.map {|game| difficulty(game) }.inject(:+)
+      return (difficulty_sum / unplayed_games.count.to_f).round(1) if unplayed_games.count > 0
+      return "--"
+    end
+
+    private
     def rest_rating(game)
       rating = 0
       rating += 1 if is_back_to_back?(game.game_date)
