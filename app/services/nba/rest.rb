@@ -7,6 +7,14 @@ module Nba
       end
     end
 
+    def is_back_to_back?(game_date)
+      rest(game_date, 2) == 0
+    end
+
+    def is_four_in_five?(game_date)
+      rest(game_date, 5) == 1
+    end
+
     def game_days_in_past(game_day, days_length)
       days_length - rest(game_day, days_length)
     end

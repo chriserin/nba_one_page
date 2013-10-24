@@ -28,6 +28,7 @@ module Nba
       FILTERS.values.inject(@lines || []) {|lines, p| lines.reject &p }
     end
 
+    private
     def method_missing(meth, *args, &block)
       @lines.select(&FILTERS.fetch(meth)).reverse
     end

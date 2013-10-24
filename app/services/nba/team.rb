@@ -8,6 +8,8 @@ module Nba
     include Stats
     include LineType
     include PlayedWhereCounts
+    include Difficulty
+    include DifficultyCounts
 
     class << self
       def set_register(register)
