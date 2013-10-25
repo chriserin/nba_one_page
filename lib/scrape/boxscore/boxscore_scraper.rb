@@ -1,4 +1,5 @@
 require './lib/mechanize/page.rb'
+require './lib/scrape/scraper_tools.rb'
 
 class BoxscoreScraper
   include ScraperTools

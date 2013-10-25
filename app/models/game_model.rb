@@ -30,7 +30,7 @@ module GameModel
       index({ team: 1 })
       index({ is_total: 1, is_opponent_total: -1, is_difference_total: -1})
 
-      scope :team_lines,     ->(team)      { where(:team => /#{team}/) }
+      scope :team_lines,     ->(team)      { where(:team => team) }
       scope :opponent_lines, ->(team)      { where(:opponent => /#{team}/) }
       scope :game_lines,     ->(game_date) { where(:game_date => game_date) }
       scope :matchup_lines,  ->(team)      { any_of({:team => /#{team}/}, {:opponent => /#{team}/}) }

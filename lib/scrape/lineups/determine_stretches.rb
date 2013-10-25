@@ -1,5 +1,5 @@
-require './app/scrape/lineups/lineup'
-require './app/scrape/lineups/on_court_stretch'
+require './lib/scrape/lineups/lineup'
+require './lib/scrape/lineups/on_court_stretch'
 
 module Scrape
   class DetermineStretches

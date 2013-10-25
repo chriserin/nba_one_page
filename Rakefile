@@ -6,7 +6,6 @@ require File.expand_path('../config/application', __FILE__)
 
 NbaOnePage::Application.load_tasks
 
-
 namespace :scrape do
   task :playbyplay, [:game_date] => :environment do |t, arguments|
     game_date = arguments[:game_date]
@@ -23,17 +22,18 @@ namespace :scrape do
   namespace :boxscores do
 
     task :all_2014 => :environment do
-      require './app/scrape/boxscore_main'
+      require './lib/scrape/boxscore_main'
       Scrape::BoxscoreMain.scrape_year("2014")
     end
 
     task :yesterday => :environment do
-      require './app/scrape/boxscore_main'
+      require './lib/scrape/boxscore_main'
+      Moped.logger = ActiveSupport::Logger.new("log/scrape.log")
       Scrape::BoxscoreMain.scrape
     end
 
     task :day, [:game_date] => :environment do |t, arguments|
-      require './app/scrape/boxscore_main'
+      require './lib/scrape/boxscore_main'
       game_date = arguments[:game_date]
       Scrape::BoxscoreMain.scrape(DateTime.parse(game_date))
     end

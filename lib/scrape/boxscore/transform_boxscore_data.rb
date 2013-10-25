@@ -1,8 +1,8 @@
-require './app/scrape/game_info'
-require './app/scrape/boxscore/boxscore'
-require './app/scrape/boxscore/create_game_lines'
-require './app/scrape/boxscore/convert_descriptive_boxscore'
-require './app/scrape/boxscore/converted_boxscore'
+require './lib/scrape/game_info'
+require './lib/scrape/boxscore/boxscore'
+require './lib/scrape/boxscore/create_game_lines'
+require './lib/scrape/boxscore/convert_descriptive_boxscore'
+require './lib/scrape/boxscore/converted_boxscore'
 
 module Scrape
   class TransformBoxscoreData

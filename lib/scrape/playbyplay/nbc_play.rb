@@ -1,6 +1,6 @@
-require './app/scrape/playbyplay/nbc_statistical_queries'
-require './app/scrape/playbyplay/game_time'
-require './app/scrape/playbyplay/nbc_description_splitting'
+require './lib/scrape/playbyplay/nbc_statistical_queries'
+require './lib/scrape/playbyplay/game_time'
+require './lib/scrape/playbyplay/nbc_description_splitting'
 
 module Scrape
   class NbcPlay

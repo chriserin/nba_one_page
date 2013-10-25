@@ -1,4 +1,4 @@
-require './app/scrape/boxscore/boxscore_scraper'
+require './lib/scrape/boxscore/boxscore_scraper'
 
 class ScoreboardScraper
 

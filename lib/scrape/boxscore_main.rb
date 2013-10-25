@@ -1,4 +1,5 @@
-require './app/scrape/boxscore/transform_boxscore_data'
+require './lib/scrape/boxscore/transform_boxscore_data'
+require './lib/scrape/scoreboard_scraper.rb'
 
 module Scrape
   class BoxscoreMain

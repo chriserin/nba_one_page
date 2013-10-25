@@ -1,12 +1,12 @@
-require './app/scrape/game_info'
-require './app/scrape/error'
+require './lib/scrape/game_info'
+require './lib/scrape/error'
 require './app/services/nba/base_statistics'
-require './app/scrape/playbyplay/play'
-require './app/scrape/playbyplay/convert_play'
-require './app/scrape/playbyplay/convert_raw_playbyplay'
-require './app/scrape/playbyplay/convert_raw_nbc_playbyplay'
-require './app/scrape/playbyplay/verify_plays'
-require './app/scrape/lineups/determine_stretches'
+require './lib/scrape/playbyplay/play'
+require './lib/scrape/playbyplay/convert_play'
+require './lib/scrape/playbyplay/convert_raw_playbyplay'
+require './lib/scrape/playbyplay/convert_raw_nbc_playbyplay'
+require './lib/scrape/playbyplay/verify_plays'
+require './lib/scrape/lineups/determine_stretches'
 
 module Scrape
   class TransformPlaybyplayData

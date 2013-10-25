@@ -1,4 +1,4 @@
-require './app/scrape/boxscore/line'
+require './lib/scrape/boxscore/line'
 
 module Scrape
   class Scrape::ConvertDescriptiveBoxscore
