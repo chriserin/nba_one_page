@@ -1,0 +1,11 @@
+<li class="game-result <%= game == @team_rep.games.first ? "first-game" : ""%> <%= breakdown_classes(game) %>" data-time="<%= game.game_date %>" data-team="<%= game.team %>">
+            <span class="game-date">
+              <%= game.formatted_game_date %>
+            </span>
+            <span class="game-description">
+              <%= game.game_description %>
+            </span>
+            <span class="result <%= game.game_result %>">
+              <%= game.result_description %>
+            </span>
+            </li>

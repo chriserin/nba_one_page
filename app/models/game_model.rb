@@ -28,6 +28,7 @@ module GameModel
       index({ line_name: 1 })
       index({ game_date: 1 })
       index({ team: 1 })
+      index({ is_total: 1, is_opponent_total: -1, is_difference_total: -1})
 
       scope :team_lines,     ->(team)      { where(:team => /#{team}/) }
       scope :opponent_lines, ->(team)      { where(:opponent => /#{team}/) }

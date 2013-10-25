@@ -44,6 +44,11 @@ module Nba
       gtype.team_lines(name)
     end
 
+    def last_game_played
+      last_game = played_games.last
+      last_game && last_game.game_date
+    end
+
     private
     def initialize(name)
       @name = name

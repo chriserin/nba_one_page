@@ -15,10 +15,8 @@ class AggregateInfoController < ApplicationController
 
     season               = Nba::Season.new(@year)
     @total_lines         = season.total_statistics_for_team(@team)
-    @standings           = season.standings
-    @schedule            = season.schedule(@team, @standings)
-    @boxscore            = season.boxscore(@schedule.last_game_played, @team)
     @team_rep            = Nba::Team.get(@team)
+    @boxscore            = season.boxscore(@team_rep.last_game_played, @team)
   end
 
   def index
@@ -28,7 +26,6 @@ class AggregateInfoController < ApplicationController
 
     @title      = "NBA"
     season      = Nba::Season.new(@year)
-    @standings  = season.standings
     @opponent_totals = season.opponent_totals
   end
 

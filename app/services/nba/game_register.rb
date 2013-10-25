@@ -53,12 +53,22 @@ module Nba
   end
 
   class Game < SimpleDelegator
+    include Nba::GameDescriptor
+
     def set(line)
       __setobj__(line)
     end
 
     def played?
        GameModel === __getobj__
+    end
+
+    def to_date
+      game_date.to_date
+    end
+
+    def opp_team
+      Nba::Team.get(opponent)
     end
   end
 

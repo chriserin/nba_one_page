@@ -21,17 +21,19 @@ namespace :scrape do
   end
 
   namespace :boxscores do
-    require './app/scrape/boxscore_main'
 
     task :all_2014 => :environment do
+      require './app/scrape/boxscore_main'
       Scrape::BoxscoreMain.scrape_year("2014")
     end
 
     task :yesterday => :environment do
+      require './app/scrape/boxscore_main'
       Scrape::BoxscoreMain.scrape
     end
 
     task :day, [:game_date] => :environment do |t, arguments|
+      require './app/scrape/boxscore_main'
       game_date = arguments[:game_date]
       Scrape::BoxscoreMain.scrape(DateTime.parse(game_date))
     end
