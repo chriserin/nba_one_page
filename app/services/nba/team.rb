@@ -4,7 +4,6 @@ module Nba
     include Place
     include Nba::Rest
     include Opponents
-    include Strength
     include Stats
     include LineType
     include PlayedWhereCounts

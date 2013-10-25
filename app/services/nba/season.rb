@@ -24,12 +24,6 @@ module Nba
       end
     end
 
-    def standings
-      return @standings if @standings
-      wins_and_losses = @game_line_type.totals
-      @standings = Nba::Standings.new(wins_and_losses)
-    end
-
     def total_statistics_for_team(team, split_type = :all)
       return TeamTotals.new(Nba::Team.get(team).stats(split_type))
     end

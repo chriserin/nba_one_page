@@ -24,7 +24,6 @@ module Nba
 
       def initialize(year)
         @year = year
-        @days = create_days(year)
       end
 
       def months
@@ -44,42 +43,6 @@ module Nba
         return year || YEARS.keys.find do |year_key|
           YEARS[year_key.next] && YEARS[year_key.next][:start] > Date.today
         end
-      end
-
-      def season_start
-        YEARS[@year][:start]
-      end
-
-      def create_days(year)
-        year_dates = YEARS[year]
-        days = Hash.new
-        (year_dates[:start]..year_dates[:end]).each do |date|
-          days[date] = RestDay
-        end
-        days[year_dates[:all_star_game]] = AllStarGame.new(year_dates[:all_star_game])
-        return days
-      end
-
-      def add_games(games_to_add)
-        games_to_add.each do |game|
-          @days[game.game_date.to_date] = (block_given? ? yield(game) : game)
-        end
-      end
-
-      def games
-        @days.select {|date, value| value != RestDay and not value.is_a? AllStarGame }.values
-      end
-
-      def rest_days_before_date(target_date, days_before=1)
-        rest_counter = 0
-        days_before.times do |n|
-          rest_counter += 1 if @days[target_date.to_date - (n + 1)] == RestDay
-        end
-        return rest_counter
-      end
-
-      def month(month_type)
-        return YEARS[@year][month_type]
       end
     end
   end
