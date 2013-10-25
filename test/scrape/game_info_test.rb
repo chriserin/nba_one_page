@@ -1,5 +1,5 @@
 require './test/test_helper'
-require './app/scrape/game_info'
+require './lib/scrape/game_info'
 
 class GameInfoTest < MiniTest::Unit::TestCase
   def test_other_team

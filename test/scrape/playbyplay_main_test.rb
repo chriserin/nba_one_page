@@ -1,5 +1,5 @@
 require './test/test_helper'
-require './app/scrape/playbyplay_main'
+require './lib/scrape/playbyplay_main'
 
 class PlaybyplayMainTest < MiniTest::Unit::TestCase
   def test_scrape_christmas_nbc

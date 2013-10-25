@@ -1,6 +1,6 @@
 require './test/test_helper'
-require './app/scrape/playbyplay/nbc_play'
-require './app/scrape/game_info'
+require './lib/scrape/playbyplay/nbc_play'
+require './lib/scrape/game_info'
 
 class NbcPlayTest < MiniTest::Unit::TestCase
   def test_is_made_field_goal

@@ -1,5 +1,5 @@
 require './test/test_helper'
-require './app/scrape/lineups/on_court_stretch'
+require './lib/scrape/lineups/on_court_stretch'
 
 class OnCourtStretchTest < MiniTest::Unit::TestCase
   def test_init

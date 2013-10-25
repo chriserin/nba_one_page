@@ -1,5 +1,5 @@
 require './test/test_helper'
-require './app/scrape/playbyplay/nbc_description_splitting'
+require './lib/scrape/playbyplay/nbc_description_splitting'
 
 class NbcDescriptionSplittingTest < MiniTest::Unit::TestCase
   def test_split_assist_description

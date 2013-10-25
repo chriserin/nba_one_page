@@ -1,5 +1,5 @@
 require './test/test_helper'
-require './app/scrape/lineups/lineup'
+require './lib/scrape/lineups/lineup'
 
 class LineupTest < MiniTest::Unit::TestCase
   def test_init

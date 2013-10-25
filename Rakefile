@@ -9,7 +9,7 @@ NbaOnePage::Application.load_tasks
 namespace :scrape do
   task :playbyplay, [:game_date] => :environment do |t, arguments|
     game_date = arguments[:game_date]
-    require File.expand_path('../app/scrape/playbyplay_main', __FILE__)
+    require File.expand_path('../lib/scrape/playbyplay_main', __FILE__)
     if game_date.present?
       puts "parsing #{game_date}"
       Scrape::PlaybyplayMain.scrape(DateTime.parse(game_date))

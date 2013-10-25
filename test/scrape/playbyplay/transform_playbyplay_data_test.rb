@@ -1,7 +1,7 @@
 require './test/test_helper'
-require './app/scrape/playbyplay/transform_playbyplay_data'
-require './app/scrape/playbyplay/convert_raw_playbyplay'
-require './app/scrape/playbyplay/verify_plays'
+require './lib/scrape/playbyplay/transform_playbyplay_data'
+require './lib/scrape/playbyplay/convert_raw_playbyplay'
+require './lib/scrape/playbyplay/verify_plays'
 
 class TransformPlaybyplayDataTest < MiniTest::Unit::TestCase
 

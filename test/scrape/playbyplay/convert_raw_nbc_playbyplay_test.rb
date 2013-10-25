@@ -1,5 +1,5 @@
 require './test/test_helper'
-require './app/scrape/playbyplay/convert_raw_nbc_playbyplay'
+require './lib/scrape/playbyplay/convert_raw_nbc_playbyplay'
 
 class ConvertRawNbcPlaybyplayTest < MiniTest::Unit::TestCase
   def test_create_nbc_plays

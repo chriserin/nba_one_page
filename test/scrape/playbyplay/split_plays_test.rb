@@ -1,6 +1,6 @@
 require './test/test_helper'
-require './app/scrape/playbyplay/split_plays'
-require './app/scrape/playbyplay/nbc_play'
+require './lib/scrape/playbyplay/split_plays'
+require './lib/scrape/playbyplay/nbc_play'
 
 class SplitPlaysTest < MiniTest::Unit::TestCase
 
