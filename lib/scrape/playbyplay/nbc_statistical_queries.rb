@@ -44,6 +44,7 @@ module Scrape
     EXIT = "exit"
     ENTERS = "enters"
     SUBSTITUION = "substitution"
+    VIOLATION = "violation"
 
     def is_attempted_field_goal?
       return shot_type.present?
@@ -108,7 +109,12 @@ module Scrape
     end
 
     def is_ignorable?
-      description.include? "Event" or description.include? "Jump Ball" or is_team_play? or is_timeout? or description.include? "Starting Lineup"
+      description.include? "Event" or
+        description.include? "Jump Ball" or
+        is_team_play?  or
+        is_timeout?  or
+        description.include? "Starting Lineup" or
+        is_violation?
     end
 
     def is_team_play?
@@ -121,7 +127,7 @@ module Scrape
     end
 
     def is_timeout?
-      description.include? "timeout"
+      matchable_description.include? "timeout"
     end
 
     def is_quarter_end?
@@ -150,6 +156,10 @@ module Scrape
 
     def is_technical_foul?
       matchable_description.include? TECHNICAL_FOUL
+    end
+
+    def is_violation?
+      matchable_description.include? VIOLATION
     end
 
     def is_ejection?

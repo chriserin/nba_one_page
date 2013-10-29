@@ -26,6 +26,10 @@ module Nba
         @year = year
       end
 
+      def month(name)
+        YEARS[@year][name.to_sym]
+      end
+
       def months
         YEARS[@year].select{|key, _| self.class.month_syms.include? key}.map {|month, (start, mend)|
           OpenStruct.new(name: month, start: start, end: mend)
@@ -38,7 +42,7 @@ module Nba
 
       def self.get_current_year
         year = YEARS.keys.find do |year|
-           Date.today > YEARS[year][:start] && Date.today <= YEARS[year][:end]
+           Date.today >= YEARS[year][:start] && Date.today <= YEARS[year][:end]
         end
         return year || YEARS.keys.find do |year_key|
           YEARS[year_key.next] && YEARS[year_key.next][:start] > Date.today

@@ -1,4 +1,5 @@
 require './lib/mechanize/page'
+require './lib/scrape/scraper_tools'
 
 class NbcPlaybyplayScraper
   include ScraperTools

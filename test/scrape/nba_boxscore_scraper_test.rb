@@ -1,4 +1,5 @@
 require './test/test_helper.rb'
+require './lib/scrape/boxscore/boxscore_scraper'
 
 #TODO: Rewrite with Scrape::GameInfo
 class BoxscoreScraperTest < MiniTest::Unit::TestCase

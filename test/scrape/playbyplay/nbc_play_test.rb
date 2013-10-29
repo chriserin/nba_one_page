@@ -99,8 +99,8 @@ class NbcPlayTest < MiniTest::Unit::TestCase
     play = Scrape::NbcPlay.new("1", "10:20", "NY", play_desc, "score", "home_score", Scrape::GameInfo.new("Indiana Pacers", "New York Knicks"))
     first_play, second_play = play.split_description
 
-    assert_equal "Andrew Nicholson enters game", first_play.description
-    assert_equal "Arron Afflalo exits game", second_play.description
+    assert_equal "Arron Afflalo exits game", first_play.description
+    assert_equal "Andrew Nicholson enters game", second_play.description
     assert_equal play_desc, first_play.original_description
     assert_equal play_desc, second_play.original_description
     assert_equal "New York Knicks", first_play.team

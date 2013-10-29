@@ -2,7 +2,8 @@ class LineTypeFactory
 
   class << self
     def get_line_type(year, type)
-      @line_types[year][type]
+      puts year
+      LINE_TYPES[year][type]
     end
     alias :get :get_line_type
 
@@ -47,7 +48,7 @@ class LineTypeFactory
     end
   end
 
-  @line_types = {
+  LINE_TYPES = {
      "2014" => {
       :game_line  => self.create_line_type("2014", :game_line),
       :difference => self.create_line_type("2014", :difference),

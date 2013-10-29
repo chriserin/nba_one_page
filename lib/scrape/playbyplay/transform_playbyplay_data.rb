@@ -1,9 +1,7 @@
 require './lib/scrape/game_info'
 require './lib/scrape/error'
 require './app/services/nba/base_statistics'
-require './lib/scrape/playbyplay/play'
 require './lib/scrape/playbyplay/convert_play'
-require './lib/scrape/playbyplay/convert_raw_playbyplay'
 require './lib/scrape/playbyplay/convert_raw_nbc_playbyplay'
 require './lib/scrape/playbyplay/verify_plays'
 require './lib/scrape/lineups/determine_stretches'
@@ -25,8 +23,6 @@ module Scrape
 
       stretches = Scrape::DetermineStretches.run_plays(non_ignored_plays)
       save_stretches(stretches)
-    rescue Scrape::Error => scrape_error
-      Rails.logger.error(scrape_error.message + args[1..-1].inspect)
     end
 
     def self.save_plays(play_hashes)

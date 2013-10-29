@@ -1,6 +1,7 @@
 require './test/test_helper'
 require './lib/scrape/playbyplay/nbc_playbyplay_scraper'
 require './lib/scrape/playbyplay/transform_playbyplay_data'
+require './app/services/nba'
 
 class NbcPlaybyplayScraperTest < MiniTest::Unit::TestCase
   def test_scrape

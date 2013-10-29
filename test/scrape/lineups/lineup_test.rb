@@ -13,6 +13,22 @@ class LineupTest < MiniTest::Unit::TestCase
     assert_equal 2, lineup.to_a.size
   end
 
+  def skip_test_exit_multiple_player
+    lineup = Scrape::Lineup.new(%w{playerA playerB playerC playerD playerE})
+    lB = lineup.player_exit("playerB")
+    lC = lB.player_exit("playerC")
+    assert_equal 3, lC.to_a.size
+    lC.add_substituted_player("playerF")
+    assert_equal 4, lC.to_a.size
+    lC.add_substituted_player("playerG")
+
+    assert_equal lB, lC.piggy_back_lineup
+    assert_equal 5, lineup.to_a.size
+    assert_equal %w{playerA playerC playerD playerE playerF}, lB.to_a
+    assert_equal 5, lB.to_a.size
+    assert_equal 5, lC.to_a.size
+  end
+
   def test_add_non_uniq_player
     lineup = Scrape::Lineup.new(%w{playerA})
     lineup.add_player("playerA")

@@ -1,10 +1,11 @@
 require './test/test_helper'
+require './lib/scrape/scoreboard_scraper'
 
 class ScoreboardScraperTest < MiniTest::Unit::TestCase
 
   def test_scrape_scoreboard
     urls    = []
-    scraper = ScoreboardScraper.new
+    scraper = Scrape::ScoreboardScraper.new
 
     VCR.use_cassette('scoreboard') do
       urls = scraper.boxscore_urls(DateTime.new(2012, 3, 15))
@@ -16,7 +17,7 @@ class ScoreboardScraperTest < MiniTest::Unit::TestCase
 
   def test_nbc_playbyplay_urls
     urls = []
-    scraper = ScoreboardScraper.new
+    scraper = Scrape::ScoreboardScraper.new
     VCR.use_cassette('nbc_playbyplay_urls') do 
       urls = scraper.nbc_playbyplay_urls(DateTime.new(2012, 11, 2))
     end
@@ -25,7 +26,7 @@ class ScoreboardScraperTest < MiniTest::Unit::TestCase
 
   def test_run_scoreboard_scraper
     urls = []
-    scraper = ScoreboardScraper.new
+    scraper = Scrape::ScoreboardScraper.new
 
     VCR.use_cassette('multiple_scoreboards') do
       urls = scraper.run(DateTime.new(2012, 3, 15)..DateTime.new(2012, 3, 16))

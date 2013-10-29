@@ -61,9 +61,9 @@ module Scrape
     end
 
     def verify_full_lineups
-      raise "too many teams" if @lineups.keys.count > 2
+      raise Scrape::TooManyTeamsError.new("too many teams") if @lineups.keys.count > 2
       @lineups.each do |team, lineup|
-        raise "#@start #@end lineup #{team.to_s} #{lineup} not full" unless lineup.is_full?
+        raise Scrape::LineupNotFullError.new("#@start #@end lineup #{team.to_s} #{lineup} not full") unless lineup.is_full? or (@start == @end)
       end
     end
 
