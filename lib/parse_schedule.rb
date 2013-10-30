@@ -24,7 +24,7 @@ module ScheduleParse
     "San Antonio" => "San Antonio Spurs",
     "Memphis" => "Memphis Grizzlies",
     "Phoenix" => "Phoenix Suns",
-    "New Orleans" => "New Orleans Hornets",
+    "New Orleans" => "New Orleans Pelicans",
     "Portland" => "Portland Trail Blazers",
     "Philadelphia" => "Philadelphia 76ers",
     "Sacramento" => "Sacramento Kings",
@@ -41,14 +41,16 @@ module ScheduleParse
     end
   end
 
-  ScheduledGame.delete_all
 
   schedule_path = Rails.root.join("data", "schedule.txt")
+  season = "2014"
+  line_type = ScheduledGame.make_year_type(season)
+  line_type.delete_all
   File.open(schedule_path).each_line do |line|
     words = line.split(" ")
     date_str = words[1..3].join(" ")
     game_date = DateTime.parse(date_str)
     away_team, home_team = find_teams(line)
-    ScheduledGame.create!(:game_date => game_date, :away_team => away_team, :home_team => home_team)
+    line_type.create!(:game_date => game_date, :away_team => away_team, :home_team => home_team)
   end
 end

@@ -22,7 +22,7 @@ module Scrape
 
       plays.each do |play|
         if play.size == 6
-          game_info = Scrape::GameInfo.new(*args[0..-2])
+          game_info = Scrape::GameInfo.new(*args[0..-1])
           converted_plays << Scrape::NbcPlay.new(play[QUARTER],
                                                  play[TIME],
                                                  play[TEAM],

@@ -46,7 +46,7 @@ class OnCourtStretchTest < MiniTest::Unit::TestCase
 
     stretch = Scrape::OnCourtStretch.new
     new_stretch = stretch.process_play(play_a)
-    assert_equal 1, new_stretch.to_hash(0)[:total_rebounds]
+    assert_equal 1, new_stretch.to_hash(0, Date.today)[:total_rebounds]
   end
 
   class TestPlay

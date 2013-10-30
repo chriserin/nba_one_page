@@ -32,8 +32,8 @@ module DifferenceModel
   def +(right_side_line)
     check_line(right_side_line)
 
-    result            = LineTypeFactory.get(self.class.year, :difference).new
-    right_side_line ||= LineTypeFactory.get(self.class.year, :difference).new
+    result            = DifferenceLine.new
+    right_side_line ||= DifferenceLine.new
 
     result[:games] = stat(:games) + right_side_line.stat(:games)
 

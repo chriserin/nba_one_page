@@ -5,7 +5,7 @@ module Nba
     module ClassMethods
       def set_year(year)
         @@year = year
-        @@game_line_type = LineTypeFactory.get_line_type(@@year, :game_line)
+        @@game_line_type = GameLine.make_year_type(@@year)
       end
 
       def game_line_type

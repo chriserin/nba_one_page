@@ -50,7 +50,6 @@ class TransformBoxscoreDataTest < MiniTest::Unit::TestCase
 #45.6%	29.4%	60.6%	
     end
 
-    LineTypeFactory.get_line_type("2013", :game_line)
   end
 
   def test_transform

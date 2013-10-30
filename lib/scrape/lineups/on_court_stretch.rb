@@ -67,10 +67,10 @@ module Scrape
       end
     end
 
-    def to_hash(index)
+    def to_hash(index, game_date)
       { team: @lineups.keys[index],
         opponent: @lineups.keys[other_index(index)],
-        game_date: Date.new(2012, 1, 1),
+        game_date: game_date,
         team_players: @lineups.values[index].to_a,
         opponent_players: @lineups.values[other_index(index)].to_a,
         start: @start,

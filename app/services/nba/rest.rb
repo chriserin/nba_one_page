@@ -35,7 +35,7 @@ module Nba
     end
 
     private
-    def select_games(remaining)
+    def select_games(remaining=false)
       remaining ? unplayed_games : games
     end
   end

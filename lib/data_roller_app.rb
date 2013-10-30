@@ -36,12 +36,12 @@ class PlaybyplayApp < Sinatra::Base
     date = params[:date] || "2013-01-01"
     name = params[:name] || "Chicago Bulls"
     stat = params[:stat] || "made_field_goals"
+    season = Nba::Schedule::Calendar.get_season(date)
 
     Rails.logger.info("playbyplay date is #{date}")
     date_query = DateTime.parse(date).strftime("%Y-%m-%d")
     plays = PlayModel.where("player_name" => name, "game_date" => date_query, "is_#{stat.singularize}" => true)
-    LineTypeFactory
-    stretches = StretchLine.where(:team_players.in => [name], :game_date => DateTime.parse("2012-01-01"))
+    stretches = StretchLine.make_year_type(season).where(:team_players.in => [name], :game_date => DateTime.parse("2012-01-01"))
     stints = Nba::StretchesList.new(stretches).compress_stretches
 
     [

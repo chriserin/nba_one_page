@@ -8,6 +8,7 @@ module Scrape
     include Scrape::NbcDescriptionSplitting
 
     attr_reader :original_description
+    attr_reader :game_info
     attr_accessor :lineup
 
     def initialize(quarter, time, team, nbc_description, away_score, home_score, game_info, original_description="")

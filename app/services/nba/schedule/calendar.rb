@@ -3,7 +3,7 @@ module Nba
     class RestDay; end
 
     class Calendar
-      YEARS = {
+      SEASONS = {
         "2013" => {
           start: Date.new(2012, 10, 30),
           end: Date.new(2013, 4, 20),
@@ -27,11 +27,11 @@ module Nba
       end
 
       def month(name)
-        YEARS[@year][name.to_sym]
+        SEASONS[@year][name.to_sym]
       end
 
       def months
-        YEARS[@year].select{|key, _| self.class.month_syms.include? key}.map {|month, (start, mend)|
+        SEASONS[@year].select{|key, _| self.class.month_syms.include? key}.map {|month, (start, mend)|
           OpenStruct.new(name: month, start: start, end: mend)
         }
       end
@@ -41,11 +41,16 @@ module Nba
       end
 
       def self.get_current_year
-        year = YEARS.keys.find do |year|
-           Date.today >= YEARS[year][:start] && Date.today <= YEARS[year][:end]
+        self.get_season(Date.today)
+      end
+
+      def self.get_season(date)
+        date = date.to_date
+        year = SEASONS.keys.find do |year|
+           date >= SEASONS[year][:start] && date <= SEASONS[year][:end]
         end
-        return year || YEARS.keys.find do |year_key|
-          YEARS[year_key.next] && YEARS[year_key.next][:start] > Date.today
+        return year || SEASONS.keys.find do |year_key|
+          SEASONS[year_key.next] && SEASONS[year_key.next][:start] > date
         end
       end
     end

@@ -12,7 +12,7 @@ module Scrape
     end
 
     def self.scrape_2013()
-      game_line_type = LineTypeFactory.get("2013", :game_line)
+      game_line_type = GameLine.make_year_type("2013")
       game_line_type.delete_all
 
       (DateTime.new(2012, 10, 29)..(DateTime.now - 1)).each do |date|
@@ -22,7 +22,7 @@ module Scrape
     end
 
     def self.scrape_year(year="2013")
-      game_line_type = ::LineTypeFactory.get(year, :game_line)
+      game_line_type = GameLine.make_year_type(year)
       game_line_type.delete_all
 
       (Nba::Schedule::Calendar::YEARS[year][:start]..[Nba::Schedule::Calendar::YEARS[year][:end], Date.today - 1].min).each do |date|

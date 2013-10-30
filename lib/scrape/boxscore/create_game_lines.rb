@@ -1,7 +1,7 @@
 module Scrape
   class CreateGameLines
     def self.act(converted_boxscore, game_info)
-      line_type = LineTypeFactory.get("2013", :game_line)
+      line_type = GameLine.make_year_type(Nba::Schedule::Calendar.get_season(game_info.game_date))
       total          = GameLine.create!(converted_boxscore.total.to_hash)
       opponent_total = GameLine.create!(converted_boxscore.opponent_total.to_hash)
       difference = total.create_difference(opponent_total).save!

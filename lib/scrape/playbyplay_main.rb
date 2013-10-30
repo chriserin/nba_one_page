@@ -3,16 +3,16 @@ require './lib/scrape/playbyplay/nbc_playbyplay_scraper'
 
 module Scrape
   class PlaybyplayMain
-    def self.scrape(game_date=DateTime.now - 1, playbyplay_type = :nbc)
-      urls = get_urls(game_date, playbyplay_type)
+    def self.scrape(game_date=DateTime.now - 1)
+      urls = get_urls(game_date)
 
-      playbyplay_scraper = NbcPlaybyplayScraper.new(Scrape::TransformPlaybyplayData) if playbyplay_type == :nbc
+      playbyplay_scraper = NbcPlaybyplayScraper.new(Scrape::TransformPlaybyplayData)
       playbyplay_scraper.run(urls)
     end
 
-    def self.get_urls(game_date, playbyplay_type)
+    def self.get_urls(game_date)
       scoreboard_scraper = ScoreboardScraper.new
-      return scoreboard_scraper.nbc_playbyplay_urls(game_date) if playbyplay_type == :nbc
+      return scoreboard_scraper.nbc_playbyplay_urls(game_date)
     end
 
     def self.scrape_2013()

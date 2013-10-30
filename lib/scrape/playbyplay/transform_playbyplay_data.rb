@@ -10,10 +10,11 @@ module Scrape
   class TransformPlaybyplayData
 
     def self.run(*args)
+      game_info = Scrape::GameInfo.new(*args[1..-1])
       #check file
       File.open("play_by_play_not_available.txt", "w") {|f| f.write("#{args[1..-1]} ")} and return if args.first.empty?
       #convert arry data into play objects
-      plays = Scrape::ConvertRawNbcPlaybyplay.convert_plays(*args) if args.last == :nbc
+      plays = Scrape::ConvertRawNbcPlaybyplay.convert_plays(*args)
       #reject ignorable plays; convert plays to hash.
       non_ignored_plays = plays.reject {|play| play.is_ignorable?}
       play_hashes = non_ignored_plays.map {|play| Scrape::ConvertPlay.to_hash(play)}
@@ -22,7 +23,7 @@ module Scrape
       Scrape::VerifyPlays.verify_saved_plays(saved_plays)
 
       stretches = Scrape::DetermineStretches.run_plays(non_ignored_plays)
-      save_stretches(stretches)
+      save_stretches(stretches, game_info.game_date)
     end
 
     def self.save_plays(play_hashes)
@@ -31,12 +32,12 @@ module Scrape
       end
     end
 
-    def self.save_stretches(stretches)
-      LineTypeFactory
+    def self.save_stretches(stretches, game_date)
       stretches.each do |stretch|
+        season = Nba::Schedule::Calendar.get_season(game_date)
         if stretch.has_lineups?
-          StretchLine.create! stretch.to_hash(0)
-          StretchLine.create! stretch.to_hash(1)
+          StretchLine.make_year_type(season).create! stretch.to_hash(0, game_date)
+          StretchLine.make_year_type(season).create! stretch.to_hash(1, game_date)
         end
       end
     end

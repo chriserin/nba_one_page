@@ -41,6 +41,6 @@ class NbcPlaybyplayScraper
       end
     end
 
-    return game_rows, home_team, away_team, game_date, :nbc
+    return game_rows, home_team, away_team, game_date
   end
 end

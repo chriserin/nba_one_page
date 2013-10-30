@@ -6,10 +6,9 @@ module Nba
       end
     end
 
-
     def initialize(year)
       @year = year
-      @game_line_type = LineTypeFactory.get_line_type(@year, :game_line)
+      @game_line_type = GameLine.make_year_type(@year)
       game_register = GameRegister.new(ScheduledGame.all, @game_line_type.totals)
       Team.set_register(game_register)
       Team.set_year(year)
