@@ -6,16 +6,37 @@ require File.expand_path('../config/application', __FILE__)
 
 NbaOnePage::Application.load_tasks
 
+namespace :counts do
+  task :year2014 => :environment do
+    puts GameLine("2014").count
+    puts DifferenceLine("2014").count
+    puts ScheduledGame("2014").count
+    puts PlayModel("2014").count
+    puts StretchLine("2014").count
+  end
+
+  task :zero_out_boxscore_lines => :environment do
+    GameLine("2014").delete_all
+    DifferenceLine("2014").delete_all
+  end
+end
+
 namespace :scrape do
-  task :playbyplay, [:game_date] => :environment do |t, arguments|
-    game_date = arguments[:game_date]
-    require File.expand_path('../lib/scrape/playbyplay_main', __FILE__)
-    if game_date.present?
-      puts "parsing #{game_date}"
-      Scrape::PlaybyplayMain.scrape(DateTime.parse(game_date))
-    else
-      puts "parsing 2013"
-      Scrape::PlaybyplayMain.scrape_2013
+  namespace :plabyplay
+    task :all_2014 => :environment do |t|
+      Scrape::PlaybyplayMain.scrape_2014
+    end
+
+    task :day, [:game_date] => :environment do |t, arguments|
+      game_date = arguments[:game_date]
+      require File.expand_path('../lib/scrape/playbyplay_main', __FILE__)
+      if game_date.present?
+        puts "parsing #{game_date}"
+        Scrape::PlaybyplayMain.scrape(DateTime.parse(game_date))
+      else
+        puts "parsing 2013"
+        Scrape::PlaybyplayMain.scrape_2013
+      end
     end
   end
 

@@ -41,7 +41,6 @@ module ScheduleParse
     end
   end
 
-
   def self.parse(season="2014")
     require './app/models/class_accessors'
     schedule_path = Rails.root.join("data", "schedule.txt")

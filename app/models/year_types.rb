@@ -6,7 +6,11 @@ module YearTypes
     def new_type.storage_options; @new_storage_options; end
     def new_type.year=(value); @year = value; end
     def new_type.year; @year; end
+    def new_type.to_s=(value); @to_s = value; end
+    def new_type.to_s; @to_s; end
+    new_type.to_s = self.to_s
     new_type.storage_options = {collection: collection_str}
+    new_type.year = year
     return new_type
   end
 end

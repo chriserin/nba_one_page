@@ -23,5 +23,14 @@ module Scrape
         sleep(2)
       end
     end
+
+    def self.scrape_2013()
+      PlayModel.delete_all
+
+      (DateTime.new(2012, 10, 29)..(DateTime.now - 1)).each do |date|
+        self.scrape(date)
+        sleep(2)
+      end
+    end
   end
 end

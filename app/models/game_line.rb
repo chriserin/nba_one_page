@@ -87,7 +87,7 @@ class GameLine
   end
 
   def create_difference(right_side_line)
-    result          = DifferenceLine.make_year_type(year).new
+    result          = DifferenceLine.make_year_type(self.class.year).new
     right_side_line = right_side_line || self.class.new
 
     copy_fields(result, :line_name, :team, :is_total, :is_opponent_total, :is_subtotal, :game_date, :opponent)
