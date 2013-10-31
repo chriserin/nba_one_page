@@ -4,6 +4,14 @@ module Nba
 
     class Calendar
       SEASONS = {
+        "2014.playoffs" => {
+          start: Date.new(2013, 4, 17),
+          end: Date.new(2013, 6, 22)
+        },
+        "2014.preseason" => {
+          start: Date.new(2013, 10, 5),
+          end: Date.new(2013, 10, 28)
+        },
         "2013" => {
           start: Date.new(2012, 10, 30),
           end: Date.new(2013, 4, 20),
