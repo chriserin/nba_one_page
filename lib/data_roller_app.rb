@@ -36,7 +36,7 @@ class PlaybyplayApp < Sinatra::Base
     date = params[:date] || "2013-01-01"
     name = params[:name] || "Chicago Bulls"
     stat = params[:stat] || "made_field_goals"
-    season = Nba::Schedule::Calendar.get_season(date)
+    season = Nba::Calendar.get_season(date)
 
     Rails.logger.info("playbyplay date is #{date}")
     date_query = DateTime.parse(date).strftime("%Y-%m-%d")

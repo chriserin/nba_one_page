@@ -6,7 +6,7 @@ class AggregateInfoController < ApplicationController
     @alternate_style = params[:alt] || false
 
     team_param = params[:team] || "Bulls"
-    @year = params[:year] || (Nba::Schedule::Calendar.get_current_year)
+    @year = params[:year] || (Nba::Calendar.get_current_year)
     @team = Nba::TEAMS.find(team_param)
 
     if @team.blank?

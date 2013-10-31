@@ -22,7 +22,7 @@ class DifferenceLine < GameLine
   def +(right_side_line)
     check_line(right_side_line)
 
-    #year = Nba::Schedule::Calendar.get_season(game_date)
+    #year = Nba::Calendar.get_season(game_date)
     result            = DifferenceLine.new
     right_side_line ||= DifferenceLine.new
 

@@ -1,6 +1,6 @@
 module Nba
   module Splits
-    SPLIT_TYPES = Nba::Schedule::Calendar.month_syms + [:home, :away]
+    SPLIT_TYPES = Nba::Calendar.month_syms + [:home, :away]
 
     def filtered_data(splits)
       splits = [splits].flatten

@@ -25,7 +25,7 @@ module Scrape
       game_line_type = GameLine.make_year_type(year)
       game_line_type.delete_all
 
-      (Nba::Schedule::Calendar::YEARS[year][:start]..[Nba::Schedule::Calendar::YEARS[year][:end], Date.today - 1].min).each do |date|
+      (Nba::Calendar::YEARS[year][:start]..[Nba::Calendar::YEARS[year][:end], Date.today - 1].min).each do |date|
         self.scrape(date, false)
         sleep(2)
       end

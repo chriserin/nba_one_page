@@ -34,7 +34,7 @@ module Scrape
 
     def self.save_stretches(stretches, game_date)
       stretches.each do |stretch|
-        season = Nba::Schedule::Calendar.get_season(game_date)
+        season = Nba::Calendar.get_season(game_date)
         if stretch.has_lineups?
           StretchLine.make_year_type(season).create! stretch.to_hash(0, game_date)
           StretchLine.make_year_type(season).create! stretch.to_hash(1, game_date)
