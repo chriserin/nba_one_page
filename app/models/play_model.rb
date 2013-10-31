@@ -1,6 +1,8 @@
+
 class PlayModel
   include Mongoid::Document
   include Mongoid::Timestamps
+  extend YearTypes
 
   field :player_name, type: String
   field :team, type: String
@@ -19,4 +21,8 @@ class PlayModel
 
   index({ player_name: 1})
   index({ game_date: 1})
+
+  def self.collection_base_name
+    "plays"
+  end
 end
