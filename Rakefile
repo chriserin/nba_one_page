@@ -45,3 +45,10 @@ namespace :test do
     t.pattern = 'test/{models,helpers,unit,nba,scrape,services}/**/*_test.rb'
   end
 end
+
+namespace :schedule do
+  task :parse => :environment do
+    require './lib/parse_schedule'
+    ScheduleParse.parse("2014")
+  end
+end

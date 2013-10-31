@@ -14,4 +14,4 @@ module ClassAccessors
   end
 end
 
-extend ClassAccessors
+include ClassAccessors

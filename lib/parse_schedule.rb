@@ -42,15 +42,16 @@ module ScheduleParse
   end
 
 
-  schedule_path = Rails.root.join("data", "schedule.txt")
-  season = "2014"
-  line_type = ScheduledGame.make_year_type(season)
-  line_type.delete_all
-  File.open(schedule_path).each_line do |line|
-    words = line.split(" ")
-    date_str = words[1..3].join(" ")
-    game_date = DateTime.parse(date_str)
-    away_team, home_team = find_teams(line)
-    line_type.create!(:game_date => game_date, :away_team => away_team, :home_team => home_team)
+  def self.parse(season="2014")
+    require './app/models/class_accessors'
+    schedule_path = Rails.root.join("data", "schedule.txt")
+    ScheduledGame(season).delete_all
+    File.open(schedule_path).each_line do |line|
+      words = line.split(" ")
+      date_str = words[1..3].join(" ")
+      game_date = DateTime.parse(date_str)
+      away_team, home_team = find_teams(line)
+      ScheduledGame(season).create!(:game_date => game_date, :away_team => away_team, :home_team => home_team)
+    end
   end
 end
