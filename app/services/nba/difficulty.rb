@@ -15,7 +15,6 @@ module Nba
       return "--"
     end
 
-    private
     def rest_rating(game)
       rating = 0
       rating += 1 if is_back_to_back?(game.game_date)

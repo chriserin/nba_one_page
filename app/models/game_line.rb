@@ -59,6 +59,7 @@ class GameLine
 
   (Nba::BaseStatistics + [:game_score]).each do |stat_field|
     define_method "#{stat_field}_g" do
+      return "--" if send(stat_field).nil?
       (send(stat_field) / (attributes["games"] * 1.0)).round 2
     end
 

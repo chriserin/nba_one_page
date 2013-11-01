@@ -53,7 +53,7 @@ module Scrape
     end
 
     def mimic_statistical_info
-      @model_mimic[:minutes]               = @line_data[MINUTES]
+      @model_mimic[:minutes]               = @line_data[MINUTES] || 0
       @model_mimic[:made_field_goals]      = made_field_goals
       @model_mimic[:attempted_field_goals] = attempted_field_goals
       @model_mimic[:made_threes]           = made_threes

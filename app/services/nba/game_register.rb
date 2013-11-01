@@ -13,10 +13,10 @@ module Nba
     def initialize(scheduleds, games)
       @register = reduce_to_hash(scheduleds, :away_team)
       @register = @register.deep_merge(reduce_to_hash(scheduleds, :home_team))
-      @register = @register.reduce({}) do |h, (team, dated_games)|
-        h[team] = DateHash[dated_games.sort]
-        h[team].default_proc = proc { RestDay }
-        h
+      @register = @register.reduce({}) do |reg, (team, dated_games)|
+        reg[team] = DateHash[dated_games.sort]
+        reg[team].default_proc = proc { RestDay }
+        reg
       end
 
       defaulted_hash = Hash.new { RestDay }
@@ -34,6 +34,7 @@ module Nba
     private
 
     def set_played_games(games)
+      puts "PLAYED GAMES #{games.count}"
       games.each do |game|
         game_delegate = @register[game.team][game.game_date.to_date]
         if Nba::RestDay == game_delegate
@@ -45,9 +46,17 @@ module Nba
     end
 
     def reduce_to_hash(scheduleds, method)
-      grouped = scheduleds.group_by {|schd| schd.send(method)}
+      grouped = scheduleds.group_by {|schd| schd.send(method)} #group by either home team or away team
       Hash[grouped.map do |team, sds|
-        [team, sds.reduce({}) {|h, schd| h[schd.game_date] = Game.new(schd); h}]
+        result = []
+        result << team
+        result << sds.reduce({}) do |h, schd|
+          schd = schd.dup;
+          schd.team = team;
+          h[schd.game_date] = Game.new(schd);
+          h
+        end
+        result
       end]
     end
   end
@@ -60,7 +69,7 @@ module Nba
     end
 
     def played?
-       GameModel === __getobj__
+       GameLine === __getobj__
     end
 
     def to_date

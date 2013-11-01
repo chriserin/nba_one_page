@@ -22,7 +22,7 @@ namespace :counts do
 end
 
 namespace :scrape do
-  namespace :plabyplay
+  namespace :plabyplay do
     task :all_2014 => :environment do |t|
       Scrape::PlaybyplayMain.scrape_2014
     end

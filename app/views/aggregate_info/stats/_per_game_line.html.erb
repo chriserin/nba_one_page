@@ -3,7 +3,7 @@
               <td data-stat="line_name"><%= line.line_name_or_nickname %></td>
               <td data-stat="games" class="games-started"><%= line.games_started %>/<%= line.games %></td>
               <td data-stat="games" class="games"><%= line.games %></td>
-              <td data-stat="minutes" class="last-stat-column minutes"><%= line.minutes_g %></td>
+              <td data-stat="minutes" class="last-stat-column minutes"><%= line.is_total ? "--" : line.minutes_g %></td>
               <% unless line.is_difference_total %>
                 <td data-stat="made_field_goals" class="field-goals"><%= line.made_field_goals_g %></td>
                 <td data-stat="attempted_field_goals" class="field-goals last-stat-column"><%= line.attempted_field_goals_g %></td>

@@ -1,5 +1,5 @@
 
-            <li class="<%= game == Nba::Schedule::AllStarGame ? "all-star-game" : "" %> <%= breakdown_classes(game) %>">
+            <li class=" <%= breakdown_classes(game) %>">
               <span class="game-date">
                 <%= game.formatted_game_date %>
               </span>
@@ -7,7 +7,7 @@
                 <%= game.game_description %>
               </span>
               <span class="game-difficulty">
-                <%= game.difficulty %>
+                <%= @team_rep.difficulty(game) %>
               </span>
               <% if @team_rep.is_back_to_back? game %>
                 <span class="back-to-back">b2b</span>
@@ -15,10 +15,10 @@
               <% if @team_rep.is_four_in_five? game %>
                 <span class="four-in-five">4i5</span>
               <% end %>
-              <% if @team_rep.is_opponent_back_to_back? game %>
+              <% if game.opp_team.is_back_to_back? game %>
                 <span class="opponent-back-to-back">ob2b</span>
               <% end %>
-              <% if @team_rep.is_opponent_four_in_five? game %>
+              <% if game.opp_team.is_four_in_five? game %>
                 <span class="opponent-four-in-five">o4i5</span>
               <% end %>
             </li>

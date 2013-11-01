@@ -43,7 +43,7 @@ module ScheduleParse
 
   def self.parse(season="2014")
     require './app/models/class_accessors'
-    schedule_path = Rails.root.join("data", "schedule.txt")
+    schedule_path = Rails.root.join("data", "schedule#{season}.txt")
     ScheduledGame(season).delete_all
     File.open(schedule_path).each_line do |line|
       words = line.split(" ")

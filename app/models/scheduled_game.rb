@@ -12,6 +12,10 @@ class ScheduledGame
   scope :unplayed,            order_by(:game_date => :asc).where(:game_date.gte => DateTime.now)
   scope :unplayed_team_games, ->(team) { games(team).unplayed }
 
+  def team=(value)
+    @team = value
+  end
+
   def game_text_for(team)
     if team == home_team
       "v. #{Nba::TEAMS[away_team][:nickname]}"
@@ -29,11 +33,11 @@ class ScheduledGame
   end
 
   def team
-    home_team
+    @team || (raise "team for scheduled game not set")
   end
 
-  def opponent_of(team_name)
-    if(team_name =~ /#{home_team}/)
+  def opponent
+    if(team =~ /#{home_team}/)
       away_team
     else
       home_team
@@ -42,5 +46,13 @@ class ScheduledGame
 
   def self.collection_base_name
     "scheduled_games"
+  end
+
+  def is_home?
+    home_team == team
+  end
+
+  def is_away?
+    away_team == team
   end
 end

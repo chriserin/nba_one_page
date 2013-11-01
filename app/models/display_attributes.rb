@@ -3,6 +3,10 @@ module DisplayAttributes
     Nba::TEAMS[opponent][:abbr]
   end
 
+  def opponent_of(name="")
+    opponent
+  end
+
   def team_abbr
     Nba::TEAMS[team][:abbr]
   end

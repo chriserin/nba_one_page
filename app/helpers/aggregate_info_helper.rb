@@ -24,11 +24,11 @@ module AggregateInfoHelper
     classes += " o4i5" if game.opp_team.is_four_in_five?(game)
     classes += " home-games-left" if !game.played? and game.is_home?
     classes += " away-games-left" if !game.played? and game.is_away?
-    classes += " b2b-left" if !game.played? and game.is_back_to_back?
-    classes += " ob2b-left" if !game.played? and game.opp_team.is_back_to_back?
-    classes += " easy" if !game.played? and game.difficulty.to_f < 5
-    classes += " medium" if !game.played? and game.difficulty.to_f >= 5 and game.difficulty.to_f < 7
-    classes += " hard" if !game.played? and game.difficulty.to_f >= 7
+    classes += " b2b-left" if !game.played? and @team_rep.is_back_to_back?(game)
+    classes += " ob2b-left" if !game.played? and game.opp_team.is_back_to_back?(game)
+    classes += " easy" if !game.played? and @team_rep.difficulty(game).to_f < 5
+    classes += " medium" if !game.played? and @team_rep.difficulty(game).to_f >= 5 and @team_rep.difficulty(game).to_f < 7
+    classes += " hard" if !game.played? and @team_rep.difficulty(game).to_f >= 7
     classes
   end
 end
