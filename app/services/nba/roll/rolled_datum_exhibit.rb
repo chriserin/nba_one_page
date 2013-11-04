@@ -4,7 +4,7 @@ module Nba
       include ActionView::Helpers::NumberHelper
 
       def html_description
-        Nba::GameDescriptor.new(line).to_html +
+        line.to_html +
         html_game_data_description
       end
 

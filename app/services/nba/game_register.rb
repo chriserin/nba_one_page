@@ -34,7 +34,6 @@ module Nba
     private
 
     def set_played_games(games)
-      puts "PLAYED GAMES #{games.count}"
       games.each do |game|
         game_delegate = @register[game.team][game.game_date.to_date]
         if Nba::RestDay == game_delegate

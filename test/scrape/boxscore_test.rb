@@ -68,6 +68,8 @@ class BoxscoreTest < MiniTest::Unit::TestCase
   def test_game_result
     boxscore = Scrape::Boxscore.new([[]] *3, Scrape::GameInfo.new(*game_info_args), false)
     boxscore.opponent_boxscore = Struct.new(:team_score).new(120)
+    assert boxscore.team_score == 101
+    assert boxscore.opponent_score == 120
     assert boxscore.game_result == "L"
   end
 

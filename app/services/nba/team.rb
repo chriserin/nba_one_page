@@ -28,8 +28,6 @@ module Nba
     end
 
     def played_games
-      puts name
-      puts @@register.group(name).values.select {|g| g.played? }
       @@register.group(name).values.select {|g| g.played? }
     end
 
@@ -46,7 +44,6 @@ module Nba
     end
 
     def last_game_played
-      puts played_games
       last_game = played_games.last
       last_game && last_game.game_date
     end

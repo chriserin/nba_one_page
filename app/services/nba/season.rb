@@ -7,7 +7,6 @@ module Nba
     end
 
     def initialize(year)
-      puts "SEASON #{year}"
       @year = year
       @game_line_type = GameLine.make_year_type(@year)
       game_register = GameRegister.new(ScheduledGame(year).all, @game_line_type.totals)
@@ -16,7 +15,6 @@ module Nba
     end
 
     def boxscore(date, team)
-      puts date
       if date
         lines = @game_line_type.boxscore_lines(team, date)
         Nba::Boxscore.new(lines, team)

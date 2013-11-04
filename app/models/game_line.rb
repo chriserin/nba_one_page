@@ -3,6 +3,7 @@ class GameLine
   include Mongoid::Timestamps
   include Nba::StatFormulas
   include DisplayAttributes
+  include Nba::GameDescriptor
   extend YearTypes
 
   field :line_name, type: String
@@ -116,4 +117,6 @@ class GameLine
   def self.collection_base_name
     "game_lines"
   end
+
+  def played?; true; end
 end

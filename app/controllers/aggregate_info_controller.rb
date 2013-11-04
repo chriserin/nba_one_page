@@ -16,7 +16,6 @@ class AggregateInfoController < ApplicationController
     season               = Nba::Season.new(@year)
     @total_lines         = season.total_statistics_for_team(@team)
     @team_rep            = Nba::Team.get(@team)
-    puts @team_rep.last_game_played
     @boxscore            = season.boxscore(@team_rep.last_game_played, @team)
   end
 

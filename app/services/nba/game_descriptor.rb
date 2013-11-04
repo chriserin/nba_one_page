@@ -11,16 +11,15 @@ module Nba
     end
 
     def game_text
-      method = __getobj__.method(:game_text)
-      if method
-        method.call
+      if played?
+        super
       else
         shortened_game_text
       end
     end
 
     def result_description
-      "#{game_result}#{difference_indicator}#{plus_minus.abs}"
+      "#{result}#{difference_indicator}#{plus_minus.abs}"
     end
 
     def game_description
@@ -42,14 +41,14 @@ module Nba
     def to_html
       <<-HEREDOC
             <span class="game-date">#{ formatted_game_date }</span>
-            <span class="#{game_result}">#{game_result}</span>
+            <span class="#{result}">#{result}</span>
             <span class="game-description">#{ game_text }</span>
       HEREDOC
     end
 
     private
     def difference_indicator
-      game_result == "W" ? "+" : "-"
+      result == "W" ? "+" : "-"
     end
   end
 end
