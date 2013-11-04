@@ -28,6 +28,10 @@ module Nba
       return TeamTotals.new(Nba::Team.get(team).stats(split_type))
     end
 
+    def totals
+      Nba::OffensiveTotals.new.stats([:all])
+    end
+
     def opponent_totals
       Nba::DefensiveTotals.new.stats([:all])
     end

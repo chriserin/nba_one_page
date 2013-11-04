@@ -22,10 +22,11 @@ class AggregateInfoController < ApplicationController
   def index
     date        = params[:date]
     date        = date.to_date if date
-    @year       = params[:year] || "2013"
+    @year       = params[:year] || (Nba::Calendar.get_current_year)
 
     @title      = "NBA"
     season      = Nba::Season.new(@year)
+    @totals = season.totals
     @opponent_totals = season.opponent_totals
   end
 

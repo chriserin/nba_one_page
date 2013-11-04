@@ -1,7 +1,7 @@
 <div class="full-screen-container">
   <div class="content-area clearfix">
     <%= render :partial => 'aggregate_info/team_index' %>
-    <%= render :partial => 'aggregate_info/stats/stat_totals_section', :locals => {:title => "Team Totals", :lines => @standings.team_summaries } %>
+    <%= render :partial => 'aggregate_info/stats/stat_totals_section', :locals => {:title => "Team Totals", :lines => @totals } %>
     <%= render :partial => 'aggregate_info/stats/stat_totals_section', :locals => {:title => "Opponent Totals", :lines => @opponent_totals} %>
   </div>
 </div>
