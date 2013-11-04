@@ -51,6 +51,11 @@ module Nba
       self.get_season(Date.today)
     end
 
+    def self.season_range(season)
+      puts "SEASON #{season}"
+      return (SEASONS[season.to_s][:start]..SEASONS[season.to_s][:end])
+    end
+
     def self.get_season(date)
       date = date.to_date
       year = SEASONS.keys.find do |year|

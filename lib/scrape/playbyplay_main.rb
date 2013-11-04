@@ -4,6 +4,7 @@ require './lib/scrape/playbyplay/nbc_playbyplay_scraper'
 module Scrape
   class PlaybyplayMain
     def self.scrape(game_date=DateTime.now - 1)
+      puts "GAME DATE #{game_date}"
       urls = get_urls(game_date)
 
       playbyplay_scraper = NbcPlaybyplayScraper.new(Scrape::TransformPlaybyplayData)
@@ -13,6 +14,15 @@ module Scrape
     def self.get_urls(game_date)
       scoreboard_scraper = ScoreboardScraper.new
       return scoreboard_scraper.nbc_playbyplay_urls(game_date)
+    end
+
+    def self.scrape_season(season)
+      PlayModel(season).delete_all
+
+      Nba::Calendar.season_range(season).each do |date|
+        scrape(date)
+        sleep(1)
+      end
     end
 
     def self.scrape_2013()

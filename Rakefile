@@ -22,9 +22,9 @@ namespace :counts do
 end
 
 namespace :scrape do
-  namespace :plabyplay do
+  namespace :playbyplay do
     task :all_2014 => :environment do |t|
-      Scrape::PlaybyplayMain.scrape_2014
+      Scrape::PlaybyplayMain.scrape_season("2014")
     end
 
     task :day, [:game_date] => :environment do |t, arguments|
@@ -41,7 +41,6 @@ namespace :scrape do
   end
 
   namespace :boxscores do
-
     task :all_2014 => :environment do
       require './lib/scrape/boxscore_main'
       Scrape::BoxscoreMain.scrape_year("2014")
