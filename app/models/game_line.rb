@@ -3,7 +3,7 @@ class GameLine
   include Mongoid::Timestamps
   include Nba::StatFormulas
   include DisplayAttributes
-  include Nba::GameDescriptor
+  include Nba::GameLineDescriptor
   extend YearTypes
 
   field :line_name, type: String
@@ -119,4 +119,6 @@ class GameLine
   end
 
   def played?; true; end
+
+  def is_away?; !is_home; end
 end

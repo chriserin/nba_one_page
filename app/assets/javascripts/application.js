@@ -13,6 +13,7 @@
 //= require jquery
 //= require jquery_ujs
 //= require underscore
+//= require underscore.string
 //= require json2
 //= require backbone
 //

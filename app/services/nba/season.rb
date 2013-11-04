@@ -20,7 +20,6 @@ module Nba
         Nba::Boxscore.new(lines, team)
       else
         raise "no boxscore"
-        nil
       end
     end
 

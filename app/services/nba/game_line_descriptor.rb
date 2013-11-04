@@ -1,5 +1,5 @@
 module Nba
-  module GameDescriptor
+  module GameLineDescriptor
 
     def shortened_game_text
       delimiter = ( is_home ? "" : "@" )
@@ -11,11 +11,7 @@ module Nba
     end
 
     def game_text
-      if played?
         shortened_game_text
-      else
-        super
-      end
     end
 
     def result_description
@@ -23,7 +19,11 @@ module Nba
     end
 
     def game_description
-      game_text
+      if played?
+        game_text
+      else
+        game_text_for team
+      end
     end
 
     def formatted_game_date

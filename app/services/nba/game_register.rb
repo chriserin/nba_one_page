@@ -78,6 +78,10 @@ module Nba
     def opp_team
       Nba::Team.get(opponent)
     end
+
+    def inspect
+      "#Nba::Game:#{__getobj__}"
+    end
   end
 
   class RestDay
