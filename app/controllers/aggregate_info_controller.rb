@@ -43,9 +43,9 @@ class AggregateInfoController < ApplicationController
 
   def boxscore
     team_param = params[:team] || "Bulls"
-    @year = params[:year] || "2013"
     @team = Nba::TEAMS.find(team_param.strip)
     date  = DateTime.parse(params[:date] || "20130101").strftime("%Y-%m-%d")
+    @year = params[:year] || Nba::Calendar.get_season(date)
 
     season = Nba::Season.new(@year)
     @boxscore = season.boxscore(date || @schedule.last_game_played, @team)

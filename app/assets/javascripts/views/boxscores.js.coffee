@@ -34,9 +34,9 @@ jQuery ->
       gameDate = $currentTarget.data('time')
       NbaOnePage.router.navigate("boxscores/#{gameDate}", {trigger: true})
 
-    loadBoxscore: (team, gameDate) =>
+    loadBoxscore: (team, gameDate) ->
       url = "#{encodeURIComponent(_.string.trim(team))}/boxscore/#{gameDate}"
-      $.get url, (data) ->
+      $.get url, (data) =>
         $(".boxscore-content").html(data)
         $(".boxscores .section-header").html($(".boxscore-content .section-header").contents())
         $(".boxscore-content .section-header").remove()
