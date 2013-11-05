@@ -10,7 +10,7 @@ module Scrape
     end
 
     def self.verify_team_tallies(team, game_date)
-      team_total = GameLine.make_year_type(Nba::Calendar.get_season(game_date)).where(line_name: team, is_total: true, game_date: game_date.to_date).first
+      team_total = GameLine(game_date).where(line_name: team, is_total: true, game_date: game_date.to_date).first
       return unless team_total
       Nba::TalleableStatistics.each do |statistic|
         method_name = "is_#{statistic.to_s.singularize}"
