@@ -12,8 +12,15 @@ module Scrape
       end
     end
 
+    def self.get_range(start, range_end=DateTime.now - 1)
+      (start..range_end).each do |date|
+        get_plays(date)
+      end
+    end
+
     def self.get_plays(game_date=DateTime.now - 1)
       puts "GAME DATE #{game_date}"
+      PlayModel(game_date).where("game_date" => game_date).delete
       urls = get_urls(game_date)
 
       urls.each do |url, game_info|

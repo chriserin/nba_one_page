@@ -19,12 +19,17 @@ namespace :counts do
     GameLine("2014").delete_all
     DifferenceLine("2014").delete_all
   end
+
+  task :zero_out_plays => :environment do
+    PlayModel("2014").delete_all
+    StretchLine("2014").delete_all
+  end
 end
 
 namespace :scrape do
   namespace :playbyplay do
     task :all_2014 => :environment do |t|
-      Scrape::Playbyplay.scrape_season("2014")
+      Scrape::Playbyplay.get_season("2014")
     end
 
     task :yesterday do
@@ -33,9 +38,14 @@ namespace :scrape do
 
     task :day, [:game_date] => :environment do |t, arguments|
       game_date = arguments[:game_date]
-      PlayModel(game_date).where("game_date" => game_date).delete
       require File.expand_path('../lib/scrape/playbyplay', __FILE__)
       Scrape::Playbyplay.get_plays(Date.parse(game_date))
+    end
+
+    task :day_to_end, [:game_date] => :environment do |t, arguments|
+      game_date = arguments[:game_date]
+      require File.expand_path('../lib/scrape/playbyplay', __FILE__)
+      Scrape::Playbyplay.get_range(Date.parse(game_date))
     end
   end
 

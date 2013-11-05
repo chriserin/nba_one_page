@@ -21,6 +21,8 @@ module Scrape
       reverse
       running
       3-point
+      pull\ up
+      slam
     }
 
     MAKES = "makes"
