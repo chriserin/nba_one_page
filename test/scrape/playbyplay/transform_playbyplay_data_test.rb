@@ -6,7 +6,7 @@ class TransformPlaybyplayDataTest < MiniTest::Unit::TestCase
 
   def test_create_play_models
     Scrape::TransformPlaybyplayData.save_plays [play_hash]
-    assert_equal PlayModel.count, 1
+    assert_equal PlayModel("2013").count, 1
   end
 
   def play_hash

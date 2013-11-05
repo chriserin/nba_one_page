@@ -14,8 +14,8 @@ module Scrape
       return unless team_total
       Nba::TalleableStatistics.each do |statistic|
         method_name = "is_#{statistic.to_s.singularize}"
-        tally = PlayModel.where(team: team, game_date: game_date, "#{method_name}" => true).count
-        File.open("playbyplay_errors_#{DateTime.now.strftime('%Y%m%d')}.txt", "a"){|f| f << "results match for #{method_name}. #{team} on #{game_date} #{tally} #{team_total.send(statistic)}"} unless tally == team_total.send(statistic)
+        tally = PlayModel(game_date).where(team: team, game_date: game_date, "#{method_name}" => true).count
+        File.open("playbyplay_errors_#{DateTime.now.strftime('%Y%m%d')}.txt", "a"){|f| f.write_line "results match for #{method_name}. #{team} on #{game_date} #{tally} #{team_total.send(statistic)}"} unless tally == team_total.send(statistic)
       end
     end
   end

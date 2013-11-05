@@ -20,7 +20,7 @@ class NbcPlaybyplayScraperTest < MiniTest::Unit::TestCase
       scraper.run([["http://scores.nbcsports.msnbc.com/nba/pbp.asp?gamecode=2012110219", "Orlando Magic", "Denver Nuggets", DateTime.new(2012, 11, 17)]])
 
       stretch_type = StretchLine.make_year_type("2013")
-      assert_equal 1, PlayModel.where("play_time" => 0).count
+      assert_equal 1, PlayModel("2013").where("play_time" => 0).count
       assert_equal 2, stretch_type.make_year_type("2013").where("start" => 0).count
       assert_equal 2, stretch_type.where("start" => 720).count
       assert_equal 2, stretch_type.where("end" => 720).count
