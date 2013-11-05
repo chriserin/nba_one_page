@@ -8,7 +8,7 @@ module Nba
     "Chicago Bulls"          => { :abbr => "CHI", :div => "central",   :conference => "eastern", :nickname => "Bulls", :home_id => "04"},
     "Oklahoma City Thunder"  => { :abbr => "OKC", :div => "northwest", :conference => "western", :nickname => "Thunder", :home_id => "25"},
     "Orlando Magic"          => { :abbr => "ORL", :div => "southeast", :conference => "eastern", :nickname => "Magic", :home_id => "19"},
-    "Golden State Warriors"  => { :abbr => "GSW", :div => "pacific",   :conference => "western", :nickname => "Warriors", :home_id => "09"},
+    "Golden State Warriors"  => { :abbr => "GSW", :div => "pacific",   :conference => "western", :nickname => "Warriors", :home_id => "09", :alt_abbr => "GS"},
     "Los Angeles Clippers"   => { :abbr => "LAC", :div => "pacific",   :conference => "western", :nickname => "Clippers", :home_id => "12"},
     "Cleveland Cavaliers"    => { :abbr => "CLE", :div => "central",   :conference => "eastern", :nickname => "Cavaliers", :home_id => "05"},
     "Toronto Raptors"        => { :abbr => "TOR", :div => "atlantic",  :conference => "eastern", :nickname => "Raptors", :home_id => "28"},
@@ -42,7 +42,7 @@ module Nba
     TEAMS.map {|team, attrs| team if attrs[:conference] == con_name }.compact
   end
 
-  def TEAMS.find(team_fragment)
+  def TEAMS.find_team(team_fragment)
     self.keys.find { |key| key =~ /#{team_fragment}/}
   end
 
@@ -63,7 +63,8 @@ module Nba
   end
 
   def TEAMS.find_teamname_by_alt_abbr(team_abbr)
-    teamname = self.map {|key, value| return key if value[:alt_abbr] == team_abbr.upcase}.compact.first
+    raise "error #{team_abbr}" if Array === team_abbr
+    teamname = self.map { |key, value| key if value[:alt_abbr] and value[:alt_abbr].upcase == team_abbr.upcase }.compact.first
     teamname || self.find_teamname_by_abbr(team_abbr)
   end
 end

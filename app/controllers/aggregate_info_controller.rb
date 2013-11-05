@@ -7,7 +7,7 @@ class AggregateInfoController < ApplicationController
 
     team_param = params[:team] || "Bulls"
     @year = params[:year] || (Nba::Calendar.get_current_year)
-    @team = Nba::TEAMS.find(team_param)
+    @team = Nba::TEAMS.find_team(team_param)
 
     if @team.blank?
       raise ActionController::RoutingError.new("#{team_param} Not Found")
@@ -33,7 +33,7 @@ class AggregateInfoController < ApplicationController
   def stats
     team_param = params[:team] || "Bulls"
     @year = params[:year] || "2013"
-    @team = Nba::TEAMS.find(team_param)
+    @team = Nba::TEAMS.find_team(team_param)
     @split_type = params[:split_type] || :all
 
     season = Nba::Season.new(@year)
@@ -43,7 +43,7 @@ class AggregateInfoController < ApplicationController
 
   def boxscore
     team_param = params[:team] || "Bulls"
-    @team = Nba::TEAMS.find(team_param.strip)
+    @team = Nba::TEAMS.find_team(team_param.strip)
     date  = DateTime.parse(params[:date] || "20130101").strftime("%Y-%m-%d")
     @year = params[:year] || Nba::Calendar.get_season(date)
 

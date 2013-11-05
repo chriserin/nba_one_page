@@ -85,6 +85,8 @@ module Scrape
     end
 
     def not_team_play?
+      puts team
+      puts matchable_description
       return (not matchable_description.include?(Nba::TEAMS[team][:nickname].downcase))
     end
 

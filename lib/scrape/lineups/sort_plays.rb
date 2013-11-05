@@ -1,4 +1,3 @@
-
 module Scrape
   module Lineups
     module SortPlays
@@ -14,12 +13,28 @@ module Scrape
     class GroupedPlays
       def initialize(plays)
         @plays = plays#purpose of class is to mutate this variable
+        return if too_complex?
         if @plays.find {|p| p.is_exit?}
           reorder_exit_plays
         end
         if @plays.find {|p| p.is_entrance?}
           reorder_entrance_plays
         end
+      end
+
+      def too_complex?
+        player_names = @plays.map {|p| p.player_name}.uniq
+        player_names.each do |name|
+          if players_plays(name).find {|p| p.is_exit? } and
+            players_plays(name).find {|p| p.is_entrance? }
+            return true
+          end
+        end
+        return false
+      end
+
+      def players_plays(name)
+        @plays.select {|p| p.player_name == name}
       end
 
       def reorder_exit_plays

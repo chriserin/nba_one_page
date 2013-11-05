@@ -11,18 +11,16 @@ module Scrape
     AWAY_SCORE = 4
     HOME_SCORE = 5
 
-    def self.convert_plays(*args)
-      plays = args.shift
-      converted_plays = create_nbc_plays(plays, *args)
+    def self.convert_plays(plays, game_info)
+      converted_plays = create_nbc_plays(plays, game_info)
       SplitPlays.split(converted_plays)
     end
 
-    def self.create_nbc_plays(plays, *args)
+    def self.create_nbc_plays(plays, game_info)
       converted_plays = []
 
       plays.each do |play|
         if play.size == 6
-          game_info = Scrape::GameInfo.new(*args[0..-1])
           converted_plays << Scrape::NbcPlay.new(play[QUARTER],
                                                  play[TIME],
                                                  play[TEAM],

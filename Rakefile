@@ -24,19 +24,18 @@ end
 namespace :scrape do
   namespace :playbyplay do
     task :all_2014 => :environment do |t|
-      Scrape::PlaybyplayMain.scrape_season("2014")
+      Scrape::Playbyplay.scrape_season("2014")
+    end
+
+    task :yesterday do
+      Rake::Task["scrape:playbyplay:day"].invoke((Date.today - 1).to_s)
     end
 
     task :day, [:game_date] => :environment do |t, arguments|
       game_date = arguments[:game_date]
-      require File.expand_path('../lib/scrape/playbyplay_main', __FILE__)
-      if game_date.present?
-        puts "parsing #{game_date}"
-        Scrape::PlaybyplayMain.scrape(DateTime.parse(game_date))
-      else
-        puts "parsing 2013"
-        Scrape::PlaybyplayMain.scrape_2013
-      end
+      PlayModel(game_date).where("game_date" => game_date).delete
+      require File.expand_path('../lib/scrape/playbyplay', __FILE__)
+      Scrape::Playbyplay.get_plays(Date.parse(game_date))
     end
   end
 
