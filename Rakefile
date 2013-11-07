@@ -24,6 +24,11 @@ namespace :counts do
     PlayModel("2014").delete_all
     StretchLine("2014").delete_all
   end
+
+  task :last_game_date => :environment do
+    puts PlayModel("2014").last.game_date
+    puts GameLine("2014").last.game_date
+  end
 end
 
 namespace :scrape do
@@ -64,7 +69,13 @@ namespace :scrape do
     task :day, [:game_date] => :environment do |t, arguments|
       require './lib/scrape/boxscore_main'
       game_date = arguments[:game_date]
-      Scrape::BoxscoreMain.scrape(DateTime.parse(game_date))
+      Scrape::BoxscoreMain.scrape(Date.parse(game_date))
+    end
+
+    task :day_to_end, [:game_date] => :environment do |t, arguments|
+      require './lib/scrape/boxscore_main'
+      game_date = arguments[:game_date]
+      Scrape::BoxscoreMain.get_range(Date.parse(game_date))
     end
   end
 end

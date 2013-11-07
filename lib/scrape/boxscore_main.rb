@@ -11,6 +11,12 @@ module Scrape
       boxscore_scraper.run(urls)
     end
 
+    def self.get_range(start=Date.today - 1, range_end=Date.today - 1)
+      (start..range_end).each do |date|
+        scrape(date)
+      end
+    end
+
     def self.scrape_2013()
       game_line_type = GameLine.make_year_type("2013")
       game_line_type.delete_all
