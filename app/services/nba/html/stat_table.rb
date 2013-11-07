@@ -6,17 +6,18 @@ module Nba
       include StatFormattingHelper
       include NumbersHelper
 
-      def self.render(lines, table_type=:boxscore)
-        self.new(lines, table_type).output.html_safe
+      def self.render(lines, table_type=:boxscore, label = nil)
+        self.new(lines, table_type, label).output.html_safe
       end
 
-      def self.render_headers(table_type=:boxscore)
-        self.new([], table_type).headers.html_safe
+      def self.render_headers(table_type=:boxscore, label = nil)
+        self.new([], table_type, label).headers.html_safe
       end
 
-      def initialize(lines, table_type=:boxscore)
+      def initialize(lines, table_type=:boxscore, label = nil)
         @lines = lines
         @table_type = table_type
+        @label = label
       end
 
       def output
@@ -24,12 +25,19 @@ module Nba
       end
 
       def table_data_attributes
+        table_attrs = ""
         if @table_type == :boxscore && @lines.count > 0
           formatted_game_date = @lines.first.game_date.to_date.strftime("%Y%m%d")
-          "data-game-date='#{formatted_game_date}'"
-        else
-          ""
+          table_attrs = "data-game-date='#{formatted_game_date}'" 
         end
+
+        if @label.present?
+          table_attrs += " data-type='#{@label}'"
+          table_attrs += " class='#{@label}'"
+        end
+
+
+        return table_attrs
       end
 
       def head

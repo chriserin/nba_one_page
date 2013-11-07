@@ -1,5 +1,5 @@
 jQuery ->
-  class NbaOnePage.Views.StatTotals extends NbaOnePage.Views.ModularView
+  class NbaOnePage.Views.StatTotals extends mixOf NbaOnePage.Views.ModularView, NbaOnePage.Views.GridHighlites
     el: 'section.stat-totals'
     events:
       "click tbody tr td": 'statsGridClick'
@@ -35,11 +35,6 @@ jQuery ->
     triggerGridClick: (player, stat, team) ->
       @eventBus.trigger("#{@eventNameSpace}:gridClick", player, stat, team)
 
-    highliteGridSelection: (column, row, tableType) ->
-      @find(".highlited").removeClass("highlited")
-      @tableRow(tableType, row).addClass("highlited")
-      @tableColumn(tableType, column).addClass("highlited")
-
     getGridCell: (player, stat) ->
       $target = @find("[data-player='#{unescape(player)}'] [data-stat=#{stat}]").eq(0)
       new NbaOnePage.Views.StatGridCell($target)
@@ -65,12 +60,6 @@ jQuery ->
 
     clickNewSplit: (splitType) ->
       @find(".tabled-data").load("/Bulls/stats/#{splitType}")
-
-    tableColumn: (tableType, column) ->
-      @find("table.#{tableType} tbody td:nth-child(#{column + 1})")
-
-    tableRow: (tableType, row) ->
-      @find("table.#{tableType} tbody tr:nth-child(#{row + 1})")
 
     allTables: ->
       @find("table")

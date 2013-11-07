@@ -28,6 +28,7 @@ window.NbaOnePage = {
 
     NbaOnePage.ViewState["stat_totals"].defaultClick()
     NbaOnePage.ViewState["team_totals"].defaultClick()
+    NbaOnePage.ViewState["boxscores"].defaultClick()
     NbaOnePage.ViewState["opponent_totals"].defaultClick()
     NbaOnePage.ViewState["difference_totals"].defaultClick()
     $("li[data-breakdown='hard']").trigger('click')

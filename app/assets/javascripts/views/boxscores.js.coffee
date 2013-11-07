@@ -1,5 +1,5 @@
 jQuery ->
-  class NbaOnePage.Views.Boxscores extends NbaOnePage.Views.ModularView
+  class NbaOnePage.Views.Boxscores extends mixOf NbaOnePage.Views.ModularView, NbaOnePage.Views.GridHighlites
     el: 'section.boxscores'
     events:
       'click nav.section-content li'           : 'clickBoxscoreNav'
@@ -15,6 +15,7 @@ jQuery ->
       $currentTarget = $(event.currentTarget)
       cell = new NbaOnePage.Views.StatGridCell($currentTarget)
       @processClickedCell(cell)
+      @highliteGridSelection(cell.columnIndex(), cell.rowIndex(), cell.tableType())
 
     processClickedCell: (cell) ->
       @triggerGridClick(cell.player(), @gameDate(), cell.stat())
@@ -33,6 +34,9 @@ jQuery ->
       $currentTarget = $(event.currentTarget)
       gameDate = $currentTarget.data('time')
       NbaOnePage.router.navigate("boxscores/#{gameDate}", {trigger: true})
+
+    defaultClick: () ->
+      @find("table").eq(0).find("tr:nth-child(3) td:nth-child(13)").trigger("click")
 
     loadBoxscore: (team, gameDate) ->
       url = "#{encodeURIComponent(_.string.trim(team))}/boxscore/#{gameDate}"

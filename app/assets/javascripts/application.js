@@ -30,6 +30,7 @@
 // >>>>>>> Require Backbone files <<<<<<<
 //= require nba_one_page
 //
+//= require utils
 //= require_tree ./data
 //= require_tree ./models
 // require_tree ./collections
