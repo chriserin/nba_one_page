@@ -451,11 +451,19 @@ section.stat-totals, section.former-players, section.team-totals, section.oppone
     }
   }
 
+
+}
+
+section.stat-totals,
+section.former-players,
+section.team-totals,
+section.opponent-totals,
+section.difference-totals,
+section.boxscores {
   .highlited {
     @include transition-duration(.3s);
     @include transition-timing-function(linear);
   }
-
 }
 
 section.stat-totals, section.former-players {

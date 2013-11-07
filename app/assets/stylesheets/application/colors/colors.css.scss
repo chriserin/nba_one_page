@@ -147,6 +147,14 @@ section.stat-totals, section.former-players, section.team-totals, section.oppone
     }
   }
 
+}
+
+section.stat-totals,
+section.former-players,
+section.team-totals,
+section.opponent-totals,
+section.difference-totals,
+section.boxscores {
   .highlited {
     $highlite-color: transparentize(lighten($core-color, 20%), .5);
     background: $highlite-color !important;
