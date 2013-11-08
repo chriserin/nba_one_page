@@ -52,7 +52,7 @@ jQuery ->
       @line = Morris.Line
         lineType: 'event-timeline'
         element: @find(".event-timeline").get(0)
-        data: plays.reverse()
+        data: plays
         numLines: 1
         xkey: 'time'
         ykeys: ['zero']
@@ -67,8 +67,15 @@ jQuery ->
         continuousLine: false
         hideHover: 'false'
         hoverCallback: (index) =>
-          plays[index].description
+          "#{@toTime(plays[index]['time'])} #{plays[index].description}"
         yLabelFormat: -> ""
 
     find: (selector) ->
       $(@el).find(selector)
+
+    toTime: (seconds) ->
+      quarter = Math.floor(seconds / 720) + 1
+      seconds_remaining = quarter * 720 - seconds
+      minutes = Math.floor(seconds_remaining / 60)
+      seconds_left_over = seconds_remaining - (minutes * 60)
+      "Q#{quarter} #{minutes}:#{_.string.sprintf('%02d', seconds_left_over)}"
