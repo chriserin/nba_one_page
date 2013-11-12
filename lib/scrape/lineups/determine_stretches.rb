@@ -10,6 +10,7 @@ module Scrape
       current_stretch = OnCourtStretch.new
 
       plays = sort_plays(plays)
+      plays = plays.reject {|play| play.is_technical_foul? }
       stretches = plays.map do |play|
         #puts "#{play.seconds_passed} #{play.description}"
         current_stretch = current_stretch.process_play(play)

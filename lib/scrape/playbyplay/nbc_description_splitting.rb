@@ -41,7 +41,7 @@ module Scrape
     end
 
     def split_jumpball_description(description)
-      split_match = description.match /Jump Ball:(.*)vs\.(.*)--/
+      split_match = description.match /Jump Ball:(.*)vs\.(.*?)(\.$|--)/
       return "Jump Ball: #{$1.strip}", "Jump Ball: #{$2.strip}"
     end
 

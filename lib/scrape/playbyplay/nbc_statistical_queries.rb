@@ -47,7 +47,7 @@ module Scrape
     ENTERS = "enters"
     SUBSTITUION = "substitution"
     VIOLATION = "violation"
-    JUMP_BALL = "jump ball"
+    JUMP_BALL = "jump ball:"
 
     def is_attempted_field_goal?
       return shot_type.present?
@@ -88,8 +88,6 @@ module Scrape
     end
 
     def not_team_play?
-      puts team
-      puts matchable_description
       return (not matchable_description.include?(Nba::TEAMS[team][:nickname].downcase))
     end
 
@@ -147,7 +145,11 @@ module Scrape
     end
 
     def is_splittable?
-      matchable_description.include? BLOCK or matchable_description.include? ASSIST or matchable_description.include? STEAL or matchable_description.include? SUBSTITUION
+      matchable_description.include? BLOCK or
+        matchable_description.include? ASSIST or
+        matchable_description.include? STEAL or
+        matchable_description.include? SUBSTITUION or
+        matchable_description.include? JUMP_BALL
     end
 
     def is_illegal_defense_foul?

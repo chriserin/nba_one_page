@@ -52,6 +52,12 @@ namespace :scrape do
       require File.expand_path('../lib/scrape/playbyplay', __FILE__)
       Scrape::Playbyplay.get_range(Date.parse(game_date))
     end
+
+    task :delete_day, [:game_date] => :environment do |t, arguments|
+      game_date = arguments[:game_date]
+      PlayModel(game_date).where(game_date: game_date).delete_all
+      StretchLine(game_date).where(game_date: game_date).delete_all
+    end
   end
 
   namespace :boxscores do

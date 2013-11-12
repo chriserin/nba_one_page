@@ -6,7 +6,6 @@ class SortPlaysTest < MiniTest::Unit::TestCase
 
   def test_sort
     plays = sort_plays(multi_substitution_plays)
-    puts plays
   end
 
   private
