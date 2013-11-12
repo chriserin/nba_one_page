@@ -48,6 +48,11 @@ PATH
       nokogiri
       thor
 
+PATH
+  remote: ~/open_source/req-compare
+  specs:
+    req-compare (0.0.1)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -287,6 +292,7 @@ DEPENDENCIES
   pry-rails
   rails (= 4.0.0)
   req!
+  req-compare!
   sass-rails (~> 4.0.0)
   sinatra
   spork-minitest (~> 0.0.2)
