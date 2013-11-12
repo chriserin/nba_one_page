@@ -157,6 +157,7 @@ class NbcPlayTest < MiniTest::Unit::TestCase
 
   def test_player_name
     player_name_plays = [
+      "Jump Ball: Roy Hibbert",
       "Roy Hibbert misses a jump shot from 12 feet out.",
       "Shooting foul committed by Roy Hibbert.",
       "Roy Hibbert with an offensive rebound.",

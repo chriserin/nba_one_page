@@ -88,6 +88,10 @@ module Scrape
         index = description.index keyword
         last_position = index + keyword.size
         description[last_position..-1].strip.gsub(?., "")
+      elsif is_jump_ball?
+        keyword = "jump\ ball:"
+        last_position = keyword.size
+        description[last_position..-1].strip.gsub(?., "")
       else
         description[0...delim_index].strip.gsub(?., "")
       end

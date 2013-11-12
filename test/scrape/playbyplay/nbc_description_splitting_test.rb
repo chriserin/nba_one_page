@@ -37,6 +37,13 @@ class NbcDescriptionSplittingTest < MiniTest::Unit::TestCase
     assert_equal "Chris Bosh enters game", second
   end
 
+  def test_split_jumpball
+    desc = "Jump Ball: Marcin Gortat vs. Brook Lopez -- Trevor Ariza gains possession."
+    first, second = TestPlay.new.split_jumpball_description(desc)
+    assert_equal "Jump Ball: Marcin Gortat", first
+    assert_equal "Jump Ball: Brook Lopez", second
+  end
+
   class TestPlay 
     include Scrape::NbcDescriptionSplitting
     def shot_type; "layup shot"; end

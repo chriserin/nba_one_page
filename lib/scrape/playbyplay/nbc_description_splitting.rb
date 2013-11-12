@@ -11,6 +11,8 @@ module Scrape
         split_steals_description(description)
       when /substitution/i
         split_substitution_description(description)
+      when /jump ball/i
+        split_jumpball_description(description)
       end
     end
 
@@ -38,6 +40,11 @@ module Scrape
       return  "#{$2} exits game", "#{$1} enters game"
     end
 
+    def split_jumpball_description(description)
+      split_match = description.match /Jump Ball:(.*)vs\.(.*)--/
+      return "Jump Ball: #{$1.strip}", "Jump Ball: #{$2.strip}"
+    end
+
     def split_team_by_type(description, team, game_info)
       case description
       when /blocks/
@@ -48,6 +55,8 @@ module Scrape
         return team, team
       when /steals/
         return game_info.other_team(team), team
+      when /jump\sball/i
+        return team, game_info.other_team(team)
       end
     end
   end
