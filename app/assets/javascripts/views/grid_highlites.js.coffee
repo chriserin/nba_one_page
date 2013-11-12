@@ -6,9 +6,6 @@ class NbaOnePage.Views.GridHighlites
     @find("table.#{tableType} tbody tr:nth-child(#{row + 1})")
 
   highliteGridSelection: (column, row, tableType) ->
-    console.log(column)
-    console.log(row)
-    console.log(tableType)
     @find(".highlited").removeClass("highlited")
     @tableRow(tableType, row).addClass("highlited")
     @tableColumn(tableType, column).addClass("highlited")

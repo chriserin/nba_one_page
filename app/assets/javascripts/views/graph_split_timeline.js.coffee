@@ -37,18 +37,32 @@ jQuery ->
       $(@el).find(".timeline-location").slice(1,2).css(left: "#{leftB}px")
 
     determineReport: ->
+
+      indexes = @timelineIndexes()
+      console.log(indexes)
+      indexRanges = @timelineIndexRanges(indexes, _.keys(@anchorsMap).length)
+      @reportSplits(indexRanges) if indexes.length == 2
+
+    timelineIndexRanges: (indexes, length) ->
+      indexRanges = []
+      indexRanges.push([0, indexes[0]]) if indexes[0] isnt 0
+      indexRanges.push([indexes[0] + 1, indexes[1]]) if indexes[0] isnt 0
+      indexRanges.push([0, indexes[1]]) if indexes[0] is 0
+      indexRanges.push([indexes[1] + 1, length - 1])
+      return _.filter(indexRanges, (r) -> r[0] isnt r[1])
+
+    timelineIndexes: ->
       indexes = []
       currentIndex = 0
       $(@el).find(".timeline-location").each (locationIndex, location) =>
+        console.log("LOCATION: #{location.offsetLeft}")
         for left, anchorIndex in _.keys(@anchorsMap)
           if left <= location.offsetLeft
             currentIndex = anchorIndex
           else
             indexes.push currentIndex
             break
-
       indexes.sort()
-      @reportSplits(indexes[0], indexes[1]) if indexes.length == 2
 
     setHighlightPosition: ->
       leftA = $(@el).find(".timeline-location").slice(0,1).css('left').replace("px", "")
@@ -68,14 +82,14 @@ jQuery ->
       locationA.css(left: "#{leftA}px")
       $(@el).find(".timeline-location").slice(1,2).css(left: "#{leftB}px")
 
-    reportSplits: (firstSplit, secondSplit) =>
-      return unless firstSplit < @graph.data.length and secondSplit < @graph.data.length
+    reportSplits: (indexRanges) =>
+      highlitedRange = indexRanges[1] || indexRanges[0]
       $($(@el).parent()).find(".graph-split-report").empty()
-      $($(@el).parent()).find(".graph-split-report").append(@calculate(0, firstSplit))
-      $($(@el).parent()).find(".graph-split-report").append(@calculate(firstSplit + 1, secondSplit)) if firstSplit != secondSplit
-      $($(@el).parent()).find(".graph-split-report").append(@calculate(secondSplit + 1, @graph.data.length - 1))
-      $($(@el).parent()).find(".split-report.i#{firstSplit + 1}").css('background',  'rgba(27, 182, 193, 0.3)')
+      for range in indexRanges
+        $($(@el).parent()).find(".graph-split-report").append(@calculate(range[0], range[1]))
+      $($(@el).parent()).find(".split-report.i#{highlitedRange[0]}").css('background',  'rgba(27, 182, 193, 0.3)')
 
     calculate: (start, end) ->
+      console.log("START: #{start} END: #{end}")
       split = new NbaOnePage.Models.RolledDataSplit(@graph.options.data, start, end)
       JST['templates/split_report']({'split': split})
