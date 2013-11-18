@@ -98,3 +98,10 @@ namespace :schedule do
     ScheduleParse.parse("2014")
   end
 end
+
+namespace :iron do 
+  task :publish => :environment do
+    require './workers/schedule_worker'
+    ScheduleWorker.schedule_scraper
+  end
+end

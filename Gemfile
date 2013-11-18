@@ -28,6 +28,7 @@ gem 'newrelic_rpm'
 
 gem 'sinatra'
 
+gem 'rubyzip', '~> 0.9'
 gem 'iron_worker_ng'
 gem "mechanize", "~> 2.5.1"
 

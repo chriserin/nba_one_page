@@ -32,3 +32,6 @@ iron.jron
 #ignore req files
 /.req
 .reqrc_history
+
+.swp/*
+*.swp

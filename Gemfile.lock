@@ -131,12 +131,12 @@ GEM
     hike (1.2.3)
     http_parser.rb (0.5.3)
     i18n (0.6.5)
-    iron_core (0.5.2)
+    iron_core (1.0.1)
       rest (>= 2.2.0)
-    iron_worker_ng (0.16.2)
+    iron_worker_ng (1.0.2)
       bundler (>= 1.2.0)
-      iron_core (>= 0.5.1)
-      rubyzip (>= 0.9.9)
+      iron_core (>= 1.0.0)
+      rubyzip (= 0.9.9)
     jbuilder (1.4.1)
       activesupport (>= 3.0.0)
       multi_json (>= 1.2.0)
@@ -157,7 +157,7 @@ GEM
       webrobots (~> 0.0, >= 0.0.9)
     metaclass (0.0.1)
     method_source (0.8.1)
-    mime-types (1.24)
+    mime-types (1.25)
     miniskirt (1.2.1)
       activesupport
     minitest (4.7.5)
@@ -210,7 +210,8 @@ GEM
       thor (>= 0.18.1, < 2.0)
     raindrops (0.10.0)
     rake (10.1.0)
-    rest (2.6.0)
+    rest (2.6.3)
+      net-http-persistent
       rest-client (>= 0.3.0)
     rest-client (1.6.7)
       mime-types (>= 1.16)
@@ -293,6 +294,7 @@ DEPENDENCIES
   rails (= 4.0.0)
   req!
   req-compare!
+  rubyzip (~> 0.9)
   sass-rails (~> 4.0.0)
   sinatra
   spork-minitest (~> 0.0.2)
