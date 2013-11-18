@@ -4,6 +4,7 @@ require './lib/scrape/scoreboard_scraper.rb'
 module Scrape
   class BoxscoreMain
     def self.scrape(game_date=DateTime.now - 1, rebuild=true)
+      GameLine(game_date).where("game_date" => game_date).delete
       scoreboard_scraper = ScoreboardScraper.new
       urls = scoreboard_scraper.boxscore_urls(game_date)
 

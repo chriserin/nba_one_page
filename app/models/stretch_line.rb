@@ -8,7 +8,7 @@ class StretchLine
   field :opponent, type: String
   field :team_players, type: Array
   field :opponent_players, type: Array
-  field :game_date, type: DateTime
+  field :game_date, type: String
   field :start, type: Integer
   field :end, type: Integer
 

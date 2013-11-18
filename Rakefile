@@ -26,8 +26,8 @@ namespace :counts do
   end
 
   task :last_game_date => :environment do
-    puts PlayModel("2014").last.game_date
-    puts GameLine("2014").last.game_date
+    puts "PlayByPlay #{PlayModel("2014").last.game_date}"
+    puts "BoxScore #{GameLine("2014").last.game_date}"
   end
 end
 

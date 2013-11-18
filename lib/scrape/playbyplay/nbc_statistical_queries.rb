@@ -23,6 +23,7 @@ module Scrape
       3-point
       pull\ up
       slam
+      step\ back
     }
 
     MAKES = "makes"
