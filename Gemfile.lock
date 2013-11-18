@@ -40,19 +40,6 @@ GIT
       railties (>= 3.2)
       thor (~> 0.14)
 
-PATH
-  remote: ~/open_source/req
-  specs:
-    req (0.0.1)
-      diffy
-      nokogiri
-      thor
-
-PATH
-  remote: ~/open_source/req-compare
-  specs:
-    req-compare (0.0.1)
-
 GEM
   remote: https://rubygems.org/
   specs:
@@ -114,7 +101,6 @@ GEM
     compass-h5bp (0.1.1)
       compass
     crack (0.3.2)
-    diffy (3.0.1)
     domain_name (0.5.10)
       unf (>= 0.0.5, < 1.0.0)
     eco (1.0.0)
@@ -292,8 +278,6 @@ DEPENDENCIES
   pry
   pry-rails
   rails (= 4.0.0)
-  req!
-  req-compare!
   rubyzip (~> 0.9)
   sass-rails (~> 4.0.0)
   sinatra
