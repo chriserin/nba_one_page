@@ -2,14 +2,20 @@ runtime "ruby"
 exec 'boxscore_scraper_worker.rb'
 name 'ScrapeBoxscores'
 
-dir '../lib/scrape'
+dir '../lib/scrape/'
+dir '../lib/scrape/boxscore/'
+file '../lib/mechanize/page.rb'
 file '../app/services/nba/teams.rb'
 file '../app/services/nba/stat_formulas.rb'
 file '../app/services/nba/base_statistics.rb'
-
+file '../app/services/nba/calendar.rb'
+file '../app/models/game_line.rb'
+file '../app/models/class_accessors.rb'
 file '../app/models/difference.rb'
 file '../app/models/difference_line.rb'
-file '../app/models/game_line.rb'
+file '../app/models/display_attributes.rb'
+file '../app/services/nba/game_line_descriptor.rb'
+file '../app/models/year_types.rb'
 
 file '../config/mongoid.yml'
 

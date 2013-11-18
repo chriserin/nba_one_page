@@ -1,4 +1,4 @@
-require './lib/scrape/boxscore/line'
+require File.expand_path("../line", __FILE__)
 
 module Scrape
   class Scrape::ConvertDescriptiveBoxscore

@@ -1,4 +1,4 @@
-require './lib/scrape/boxscore/boxscore_scraper'
+require File.expand_path("../boxscore/boxscore_scraper", __FILE__)
 
 module Scrape
   class ScoreboardScraper

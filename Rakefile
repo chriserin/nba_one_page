@@ -104,4 +104,9 @@ namespace :iron do
     require './workers/schedule_worker'
     ScheduleWorker.schedule_scraper
   end
+
+  task :run => :environment do
+    require './workers/schedule_worker'
+    ScheduleWorker.run_scraper
+  end
 end

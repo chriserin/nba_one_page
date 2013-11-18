@@ -1,8 +1,8 @@
-require './lib/scrape/game_info'
-require './lib/scrape/boxscore/boxscore'
-require './lib/scrape/boxscore/create_game_lines'
-require './lib/scrape/boxscore/convert_descriptive_boxscore'
-require './lib/scrape/boxscore/converted_boxscore'
+require File.expand_path("../../game_info", __FILE__)
+require File.expand_path("../boxscore", __FILE__)
+require File.expand_path("../create_game_lines", __FILE__)
+require File.expand_path("../convert_descriptive_boxscore", __FILE__)
+require File.expand_path("../converted_boxscore", __FILE__)
 
 module Scrape
   class TransformBoxscoreData

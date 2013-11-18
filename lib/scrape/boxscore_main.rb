@@ -1,5 +1,6 @@
-require './lib/scrape/boxscore/transform_boxscore_data'
-require './lib/scrape/scoreboard_scraper.rb'
+require File.expand_path("../boxscore/transform_boxscore_data", __FILE__)
+require File.expand_path('../scoreboard_scraper', __FILE__)
+require File.expand_path("../../../lib/mechanize/page.rb", __FILE__) if $0 =~ /rake/
 
 module Scrape
   class BoxscoreMain

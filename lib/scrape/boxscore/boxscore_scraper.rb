@@ -1,5 +1,4 @@
-require './lib/mechanize/page.rb'
-require './lib/scrape/scraper_tools.rb'
+require File.expand_path("../../scraper_tools.rb", __FILE__)
 
 class BoxscoreScraper
   include ScraperTools

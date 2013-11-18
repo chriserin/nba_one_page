@@ -4,17 +4,19 @@ require 'mechanize'
 require 'teams'
 require 'stat_formulas'
 require 'base_statistics'
+require 'calendar'
 
+require 'class_accessors'
+require 'display_attributes'
+require 'game_line_descriptor'
+require 'year_types'
+require 'game_line'
 require 'difference'
-require 'difference_model'
-require 'game_model'
-require 'line_type_factory'
+require 'difference_line'
 
 require 'scrape/clear_cache'
-require 'scrape/scrape_boxscores'
-require 'scrape/nba_scoreboard_scraper'
-require 'scrape/nba_boxscore_scraper'
-require 'scrape/nba_boxscore_converter'
+require 'scrape/boxscore_main'
+require 'page'
 
 params['env'] ||= "development"
 Mongoid.load!('mongoid.yml', params['env'])
@@ -25,4 +27,4 @@ scoreboard_date = if params['env'] == "development"
                     DateTime.now - 1
                   end
 
-ScrapeBoxscores.scrape(scoreboard_date)
+Scrape::BoxscoreMain.scrape(scoreboard_date)
