@@ -464,6 +464,8 @@ section.boxscores {
     @include transition-duration(.3s);
     @include transition-timing-function(linear);
   }
+  td { cursor: pointer; }
+  td:first-child { cursor: default; } 
 }
 
 section.stat-totals, section.former-players {

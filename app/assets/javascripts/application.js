@@ -25,6 +25,7 @@
 //= require jquery-ui-1.10.3.custom.js
 //= require raphael
 //= require morris
+//= require_tree ./morris
 //
 //
 // >>>>>>> Require Backbone files <<<<<<<
