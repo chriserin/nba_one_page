@@ -1,6 +1,6 @@
 runtime "ruby"
-exec 'scrape_boxscores.rb'
-name 'ScrapeBoxscores'
+exec 'scrape_playbyplay.rb'
+name 'ScrapePlaybyplay'
 
 dir '../lib/scrape/', 'lib/'
 
@@ -10,14 +10,14 @@ file '../app/services/nba/teams.rb'
 file '../app/services/nba/stat_formulas.rb'
 file '../app/services/nba/base_statistics.rb'
 file '../app/services/nba/calendar.rb'
-
-file '../app/models/game_line.rb'
-file '../app/models/class_accessors.rb'
-file '../app/models/difference.rb'
-file '../app/models/difference_line.rb'
-file '../app/models/display_attributes.rb'
 file '../app/services/nba/game_line_descriptor.rb'
+
 file '../app/models/year_types.rb'
+file '../app/models/class_accessors.rb'
+file '../app/models/game_line.rb'
+file '../app/models/play_model.rb'
+file '../app/models/stretch_line.rb'
+file '../app/models/display_attributes.rb'
 
 file '../config/mongoid.yml'
 

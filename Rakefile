@@ -109,4 +109,14 @@ namespace :iron do
     require './workers/schedule_worker'
     ScheduleWorker.run_scraper
   end
+
+  task :publish_playbyplay => :environment do
+    require './workers/schedule_worker'
+    ScheduleWorker.schedule_playbyplay_scraper
+  end
+
+  task :run_playbyplay => :environment do
+    require './workers/schedule_worker'
+    ScheduleWorker.run_playbyplay_scraper
+  end
 end

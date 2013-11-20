@@ -1,5 +1,4 @@
 require './lib/scrape/lineups/lineup'
-require './app/services/nba/base_statistics'
 
 module Scrape
   class OnCourtStretch

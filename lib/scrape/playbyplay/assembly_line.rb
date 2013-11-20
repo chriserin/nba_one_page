@@ -1,6 +1,5 @@
 require './lib/scrape/game_info'
 require './lib/scrape/error'
-require './app/services/nba/base_statistics'
 require './lib/scrape/playbyplay/convert_play'
 require './lib/scrape/playbyplay/convert_raw_nbc_playbyplay'
 require './lib/scrape/playbyplay/verify_plays'
