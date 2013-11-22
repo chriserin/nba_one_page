@@ -17,7 +17,7 @@ group :assets do
   gem "neat"
 
   gem 'uglifier', '>= 1.0.3'
-  gem 'compass-rails', github: 'milgner/compass-rails', ref: '1749c06f15dc4b058427e7969810457213647fb8'
+  gem 'compass-rails', github: 'Compass/compass-rails', branch: 'rails4-hack'
   gem 'compass-h5bp'
 end
 
