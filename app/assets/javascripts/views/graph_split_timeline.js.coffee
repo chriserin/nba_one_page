@@ -51,7 +51,7 @@ jQuery ->
       indexRanges.push([leftSplit, rightSplit]) if leftSplit isnt 0
       indexRanges.push([0, rightSplit]) if leftSplit is 0
       indexRanges.push([rightSplit + 1, length - 1])
-      return indexRanges#_.filter(indexRanges, (r) -> r[0] isnt r[1])
+      return indexRanges
 
     timelineIndexes: ->
       indexes = []
