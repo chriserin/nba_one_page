@@ -39,6 +39,7 @@ module Nba
 
         @averaged_data = send(@formula.to_s)
         @averaged_data = nil if @averaged_data.class == String
+        @averaged_data = divide_by_games_played(game_score) if @formula.to_sym == :game_score
         @averaged_data
       end
 
