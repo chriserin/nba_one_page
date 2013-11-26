@@ -44,25 +44,29 @@ jQuery ->
       @reportSplits(indexRanges) if indexes.length == 2
 
     timelineIndexRanges: (indexes, length) ->
+      leftSplit = indexes[0]
+      rightSplit = indexes[1]
       indexRanges = []
-      indexRanges.push([0, indexes[0]]) if indexes[0] isnt 0
-      indexRanges.push([indexes[0] + 1, indexes[1]]) if indexes[0] isnt 0
-      indexRanges.push([0, indexes[1]]) if indexes[0] is 0
-      indexRanges.push([indexes[1] + 1, length - 1])
-      return _.filter(indexRanges, (r) -> r[0] isnt r[1])
+      indexRanges.push([0, leftSplit - 1]) if leftSplit isnt 0
+      indexRanges.push([leftSplit, rightSplit]) if leftSplit isnt 0
+      indexRanges.push([0, rightSplit]) if leftSplit is 0
+      indexRanges.push([rightSplit + 1, length - 1])
+      return indexRanges#_.filter(indexRanges, (r) -> r[0] isnt r[1])
 
     timelineIndexes: ->
       indexes = []
       currentIndex = 0
-      $(@el).find(".timeline-location").each (locationIndex, location) =>
-        console.log("LOCATION: #{location.offsetLeft}")
-        for left, anchorIndex in _.keys(@anchorsMap)
-          if left <= location.offsetLeft
-            currentIndex = anchorIndex
-          else
-            indexes.push currentIndex
-            break
-      indexes.sort()
+      sortedLocations = $(@el).find(".timeline-location").sort (l, r) -> l.offsetLeft > r.offsetLeft ? 1 : -1
+      [@getAnchorIndex(sortedLocations[0].offsetLeft, false), @getAnchorIndex(sortedLocations[1].offsetLeft, true)]
+
+    getAnchorIndex: (offset, leftSide = true) ->
+      currentIndex = 0
+      for left, anchorIndex in _.keys(@anchorsMap)
+        if leftSide and left <= offset
+          currentIndex = anchorIndex
+        else if !leftSide and left >= offset
+          return anchorIndex
+      return currentIndex
 
     setHighlightPosition: ->
       leftA = $(@el).find(".timeline-location").slice(0,1).css('left').replace("px", "")
