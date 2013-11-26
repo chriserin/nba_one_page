@@ -37,11 +37,12 @@ jQuery ->
       $(@el).find(".timeline-location").slice(1,2).css(left: "#{leftB}px")
 
     determineReport: ->
-
       indexes = @timelineIndexes()
       console.log(indexes)
+      return unless indexes.length == 2
       indexRanges = @timelineIndexRanges(indexes, _.keys(@anchorsMap).length)
-      @reportSplits(indexRanges) if indexes.length == 2
+      @reportSplits(indexRanges)
+      @highliteReport(indexRanges, indexes[1])
 
     timelineIndexRanges: (indexes, length) ->
       leftSplit = indexes[0]
@@ -50,7 +51,7 @@ jQuery ->
       indexRanges.push([0, leftSplit - 1]) if leftSplit isnt 0
       indexRanges.push([leftSplit, rightSplit]) if leftSplit isnt 0
       indexRanges.push([0, rightSplit]) if leftSplit is 0
-      indexRanges.push([rightSplit + 1, length - 1])
+      indexRanges.push([rightSplit + 1, length - 1]) if rightSplit isnt length - 1
       return indexRanges
 
     timelineIndexes: ->
@@ -87,10 +88,13 @@ jQuery ->
       $(@el).find(".timeline-location").slice(1,2).css(left: "#{leftB}px")
 
     reportSplits: (indexRanges) =>
-      highlitedRange = indexRanges[1] || indexRanges[0]
       $($(@el).parent()).find(".graph-split-report").empty()
       for range in indexRanges
         $($(@el).parent()).find(".graph-split-report").append(@calculate(range[0], range[1]))
+
+    highliteReport: (indexRanges, rightSplit) ->
+      highlitedRange = indexRanges[1] || indexRanges[0]
+      highlitedRange = indexRanges[0] if indexRanges[0][1] == rightSplit
       $($(@el).parent()).find(".split-report.i#{highlitedRange[0]}").css('background',  'rgba(27, 182, 193, 0.3)')
 
     calculate: (start, end) ->
