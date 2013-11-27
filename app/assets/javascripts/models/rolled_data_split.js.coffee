@@ -16,7 +16,7 @@ class NbaOnePage.Models.RolledDataSplit
   startDate: ->
     moment(@data[@fromIndex].date).format("MM/DD")
 
-  endDate: -> 
+  endDate: ->
     moment(@data[@toIndex].date).format("MM/DD")
 
   gamesCount: ->
@@ -34,3 +34,8 @@ class NbaOnePage.Models.RolledDataSplit
         results = @totalComponentValues()
         values = (value for key, value of results)
         Math.round(values[0] / values[1] * 1000) / 1000
+      else
+        results = @totalComponentValues()
+        results extends NbaOnePage.Models.StatFormulas.prototype
+        console.log(results[formula])
+        results[formula]()

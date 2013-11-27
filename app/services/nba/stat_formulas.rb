@@ -89,7 +89,17 @@ module Nba
     end
 
     def game_score
-      (points + 0.4 * made_field_goals - 0.7 * attempted_field_goals - 0.4 * (attempted_free_throws - made_free_throws) + 0.7 * offensive_rebounds + 0.3 * defensive_rebounds + steals + 0.7 * assists + 0.7 * blocks - 0.4 * personal_fouls - turnovers).round 2
+      (points +
+       0.4 * made_field_goals -
+       0.7 * attempted_field_goals -
+       0.4 * (attempted_free_throws - made_free_throws) +
+       0.7 * offensive_rebounds +
+       0.3 * defensive_rebounds +
+       steals +
+       0.7 * assists +
+       0.7 * blocks -
+       0.4 * personal_fouls -
+       turnovers).round 2
     end
 
     def unaveraged_possessions(fga, fta, o_rebounds, opp_d_rebounds, fg, tos)
