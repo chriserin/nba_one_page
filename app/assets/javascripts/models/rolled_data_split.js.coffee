@@ -24,7 +24,8 @@ class NbaOnePage.Models.RolledDataSplit
     gamesWithData = (datum for datum in @data[@fromIndex..@toIndex] when datum.averaged_data? || datum.component_values?)
     gamesWithData.length
 
-  calculate: (formula=@data[0].formula) ->
+  calculate: (formula) ->
+    formula ||= _.reject(@data, (v) -> v.formula == null)[0].formula
     switch formula
       when 'rolling_average'
         results = @totalComponentValues()
