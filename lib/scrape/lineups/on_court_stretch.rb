@@ -20,7 +20,11 @@ module Scrape
     def process_play(play)
       set_time(play)
       increment_stats(play)
-      return determine_lineup(play)
+      begin
+        return determine_lineup(play)
+      rescue Scrape::TooManyPlayersError => error
+        raise Scrape::TooManyPlayersError.new(error.message + "START: #{@start} END: #{@end}", error.extra_name)
+      end
     end
 
     def set_time(play)
@@ -62,14 +66,14 @@ module Scrape
     def verify_full_lineups
       raise Scrape::TooManyTeamsError.new("too many teams") if @lineups.keys.count > 2
       @lineups.each do |team, lineup|
-        raise Scrape::LineupNotFullError.new("#@start #@end lineup #{team.to_s} #{lineup} not full") unless lineup.is_full? or (@start == @end) or (@end >= 3600)
+        raise Scrape::LineupNotFullError.new("#@start #@end lineup #{team.to_s} #{lineup} not full") unless lineup.is_full? or (@start == @end) or (@end >= 3600) or (@start >= 3300)
       end
     end
 
     def to_hash(index, game_date)
       { team: @lineups.keys[index],
         opponent: @lineups.keys[other_index(index)],
-        game_date: game_date,
+        game_date: game_date.to_date.to_s,
         team_players: @lineups.values[index].to_a,
         opponent_players: @lineups.values[other_index(index)].to_a,
         start: @start,

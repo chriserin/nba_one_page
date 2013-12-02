@@ -11,9 +11,18 @@ module Scrape
 
       plays = sort_plays(plays)
       plays = plays.reject {|play| play.is_technical_foul? }
-      stretches = plays.map do |play|
-        #puts "#{play.seconds_passed} #{play.description}"
-        current_stretch = current_stretch.process_play(play)
+      stretches = plays.enum_for(:each_with_index).map do |play, i|
+        begin
+          #puts "#{play.seconds_passed} #{play.description}"
+          current_stretch = current_stretch.process_play(play)
+        rescue Scrape::TooManyPlayersError => error
+          play = plays[i - 60, i].reverse.find {|p| p.is_exit? && p.player_name == error.extra_name}
+          o = Object.new
+          o.extend Scrape::NbcDescriptionSplitting
+          a, b = o.split_description_by_type(play.original_description)
+          current_stretch.lineups[play.team].remove_player(b.split('enters')[0].strip)
+          retry
+        end
       end
 
       stretches = stretches.select {|stretch| stretch.start != stretch.end}

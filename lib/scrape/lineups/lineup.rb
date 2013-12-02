@@ -16,7 +16,11 @@ module Scrape
       @lineup_array << player unless is_blacklisted?(player)
       @lineup_array.uniq!
       update_piggy_backed_lineup(player)
-      raise Scrape::Error.new "lineup has too many players #@lineup_array" if @lineup_array.size > 5
+      raise Scrape::TooManyPlayersError.new("lineup has too many players #@lineup_array", player) if @lineup_array.size > 5
+    end
+
+    def remove_player(player)
+      @lineup_array.delete(player)
     end
 
     def add_substituted_player(player)
