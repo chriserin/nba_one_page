@@ -1,3 +1,5 @@
+class NullResults
+
 class NbaOnePage.Models.RolledDataSplit
   constructor: (data, fromIndex, toIndex) ->
     @data = data
@@ -11,7 +13,11 @@ class NbaOnePage.Models.RolledDataSplit
       for key, value of values
         results[key] = results[key] || 0
         results[key] += value
-    return results
+
+    if $.isEmptyObject(results)
+      return NullResults
+    else
+      return results
 
   startDate: ->
     moment(@data[@fromIndex].date).format("MM/DD")
@@ -26,20 +32,21 @@ class NbaOnePage.Models.RolledDataSplit
 
   calculate: (formula) ->
     formula ||= _.reject(@data, (v) -> v.formula == null)[0].formula
+    results = @totalComponentValues()
+    return "-" if results is NullResults
     switch formula
       when 'rolling_average'
-        results = @totalComponentValues()
         values = (value for key, value of results)
         Math.round(values[0] / @gamesCount() * 10) / 10
       when 'free_throw_percentage', 'field_goal_percentage', 'threes_percentage'
-        results = @totalComponentValues()
         values = (value for key, value of results)
         Math.round(values[0] / values[1] * 1000) / 1000
+      when 'game_score', 'game_score_36'
+        @addPerMinuteMethods(results)
+        Math.round(results[formula]() / @gamesCount() * 10) / 10
       else
-        results = @totalComponentValues()
         @addPerMinuteMethods(results)
         results extends NbaOnePage.Models.StatFormulas.prototype
-        console.log(results[formula])
         results[formula]()
 
   addPerMinuteMethods: (results) ->
