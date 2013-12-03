@@ -37,6 +37,12 @@ class NbaOnePage.Models.RolledDataSplit
         Math.round(values[0] / values[1] * 1000) / 1000
       else
         results = @totalComponentValues()
+        @addPerMinuteMethods(results)
         results extends NbaOnePage.Models.StatFormulas.prototype
         console.log(results[formula])
         results[formula]()
+
+  addPerMinuteMethods: (results) ->
+    per_minutes_stat = _.reject(_.keys(results), (key) -> key.match(/minutes/))[0]
+    if per_minutes_stat?
+      results[per_minutes_stat + "_36"] = -> Math.round((this[per_minutes_stat] / @minutes * 36.0) * 10) / 10

@@ -80,5 +80,3 @@ module Nba
     end
   end
 end
-
-

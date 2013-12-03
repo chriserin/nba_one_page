@@ -4,9 +4,11 @@ module Nba
 
       def initialize(date, description, line, formula)
         @date, @start_date, @description, @formula = date, date, description, formula
+        @line = line
 
         per_36_stat = formula[0..-4].to_sym
         @components = [per_36_stat, :minutes]
+        @game_data = calc_game_data(line, formula) if formula.present?
 
         set_base_data(@components, line)
       end
