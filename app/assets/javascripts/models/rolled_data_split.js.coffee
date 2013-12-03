@@ -41,7 +41,11 @@ class NbaOnePage.Models.RolledDataSplit
       when 'free_throw_percentage', 'field_goal_percentage', 'threes_percentage'
         values = (value for key, value of results)
         Math.round(values[0] / values[1] * 1000) / 1000
-      when 'game_score', 'game_score_36'
+      when 'game_score'
+        results extends NbaOnePage.Models.StatFormulas.prototype
+        @addPerMinuteMethods(results)
+        Math.round(results[formula]() / @gamesCount() * 10) / 10
+      when 'game_score_36'
         @addPerMinuteMethods(results)
         Math.round(results[formula]() / @gamesCount() * 10) / 10
       else
