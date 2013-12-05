@@ -45,6 +45,7 @@ jQuery ->
         $(".boxscores .section-header").html($(".boxscore-content .section-header").contents())
         $(".boxscore-content .section-header").remove()
         NbaOnePage.ViewState["boxscores"] = @factory.create(NbaOnePage.Views.Boxscores)
+        @defaultClick()
 
     clickBoxscoreNav: (event) ->
       $(@el).find("nav.section-content li").removeClass("selected")

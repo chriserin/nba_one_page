@@ -44,6 +44,7 @@ class PlaybyplayApp < Sinatra::Base
     stretches = StretchLine.make_year_type(season).where(:team_players.in => [name], :game_date => DateTime.parse("2012-01-01"))
     stints = Nba::StretchesList.new(stretches).compress_stretches
 
+
     [
       200,
       {"Content-Type" => 'application/json'},
@@ -61,6 +62,7 @@ class PlaybyplayApp < Sinatra::Base
         json.start s.start
         json.end   s.end
       end
+      json.periods plays.last.total_periods
     end
   end
 end

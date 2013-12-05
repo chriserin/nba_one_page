@@ -13,9 +13,10 @@ module Scrape
       result_hash[:opponent_score] = play.opponent_score
       result_hash[:score_difference] = play.score_difference
       result_hash[:original_description] = play.original_description
+      result_hash[:total_periods] = play.total_periods
 
       Nba::TalleableStatistics.each do |statistic|
-        method_name = "is_#{statistic.to_s.singularize}" 
+        method_name = "is_#{statistic.to_s.singularize}"
         result_hash[method_name.to_sym] = play.send("#{method_name}?")
       end
 

@@ -55,6 +55,18 @@ class NbcPlayTest < MiniTest::Unit::TestCase
     assert 820, play.seconds_passed
   end
 
+  def test_seconds_elapsed_overtime
+    play_desc = "Defensive Rebound"
+    play = Scrape::NbcPlay.new("5", "3:00", "team", play_desc, "score", "home_score", nil)
+    assert 3000, play.seconds_passed
+  end
+
+  def test_seconds_elapsed_double_overtime
+    play_desc = "Defensive Rebound"
+    play = Scrape::NbcPlay.new("6", "3:00", "team", play_desc, "score", "home_score", nil)
+    assert 3300, play.seconds_passed
+  end
+
   def test_split_description
     play_desc = "Brandon Bass makes a jump shot from 16 feet out. Rajon Rondo with the assist."
     play = Scrape::NbcPlay.new("1", "10:20", "Bos", play_desc, "score", "home_score", nil)
@@ -192,6 +204,6 @@ class NbcPlayTest < MiniTest::Unit::TestCase
   def test_game_date
     play_desc = "Roy Hibbert enters game"
     play = Scrape::NbcPlay.new("1", "10:20", "Bos", play_desc, "score", "home_score", Scrape::GameInfo.new("Indiana Pacers", "New York Knicks", DateTime.new(2012, 12, 25)))
-    assert_equal DateTime.new(2012, 12, 25), play.game_date 
+    assert_equal DateTime.new(2012, 12, 25), play.game_date
   end
 end

@@ -14,6 +14,7 @@ class PlayModel
   field :opponent_score, type: Integer
   field :score_difference, type: Integer
   field :original_description, type: String
+  field :total_periods, type: Integer
 
   Nba::BaseStatistics.talleable_statistics.each do |statistic|
     field "is_#{statistic}", type: Boolean, default: false

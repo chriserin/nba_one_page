@@ -104,6 +104,10 @@ module Scrape
       indexes.compact.min || -1
     end
 
+    def total_periods
+      @game_info.periods
+    end
+
     def split_description
       first_desc, second_desc = split_description_by_type(description)
       first_team, second_team = split_team_by_type(description, team, @game_info)

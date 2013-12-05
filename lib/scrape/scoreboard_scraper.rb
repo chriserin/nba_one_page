@@ -38,7 +38,7 @@ module Scrape
       def self.run(data, home_team, away_team, game_date, *args)
         nbc_date = game_date.strftime('%Y%m%d') + Nba::TEAMS[home_team][:home_id]
         url = "http://scores.nbcsports.msnbc.com/nba/pbp.asp?gamecode=#{nbc_date}"
-        [url, Scrape::GameInfo.new(home_team, away_team, game_date)]
+        [url, Scrape::GameInfo.new(home_team, away_team, game_date, *args)]
       end
     end
   end

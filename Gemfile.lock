@@ -103,6 +103,7 @@ GEM
     crack (0.3.2)
     domain_name (0.5.10)
       unf (>= 0.0.5, < 1.0.0)
+    easy_repl (0.0.2)
     eco (1.0.0)
       coffee-script
       eco-source
@@ -129,6 +130,9 @@ GEM
     jquery-rails (2.2.1)
       railties (>= 3.0, < 5.0)
       thor (>= 0.14, < 2.0)
+    jscon (0.0.1)
+      easy_repl
+      thor
     kgio (2.8.0)
     mail (2.5.4)
       mime-types (~> 1.16)
@@ -267,6 +271,7 @@ DEPENDENCIES
   iron_worker_ng
   jbuilder
   jquery-rails
+  jscon
   mechanize (~> 2.5.1)
   miniskirt
   minitest
