@@ -23,6 +23,15 @@ module Scrape
       @lineup_array.delete(player)
     end
 
+    def remove_random_player
+      remove_player(@lineup_array.shuffle.first)
+      @dirty = true
+    end
+
+    def is_dirty?
+      @dirty || false
+    end
+
     def add_substituted_player(player)
       blacklist_player_for_piggy_backed_lineup(player)
       add_player(player)
@@ -59,7 +68,7 @@ module Scrape
     end
 
     def is_full?
-      @lineup_array.size == 5
+      @lineup_array.size == 5 || is_dirty?
     end
 
     def to_a

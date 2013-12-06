@@ -26,8 +26,8 @@ namespace :counts do
   end
 
   task :last_game_date => :environment do
-    puts "PlayByPlay #{PlayModel("2014").last.game_date}"
-    puts "BoxScore #{GameLine("2014").last.game_date}"
+    puts "PlayByPlay #{PlayModel("2014").all.order_by(:game_date => :asc).last.game_date}"
+    puts "BoxScore #{GameLine("2014").all.order_by(:game_date => :asc).last.game_date}"
   end
 end
 
@@ -99,7 +99,7 @@ namespace :schedule do
   end
 end
 
-namespace :iron do 
+namespace :iron do
   task :publish => :environment do
     require './workers/schedule_worker'
     ScheduleWorker.schedule_scraper

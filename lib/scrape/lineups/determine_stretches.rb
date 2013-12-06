@@ -12,16 +12,25 @@ module Scrape
       plays = sort_plays(plays)
       plays = plays.reject {|play| play.is_technical_foul? }
       stretches = plays.enum_for(:each_with_index).map do |play, i|
+        retry_count = 0
         begin
           #puts "#{play.seconds_passed} #{play.description}"
           current_stretch = current_stretch.process_play(play)
         rescue Scrape::TooManyPlayersError => error
-          play = plays[i - 60, i].reverse.find {|p| p.is_exit? && p.player_name == error.extra_name}
-          o = Object.new
-          o.extend Scrape::NbcDescriptionSplitting
-          a, b = o.split_description_by_type(play.original_description)
-          current_stretch.lineups[play.team].remove_player(b.split('enters')[0].strip)
-          retry
+          retry_count += 1
+          if retry_count == 1
+            play = plays[i - 60, i].reverse.find {|p| p.is_exit? && p.player_name == error.extra_name}
+            o = Object.new
+            o.extend Scrape::NbcDescriptionSplitting
+            a, b = o.split_description_by_type(play.original_description)
+            current_stretch.lineups[play.team].remove_player(b.split('enters')[0].strip)
+            retry
+          elsif retry_count == 2
+            current_stretch.lineups[play.team].remove_random_player
+            retry
+          else
+            raise error
+          end
         end
       end
 
